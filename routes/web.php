@@ -32,3 +32,11 @@ use Illuminate\Support\Facades\Route;
 //require __DIR__.'/auth.php';
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/payment-and-delivery', [FrontendController::class, 'payment_and_delivery'])->name('payment_and_delivery');
+
+Route::prefix('catalog')->group(function (){
+    Route::get('/', [FrontendController::class, 'catalog'])->name('catalog');
+    Route::get('/accessories', [FrontendController::class, 'accessories'])->name('accessories');
+    Route::get('/entrance_doors', [FrontendController::class, 'entrance_doors'])->name('entrance_doors');
+    Route::get('/interior_doors', [FrontendController::class, 'interior_doors'])->name('interior_doors');
+});
