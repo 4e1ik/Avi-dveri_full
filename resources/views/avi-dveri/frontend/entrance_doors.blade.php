@@ -14,7 +14,7 @@
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
-                                <li><a href="{{route('entrance_doors')}}">Каталог</a></li>
+                                <li><a href="{{route('entrance_doors')}}">Входные</a></li>
                             </ul>
                         </div>
                     </div>
@@ -287,19 +287,8 @@
                         </form>
                     </aside>
                     <!-- Widget-search end -->
-                    <!-- Widget-Categories start -->
-                    <aside class="widget widget-categories  mb-30">
-                        <div class="widget-title">
-                            <h4>Каталог</h4>
-                        </div>
-                        <div id="cat-treeview"  class="widget-info product-cat boxscrol2">
-                            <ul>
-                                <li><a href="{{route('entrance_doors')}}"><span>Входные</span></a></li>
-                                <li><a href="{{route('interior_doors')}}"><span>Межкомнатные</span></a></li>
-                                <li><a href="{{route('accessories')}}"><span>Фурнитура</span></a></li>
-                            </ul>
-                        </div>
-                    </aside>
+                    <!-- Widget-Categories start -->    
+                    @include('includes.frontend.aside_catalog')
                     <!-- Widget-categories end -->
                     <!-- Shop-Filter start -->
                     <aside class="widget shop-filter mb-30">
@@ -330,12 +319,14 @@
                         </div>
                         <div class="widget-info color-filter clearfix">
                             <ul>
-                                <li><a href="#">Улица<span class="count">12</span></a></li>
-                                <li><a href="#">Квартира<span class="count">20</span></a></li>
-                                <li><a href="#">Терморазрыв<span class="count">20</span></a></li>
+                                <li><input type="checkbox" class="func_checkbox"><a href="#">Улица<span class="count">12</span></a></li>
+                                <li><input type="checkbox" class="func_checkbox"><a href="#">Квартира<span class="count">20</span></a></li>
+                                <li><input type="checkbox" class="func_checkbox"><a href="#">Терморазрыв<span class="count">20</span></a></li>
                             </ul>
                         </div>
                     </aside>
+
+                    <button style="width: 100%; height: 45px; font-size: larger; line-height: 45px;" data-text="Отфильтровать" type="submit" class="button-one submit-btn-4">Отфильтровать</button>
                     <!-- Widget-Manufacturer end -->
                 </div>
             </div>

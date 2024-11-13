@@ -83,6 +83,68 @@
         </div>
     </div>
     <!-- Mobile-menu end -->
+    <!-- popup -->
+    <Style>
+        .popup_application {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: rgba(151, 151, 151, 0.05);
+            backdrop-filter: blur(4px);
+            -webkit-background: rgba(151, 151, 151, 0.05);
+            -webkit-backdrop-filter: blur(4px);
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 99;
+        }
+
+        .popup__body {
+            min-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8.125em;
+        }
+
+        #contact-form {
+            background-color: #c7c2c2;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .form__text>h4 {
+            color:#5b3a29
+        }
+
+        .popup__cross_application{
+            cursor: pointer;
+            font-size: large;
+            transition: 0.2s;
+        }
+
+        .popup__cross_application:hover{
+            transform: scale(1.2);
+        }
+    </Style>
+    <div class="send-message popup_application">
+        <div class="popup__body popup__body_application">
+            <form id="contact-form" action="#">
+                <div class="form__text">
+                    <h4 class="title-1 title-border text-uppercase mb-30">Отправить заявку</h4>
+                    <div class="popup__cross_application" href="">✕</div>
+                </div>
+                <input type="text" name="con_name" placeholder="Имя" />
+                <input type="text" name="con_email" placeholder="E-mail" />
+                <textarea class="custom-textarea" name="con_message" placeholder="Текст сообщения"></textarea>
+                <button class="button-one submit-button mt-20" data-text="Отправить" type="">Отправить</button>
+                <p class="form-message"></p>
+            </form>
+        </div>
+    </div>
+    <!-- end popup -->
     @yield('content')
 <!-- FOOTER START -->
 <footer>
@@ -121,7 +183,7 @@
                     <p>ИП Исаев Андрей Владимирович, УНП 690311744, свидетельство о государствееной регистрации №0870887 от 15.12.2022 г. Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.</p>
                     <p>По вопросам покупателей о защите их прав:<br><a href="80293673518">+375 (29) 367-35-18</a><br><a href="mailto:your-email@gmail.com">your-email@gmail.com</a></p>
                     <p>Контакты лиц, уполномоченных рассматривать обращения покупателей о нарушении их прав (Червеньский районный исполнительный комитет, отдел торговли и услуг).
-                        <br><a href="80171428229">(8017) 142-82-29</a>
+                        <br><a href="80171428229">(801714) 282-29</a>
                     </p>
                 </div>
             </div>

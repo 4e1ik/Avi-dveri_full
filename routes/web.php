@@ -40,3 +40,5 @@ Route::prefix('catalog')->group(function (){
     Route::get('/entrance_doors', [FrontendController::class, 'entrance_doors'])->name('entrance_doors');
     Route::get('/interior_doors', [FrontendController::class, 'interior_doors'])->name('interior_doors');
 });
+
+Route::get('/product_page', [FrontendController::class, 'show_product'])->name('product_page');

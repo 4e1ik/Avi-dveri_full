@@ -35,4 +35,9 @@ class FrontendController extends Controller
     {
         return view('avi-dveri.frontend.interior_doors');
     }
+    function show_product()
+    {
+        return view('avi-dveri.frontend.product_page');
+    }
+
 }

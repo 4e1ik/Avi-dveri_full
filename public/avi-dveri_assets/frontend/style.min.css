@@ -2739,6 +2739,7 @@ input[type="radio"] {
 
 label{
     font-size: 1.3em;
+    cursor: pointer;
 }
 
 /* Стиль для первой кнопки, когда она выбрана */
