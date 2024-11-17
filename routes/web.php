@@ -1,7 +1,12 @@
 <?php
 
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\avi_dveri\admin\AdminController;
+use App\Http\Controllers\avi_dveri\admin\LoginController;
+use App\Http\Controllers\avi_dveri\admin\RegisterController;
+use App\Http\Controllers\avi_dveri\admin\DoorController;
+use App\Http\Controllers\avi_dveri\admin\FittingController;
+use App\Http\Controllers\avi_dveri\admin\ImageController;
+use App\Http\Controllers\avi_dveri\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,17 +33,35 @@ use Illuminate\Support\Facades\Route;
 //    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 //});
-//
+
 //require __DIR__.'/auth.php';
 
-Route::get('/', [FrontendController::class, 'index'])->name('home');
-Route::get('/payment-and-delivery', [FrontendController::class, 'payment_and_delivery'])->name('payment_and_delivery');
+Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/payment-and-delivery', [MainController::class, 'payment_and_delivery'])->name('payment_and_delivery');
 
 Route::prefix('catalog')->group(function (){
-    Route::get('/', [FrontendController::class, 'catalog'])->name('catalog');
-    Route::get('/accessories', [FrontendController::class, 'accessories'])->name('accessories');
-    Route::get('/entrance_doors', [FrontendController::class, 'entrance_doors'])->name('entrance_doors');
-    Route::get('/interior_doors', [FrontendController::class, 'interior_doors'])->name('interior_doors');
+    Route::get('/', [MainController::class, 'catalog'])->name('catalog');
+    Route::get('/accessories', [MainController::class, 'accessories'])->name('accessories');
+    Route::get('/entrance_doors', [MainController::class, 'entrance_doors'])->name('entrance_doors');
+    Route::get('/interior_doors', [MainController::class, 'interior_doors'])->name('interior_doors');
 });
 
-Route::get('/product_page', [FrontendController::class, 'show_product'])->name('product_page');
+Route::get('/product_page', [MainController::class, 'show_product'])->name('product_page');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
+Route::post('/registration', [RegisterController::class, 'registration'])->name('save');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->where([])->prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+
+    Route::resources([
+        'doors' => DoorController::class,
+        'fittings' => FittingController::class,
+        'images' => ImageController::class,
+    ]);
+});

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Door extends Model
 {
     use HasFactory;
+
+
 }
