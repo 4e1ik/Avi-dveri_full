@@ -23,14 +23,14 @@ class DoorRequest extends FormRequest
     {
         return [
             'title' => 'required|filled|min:3|max:100',
-            'description' => 'required|filled|min:5|max:1000',
-            'price_per_canvas' => 'max:50',
-            'price_per_set' => 'max:50',
+            'description' => 'min:5|max:1000',
+            'price_per_canvas' => 'required|filled|max:50',
+            'price_per_set' => 'required|filled|max:50',
             'size' => 'required|filled|max:150',
             'glass' => 'max:50',
-            'type' => 'max:50',
-            'function' => 'max:50',
-            'material' => 'max:50',
+            'type' => 'required|filled|max:50',
+            'function' => 'required|filled|max:50',
+            'material' => 'required|filled|max:50',
             'label' => 'max:10',
             'image.*.image' => 'required|image',
         ];

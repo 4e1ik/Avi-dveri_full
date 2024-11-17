@@ -24,8 +24,8 @@ class FittingRequest extends FormRequest
         return [
             'title' => 'required|filled|min:3|max:100',
             'description' => 'required|filled|min:5|max:1000',
-            'price' => 'max:50',
-            'price_per_set' => 'max:50',
+            'price' => 'required|filled|max:50',
+            'price_per_set' => 'required|filled|max:50',
             'label' => 'max:10',
             'image.*.image' => 'required|image',
         ];

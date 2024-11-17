@@ -22,4 +22,8 @@ class Door extends Model
         'label',
         'active',
     ];
+
+    public function images(){
+        return $this->hasMany(Door::class, 'door_id', 'id');
+    }
 }

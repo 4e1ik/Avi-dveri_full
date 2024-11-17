@@ -17,4 +17,8 @@ class Fitting extends Model
         'label',
         'active',
     ];
+
+    public function images(){
+        return $this->hasMany(Fitting::class, 'fitting_id', 'id');
+    }
 }

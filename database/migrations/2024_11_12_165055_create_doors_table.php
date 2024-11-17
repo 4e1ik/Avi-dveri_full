@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('doors', function (Blueprint $table) {
             $table->id();
+            $table->string ('title', '255')->nullable('false');
+            $table->text ('description')->nullable('true');
+            $table->string ('price_per_canvas','255')->nullable('false');
+            $table->string ('price_per_set','255')->nullable('false');
+            $table->string ('size','255')->nullable('false');
+            $table->string ('glass','255')->nullable('true');
+            $table->string ('type','255')->nullable('false');
+            $table->string ('function', '255')->nullable('false');
+            $table->string ('material', '255')->nullable('false');
+            $table->string ('label', '255')->nullable('true');
+            $table->boolean ('active')->default(true);
             $table->timestamps();
         });
     }
