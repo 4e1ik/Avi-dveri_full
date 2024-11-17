@@ -9,5 +9,17 @@ class Door extends Model
 {
     use HasFactory;
 
-
+    protected $fillable = [
+        'title',
+        'description',
+        'price_per_canvas',
+        'price_per_set',
+        'size',
+        'glass',
+        'type',
+        'function',
+        'material',
+        'label',
+        'active',
+    ];
 }

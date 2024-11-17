@@ -93,7 +93,7 @@
                     </ul>
                 </li>
                 <li class="ripple">
-                    <a class="tree-toggle nav-header">
+                    <a href="" class="tree-toggle nav-header">
                         Фурнитура
                     </a>
                 </li>
@@ -589,27 +589,20 @@
             <ul class="nav nav-list">
                 <li class="ripple">
                     <a class="tree-toggle nav-header">
-                        <span class="icon-drawar icons"></span> Кашпо
+                        <span class="icon-drawar icons"></span>
+                        Двери
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
                     <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="">Круглые кашпо</a></li>
-                        <li><a href="">Квадратные кашпо</a></li>
-                        <li><a href="">Прямоугольные кашпо</a></li>
+                        <li><a href="">Входные</a></li>
+                        <li><a href="">Межкомнатные</a></li>
                     </ul>
                 </li>
                 <li class="ripple">
-                    <a class="tree-toggle nav-header">
-                        <span class="icon-vector icons"></span> Скамейки
-                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                    <a href="" class="tree-toggle nav-header">
+                        <span class="icon-vector icons"></span>
+                        Фурнитура
                     </a>
-                    <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="">Коллекция Verona</a></li>
-                        <li><a href="">Коллекция Stones</a></li>
-                        <li><a href="">Коллекция Solo</a></li>
-                        <li><a href="">Коллекция lines</a></li>
-                        <li><a href="">Коллекция Street furniture</a></li>
-                    </ul>
                 </li>
                 <li class="ripple">
                     <a class="tree-toggle nav-header">

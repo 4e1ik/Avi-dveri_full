@@ -22,7 +22,7 @@ class ImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'description_image' => 'min:3|max:200',
         ];
     }
 }

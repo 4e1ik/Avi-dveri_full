@@ -11,7 +11,7 @@ class DoorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class DoorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|filled|min:3|max:100',
+            'description' => 'required|filled|min:5|max:1000',
+            'price_per_canvas' => 'max:50',
+            'price_per_set' => 'max:50',
+            'size' => 'required|filled|max:150',
+            'glass' => 'max:50',
+            'type' => 'max:50',
+            'function' => 'max:50',
+            'material' => 'max:50',
+            'label' => 'max:10',
+            'image.*.image' => 'required|image',
         ];
     }
 }

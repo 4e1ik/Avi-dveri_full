@@ -11,7 +11,7 @@ class FittingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class FittingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|filled|min:3|max:100',
+            'description' => 'required|filled|min:5|max:1000',
+            'price' => 'max:50',
+            'price_per_set' => 'max:50',
+            'label' => 'max:10',
+            'image.*.image' => 'required|image',
         ];
     }
 }
