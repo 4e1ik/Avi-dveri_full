@@ -58,6 +58,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/entrance_doors', [AdminController::class, 'entrance_doors'])->name('entrance_doors');
+    Route::get('/interior_doors', [AdminController::class, 'interior_doors'])->name('interior_doors');
 
     Route::resources([
         'doors' => DoorController::class,

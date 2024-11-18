@@ -88,8 +88,8 @@
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
                     <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="">Входные</a></li>
-                        <li><a href="">Межкомнатные</a></li>
+                        <li><a href="{{route('entrance_doors')}}">Входные</a></li>
+                        <li><a href="{{route('interior_doors')}}">Межкомнатные</a></li>
                     </ul>
                 </li>
                 <li class="ripple">
@@ -101,7 +101,7 @@
         </div>
     </div>
 
-@yield('admin_content')
+@yield('content')
 
 <div id="right-menu">
     <ul class="nav nav-tabs">
@@ -594,8 +594,8 @@
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
                     <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="">Входные</a></li>
-                        <li><a href="">Межкомнатные</a></li>
+                        <li><a href="{{route('entrance_doors')}}">Входные</a></li>
+                        <li><a href="{{route('interior_doors')}}">Межкомнатные</a></li>
                     </ul>
                 </li>
                 <li class="ripple">

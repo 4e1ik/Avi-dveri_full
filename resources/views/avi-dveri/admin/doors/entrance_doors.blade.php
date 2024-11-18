@@ -9,7 +9,7 @@
                     <h3 class="animated fadeInLeft">Входные двери</h3>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a href="{{route('create', ['route' => 'doors'])}}">
+                    <a href="{{route('doors.create')}}">
                         <button class="btn ripple btn-outline btn-primary">
                             <div>
                                 <span>Добавить товар</span>
@@ -36,13 +36,10 @@
                                     <th>Цена за комплект</th>
                                     <th>Размер</th>
                                     <th>Стекло</th>
-                                    <th>Тип</th>
                                     <th>Назначение</th>
                                     <th>Материал</th>
                                     <th>Ярлык</th>
                                     <th>Активный</th>
-                                    <th>Время редактирования</th>
-                                    <th>Опубликован</th>
                                     <th>Редактировать</th>
                                     <th>Удалить</th>
                                 </tr>
@@ -57,7 +54,6 @@
                                             <td>{{$door->price_per_set}}</td>
                                             <td>{{$door->size}}</td>
                                             <td>{{$door->glass}}</td>
-                                            <td>{{$door->type}}</td>
                                             <td>{{$door->function}}</td>
                                             <td>{{$door->material}}</td>
                                             <td>{{$door->label}}</td>
@@ -68,8 +64,6 @@
                                                     Нет
                                                 @endif
                                             </td>
-                                            <td>{{$door->updated_at}}</td>
-                                            <td>{{$door->created_at}}</td>
                                             <td>
                                                 <a href="{{ route('doors.edit', ['door' => $door]) }}">
                                                     <input type="button" class=" btn btn-3d btn-primary"

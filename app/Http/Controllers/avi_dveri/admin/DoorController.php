@@ -20,7 +20,7 @@ class DoorController extends Controller
      */
     public function create()
     {
-        //
+        return view('avi-dveri.admin.doors.create_door');
     }
 
     /**
