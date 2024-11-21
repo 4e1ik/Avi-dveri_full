@@ -634,6 +634,7 @@
 <script src="{{asset('/avi-dveri_assets/admin/js/jquery.min.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/admin/js/jquery.ui.min.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/admin/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/admin/js/newSize.js')}}"></script>
 
 
 <!-- plugins -->
