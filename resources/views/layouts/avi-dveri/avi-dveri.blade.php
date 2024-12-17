@@ -54,12 +54,18 @@
         <a class="header-menu" href="{{route('catalog')}}">Каталог</a>
         <a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a>
         <a class="header-menu" href="80293673518" style="font-size: 0.9em; margin: 1.5em 0 0 0">+375 (29) 367-35-18</a>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
-            <a class="search-img" href="#">
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/search.png')}}" alt="" width="30" height="30" class="d-inline-block align-top" alt="CoreUI Logo">
-            </a>
-        </form>
+        @livewire('search')
+
+{{--        <form class="d-flex" id="search-form">--}}
+{{--            <input id="search-input" class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">--}}
+
+{{--            <a class="search-img" href="#" onclick="performSearch(event)">--}}
+{{--                <img type="submit" src="{{ asset('/avi-dveri_assets/avi-dveri/img/search.png') }}" alt="" width="30" height="30">--}}
+{{--            </a>--}}
+{{--        </form>--}}
+        <div id="search-results" style="margin-top: 20px;">
+            <!-- Здесь будут отображаться результаты -->
+        </div>
     </header>
     <!-- Mobile-menu start -->
     <div class="mobile-menu-area">
@@ -240,5 +246,56 @@
 
 
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/popupSubmitApplication.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/smartSearch.js')}}"></script>
+{{--<script>--}}
+{{--    function performSearch(event) {--}}
+{{--        event.preventDefault();--}}
+{{--        const query = document.getElementById('search-input').value;--}}
+
+{{--        if (!query) {--}}
+{{--            alert('Введите запрос для поиска.');--}}
+{{--            return;--}}
+{{--        }--}}
+
+{{--        fetch(`/search?q=${encodeURIComponent(query)}`)--}}
+{{--            .then(response => {--}}
+{{--                if (!response.ok) {--}}
+{{--                    throw new Error('Ошибка выполнения поиска');--}}
+{{--                }--}}
+{{--                return response.json();--}}
+{{--            })--}}
+{{--            .then(data => {--}}
+{{--                const resultsContainer = document.getElementById('search-results');--}}
+{{--                resultsContainer.innerHTML = '';--}}
+
+{{--                if (data.doors.length) {--}}
+{{--                    const doorList = document.createElement('div');--}}
+{{--                    doorList.innerHTML = '<h3>Двери</h3>';--}}
+{{--                    data.doors.forEach(door => {--}}
+{{--                        const item = document.createElement('p');--}}
+{{--                        item.textContent = door.title;--}}
+{{--                        doorList.appendChild(item);--}}
+{{--                    });--}}
+{{--                    resultsContainer.appendChild(doorList);--}}
+{{--                }--}}
+
+{{--                if (data.fittings.length) {--}}
+{{--                    const fittingList = document.createElement('div');--}}
+{{--                    fittingList.innerHTML = '<h3>Фитинги</h3>';--}}
+{{--                    data.fittings.forEach(fitting => {--}}
+{{--                        const item = document.createElement('p');--}}
+{{--                        item.textContent = fitting.title;--}}
+{{--                        fittingList.appendChild(item);--}}
+{{--                    });--}}
+{{--                    resultsContainer.appendChild(fittingList);--}}
+{{--                }--}}
+
+{{--            })--}}
+{{--            .catch(error => {--}}
+{{--                alert('Ошибка поиска: ' + error.message);--}}
+{{--            });--}}
+{{--    }--}}
+{{--</script>--}}
+{{--@livewireAssets--}}
 </body>
 </html>

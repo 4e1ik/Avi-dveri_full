@@ -27,7 +27,7 @@ RUN apt-get install -y nodejs
 RUN rm nodesource_setup.sh
 RUN npm install -g yarn
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
-
-COPY docker/php/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug111.ini
+#RUN pecl install xdebug \
+#    && docker-php-ext-enable xdebug
+#
+#COPY docker/php/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug111.ini

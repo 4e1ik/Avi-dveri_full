@@ -9,7 +9,7 @@
                     <h3 class="animated fadeInLeft">Межкомнатные двери</h3>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a href="{{route('create', ['route' => 'doors'])}}">
+                    <a href="{{route('doors.create')}}">
                         <button class="btn ripple btn-outline btn-primary">
                             <div>
                                 <span>Добавить товар</span>
@@ -30,6 +30,7 @@
                                    cellspacing="0">
                                 <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Название</th>
                                     <th>Описание</th>
                                     <th>Цена за полотно</th>
@@ -40,8 +41,6 @@
                                     <th>Материал</th>
                                     <th>Ярлык</th>
                                     <th>Активный</th>
-                                    <th>Время редактирования</th>
-                                    <th>Опубликован</th>
                                     <th>Редактировать</th>
                                     <th>Удалить</th>
                                 </tr>
@@ -50,15 +49,26 @@
                                 @if($doors->isNotEmpty())
                                     @foreach($doors as $door)
                                         <tr>
+                                            <td>{{$door->id}}</td>
                                             <td>{{$door->title}}</td>
                                             <td>{{$door->description}}</td>
                                             <td>{{$door->price_per_canvas}}</td>
                                             <td>{{$door->price_per_set}}</td>
-                                            <td>{{$door->size}}</td>
+                                            <td>@if(!empty($door->label))
+                                                    @foreach($door->size as $item)
+                                                        {{$item}}
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                             <td>{{$door->glass}}</td>
                                             <td>{{$door->function}}</td>
                                             <td>{{$door->material}}</td>
-                                            <td>{{$door->label}}</td>
+                                            <td>@if(!empty($door->label))
+                                                    @foreach($door->label as $item)
+                                                        {{$item}}
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                             <td>
                                                 @if($door->active == 1)
                                                     Да
@@ -66,8 +76,6 @@
                                                     Нет
                                                 @endif
                                             </td>
-                                            <td>{{$door->updated_at}}</td>
-                                            <td>{{$door->created_at}}</td>
                                             <td>
                                                 <a href="{{ route('doors.edit', ['door' => $door]) }}">
                                                     <input type="button" class=" btn btn-3d btn-primary"
@@ -80,7 +88,8 @@
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" style="border: 0">
-                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                        <input type="button" class="btn btn-3d btn-danger"
+                                                               value="Удалить">
                                                     </button>
                                                 </form>
                                             </td>

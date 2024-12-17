@@ -4,16 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Image extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'door_id',
-        'fitting_id',
+        'imageable_id',
+        'imageable_type',
         'image',
         'door_color',
         'description_image',
     ];
+
+    public function imageable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }

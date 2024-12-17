@@ -5,7 +5,6 @@ use App\Http\Controllers\avi_dveri\admin\LoginController;
 use App\Http\Controllers\avi_dveri\admin\RegisterController;
 use App\Http\Controllers\avi_dveri\admin\DoorController;
 use App\Http\Controllers\avi_dveri\admin\FittingController;
-use App\Http\Controllers\avi_dveri\admin\ImageController;
 use App\Http\Controllers\avi_dveri\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,16 +36,32 @@ use Illuminate\Support\Facades\Route;
 //require __DIR__.'/auth.php';
 
 Route::get('/', [MainController::class, 'index'])->name('home');
+//Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/payment-and-delivery', [MainController::class, 'payment_and_delivery'])->name('payment_and_delivery');
 
 Route::prefix('catalog')->group(function (){
     Route::get('/', [MainController::class, 'catalog'])->name('catalog');
-    Route::get('/accessories', [MainController::class, 'accessories'])->name('accessories');
-    Route::get('/entrance_doors', [MainController::class, 'entrance_doors'])->name('entrance_doors');
-    Route::get('/interior_doors', [MainController::class, 'interior_doors'])->name('interior_doors');
+
+    Route::prefix('accessories')->group(function () {
+        Route::get('/', [MainController::class, 'accessories'])->name('accessories');
+        Route::get('/{id}', [MainController::class, 'show_product'])->name('product_page');
+    });
+
+    Route::prefix('interior_doors')->group(function () {
+        Route::get('/', [MainController::class, 'interior_doors'])->name('interior_doors');
+        Route::get('/{id}', [MainController::class, 'show_product'])->name('product_page');
+    });
+
+    Route::prefix('entrance_doors')->group(function () {
+        Route::get('/', [MainController::class, 'entrance_doors'])->name('entrance_doors');
+        Route::get('/{id}', [MainController::class, 'show_product'])->name('product_page');
+    });
+//    Route::get('/accessories', [MainController::class, 'accessories'])->name('accessories');
+//    Route::get('/entrance_doors', [MainController::class, 'entrance_doors'])->name('entrance_doors');
+//    Route::get('/interior_doors', [MainController::class, 'interior_doors'])->name('interior_doors');
 });
 
-Route::get('/product_page', [MainController::class, 'show_product'])->name('product_page');
+//Route::get('/product_page/{id}', [MainController::class, 'show_product'])->name('product_page');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -58,12 +73,13 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/entrance_doors', [AdminController::class, 'entrance_doors'])->name('entrance_doors');
-    Route::get('/interior_doors', [AdminController::class, 'interior_doors'])->name('interior_doors');
+    Route::get('/admin_fittings', [AdminController::class, 'fittings'])->name('admin_fittings');
+    Route::get('/entrance_doors', [AdminController::class, 'entrance_doors'])->name('admin_entrance_doors');
+    Route::get('/interior_doors', [AdminController::class, 'interior_doors'])->name('admin_interior_doors');
+
 
     Route::resources([
         'doors' => DoorController::class,
         'fittings' => FittingController::class,
-        'images' => ImageController::class,
     ]);
 });

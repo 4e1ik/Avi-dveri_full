@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+
     public function up(): void
     {
         Schema::create('fittings', function (Blueprint $table) {
@@ -17,7 +19,8 @@ return new class extends Migration
             $table->text ('description')->nullable('true');
             $table->string ('price','255')->nullable('false');
             $table->string ('price_per_set','255')->nullable('false');
-            $table->string ('label', '255')->nullable('true');
+            $table->string ('function','255')->nullable('false');
+            $table->json ('label')->nullable('true');
             $table->boolean ('active')->default(true);
             $table->timestamps();
         });

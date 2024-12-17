@@ -9,6 +9,11 @@ class Door extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'size' => 'array', // Автоматическое преобразование JSON в массив
+        'label' => 'array', // Автоматическое преобразование JSON в массив
+    ];
+
     protected $fillable = [
         'title',
         'description',
@@ -23,7 +28,8 @@ class Door extends Model
         'active',
     ];
 
-    public function images(){
-        return $this->hasMany(Door::class, 'door_id', 'id');
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

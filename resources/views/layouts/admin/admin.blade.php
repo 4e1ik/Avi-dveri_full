@@ -88,12 +88,12 @@
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
                     <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="{{route('entrance_doors')}}">Входные</a></li>
-                        <li><a href="{{route('interior_doors')}}">Межкомнатные</a></li>
+                        <li><a href="{{route('admin_entrance_doors')}}">Входные</a></li>
+                        <li><a href="{{route('admin_interior_doors')}}">Межкомнатные</a></li>
                     </ul>
                 </li>
                 <li class="ripple">
-                    <a href="" class="tree-toggle nav-header">
+                    <a href="{{route('admin_fittings')}}" class="tree-toggle nav-header">
                         Фурнитура
                     </a>
                 </li>
@@ -594,12 +594,12 @@
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
                     <ul class="nav nav-list tree" style="display: none;">
-                        <li><a href="{{route('entrance_doors')}}">Входные</a></li>
-                        <li><a href="{{route('interior_doors')}}">Межкомнатные</a></li>
+                        <li><a href="{{route('admin_entrance_doors')}}">Входные</a></li>
+                        <li><a href="{{route('admin_interior_doors')}}">Межкомнатные</a></li>
                     </ul>
                 </li>
                 <li class="ripple">
-                    <a href="" class="tree-toggle nav-header">
+                    <a href="{{route('admin_fittings')}}" class="tree-toggle nav-header">
                         <span class="icon-vector icons"></span>
                         Фурнитура
                     </a>
@@ -634,7 +634,12 @@
 <script src="{{asset('/avi-dveri_assets/admin/js/jquery.min.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/admin/js/jquery.ui.min.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/admin/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('/avi-dveri_assets/admin/js/newSize.js')}}"></script>
+@if(route('doors.create') || route('doors.create') || route('fittings.create') || route('fittings.create'))
+    <script src="{{asset('/avi-dveri_assets/admin/js/previewImage.js')}}"></script>
+    <script src="{{asset('/avi-dveri_assets/admin/js/editSavedImages.js')}}"></script>
+    <script src="{{asset('/avi-dveri_assets/admin/js/newSize.js')}}"></script>
+@endif
+<script src="{{asset('/avi-dveri_assets/admin/js/test.js')}}"></script>
 
 
 <!-- plugins -->

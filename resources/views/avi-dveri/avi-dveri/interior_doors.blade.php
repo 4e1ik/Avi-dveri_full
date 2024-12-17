@@ -8,13 +8,13 @@
                 <div class="col-md-12">
                     <div class="heading-banner">
                         <div class="heading-banner-title">
-                            <h2>Межкомнатные</h2>
+                            <h2>Межкомнатные двери</h2>
                         </div>
                         <div class="breadcumbs pb-15">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
-                                <li><a href="{{route('interior_doors')}}">Межкомнатные</a></li>
+                                <li><a href="{{route('interior_doors')}}">Межкомнатные двери</a></li>
                             </ul>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="shop-content mt-xs-30">
                         <div class="product-option mb-30 clearfix">
                             <div class="showing text-end d-none d-md-block">
-                                <p class="mb-0">Показано 01-09 из 17 результатов</p>
+                                <p class="mb-0">Показано 01-09 из {{$count}} результатов</p>
                             </div>
                         </div>
                         <!-- Tab panes -->
@@ -40,259 +40,64 @@
                             <div class="tab-pane active" id="grid-view">
                                 <div class="row">
                                     <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <span class="pro-label new-label">new</span>
-                                                <a href="single-product.html"><img src="img/product/6.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
+                                    @foreach($doors as $door)
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <style>
+                                                        .hit-label {
+                                                            background: #8fc865 none repeat scroll 0 0;
+                                                        }
+                                                    </style>
+                                                    @if($door->label !== null)
+                                                        @foreach($door->label as $item)
+                                                            <span style="position: relative; padding: 5px;" class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):('hit-label'))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):('Хит'))}}</span>
+                                                            @php $label_distance = $label_distance + 75; @endphp
+                                                        @endforeach
+                                                    @endif
+                                                    @if($door->images->isNotEmpty())
+                                                        <a style="display: flex; justify-content: center;" href="{{route('product_page', ['id' => $door->id])}}"><img
+                                                                    style="object-fit: contain; width: 100px;"
+                                                                    src="{{ asset( 'storage/'. $door->images[0]->image ) }}"
+                                                                    alt=""/></a>
+                                                    @endif
+                                                </div>
+                                                <div class="product-info clearfix text-center">
+                                                    <div class="fix">
+                                                        <h4 class="post-title"><a
+                                                                    href="{{route('product_page', ['id' => $door->id])}}">{{$door->title}}</a>
+                                                        </h4>
+                                                        <span class="pro-price-2">{{$door->price_per_canvas}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-details">
+                                                    <ul>
+                                                        <li>{{$door->description}}</li>
+                                                    </ul>
                                                 </div>
                                             </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <span class="pro-label sale-label">Sale</span>
-
-                                                <a href="single-product.html"><img src="img/product/3.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="img/product/7.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <span class="pro-label sale-label">sale</span>
-                                                <a href="single-product.html"><img src="img/product/10.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="img/product/8.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <span class="pro-label new-label">new</span>
-                                                <a href="single-product.html"><img src="img/product/11.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <span class="pro-label new-label">new</span>
-                                                <a href="single-product.html"><img src="img/product/2.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img src="img/product/1.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single-product end -->
-                                    <!-- Single-product start -->
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <span class="pro-label new-label">new</span>
-                                                <a href="single-product.html"><img src="img/product/12.jpg" alt=""/></a>
-                                            </div>
-                                            <div class="product-info clearfix text-center">
-                                                <div class="fix">
-                                                    <h4 class="post-title"><a href="single-product.html">Название
-                                                            товара</a></h4>
-                                                    <span class="pro-price-2">BYN 506.20</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-details">
-                                                <ul>
-                                                    <li>Толщина полотна 116 мм</li>
-                                                    <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                                    <li>3 контура уплотнения (1 магнитный)</li>
-                                                    <li>3 осевые петли на подшипнике</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                     <!-- Single-product end -->
                                 </div>
                             </div>
                         </div>
                         <!-- Pagination start -->
-                        <div class="shop-pagination  text-center">
-                            <div class="pagination">
-                                <ul>
-                                    <li><a href="#"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
-                                    <li><a href="#">01</a></li>
-                                    <li><a class="active" href="#">02</a></li>
-                                    <li><a href="#">03</a></li>
-                                    <li><a href="#">04</a></li>
-                                    <li><a href="#">05</a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        {{$doors->links()}}
                         <!-- Pagination end -->
                     </div>
                     <!-- Shop-Content End -->
                 </div>
                 <div class="col-md-3 col-sm-12 col-xs-12">
                     <!-- Widget-Search start -->
-                    <aside class="widget widget-search mb-30">
-                        <form action="#">
-                            <input type="text" placeholder="Поиск"/>
-                            <button type="submit">
-                                <i class="zmdi zmdi-search"></i>
-                            </button>
-                        </form>
-                    </aside>
+{{--                    <aside class="widget widget-search mb-30">--}}
+{{--                        <form action="#">--}}
+{{--                            <input type="text" placeholder="Поиск"/>--}}
+{{--                            <button type="submit">--}}
+{{--                                <i class="zmdi zmdi-search"></i>--}}
+{{--                            </button>--}}
+{{--                        </form>--}}
+{{--                    </aside>--}}
                     <!-- Widget-search end -->
                     <!-- Widget-Categories start -->
                     @include('includes.avi-dveri.aside_catalog')

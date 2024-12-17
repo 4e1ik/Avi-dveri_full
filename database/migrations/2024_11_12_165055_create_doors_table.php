@@ -9,6 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
     public function up(): void
     {
         Schema::create('doors', function (Blueprint $table) {
@@ -17,12 +18,12 @@ return new class extends Migration
             $table->text ('description')->nullable('true');
             $table->string ('price_per_canvas','255')->nullable('false');
             $table->string ('price_per_set','255')->nullable('false');
-            $table->string ('size','255')->nullable('false');
+            $table->json ('size')->nullable('false  ');
             $table->string ('glass','255')->nullable('true');
             $table->string ('type','255')->nullable('false');
             $table->string ('function', '255')->nullable('false');
             $table->string ('material', '255')->nullable('false');
-            $table->string ('label', '255')->nullable('true');
+            $table->json ('label')->nullable('true');
             $table->boolean ('active')->default(true);
             $table->timestamps();
         });

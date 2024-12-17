@@ -30,6 +30,7 @@
                                    cellspacing="0">
                                 <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Название</th>
                                     <th>Описание</th>
                                     <th>Цена за полотно</th>
@@ -48,15 +49,26 @@
                                 @if($doors->isNotEmpty())
                                     @foreach($doors as $door)
                                         <tr>
+                                            <td>{{$door->id}}</td>
                                             <td>{{$door->title}}</td>
                                             <td>{{$door->description}}</td>
                                             <td>{{$door->price_per_canvas}}</td>
                                             <td>{{$door->price_per_set}}</td>
-                                            <td>{{$door->size}}</td>
+                                            <td>@if(!empty($door->label))
+                                                    @foreach($door->size as $item)
+                                                        {{$item}}
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                             <td>{{$door->glass}}</td>
                                             <td>{{$door->function}}</td>
                                             <td>{{$door->material}}</td>
-                                            <td>{{$door->label}}</td>
+                                            <td>@if(!empty($door->label))
+                                                    @foreach($door->label as $item)
+                                                        {{$item}}
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                             <td>
                                                 @if($door->active == 1)
                                                     Да
@@ -76,7 +88,8 @@
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" style="border: 0">
-                                                        <input type="button" class="btn btn-3d btn-danger" value="Удалить">
+                                                        <input type="button" class="btn btn-3d btn-danger"
+                                                               value="Удалить">
                                                     </button>
                                                 </form>
                                             </td>
