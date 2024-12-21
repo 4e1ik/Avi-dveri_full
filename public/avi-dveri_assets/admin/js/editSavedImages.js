@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Устанавливаем текст по умолчанию
             selectedOption.textContent = 'Выберите цвет двери';
 
+            // Создаем контейнер для вариантов
             const optionsContainer = document.createElement('div');
             optionsContainer.style.position = 'absolute';
             optionsContainer.style.top = '100%';
@@ -61,6 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
             optionsContainer.style.backgroundColor = 'white';
             optionsContainer.style.display = 'none';
             optionsContainer.style.zIndex = '1000';
+
+            // Ограничиваем видимость списка и добавляем скролл
+            optionsContainer.style.maxHeight = '180px'; // Примерно 6 строк по 30px каждая
+            optionsContainer.style.overflowY = 'auto';
+
 
             // Скрытое поле для передачи цвета
             const hiddenInput = document.createElement('input');

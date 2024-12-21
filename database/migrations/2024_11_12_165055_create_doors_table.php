@@ -16,8 +16,9 @@ return new class extends Migration
             $table->id();
             $table->string ('title', '255')->nullable('false');
             $table->text ('description')->nullable('true');
-            $table->string ('price_per_canvas','255')->nullable('false');
-            $table->string ('price_per_set','255')->nullable('false');
+            $table->float ('price_per_canvas')->nullable('false');
+            $table->float ('price_per_set')->nullable('false');
+            $table->string ('currency','255')->nullable('false')->default('BYN');
             $table->json ('size')->nullable('false  ');
             $table->string ('glass','255')->nullable('true');
             $table->string ('type','255')->nullable('false');

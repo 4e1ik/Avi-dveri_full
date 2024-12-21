@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Door extends Model
 {
     use HasFactory;
+    use Filterable;
 
     protected $casts = [
         'size' => 'array', // Автоматическое преобразование JSON в массив
@@ -19,6 +21,7 @@ class Door extends Model
         'description',
         'price_per_canvas',
         'price_per_set',
+        'currency',
         'size',
         'glass',
         'type',

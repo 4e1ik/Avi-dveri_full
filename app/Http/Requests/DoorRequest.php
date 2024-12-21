@@ -26,6 +26,7 @@ class DoorRequest extends FormRequest
             'description' => 'min:5|max:1000',
             'price_per_canvas' => 'required|filled|max:50',
             'price_per_set' => 'required|filled|max:50',
+            'currency' => 'required|filled|max:20',
             'size' => 'required|filled|max:150',
             'glass' => 'max:50',
             'type' => 'required|filled|max:50',

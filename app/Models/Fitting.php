@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Fitting extends Model
 {
     use HasFactory;
+    use Filterable;
 
     protected $casts = [
         'label' => 'array', // Автоматическое преобразование JSON в массив
@@ -19,6 +20,7 @@ class Fitting extends Model
         'description',
         'price',
         'price_per_set',
+        'currency',
         'function',
         'label',
         'active',

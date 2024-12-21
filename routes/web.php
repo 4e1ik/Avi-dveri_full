@@ -19,24 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-//
-//Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//});
-
-//require __DIR__.'/auth.php';
-
 Route::get('/', [MainController::class, 'index'])->name('home');
-//Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/payment-and-delivery', [MainController::class, 'payment_and_delivery'])->name('payment_and_delivery');
 
 Route::prefix('catalog')->group(function (){
@@ -44,24 +27,19 @@ Route::prefix('catalog')->group(function (){
 
     Route::prefix('accessories')->group(function () {
         Route::get('/', [MainController::class, 'accessories'])->name('accessories');
-        Route::get('/{id}', [MainController::class, 'show_product'])->name('product_page');
+        Route::get('/{class}/{id}', [MainController::class, 'show_product'])->name('product_page');
     });
 
     Route::prefix('interior_doors')->group(function () {
         Route::get('/', [MainController::class, 'interior_doors'])->name('interior_doors');
-        Route::get('/{id}', [MainController::class, 'show_product'])->name('product_page');
+        Route::get('/{class}/{id}', [MainController::class, 'show_product'])->name('product_page');
     });
 
     Route::prefix('entrance_doors')->group(function () {
         Route::get('/', [MainController::class, 'entrance_doors'])->name('entrance_doors');
-        Route::get('/{id}', [MainController::class, 'show_product'])->name('product_page');
+        Route::get('/{class}/{id}', [MainController::class, 'show_product'])->name('product_page');
     });
-//    Route::get('/accessories', [MainController::class, 'accessories'])->name('accessories');
-//    Route::get('/entrance_doors', [MainController::class, 'entrance_doors'])->name('entrance_doors');
-//    Route::get('/interior_doors', [MainController::class, 'interior_doors'])->name('interior_doors');
 });
-
-//Route::get('/product_page/{id}', [MainController::class, 'show_product'])->name('product_page');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

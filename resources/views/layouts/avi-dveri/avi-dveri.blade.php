@@ -81,6 +81,7 @@
                                 <li><a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a></li>
                                 <li><a class="header-menu" href="80293673518">+375 (29) 367-35-18</a></li>
                                 <li><a class="header-menu" href="80333943324">+375 (33) 394-33-24</a></li>
+                                <li>@livewire('search')</li>
                             </ul>
                         </nav>
                     </div>

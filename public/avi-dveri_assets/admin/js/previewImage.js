@@ -57,6 +57,7 @@ function previewImage(event) {
                 selectedOption.style.backgroundColor = 'white';
                 selectedOption.textContent = 'Выберите цвет двери';
 
+                // Создаем контейнер для вариантов
                 const optionsContainer = document.createElement('div');
                 optionsContainer.style.position = 'absolute';
                 optionsContainer.style.top = '100%';
@@ -67,6 +68,10 @@ function previewImage(event) {
                 optionsContainer.style.backgroundColor = 'white';
                 optionsContainer.style.display = 'none';
                 optionsContainer.style.zIndex = '1000';
+
+                // Ограничиваем видимость списка и добавляем скролл
+                optionsContainer.style.maxHeight = '180px'; // Примерно 6 строк по 30px каждая
+                optionsContainer.style.overflowY = 'auto';
 
                 // Создаем скрытое поле для отправки значения на сервер
                 const hiddenInput = document.createElement('input');

@@ -55,7 +55,7 @@
                                 <h3>Цена за полотно</h3>
                                 <div class="col-md-11 padding-0">
                                     <input class="form-control {{$errors->has('price') ? 'danger' : ''}}"
-                                           type="text"
+                                           type="number" min="0"  step="0.01"
                                            name="price" value="{{$errors->has('price') ? old('price') : $fitting->price}}">
                                 </div>
                                 @error('price')
@@ -68,10 +68,35 @@
                                 <h3>Цена за комплект</h3>
                                 <div class="col-md-11 padding-0">
                                     <input class="form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"
-                                           type="text"
+                                           type="number" min="0"  step="0.01"
                                            name="price_per_set" value="{{$errors->has('price_per_set') ? old('price_per_set') : $fitting->price_per_set}}">
                                 </div>
                                 @error('price_per_set')
+                                <div class="text-danger">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-3 padding-0">
+                                <h3>Валюта</h3>
+                                <div class="col-md-12 padding-0">
+                                    <div class="col-md-11 padding-0">
+                                        <select class="form-control" name="currency">
+                                            <option {{ $errors->has('currency') ? '' : 'selected' }} disabled>Выберите валюту
+                                            </option>
+                                            <option {{ $fitting->currency == 'BYN' ? 'selected' : ''}} selected value="BYN">
+                                                BYN
+                                            </option>
+                                            <option {{ $fitting->currency == 'RUB' ? 'selected' : ''}}  value="RUB">
+                                                RUB
+                                            </option>
+                                            <option {{ $fitting->currency == 'dollar' ? 'selected' : ''}}  value="dollar">
+                                                $
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @error('currency')
                                 <div class="text-danger">
                                     {{$message}}
                                 </div>
@@ -107,16 +132,16 @@
                                 <label style="display: none" class="col-sm-2 control-label text-right">Checkbox</label>
                                 <div class="col-sm-10 padding-0">
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" value="new"> Новинка
+                                        <input type="checkbox" name="label[]" {{ is_array($door->label) && in_array('new', $door->label) ? 'checked' : '' }} value="new"> Новинка
                                     </div>
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" value="sale"> Скидка
+                                        <input type="checkbox" name="label[]" {{ is_array($door->label) && in_array('sale', $door->label) ? 'checked' : '' }} value="sale"> Скидка
                                     </div>
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" value="hit"> Хит
+                                        <input type="checkbox" name="label[]" {{ is_array($door->label) && in_array('hit', $door->label) ? 'checked' : '' }} value="hit"> Хит
                                     </div>
                                 </div>
-                                @error('label')
+                                @error('type')
                                 <div class="text-danger">
                                     {{$message}}
                                 </div>

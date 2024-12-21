@@ -151,17 +151,41 @@
                         <h2 class="title-border">Хит продаж</h2>
                     </div>
                     <div class="product-slider style-2 arrow-left-right">
+                        @foreach($results as $result)
                         <div class="col-12">
                             <div class="single-product">
                                 <div class="product-img">
-                                    <span class="pro-label new-label">ХИТ</span>
-                                    <a href="single-product.html"><img
-                                                src="{{asset('/avi-dveri_assets/avi-dveri/img/product/1.jpg')}}" alt=""/></a>
+                                    <style>
+                                        .hit-label {
+                                            background: #8fc865 none repeat scroll 0 0;
+                                        }
+                                    </style>
+                                    @if($result->label !== null)
+                                        @foreach($result->label as $item)
+                                            <span style="position: relative; padding: 5px;"
+                                                  class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):('hit-label'))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):('Хит'))}}</span>
+                                            @php $label_distance = $label_distance + 75; @endphp
+                                        @endforeach
+                                    @endif
+                                        @if($result->images->isNotEmpty())
+                                            <a style="display: flex; justify-content: center;"
+                                               href="{{route('product_page', ['id' => $result->id, 'class' => get_class($result)])}}"><img
+                                                        style="object-fit: contain; width: 100px;"
+                                                        src="{{ asset( 'storage/'. $result->images[0]->image ) }}"
+                                                        alt=""/></a>
+                                        @endif
                                 </div>
                                 <div class="product-info clearfix text-center">
                                     <div class="fix">
-                                        <h4 class="post-title"><a href="single-product.html">Дверь 1</a></h4>
-                                        <span class="pro-price-2">BYN 506.20</span>
+                                        <h4 class="post-title"><a href="{{route('product_page', ['id' => $result->id, 'class' => get_class($result)])}}">{{$result->title}}</a></h4>
+                                        <span class="pro-price-2">
+                                            @if($result->price !== null)
+                                                {{$result->price}}
+                                            @else
+                                                {{$result->price_per_canvas}}
+                                            @endif
+                                            {{$result->currency}}
+                                        </span>
                                     </div>
                                     <div class="product-action clearfix">
                                         <button class="button-one submit-btn-4 open_popup_application" type="submit"
@@ -170,127 +194,13 @@
                                     </div>
                                     <div class="product-details">
                                         <ul>
-                                            <li>Толщина полотна 116 мм</li>
-                                            <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                            <li>3 контура уплотнения (1 магнитный)</li>
-                                            <li>3 осевые петли на подшипнике</li>
+                                            <li>{{$result->description}}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="single-product">
-                                <div class="product-img">
-                                    <span class="pro-label new-label">ХИТ</span>
-                                    <a href="single-product.html"><img
-                                                src="{{asset('/avi-dveri_assets/avi-dveri/img/product/2.jpg')}}" alt=""/></a>
-                                </div>
-                                <div class="product-info clearfix text-center">
-                                    <div class="fix">
-                                        <h4 class="post-title"><a href="single-product.html">Дверь 2</a></h4>
-                                        <span class="pro-price-2">BYN 506.20</span>
-                                    </div>
-                                    <div class="product-action clearfix">
-                                        <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                data-text="Оставить заявку">Оставить заявку
-                                        </button>
-                                    </div>
-                                    <div class="product-details">
-                                        <ul>
-                                            <li>Толщина полотна 116 мм</li>
-                                            <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                            <li>3 контура уплотнения (1 магнитный)</li>
-                                            <li>3 осевые петли на подшипнике</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="single-product">
-                                <div class="product-img">
-                                    <span class="pro-label new-label">ХИТ</span>
-                                    <a href="single-product.html"><img
-                                                src="{{asset('/avi-dveri_assets/avi-dveri/img/product/3.jpg')}}" alt=""/></a>
-                                </div>
-                                <div class="product-info clearfix text-center">
-                                    <div class="fix">
-                                        <h4 class="post-title"><a href="single-product.html">Дверь 3</a></h4>
-                                        <span class="pro-price-2">BYN 506.20</span>
-                                    </div>
-                                    <div class="product-action clearfix">
-                                        <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                data-text="Оставить заявку">Оставить заявку
-                                        </button>
-                                    </div>
-                                    <div class="product-details">
-                                        <ul>
-                                            <li>Толщина полотна 116 мм</li>
-                                            <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                            <li>3 контура уплотнения (1 магнитный)</li>
-                                            <li>3 осевые петли на подшипнике</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="single-product">
-                                <div class="product-img">
-                                    <span class="pro-label new-label">ХИТ</span>
-                                    <a href="single-product.html"><img
-                                                src="{{asset('/avi-dveri_assets/avi-dveri/img/product/3.jpg')}}" alt=""/></a>
-                                </div>
-                                <div class="product-info clearfix text-center">
-                                    <div class="fix">
-                                        <h4 class="post-title"><a href="single-product.html">Дверь 3</a></h4>
-                                        <span class="pro-price-2">BYN 506.20</span>
-                                    </div>
-                                    <div class="product-action clearfix">
-                                        <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                data-text="Оставить заявку">Оставить заявку
-                                        </button>
-                                    </div>
-                                    <div class="product-details">
-                                        <ul>
-                                            <li>Толщина полотна 116 мм</li>
-                                            <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                            <li>3 контура уплотнения (1 магнитный)</li>
-                                            <li>3 осевые петли на подшипнике</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="single-product">
-                                <div class="product-img">
-                                    <span class="pro-label new-label">ХИТ</span>
-                                    <a href="single-product.html"><img
-                                                src="{{asset('/avi-dveri_assets/avi-dveri/img/product/3.jpg')}}" alt=""/></a>
-                                </div>
-                                <div class="product-info clearfix text-center">
-                                    <div class="fix">
-                                        <h4 class="post-title"><a href="single-product.html">Дверь 3</a></h4>
-                                        <span class="pro-price-2">BYN 506.20</span>
-                                    </div>
-                                    <div class="product-action clearfix">
-                                        <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                data-text="Оставить заявку">Оставить заявку
-                                        </button>
-                                    </div>
-                                    <div class="product-details">
-                                        <ul>
-                                            <li>Толщина полотна 116 мм</li>
-                                            <li>Толщина стального листа с полимерным покрытием 1,2 мм</li>
-                                            <li>3 контура уплотнения (1 магнитный)</li>
-                                            <li>3 осевые петли на подшипнике</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string ('title', '255')->nullable('false');
             $table->text ('description')->nullable('true');
-            $table->string ('price','255')->nullable('false');
-            $table->string ('price_per_set','255')->nullable('false');
+            $table->float ('price')->nullable('false');
+            $table->float ('price_per_set')->nullable('false');
+            $table->string ('currency','255')->nullable('false')->default('BYN');
             $table->string ('function','255')->nullable('false');
             $table->json ('label')->nullable('true');
             $table->boolean ('active')->default(true);
