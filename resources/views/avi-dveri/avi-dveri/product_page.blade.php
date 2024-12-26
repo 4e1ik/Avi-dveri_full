@@ -4,6 +4,7 @@
     <!-- HEADING-BANNER START -->
     @foreach($products as $product)
         <div class="heading-banner-area overlay-bg">
+            <x-feedback-form :title="$product->title" />
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -120,11 +121,12 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                data-text="Оставить заявку">Оставить заявку
-                                        </button>
+
                                     </div>
                                 @endif
+                                <button class="button-one submit-btn-4 open_popup_application" type="submit"
+                                        data-text="Оставить заявку" data-title="{{$product->title}}">Оставить заявку
+                                </button>
                                 <!-- Size end -->
                                 <!-- Single-pro-slider Small-photo start -->
                                 <div class="single-pro-slider single-sml-photo slider-nav">
@@ -155,7 +157,7 @@
 
                 // Меняем текст внутри span
                 if (selectedValue === "option1") {
-                    spanElement.textContent = @json($product->price_per_canvas)+" " +@json($product->currency);
+                    spanElement.textContent = @json($product->price) + @json($product->price_per_canvas)+ " " +@json($product->currency);
                 } else if (selectedValue === "option2") {
                     spanElement.textContent = @json($product->price_per_set)+" " +@json($product->currency);
                 }

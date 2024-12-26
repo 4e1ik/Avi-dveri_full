@@ -70,7 +70,7 @@
                                                         <h4 class="post-title"><a
                                                                     href="{{route('product_page', ['id' => $fitting->id, 'class' => get_class($fitting)])}}">{{$fitting->title}}</a>
                                                         </h4>
-                                                        <span class="pro-price-2">{{$fitting->price_per_canvas}} {{$fitting->currency}}</span>
+                                                        <span class="pro-price-2">{{$fitting->price}} {{$fitting->currency}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="product-details">

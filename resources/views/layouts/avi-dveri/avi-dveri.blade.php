@@ -90,68 +90,11 @@
         </div>
     </div>
     <!-- Mobile-menu end -->
-    <!-- popup -->
-    <Style>
-        .popup_application {
-            display: none;
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            background: rgba(151, 151, 151, 0.05);
-            backdrop-filter: blur(4px);
-            -webkit-background: rgba(151, 151, 151, 0.05);
-            -webkit-backdrop-filter: blur(4px);
-            top: 0;
-            left: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-            z-index: 99;
-        }
+{{--    @include('includes.avi-dveri.popup_mail')--}}
+    <x-feedback-form />
+{{--    <x-feedback-form :title="isset($result) && $result->title ? $result->title : (isset($door) && $door->title ? $door->title : (isset($fitting) && $fitting->title ? $fitting->title : null))" />--}}
 
-        .popup__body {
-            min-height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 8.125em;
-        }
 
-        #contact-form {
-            background-color: #c7c2c2;
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .form__text>h4 {
-            color:#5b3a29
-        }
-
-        .popup__cross_application{
-            cursor: pointer;
-            font-size: large;
-            transition: 0.2s;
-        }
-
-        .popup__cross_application:hover{
-            transform: scale(1.2);
-        }
-    </Style>
-    <div class="send-message popup_application">
-        <div class="popup__body popup__body_application">
-            <form id="contact-form" action="#">
-                <div class="form__text">
-                    <h4 class="title-1 title-border text-uppercase mb-30">Отправить заявку</h4>
-                    <div class="popup__cross_application" href="">✕</div>
-                </div>
-                <input type="text" name="con_name" placeholder="Имя" />
-                <input type="text" name="con_email" placeholder="E-mail" />
-                <textarea class="custom-textarea" name="con_message" placeholder="Текст сообщения"></textarea>
-                <button class="button-one submit-button mt-20" data-text="Отправить" type="">Отправить</button>
-                <p class="form-message"></p>
-            </form>
-        </div>
-    </div>
-    <!-- end popup -->
     @yield('content')
 <!-- FOOTER START -->
 <footer>
@@ -248,55 +191,17 @@
 
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/popupSubmitApplication.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/smartSearch.js')}}"></script>
+{{--<script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>--}}
 {{--<script>--}}
-{{--    function performSearch(event) {--}}
-{{--        event.preventDefault();--}}
-{{--        const query = document.getElementById('search-input').value;--}}
-
-{{--        if (!query) {--}}
-{{--            alert('Введите запрос для поиска.');--}}
-{{--            return;--}}
-{{--        }--}}
-
-{{--        fetch(`/search?q=${encodeURIComponent(query)}`)--}}
-{{--            .then(response => {--}}
-{{--                if (!response.ok) {--}}
-{{--                    throw new Error('Ошибка выполнения поиска');--}}
-{{--                }--}}
-{{--                return response.json();--}}
-{{--            })--}}
-{{--            .then(data => {--}}
-{{--                const resultsContainer = document.getElementById('search-results');--}}
-{{--                resultsContainer.innerHTML = '';--}}
-
-{{--                if (data.doors.length) {--}}
-{{--                    const doorList = document.createElement('div');--}}
-{{--                    doorList.innerHTML = '<h3>Двери</h3>';--}}
-{{--                    data.doors.forEach(door => {--}}
-{{--                        const item = document.createElement('p');--}}
-{{--                        item.textContent = door.title;--}}
-{{--                        doorList.appendChild(item);--}}
-{{--                    });--}}
-{{--                    resultsContainer.appendChild(doorList);--}}
-{{--                }--}}
-
-{{--                if (data.fittings.length) {--}}
-{{--                    const fittingList = document.createElement('div');--}}
-{{--                    fittingList.innerHTML = '<h3>Фитинги</h3>';--}}
-{{--                    data.fittings.forEach(fitting => {--}}
-{{--                        const item = document.createElement('p');--}}
-{{--                        item.textContent = fitting.title;--}}
-{{--                        fittingList.appendChild(item);--}}
-{{--                    });--}}
-{{--                    resultsContainer.appendChild(fittingList);--}}
-{{--                }--}}
-
-{{--            })--}}
-{{--            .catch(error => {--}}
-{{--                alert('Ошибка поиска: ' + error.message);--}}
+{{--    function onClick(e) {--}}
+{{--        e.preventDefault();--}}
+{{--        grecaptcha.ready(function () {--}}
+{{--            grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {--}}
+{{--                document.getElementById('g-recaptcha-response').value = token;--}}
+{{--                document.getElementById('mail_form').submit();--}}
 {{--            });--}}
+{{--        });--}}
 {{--    }--}}
 {{--</script>--}}
-{{--@livewireAssets--}}
 </body>
 </html>

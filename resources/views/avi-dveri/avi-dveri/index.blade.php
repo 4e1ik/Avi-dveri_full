@@ -189,7 +189,7 @@
                                     </div>
                                     <div class="product-action clearfix">
                                         <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                data-text="Оставить заявку">Оставить заявку
+                                                data-text="Оставить заявку" data-title="{{$result->title}}">Оставить заявку
                                         </button>
                                     </div>
                                     <div class="product-details">
@@ -199,6 +199,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <x-feedback-form :title="$result->title" />
                         </div>
                         @endforeach
                     </div>

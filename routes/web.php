@@ -5,6 +5,7 @@ use App\Http\Controllers\avi_dveri\admin\LoginController;
 use App\Http\Controllers\avi_dveri\admin\RegisterController;
 use App\Http\Controllers\avi_dveri\admin\DoorController;
 use App\Http\Controllers\avi_dveri\admin\FittingController;
+use App\Http\Controllers\avi_dveri\MailController;
 use App\Http\Controllers\avi_dveri\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,8 @@ Route::prefix('catalog')->group(function (){
         Route::get('/{class}/{id}', [MainController::class, 'show_product'])->name('product_page');
     });
 });
+
+Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
