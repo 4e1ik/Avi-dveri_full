@@ -132,13 +132,13 @@
                                 <label style="display: none" class="col-sm-2 control-label text-right">Checkbox</label>
                                 <div class="col-sm-10 padding-0">
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($door->label) && in_array('new', $door->label) ? 'checked' : '' }} value="new"> Новинка
+                                        <input type="checkbox" name="label[]" {{ is_array($fitting->label) && in_array('new', $fitting->label) ? 'checked' : '' }} value="new"> Новинка
                                     </div>
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($door->label) && in_array('sale', $door->label) ? 'checked' : '' }} value="sale"> Скидка
+                                        <input type="checkbox" name="label[]" {{ is_array($fitting->label) && in_array('sale', $fitting->label) ? 'checked' : '' }} value="sale"> Скидка
                                     </div>
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($door->label) && in_array('hit', $door->label) ? 'checked' : '' }} value="hit"> Хит
+                                        <input type="checkbox" name="label[]" {{ is_array($fitting->label) && in_array('hit', $fitting->label) ? 'checked' : '' }} value="hit"> Хит
                                     </div>
                                 </div>
                                 @error('type')
