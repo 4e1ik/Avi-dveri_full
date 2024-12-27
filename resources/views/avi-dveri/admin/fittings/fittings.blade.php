@@ -48,7 +48,7 @@
                                             <td>{{$fitting->id}}</td>
                                             <td>{{$fitting->title}}</td>
                                             <td>{{$fitting->description}}</td>
-                                            <td>{{$fitting->price_per_canvas}}</td>
+                                            <td>{{$fitting->price}}</td>
                                             <td>{{$fitting->price_per_set}}</td>
                                             <td>@if(!empty($fitting->label))
                                                     @foreach($fitting->label as $item)
