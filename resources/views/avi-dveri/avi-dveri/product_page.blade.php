@@ -157,7 +157,7 @@
 
                 // Меняем текст внутри span
                 if (selectedValue === "option1") {
-                    spanElement.textContent = @json($product->price) + @json($product->price_per_canvas)+ " " +@json($product->currency);
+                    spanElement.textContent = (@json($product->price) == "null") ? (@json($product->price_per_canvas)+ " " +@json($product->currency)) : (@json($product->price)+ " " +@json($product->currency));
                 } else if (selectedValue === "option2") {
                     spanElement.textContent = @json($product->price_per_set)+" " +@json($product->currency);
                 }
