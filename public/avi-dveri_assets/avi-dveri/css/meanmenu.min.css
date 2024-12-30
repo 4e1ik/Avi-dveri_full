@@ -37,6 +37,7 @@ a.meanmenu-reveal {
     float: right;
 }
 
+
 .mean-container a.meanmenu-reveal span {
     display: block;
     background: #fff;
@@ -186,4 +187,11 @@ a.meanmenu-reveal {
     .mean-nav {
         margin-top: 12px;
     }
+
+    .mean-container a.meanmenu-reveal {
+        margin: 22px 18px 0 0;
+        padding: 0 0 0 0;
+    }
+
 }
+

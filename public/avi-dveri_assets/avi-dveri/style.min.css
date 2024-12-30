@@ -815,7 +815,8 @@ h5 {
 }
 
 .product-img img {
-    width: 100%
+    width: 100%;
+    height: 223px;
 }
 
 .product-action {
@@ -1466,6 +1467,7 @@ tab-menu {
     padding: 134px 0 101px;
     text-align: center;
     text-transform: uppercase;
+    line-height: normal
 }
 
 .breadcumbs ul {
@@ -2756,6 +2758,36 @@ input[type="radio"]:nth-child(3):checked + label {
     margin-right: 2em;
 }
 
+.search_form input{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search_form .search_example{
+    position: absolute;
+    top: 80px;
+    left: 65%;
+    right: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 25%;
+}
+
+.search_form .search_example .search_text{
+    margin: 5px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1024px) {
     .d-flex{
         width: 15em;
@@ -2806,7 +2838,7 @@ input[type="radio"]:nth-child(3):checked + label {
 @media screen and (max-width: 767px) {
     header {
         visibility: hidden;
-        margin-top: -4em;
+        margin-top: -5em;
     }
 
     .background__banner{
@@ -2815,17 +2847,18 @@ input[type="radio"]:nth-child(3):checked + label {
     }
 }
 
-@media screen and (max-width: 534px) {
+@media screen and (max-width: 588px) {
     header {
-        margin-top: -4.5em;
+        margin-top: -6em;
     }
 }
 
-@media screen and (max-width: 534px) {
+@media screen and (max-width: 501px) {
     header {
-        margin-top: -4.5em;
+        margin-top: -6em;
     }
 }
+
 
 @media screen and (max-width: 479px) {
     .banner-1 .button-one{
@@ -2836,6 +2869,12 @@ input[type="radio"]:nth-child(3):checked + label {
     .banner-brief{
         bottom: 10px;
         left: 20px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    header {
+        margin-top: -7em;
     }
 }
 
@@ -2870,15 +2909,40 @@ input[type="radio"]:nth-child(3):checked + label {
     }
 
     .mobile-menu>.header-logo-link>img {
-
         height: 40px;
+    }
+
+    .search_form {
+        width: 100%;
+    }
+
+    .search_form .search_form_group{
+        width: 100%;
+    }
+
+    .search_form .search_form_group input{
+        width: 91%;
+        margin: -2em 0.4em;
+        padding: 0 0 0 30px;
+    }
+
+    .search_form .search_form_group .search_example{
+        width: 96%;
+        left: 0%;
+    }
+
+    .search_form .search-img{
+        width: 1px;
+    }
+
+    li.mean-last > form > a > img{
+        display: none;
     }
 }
 
-@media screen and (max-width: 500px){
-    header {
-        margin-top: -85px;
-    }
+
+    .search_form .search_form_group input{
+        width: 90%;
 }
 
 @media screen and (max-width: 479px) {
@@ -2891,20 +2955,18 @@ input[type="radio"]:nth-child(3):checked + label {
     }
 }
 
-@media screen and (max-width: 451px){
-    header {
-        margin-top: -105px;
-    }
-}
 
 @media screen and (max-width: 425px){
-    header {
-        margin-top: -105px;
-    }
 
     .header-logo-link img{
         scale: 2;
         padding: 10px 1px 0 28px;
+    }
+
+    .search_form .search_form_group input{
+        width: 91%;
+        margin: 0 0 0 0;
+        padding: 0 0 0 30px;
     }
 
 }
