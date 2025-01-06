@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\avi_dveri\admin\AdminController;
 use App\Http\Controllers\avi_dveri\admin\LoginController;
+use App\Http\Controllers\avi_dveri\admin\ProductController;
 use App\Http\Controllers\avi_dveri\admin\RegisterController;
 use App\Http\Controllers\avi_dveri\admin\DoorController;
 use App\Http\Controllers\avi_dveri\admin\FittingController;
@@ -28,17 +29,17 @@ Route::prefix('catalog')->group(function (){
 
     Route::prefix('accessories')->group(function () {
         Route::get('/', [MainController::class, 'accessories'])->name('accessories');
-        Route::get('/{class}/{id}', [MainController::class, 'show_product'])->name('product_page');
+        Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
     });
 
     Route::prefix('interior_doors')->group(function () {
         Route::get('/', [MainController::class, 'interior_doors'])->name('interior_doors');
-        Route::get('/{class}/{id}', [MainController::class, 'show_product'])->name('product_page');
+        Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
     });
 
     Route::prefix('entrance_doors')->group(function () {
         Route::get('/', [MainController::class, 'entrance_doors'])->name('entrance_doors');
-        Route::get('/{class}/{id}', [MainController::class, 'show_product'])->name('product_page');
+        Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
     });
 });
 
@@ -58,9 +59,9 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/entrance_doors', [AdminController::class, 'entrance_doors'])->name('admin_entrance_doors');
     Route::get('/interior_doors', [AdminController::class, 'interior_doors'])->name('admin_interior_doors');
 
-
     Route::resources([
-        'doors' => DoorController::class,
-        'fittings' => FittingController::class,
+        'products' => ProductController::class,
     ]);
+
+    Route::get('/products/create/{type}', [ProductController::class, 'create'])->name('products.create');
 });

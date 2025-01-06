@@ -22,7 +22,7 @@ class FilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price_per_canvas' => 'max:50',
+            'price' => 'max:50',
             'price_filter' => 'max:50',
             'function' => 'max:50',
         ];

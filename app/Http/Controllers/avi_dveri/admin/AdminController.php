@@ -5,6 +5,7 @@ namespace App\Http\Controllers\avi_dveri\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Door;
 use App\Models\Fitting;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
@@ -15,20 +16,29 @@ class AdminController extends Controller
 
     function entrance_doors()
     {
-        $doors = Door::whereIn('type',  ['entrance'])->latest()->get();
-        return view('avi-dveri.admin.doors.entrance_doors', compact('doors'));
+        $products = Product::where('category', 'door')
+            ->with(['door' => function ($query) {
+                $query->whereIn('type', ['entrance']);
+            }])
+            ->get();
+        return view('avi-dveri.admin.doors.entrance_doors', compact('products'));
     }
 
     function interior_doors()
     {
-        $doors = Door::whereIn('type',  ['interior'])->latest()->get();
-        return view('avi-dveri.admin.doors.interior_doors', compact('doors'));
+        $products = Product::where('category', 'door')
+            ->with(['door' => function ($query) {
+                $query->whereIn('type', ['interior']);
+            }])
+            ->get();
+        return view('avi-dveri.admin.doors.interior_doors', compact('products'));
     }
 
     function fittings()
     {
-        $fittings = Fitting::latest()->get();
-
-        return view('avi-dveri.admin.fittings.fittings', compact('fittings'));
+        $products = Product::where('category', 'fitting')
+            ->with(['fitting'])
+            ->get();
+        return view('avi-dveri.admin.fittings.fittings', compact('products'));
     }
 }

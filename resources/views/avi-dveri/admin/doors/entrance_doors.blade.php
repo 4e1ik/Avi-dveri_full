@@ -9,7 +9,7 @@
                     <h3 class="animated fadeInLeft">Входные двери</h3>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a href="{{route('doors.create')}}">
+                    <a href="{{route('products.create', ['type' => 'door'])}}">
                         <button class="btn ripple btn-outline btn-primary">
                             <div>
                                 <span>Добавить товар</span>
@@ -46,44 +46,47 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if($doors->isNotEmpty())
-                                    @foreach($doors as $door)
+                                @if($products->isNotEmpty())
+                                    @foreach($products as $product)
+                                        @if(!empty($product->door))
                                         <tr>
-                                            <td>{{$door->id}}</td>
-                                            <td>{{$door->title}}</td>
-                                            <td>{{$door->description}}</td>
-                                            <td>{{$door->price_per_canvas}}</td>
-                                            <td>{{$door->price_per_set}}</td>
-                                            <td>@if(!empty($door->label))
-                                                    @foreach($door->size as $item)
-                                                        {{$item}}
+                                            <td>{{$product->id}}</td>
+                                            <td>{{$product->title}}</td>
+                                            <td>{{$product->description}}</td>
+                                            <td>{{$product->price}}</td>
+                                            <td>{{$product->price_per_set}}</td>
+                                            <td>
+                                                @if(!empty($product->door->size))
+                                                    @foreach($product->door->size as $size)
+                                                        {{$size}} <br>
                                                     @endforeach
                                                 @endif
                                             </td>
-                                            <td>{{$door->glass}}</td>
-                                            <td>{{$door->function}}</td>
-                                            <td>{{$door->material}}</td>
-                                            <td>@if(!empty($door->label))
-                                                    @foreach($door->label as $item)
-                                                        {{$item}}
+                                            <td>{{$product->door->glass}}</td>
+                                            <td>{{$product->door->function}}</td>
+                                            <td>{{$product->door->material}}</td>
+                                            <td>@if(!empty($product->label))
+                                                    @foreach($product->label as $label)
+                                                        {{$label}} <br>
                                                     @endforeach
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($door->active == 1)
+                                                @if($product->active == 1)
                                                     Да
                                                 @else
                                                     Нет
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('doors.edit', ['door' => $door]) }}">
+{{--                                                @dd($product)--}}
+                                                <a href="{{ route('products.edit', ['product' => $product]) }}">
                                                     <input type="button" class=" btn btn-3d btn-primary"
                                                            value="Редактировать">
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('doors.destroy', ['door' => $door]) }}"
+                                                <form action="{{ route('products.destroy', ['product' => $product]) }}"
                                                       method="post">
                                                     @method('DELETE')
                                                     @csrf
@@ -94,6 +97,7 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                 @endif
                                 </tbody>

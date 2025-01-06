@@ -634,11 +634,11 @@
 <script src="{{asset('/avi-dveri_assets/admin/js/jquery.min.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/admin/js/jquery.ui.min.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/admin/js/bootstrap.min.js')}}"></script>
-@if(route('doors.create') || route('doors.create') || route('fittings.create') || route('fittings.create'))
+{{--@if(route('doors.create') || route('doors.create') || route('fittings.create') || route('fittings.create'))--}}
     <script src="{{asset('/avi-dveri_assets/admin/js/previewImage.js')}}"></script>
     <script src="{{asset('/avi-dveri_assets/admin/js/editSavedImages.js')}}"></script>
     <script src="{{asset('/avi-dveri_assets/admin/js/newSize.js')}}"></script>
-@endif
+{{--@endif--}}
 <script src="{{asset('/avi-dveri_assets/admin/js/test.js')}}"></script>
 
 

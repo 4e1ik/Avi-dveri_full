@@ -41,7 +41,7 @@
                             <div class="tab-pane active" id="grid-view">
                                 <div class="row">
                                     <!-- Single-product start -->
-                                    @foreach($doors as $door)
+                                    @foreach($products as $product)
                                         <div class="col-lg-4 col-md-6">
                                             <div class="single-product">
                                                 <div class="product-img">
@@ -50,32 +50,32 @@
                                                             background: #8fc865 none repeat scroll 0 0;
                                                         }
                                                     </style>
-                                                    @if($door->label !== null)
-                                                        @foreach($door->label as $item)
+                                                    @if($product->label !== null)
+                                                        @foreach($product->label as $item)
                                                             <span style="position: relative; padding: 5px;"
                                                                   class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):('hit-label'))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):('Хит'))}}</span>
                                                             @php $label_distance = $label_distance + 75; @endphp
                                                         @endforeach
                                                     @endif
-                                                    @if($door->images->isNotEmpty())
+                                                    @if($product->images->isNotEmpty())
                                                         <a style="display: flex; justify-content: center;"
-                                                           href="{{route('product_page', ['id' => $door->id, 'class' => get_class($door)])}}"><img
+                                                           href="{{route('product_page', ['product' => $product])}}"><img
                                                                     style="object-fit: contain; width: 100px;"
-                                                                    src="{{ asset( 'storage/'. $door->images[0]->image ) }}"
+                                                                    src="{{ asset( 'storage/'. $product->images[0]->image ) }}"
                                                                     alt=""/></a>
                                                     @endif
                                                 </div>
                                                 <div class="product-info clearfix text-center">
                                                     <div class="fix">
                                                         <h4 class="post-title"><a
-                                                                    href="{{route('product_page', ['id' => $door->id, 'class' => get_class($door)])}}">{{$door->title}}</a>
+                                                                    href="{{route('product_page', ['product' => $product])}}">{{$product->title}}</a>
                                                         </h4>
-                                                        <span class="pro-price-2">{{$door->price_per_canvas}} {{$door->currency}}</span>
+                                                        <span class="pro-price-2">{{$product->price}} {{$product->currency}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="product-details">
                                                     <ul>
-                                                        <li>{{$door->description}}</li>
+                                                        <li>{{$product->description}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <!-- Pagination start -->
-                        {{$doors->withQueryString()->links()}}
+                        {{$products->withQueryString()->links()}}
                         <!-- Pagination end -->
                     </div>
                     <!-- Shop-Content End -->

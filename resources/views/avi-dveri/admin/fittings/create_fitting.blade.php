@@ -4,9 +4,10 @@
         <div class="panel box-shadow-none content-header">
             <h1>Страница создания фурнитуры</h1>
         </div>
-        <form action="{{ route('fittings.store')}}"
+        <form action="{{ route('products.store')}}"
               enctype="multipart/form-data" method="post">
             @csrf
+            <input type="hidden" name="category" value="fitting">
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -167,7 +168,7 @@
                         <div class="panel-body">
                             <h3>Описание</h3>
                             <textarea name="description" style="width: 100%;" rows="10" type="text"
-                                      placeholder="Введите описание товара">{{$errors->has('description') ? 'danger' : ''}}</textarea>
+                                      placeholder="Введите описание товара">{{$errors->has('description') ? 'danger' : old('description')}}</textarea>
                             @error('description')
                             <div class="text-danger">
                                 {{$message}}

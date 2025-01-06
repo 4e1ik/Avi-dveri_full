@@ -5,9 +5,12 @@
     <section class="slider-area slider-style-2">
         <div class="bend niceties preview-2">
             <div id="ensign-nivoslider" class="slides">
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/1.png')}}" alt="" title="#slider-direction-1"/>
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/2.png')}}" alt="" title="#slider-direction-2"/>
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/3.png')}}" alt="" title="#slider-direction-3"/>
+                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/1.png')}}" alt=""
+                     title="#slider-direction-1"/>
+                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/2.png')}}" alt=""
+                     title="#slider-direction-2"/>
+                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/3.png')}}" alt=""
+                     title="#slider-direction-3"/>
             </div>
             <div id="slider-direction-1" class="t-cn slider-direction">
                 <div class="slider-progress"></div>
@@ -151,56 +154,55 @@
                         <h2 class="title-border">Хит продаж</h2>
                     </div>
                     <div class="product-slider style-2 arrow-left-right">
-                        @foreach($results as $result)
-                        <div class="col-12">
-                            <div class="single-product">
-                                <div class="product-img">
-                                    <style>
-                                        .hit-label {
-                                            background: #8fc865 none repeat scroll 0 0;
-                                        }
-                                    </style>
-                                    @if($result->label !== null)
-                                        @foreach($result->label as $item)
-                                            <span style="position: relative; padding: 5px;"
-                                                  class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):('hit-label'))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):('Хит'))}}</span>
-                                            @php $label_distance = $label_distance + 75; @endphp
-                                        @endforeach
-                                    @endif
-                                        @if($result->images->isNotEmpty())
-                                            <a style="display: flex; justify-content: center;"
-                                               href="{{route('product_page', ['id' => $result->id, 'class' => get_class($result)])}}"><img
-                                                        style="object-fit: contain; width: 100px;"
-                                                        src="{{ asset( 'storage/'. $result->images[0]->image ) }}"
-                                                        alt=""/></a>
+                        @foreach($products as $product)
+                            <div class="col-12">
+                                <div class="single-product">
+                                    <div class="product-img">
+                                        <style>
+                                            .hit-label {
+                                                background: #8fc865 none repeat scroll 0 0;
+                                            }
+                                        </style>
+                                        @if($product->label !== null)
+                                            @foreach($product->label as $item)
+                                                <span style="position: relative; padding: 5px;"
+                                                      class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):('hit-label'))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):('Хит'))}}</span>
+                                                @php $label_distance = $label_distance + 75; @endphp
+                                            @endforeach
                                         @endif
-                                </div>
-                                <div class="product-info clearfix text-center">
-                                    <div class="fix">
-                                        <h4 class="post-title"><a href="{{route('product_page', ['id' => $result->id, 'class' => get_class($result)])}}">{{$result->title}}</a></h4>
-                                        <span class="pro-price-2">
-                                            @if($result->price !== null)
-                                                {{$result->price}}
-                                            @else
-                                                {{$result->price_per_canvas}}
-                                            @endif
-                                            {{$result->currency}}
+                                        @if($product->images->isNotEmpty())
+                                            <a style="display: flex; justify-content: center;"
+                                               href="{{route('product_page', ['product' => $product])}}"><img
+                                                        style="object-fit: contain; width: 100px;"
+                                                        src="{{ asset( 'storage/'. $product->images[0]->image ) }}"
+                                                        alt="{{$product->images[0]->description}}"/>
+                                            </a>
+                                        @endif
+                                    </div>
+                                    <div class="product-info clearfix text-center">
+                                        <div class="fix">
+                                            <h4 class="post-title"><a
+                                                        href="{{route('product_page', ['product' => $product])}}">{{$product->title}}</a>
+                                            </h4>
+                                            <span class="pro-price-2">
+                                            {{$product->price}} {{$product->currency}}
                                         </span>
-                                    </div>
-                                    <div class="product-action clearfix">
-                                        <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                data-text="Оставить заявку" data-title="{{$result->title}}">Оставить заявку
-                                        </button>
-                                    </div>
-                                    <div class="product-details">
-                                        <ul>
-                                            <li>{{$result->description}}</li>
-                                        </ul>
+                                        </div>
+                                        <div class="product-action clearfix">
+                                            <button class="button-one submit-btn-4 open_popup_application" type="submit"
+                                                    data-text="Оставить заявку" data-title="{{$product->title}}">
+                                                Оставить заявку
+                                            </button>
+                                        </div>
+                                        <div class="product-details">
+                                            <ul>
+                                                <li>{{$product->description}}</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
+                                <x-feedback-form :title="$product->title"/>
                             </div>
-                            <x-feedback-form :title="$result->title" />
-                        </div>
                         @endforeach
                     </div>
                 </div>

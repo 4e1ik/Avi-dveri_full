@@ -9,7 +9,7 @@
                     <h3 class="animated fadeInLeft">Фурнитура</h3>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a href="{{route('fittings.create')}}">
+                    <a href="{{route('products.create', ['type' => 'fitting'])}}">
                         <button class="btn ripple btn-outline btn-primary">
                             <div>
                                 <span>Добавить товар</span>
@@ -42,35 +42,35 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if($fittings->isNotEmpty())
-                                    @foreach($fittings as $fitting)
+                                @if($products->isNotEmpty())
+                                    @foreach($products as $product)
                                         <tr>
-                                            <td>{{$fitting->id}}</td>
-                                            <td>{{$fitting->title}}</td>
-                                            <td>{{$fitting->description}}</td>
-                                            <td>{{$fitting->price}}</td>
-                                            <td>{{$fitting->price_per_set}}</td>
-                                            <td>@if(!empty($fitting->label))
-                                                    @foreach($fitting->label as $item)
+                                            <td>{{$product->id}}</td>
+                                            <td>{{$product->title}}</td>
+                                            <td>{{$product->description}}</td>
+                                            <td>{{$product->price}}</td>
+                                            <td>{{$product->price_per_set}}</td>
+                                            <td>@if(!empty($product->label))
+                                                    @foreach($product->label as $item)
                                                         {{$item}}
                                                     @endforeach
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($fitting->active == 1)
+                                                @if($product->active == 1)
                                                     Да
                                                 @else
                                                     Нет
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('fittings.edit', ['fitting' => $fitting]) }}">
+                                                <a href="{{ route('products.edit', ['product' => $product]) }}">
                                                     <input type="button" class=" btn btn-3d btn-primary"
                                                            value="Редактировать">
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('fittings.destroy', ['fitting' => $fitting]) }}"
+                                                <form action="{{ route('products.destroy', ['product' => $product]) }}"
                                                       method="post">
                                                     @method('DELETE')
                                                     @csrf

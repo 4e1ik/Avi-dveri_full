@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- HEADING-BANNER START -->
-    @foreach($products as $product)
+{{--    @foreach($products as $product)--}}
         <div class="heading-banner-area overlay-bg">
             <x-feedback-form :title="$product->title" />
             <div class="container">
@@ -49,7 +49,7 @@
                                              src="{{ asset('storage/' . $image->image) }}"
                                              alt="{{$image->description_image}}"/>
                                         <a class="view-full-screen" href="{{ asset('storage/' . $image->image) }}"
-                                           data-lightbox="roadtrip" data-title="My caption">
+                                           data-lightbox="roadtrip" data-title="{{$image->description_image}}">
                                             <i class="zmdi zmdi-zoom-in"></i>
                                         </a>
                                     </div>
@@ -62,23 +62,18 @@
                                 </div>
                                 <div class="fix option1 mb-20">
                                     <span class="pro-price">
-                                        @if($product->price_per_canvas != null)
-                                            {{$product->price_per_canvas}}
-                                        @else
-                                            {{$product->price}}
-                                        @endif
-                                         {{$product->currency}}
+                                        {{$product->price}} {{$product->currency}}
                                     </span>
                                 </div>
                                 <div class="product-description">
                                     <p>{{$product->description}}</p>
                                 </div>
-                                <select id="selector" class="custom-select mb-30" onchange="changeContent()">
+                                <select id="selector" class="custom-select mb-30" onchange="changeContent()" style="cursor: pointer">
                                     <option value="option1">Полотно</option>
                                     <option value="option2">Комплект</option>
                                 </select>
                                 <!-- color start -->
-                                @if($product->glass != null)
+                                @if($product->door->glass != null)
                                     <div class="product__submit">
                                         <div>
                                             <div class="color-filter single-pro-color mb-20 clearfix">
@@ -107,7 +102,7 @@
                                                 <ul>
                                                     <li><span class="color-title text-capitalize">Размер</span></li>
                                                     <div class="active__size">
-                                                        @foreach($product->size as $item)
+                                                        @foreach($product->door->size as $item)
                                                             <li><a class="noRedirect" href="#">{{$item}}</a></li>
                                                         @endforeach
                                                     </div>
@@ -116,7 +111,7 @@
                                             <div class="size-filter single-pro-size mb-35 clearfix">
                                                 <ul>
                                                     <li><span class="color-title text-capitalize">Стекло</span></li>
-                                                    <li><a class="active noRedirect" href="#">{{$product->glass}}</a>
+                                                    <li><a class="active noRedirect" href="#">{{$product->door->glass}}</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -177,6 +172,6 @@
                 });
             });
         </script>
-    @endforeach
+{{--    @endforeach--}}
     <!-- PRODUCT-AREA END -->
 @endsection

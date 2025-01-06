@@ -5,9 +5,10 @@
         <div class="panel box-shadow-none content-header">
             <h1>Страница создания дверей</h1>
         </div>
-        <form action="{{ route('doors.store')}}"
+        <form action="{{ route('products.store')}}"
               enctype="multipart/form-data" method="post">
             @csrf
+            <input type="hidden" name="category" value="door">
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -47,11 +48,11 @@
                             <div class="col-md-3 padding-0">
                                 <h3>Цена за полотно</h3>
                                 <div class="col-md-11 padding-0">
-                                    <input class="form-control {{$errors->has('price_per_canvas') ? 'danger' : ''}}"
+                                    <input class="form-control {{$errors->has('price') ? 'danger' : ''}}"
                                            type="number" min="0"  step="0.01"
-                                           name="price_per_canvas" value="{{old('price_per_canvas')}}">
+                                           name="price" value="{{old('price')}}">
                                 </div>
-                                @error('price_per_canvas')
+                                @error('price')
                                 <div class="text-danger">
                                     {{$message}}
                                 </div>
@@ -227,7 +228,15 @@
                                 <div style="display: flex; justify-content: space-between;" class="col-md-10 padding-0">
                                     <input class="form-control {{$errors->has('size') ? 'danger' : ''}}"
                                            type="text"
-                                           name="size[]" value="{{old('size')}}">
+                                           name="size[]">
+                                    @if($errors->has('size'))
+                                        {{$errors}}
+                                        @foreach($errors->has('size') as $error)
+                                            <input class="form-control {{$errors->has('size') ? 'danger' : ''}}"
+                                                   type="text"
+                                                   name="size[]" value="">
+                                        @endforeach
+                                    @endif
                                     <div style="font-size: 30px; cursor: pointer;" class="col-md-2 ">
                                         <span class="addButton icons icon-plus"></span>
                                     </div>

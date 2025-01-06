@@ -14,18 +14,13 @@ return new class extends Migration
     {
         Schema::create('doors', function (Blueprint $table) {
             $table->id();
-            $table->string ('title', '255')->nullable('false');
-            $table->text ('description')->nullable('true');
-            $table->float ('price_per_canvas')->nullable('false');
-            $table->float ('price_per_set')->nullable('false');
-            $table->string ('currency','255')->nullable('false')->default('BYN');
+            $table->unsignedBigInteger ('product_id')->nullable('true');
+            $table->foreign ('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->json ('size')->nullable('false  ');
             $table->string ('glass','255')->nullable('true');
             $table->string ('type','255')->nullable('false');
             $table->string ('function', '255')->nullable('false');
             $table->string ('material', '255')->nullable('false');
-            $table->json ('label')->nullable('true');
-            $table->boolean ('active')->default(true);
             $table->timestamps();
         });
     }

@@ -15,14 +15,9 @@ return new class extends Migration
     {
         Schema::create('fittings', function (Blueprint $table) {
             $table->id();
-            $table->string ('title', '255')->nullable('false');
-            $table->text ('description')->nullable('true');
-            $table->float ('price')->nullable('false');
-            $table->float ('price_per_set')->nullable('false');
-            $table->string ('currency','255')->nullable('false')->default('BYN');
+            $table->unsignedBigInteger ('product_id')->nullable('true');
+            $table->foreign ('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->string ('function','255')->nullable('false');
-            $table->json ('label')->nullable('true');
-            $table->boolean ('active')->default(true);
             $table->timestamps();
         });
     }

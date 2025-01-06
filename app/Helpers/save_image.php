@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Image;
-use Illuminate\Support\Facades\Storage;
-
 function save_image($file, $image)
 {
 

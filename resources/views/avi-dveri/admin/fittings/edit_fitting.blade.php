@@ -4,10 +4,11 @@
         <div class="panel box-shadow-none content-header">
             <h1>Страница редактирования дверей</h1>
         </div>
-        <form action="{{ route('fittings.update',  ['fitting' => $fitting])}}"
+        <form action="{{ route('products.update',  ['product' => $product])}}"
               enctype="multipart/form-data" method="post">
             @method('PUT')
             @csrf
+
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -24,7 +25,7 @@
                             <div class="col-md-9">
                                 <div class="preview-images" id="preview-container"></div>
                                 <div class="database-images" id="database-container">
-                                    @foreach($fitting->images as $image)
+                                    @foreach($product->images as $image)
                                         <img src="{{ asset('storage/' . $image->image) }}" alt="" data-id="{{ $image->id }}" data-description="{{$image->description_image}}">
                                     @endforeach
                                     <input type="hidden" id="delete-images" name="delete_images" value="">
@@ -43,7 +44,7 @@
                                 <div class="col-md-11 padding-0">
                                     <input class="form-control {{$errors->has('title') ? 'danger' : ''}}"
                                            type="text"
-                                           name="title" value="{{$errors->has('title') ? old('title') : $fitting->title}}">
+                                           name="title" value="{{$errors->has('title') ? old('title') : $product->title}}">
                                 </div>
                                 @error('title')
                                 <div class="text-danger">
@@ -56,7 +57,7 @@
                                 <div class="col-md-11 padding-0">
                                     <input class="form-control {{$errors->has('price') ? 'danger' : ''}}"
                                            type="number" min="0"  step="0.01"
-                                           name="price" value="{{$errors->has('price') ? old('price') : $fitting->price}}">
+                                           name="price" value="{{$errors->has('price') ? old('price') : $product->price}}">
                                 </div>
                                 @error('price')
                                 <div class="text-danger">
@@ -69,7 +70,7 @@
                                 <div class="col-md-11 padding-0">
                                     <input class="form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"
                                            type="number" min="0"  step="0.01"
-                                           name="price_per_set" value="{{$errors->has('price_per_set') ? old('price_per_set') : $fitting->price_per_set}}">
+                                           name="price_per_set" value="{{$errors->has('price_per_set') ? old('price_per_set') : $product->price_per_set}}">
                                 </div>
                                 @error('price_per_set')
                                 <div class="text-danger">
@@ -84,13 +85,13 @@
                                         <select class="form-control" name="currency">
                                             <option {{ $errors->has('currency') ? '' : 'selected' }} disabled>Выберите валюту
                                             </option>
-                                            <option {{ $fitting->currency == 'BYN' ? 'selected' : ''}} selected value="BYN">
+                                            <option {{ $product->currency == 'BYN' ? 'selected' : ''}} selected value="BYN">
                                                 BYN
                                             </option>
-                                            <option {{ $fitting->currency == 'RUB' ? 'selected' : ''}}  value="RUB">
+                                            <option {{ $product->currency == 'RUB' ? 'selected' : ''}}  value="RUB">
                                                 RUB
                                             </option>
-                                            <option {{ $fitting->currency == 'dollar' ? 'selected' : ''}}  value="dollar">
+                                            <option {{ $product->currency == 'dollar' ? 'selected' : ''}}  value="dollar">
                                                 $
                                             </option>
                                         </select>
@@ -109,13 +110,13 @@
                                         <select class="form-control" name="function">
                                             <option {{ $errors->has('function') ? '' : 'selected' }} disabled>Выберите сегмент фурнитуры
                                             </option>
-                                            <option {{ $fitting->function == 'economy' ? 'selected' : ''}} value="economy">
+                                            <option {{ $product->fitting->function == 'economy' ? 'selected' : ''}} value="economy">
                                                 Эконом
                                             </option>
-                                            <option {{ $fitting->function == 'standard' ? 'selected' : ''}}  value="standard">
+                                            <option {{ $product->fitting->function == 'standard' ? 'selected' : ''}}  value="standard">
                                                 Стандарт
                                             </option>
-                                            <option {{ $fitting->function == 'premium' ? 'selected' : ''}}  value="premium">
+                                            <option {{ $product->fitting->function == 'premium' ? 'selected' : ''}}  value="premium">
                                                 Премиум
                                             </option>
                                         </select>
@@ -132,13 +133,13 @@
                                 <label style="display: none" class="col-sm-2 control-label text-right">Checkbox</label>
                                 <div class="col-sm-10 padding-0">
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($fitting->label) && in_array('new', $fitting->label) ? 'checked' : '' }} value="new"> Новинка
+                                        <input type="checkbox" name="label[]" {{ is_array($product->label) && in_array('new', $product->label) ? 'checked' : '' }} value="new"> Новинка
                                     </div>
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($fitting->label) && in_array('sale', $fitting->label) ? 'checked' : '' }} value="sale"> Скидка
+                                        <input type="checkbox" name="label[]" {{ is_array($product->label) && in_array('sale', $product->label) ? 'checked' : '' }} value="sale"> Скидка
                                     </div>
                                     <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($fitting->label) && in_array('hit', $fitting->label) ? 'checked' : '' }} value="hit"> Хит
+                                        <input type="checkbox" name="label[]" {{ is_array($product->label) && in_array('hit', $product->label) ? 'checked' : '' }} value="hit"> Хит
                                     </div>
                                 </div>
                                 @error('type')
@@ -175,7 +176,7 @@
                         <div class="panel-body">
                             <h3>Описание</h3>
                             <textarea name="description" style="width: 100%;" rows="10" type="text"
-                                      placeholder="Введите описание товара">{{$errors->has('description') ? old('description') : $fitting->description}}</textarea>
+                                      placeholder="Введите описание товара">{{$errors->has('description') ? old('description') : $product->description}}</textarea>
                             @error('description')
                             <div class="text-danger">
                                 {{$message}}
