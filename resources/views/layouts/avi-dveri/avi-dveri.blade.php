@@ -156,6 +156,18 @@
 
 <!-- all js here -->
 <!-- jquery latest version -->
+<script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>
+<script>
+    function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function () {
+            grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {
+                document.getElementById('g-recaptcha-response').value = token;
+                document.getElementById('mail_form').submit();
+            });
+        });
+    }
+</script>
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/jquery-migrate-3.3.2.min.js')}}"></script>
 <!-- bootstrap js -->
@@ -187,17 +199,5 @@
 
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/popupSubmitApplication.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/smartSearch.js')}}"></script>
-{{--<script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>--}}
-{{--<script>--}}
-{{--    function onClick(e) {--}}
-{{--        e.preventDefault();--}}
-{{--        grecaptcha.ready(function () {--}}
-{{--            grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'send_mail'}).then(function (token) {--}}
-{{--                document.getElementById('g-recaptcha-response').value = token;--}}
-{{--                document.getElementById('mail_form').submit();--}}
-{{--            });--}}
-{{--        });--}}
-{{--    }--}}
-{{--</script>--}}
 </body>
 </html>

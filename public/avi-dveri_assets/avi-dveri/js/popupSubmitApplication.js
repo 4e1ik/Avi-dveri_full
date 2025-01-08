@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.open_popup_application');
     const popup = document.querySelector('.popup_application');
     const crossBtn = document.querySelector('.popup__cross_application');
-    const titleInput = document.querySelector('#contact-form input[name="title"]');
+    const titleInput = document.querySelector('#mail_form input[name="title"]');
 
     buttons.forEach(function (button) {
         button.addEventListener('click', function () {

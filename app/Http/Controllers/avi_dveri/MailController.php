@@ -27,6 +27,6 @@ class MailController extends Controller
         }
 
         // Перенаправление обратно
-//        return back();
+        return back();
     }
 }
