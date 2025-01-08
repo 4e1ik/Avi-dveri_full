@@ -176,8 +176,10 @@ class MainController extends Controller
     {
         if ($product->category == 'door'){
             $colors = add_doors_colors();
+//            dd($product);
             return view('avi-dveri.avi-dveri.product_page', compact('product', 'colors'));
         }
+
         return view('avi-dveri.avi-dveri.product_page', compact('product'));
     }
 

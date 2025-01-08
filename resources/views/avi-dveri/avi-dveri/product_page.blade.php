@@ -73,7 +73,8 @@
                                     <option value="option2">Комплект</option>
                                 </select>
                                 <!-- color start -->
-                                @if($product->door->glass != null)
+{{--                                @dd($product->door->glass)--}}
+                                @if(isset($product->door->glass))
                                     <div class="product__submit">
                                         <div>
                                             <div class="color-filter single-pro-color mb-20 clearfix">
