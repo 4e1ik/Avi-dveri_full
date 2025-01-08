@@ -17,7 +17,7 @@
         @if(sizeof($results) >  0)
         <div class="search_example" style="">
             @foreach($results as $result)
-                <a href="{{route('product_page', ['id' => $result->id, 'class' => get_class($result)])}}">
+                <a href="{{route('product_page', ['product' => $result])}}">
                     <p class="search_text">
                         {{$result->title}}
                     </p>
