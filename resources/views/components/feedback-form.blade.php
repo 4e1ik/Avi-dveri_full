@@ -4,7 +4,7 @@
         width: 100%;
         height: 100%;
         position: fixed;
-        background: rgba(151, 151, 151, 0.05);
+        background: rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(4px);
         -webkit-background: rgba(151, 151, 151, 0.05);
         -webkit-backdrop-filter: blur(4px);
@@ -23,8 +23,8 @@
         padding: 8.125em;
     }
 
-    #contact-form {
-        background-color: #c7c2c2;
+    #mail_form {
+        background-color: rgba(236, 230, 230, 0.64);
         padding: 10px;
         border-radius: 10px;
     }
