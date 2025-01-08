@@ -6,7 +6,7 @@ function previewImage(event) {
 
     // Проверяем текущий маршрут
     const currentPath = window.location.pathname;
-    const isColorSelectionDisabled = currentPath.includes('/fittings/create') || currentPath.includes('/fittings/edit');
+    const isColorSelectionDisabled = currentPath.includes('/products/create') || currentPath.includes('/products/edit');
 
     // Добавляем новые файлы в глобальный массив
     newFiles.forEach((file) => {

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname;
 
     // Флаг для проверки, нужно ли показывать выбор цвета
-    const isColorSelectionDisabled = currentPath.includes('/fittings/create') || currentPath.includes('/fittings/edit');
+    const isColorSelectionDisabled = currentPath.includes('/products/create') || currentPath.includes('/products/edit');
 
     // Функция для оформления и добавления функциональности к изображению
     function styleDatabaseImage(imgElement) {
@@ -31,7 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         imgClone.style.maxWidth = '150px';
         imgClone.style.marginBottom = '10px';
 
-        // Если выбор цвета не отключен (не на маршруте fittings.create или fittings.edit)
+        // Добавляем картинку в контейнер
+        wrapper.appendChild(imgClone);
+
+        // Поле выбора цвета (если выбор не отключен)
         if (!isColorSelectionDisabled && typeof colors !== 'undefined') {
             // Создаем кастомный элемент для выбора цвета
             const dropdown = document.createElement('div');
@@ -51,6 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Устанавливаем текст по умолчанию
             selectedOption.textContent = 'Выберите цвет двери';
 
+            // Если есть текущий цвет, отображаем его сразу
+            if (currentColor) {
+                const selectedColor = colors.find(color => color.value === currentColor);
+                if (selectedColor) {
+                    selectedOption.innerHTML = `
+                        <img src="${selectedColor.image}" alt="${selectedColor.name}" style="width: 20px; height: 20px; margin-right: 10px; border-radius: 50%;">
+                        <span>${selectedColor.name}</span>
+                    `;
+                }
+            }
+
             // Создаем контейнер для вариантов
             const optionsContainer = document.createElement('div');
             optionsContainer.style.position = 'absolute';
@@ -67,14 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
             optionsContainer.style.maxHeight = '180px'; // Примерно 6 строк по 30px каждая
             optionsContainer.style.overflowY = 'auto';
 
-
             // Скрытое поле для передачи цвета
             const hiddenInput = document.createElement('input');
             hiddenInput.type = 'hidden';
             hiddenInput.name = `door_image_color[${id}]`;
             hiddenInput.value = currentColor || ''; // Устанавливаем значение цвета из базы
 
-            // Заполняем выпадающий список, если переменная colors существует
+            // Заполняем выпадающий список
             colors.forEach(color => {
                 const option = document.createElement('div');
                 option.style.display = 'flex';
@@ -86,12 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${color.image}" alt="${color.name}" style="width: 20px; height: 20px; margin-right: 10px; border-radius: 50%;">
                     <span>${color.name}</span>
                 `;
-
-                // Если текущий цвет совпадает, устанавливаем его как выбранный
-                if (color.value === currentColor) {
-                    selectedOption.innerHTML = option.innerHTML; // Отображаем выбранный цвет
-                    hiddenInput.value = color.value; // Устанавливаем значение скрытого поля
-                }
 
                 option.addEventListener('click', () => {
                     selectedOption.innerHTML = option.innerHTML; // Обновляем выбранное значение
@@ -117,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdown.appendChild(selectedOption);
             dropdown.appendChild(optionsContainer);
 
-            wrapper.appendChild(dropdown);
+            wrapper.appendChild(dropdown); // Добавляем поле выбора цвета после изображения
             wrapper.appendChild(hiddenInput);
         }
 
@@ -150,9 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.remove(); // Удаляем визуально
         });
 
-        // Добавляем все элементы в контейнер
-        wrapper.appendChild(imgClone);
-        wrapper.appendChild(descriptionInput); // Добавляем поле описания
+        // Добавляем описание и кнопку в контейнер
+        wrapper.appendChild(descriptionInput);
         wrapper.appendChild(deleteButton);
 
         // Добавляем оформленный контейнер в базовый контейнер

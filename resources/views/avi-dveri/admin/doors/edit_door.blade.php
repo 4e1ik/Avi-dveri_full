@@ -26,7 +26,7 @@
                                 <div class="preview-images" id="preview-container"></div>
                                 <div class="database-images" id="database-container">
                                         @foreach($product->images as $image)
-                                            <img src="{{ asset('storage/' . $image->image) }}" alt="" data-id="{{ $image->id }}" data-color="{{ $image->product_color }}" data-description="{{$image->description_image}}">
+                                            <img src="{{ asset('storage/' . $image->image) }}" alt="" data-id="{{ $image->id }}" data-color="{{ $image->door_color }}" data-description="{{$image->description_image}}">
                                         @endforeach
                                         <input type="hidden" id="delete-images" name="delete_images" value="">
                                 </div>
