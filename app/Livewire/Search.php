@@ -2,10 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Door;
-use App\Models\Fitting;
 use App\Models\Product;
-use App\Services\FittingService;
 use Livewire\Component;
 
 class Search extends Component

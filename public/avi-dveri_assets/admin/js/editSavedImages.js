@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname;
 
     // Флаг для проверки, нужно ли показывать выбор цвета
-    const isColorSelectionDisabled = currentPath.includes('/products/create') || currentPath.includes('/products/edit');
+    const isColorSelectionDisabled = currentPath.includes('fitting');
 
     // Функция для оформления и добавления функциональности к изображению
     function styleDatabaseImage(imgElement) {
