@@ -38,11 +38,11 @@ class MainController extends Controller
     function accessories(FilterRequest $request)
     {
         $data = $request->all();
-        if (array_key_exists('price_per_canvas', $data)){
-            preg_match_all('/\d+/', $data['price_per_canvas'], $matches);
-            $data['price_per_canvas'] = array_map('intval', $matches[0]);
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
             if (array_key_exists('price_filter', $data)){
-                array_push($data['price_per_canvas'], $data['price_filter']);
+                array_push($data['price'], $data['price_filter']);
             }
         }
 
@@ -126,11 +126,11 @@ class MainController extends Controller
     function interior_doors(FilterRequest $request)
     {
         $data = $request->all();
-        if (array_key_exists('price_per_canvas', $data)){
-            preg_match_all('/\d+/', $data['price_per_canvas'], $matches);
-            $data['price_per_canvas'] = array_map('intval', $matches[0]);
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
             if (array_key_exists('price_filter', $data)){
-                array_push($data['price_per_canvas'], $data['price_filter']);
+                array_push($data['price'], $data['price_filter']);
             }
         }
 
