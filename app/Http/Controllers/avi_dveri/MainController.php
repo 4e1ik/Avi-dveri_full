@@ -152,11 +152,11 @@ class MainController extends Controller
 
         $label_distance = 15;
 
-        $eco_veneerTotalCount = Door::where('function', 'eco-veneer')->count();
-        $polypropyleneTotalCount = Door::where('function', 'polypropylene')->count();
-        $enamelTotalCount = Door::where('function', 'enamel')->count();
-        $hiddenTotalCount = Door::where('function', 'hidden')->count();
-        $solidTotalCount = Door::where('function', 'solid')->count();
+        $eco_veneerTotalCount = Door::where('material', 'eco-veneer')->count();
+        $polypropyleneTotalCount = Door::where('material', 'polypropylene')->count();
+        $enamelTotalCount = Door::where('material', 'enamel')->count();
+        $hiddenTotalCount = Door::where('material', 'hidden')->count();
+        $solidTotalCount = Door::where('material', 'solid')->count();
 
         return view('avi-dveri.avi-dveri.interior_doors', compact(
             'products',

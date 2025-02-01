@@ -131,23 +131,23 @@
                         <!-- Widget-Manufacturer start -->
                         <aside class="widget widget-color mb-30">
                             <div class="widget-title">
-                                <h4>Назначение</h4>
+                                <h4>Материал</h4>
                             </div>
                             <div class="widget-info color-filter clearfix">
                                 <ul>
-                                    <li><input type="checkbox" name="function" value="eco-veneer" class="func_checkbox"><a
+                                    <li><input type="checkbox" name="material" value="eco-veneer" class="func_checkbox"><a
                                                 href="#">Экошпон<span class="count">{{$eco_veneerTotalCount}}</span></a>
                                     </li>
-                                    <li><input type="checkbox" name="function" value="polypropylene"
+                                    <li><input type="checkbox" name="material" value="polypropylene"
                                                class="func_checkbox"><a href="#">Полипропилен<span
                                                     class="count">{{$polypropyleneTotalCount}}</span></a></li>
-                                    <li><input type="checkbox" name="function" value="enamel" class="func_checkbox"><a
+                                    <li><input type="checkbox" name="material" value="enamel" class="func_checkbox"><a
                                                 href="#">Эмаль<span
                                                     class="count">{{$enamelTotalCount}}</span></a></li>
-                                    <li><input type="checkbox" name="function" value="hidden" class="func_checkbox"><a
+                                    <li><input type="checkbox" name="material" value="hidden" class="func_checkbox"><a
                                                 href="#">Скрытые<span class="count">{{$hiddenTotalCount}}</span></a>
                                     </li>
-                                    <li><input type="checkbox" name="function" value="solid" class="func_checkbox"><a
+                                    <li><input type="checkbox" name="material" value="solid" class="func_checkbox"><a
                                                 href="#">Массив<span
                                                     class="count">{{$solidTotalCount}}</span></a></li>
                                 </ul>

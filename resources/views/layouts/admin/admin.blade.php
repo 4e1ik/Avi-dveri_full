@@ -10,7 +10,7 @@
     <title>АВИ-ДВЕРИ Admin</title>
 
     <!-- start: Css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/avi-dveri_assets/admin//css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/avi-dveri_assets/admin/css/bootstrap.min.css')}}">
 
     <!-- plugins -->
     <link rel="stylesheet" type="text/css" href="{{asset('/avi-dveri_assets/admin/css/plugins/font-awesome.min.css')}}"/>
@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/avi-dveri_assets/admin/css/plugins/fullcalendar.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('/avi-dveri_assets/admin/css/plugins/dropzone.css')}}"/>
     <link href="{{asset('/avi-dveri_assets/admin/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('/avi-dveri_assets/admin/css/custom_style.css')}}" rel="stylesheet">
     <!-- end: Css -->
 
     <link rel="shortcut icon" href="{{asset('/avi-dveri_assets/admin/img/logomi.png')}}">

@@ -1,0 +1,7 @@
+.input::placeholder {
+    color: #FF6656;
+}
+
+.textarea::placeholder {
+    color: #FF6656;
+}

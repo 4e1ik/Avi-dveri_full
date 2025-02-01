@@ -26,10 +26,16 @@ class ProductController extends Controller
     public function create(string $type)
     {
         switch ($type) {
-            case 'door':
+            case 'entrance_door':
                 $colors = add_doors_colors();
 
-                return view('avi-dveri.admin.doors.create_door', compact('colors'));
+                return view('avi-dveri.admin.doors.create_entrance_door', compact('colors'));
+                break;
+
+            case 'interior_door':
+                $colors = add_doors_colors();
+
+                return view('avi-dveri.admin.doors.create_interior_door', compact('colors'));
                 break;
 
             case 'fitting':
@@ -44,6 +50,19 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
+
+        if (array_key_exists('size_diff', $data) && array_key_exists('size_standard', $data))
+        {
+            $data['size'] = array_merge($data['size_standard'], $data['size_diff']);
+        }
+        elseif(array_key_exists('size_diff', $data))
+        {
+            $data['size'] = $data['size_diff'];
+
+        } elseif (array_key_exists('size_standard', $data))
+        {
+            $data['size'] = $data['size_standard'];
+        }
 
         $i = 0;
 
@@ -105,10 +124,13 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         if ($product->category == 'door') {
-
             $colors = add_doors_colors();
-
-            return view('avi-dveri.admin.doors.edit_door', compact('product', 'colors'));
+//            dd($product->door->type);
+            if($product->door->type == 'entrance'){
+                return view('avi-dveri.admin.doors.edit_entrance_door', compact('product', 'colors'));
+            } elseif ($product->door->type == 'interior'){
+                return view('avi-dveri.admin.doors.edit_interior_door', compact('product', 'colors'));
+            }
         } elseif ($product->category == 'fitting') {
             return view('avi-dveri.admin.fittings.edit_fitting', compact('product'));
         }

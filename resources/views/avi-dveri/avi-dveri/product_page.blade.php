@@ -116,6 +116,13 @@
                                                     </li>
                                                 </ul>
                                             </div>
+                                            <div class="size-filter single-pro-size mb-35 clearfix">
+                                                <ul>
+                                                    <li><span class="color-title text-capitalize">Материал</span></li>
+                                                    <li><a class="active noRedirect" href="#">{{$product->door->material}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
 
                                     </div>

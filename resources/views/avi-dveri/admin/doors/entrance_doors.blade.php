@@ -9,7 +9,7 @@
                     <h3 class="animated fadeInLeft">Входные двери</h3>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a href="{{route('products.create', ['type' => 'door'])}}">
+                    <a href="{{route('products.create', ['type' => 'entrance_door'])}}">
                         <button class="btn ripple btn-outline btn-primary">
                             <div>
                                 <span>Добавить товар</span>

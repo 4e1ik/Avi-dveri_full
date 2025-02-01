@@ -37,9 +37,10 @@ class ProductRequest extends FormRequest
                 $rules,
                 [
                     'type' => 'required|filled|max:50',
-                    'size' => 'required|filled|max:150',
                     'glass' => 'max:50',
                     'material' => 'required|filled|max:50',
+                    'size_diff' => 'max:20',
+                    'size_standard' => 'max:20',
                 ]
             );
         }

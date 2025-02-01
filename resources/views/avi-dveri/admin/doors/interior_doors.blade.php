@@ -9,7 +9,7 @@
                     <h3 class="animated fadeInLeft">Межкомнатные двери</h3>
                 </div>
                 <ul class="nav navbar-nav">
-                    <a href="{{route('products.create', ['type' => 'door'])}}">
+                    <a href="{{route('products.create', ['type' => 'interior_door'])}}">
                         <button class="btn ripple btn-outline btn-primary">
                             <div>
                                 <span>Добавить товар</span>
@@ -79,7 +79,6 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    {{--                                                @dd($product)--}}
                                                     <a href="{{ route('products.edit', ['product' => $product]) }}">
                                                         <input type="button" class=" btn btn-3d btn-primary"
                                                                value="Редактировать">
