@@ -158,15 +158,10 @@
                             <div class="col-12">
                                 <div class="single-product">
                                     <div class="product-img">
-                                        <style>
-                                            .hit-label {
-                                                background: #8fc865 none repeat scroll 0 0;
-                                            }
-                                        </style>
                                         @if($product->label !== null)
                                             @foreach($product->label as $item)
                                                 <span style="position: relative; padding: 5px;"
-                                                      class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):('hit-label'))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):('Хит'))}}</span>
+                                                      class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):($item == 'order'?('order-label'):('hit-label')))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):($item == 'order'?('На заказ'):('Хит')))}}</span>
                                                 @php $label_distance = $label_distance + 75; @endphp
                                             @endforeach
                                         @endif

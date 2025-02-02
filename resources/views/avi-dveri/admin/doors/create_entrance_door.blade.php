@@ -110,7 +110,6 @@
                                         </select>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="col-md-3 padding-0">
                                 <h3>Материал</h3>
@@ -151,7 +150,7 @@
                                         <input type="checkbox" name="label[]" {{ is_array(old('label')) && in_array('hit', old('label')) ? 'checked' : '' }} value="hit"> Хит
                                     </div>
                                     <div class="col-md-6 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array(old('label')) && in_array('order', old('label')) ? 'checked' : '' }} value="hit"> На заказ
+                                        <input type="checkbox" name="label[]" {{ is_array(old('label')) && in_array('order', old('label')) ? 'checked' : '' }} value="order"> На заказ
                                     </div>
                                 </div>
                             </div>
@@ -220,11 +219,53 @@
                                         <span class="closeButton icons icon-close"></span>
                                     </div>
                                 </div>
-                                @error('size_standard')
-                                <div style="position: absolute; top: 90px" class="col-md-11 text-danger">
-                                    {{$message}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="col-md-3 padding-0">
+                                    <h3>Meta Title</h3>
+                                    <div style="margin:0" class="row">
+                                        <div class="col-md-11 padding-0">
+                                            <input class="input form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
+                                                   type="text"
+                                                   name="meta_title" value="{{old('meta_title')}}">
+                                        </div>
+                                    </div>
+                                    <div style="position: absolute; margin:0;" class="row">
+                                        @error('meta_title')
+                                        <div class="text-danger">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
+                                    </div>
                                 </div>
-                                @enderror
+                                <div class="col-md-8 padding-0">
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 padding-0">
+                                            <h3>Meta Description</h3>
+                                            <div style="margin:0" class="row">
+                                                <textarea class="textarea form-control {{$errors->has('meta_description') ? 'danger' : ''}}"
+                                                          name="meta_description" style="width: 100%;" rows="10" type="text">
+                                                {{$errors->has('meta_description') ? '' : old('meta_description')}}
+                                            </textarea>
+                                            </div>
+                                            <div style="position: absolute; margin:0;" class="row">
+                                                @error('meta_description')
+                                                <div class="text-danger">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

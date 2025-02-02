@@ -2805,7 +2805,12 @@ input[type="radio"]:nth-child(3):checked + label {
     }
 }
 
-
+.hit-label {
+    background: #8fc865 none repeat scroll 0 0;
+}
+.order-label {
+    background: #4d74ae none repeat scroll 0 0;
+}
 
 
 /* Large Mobile :480px. */

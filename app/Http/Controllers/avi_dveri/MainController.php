@@ -174,13 +174,16 @@ class MainController extends Controller
 
     function show_product(Product $product)
     {
+        $metaTitle = $product->meta_title;
+        $metaDescription = $product->meta_description;
+
+//        dd($metaDescription);
         if ($product->category == 'door'){
             $colors = add_doors_colors();
-//            dd($product);
-            return view('avi-dveri.avi-dveri.product_page', compact('product', 'colors'));
+            return view('avi-dveri.avi-dveri.product_page', compact('product', 'colors', 'metaTitle', 'metaDescription'));
         }
 
-        return view('avi-dveri.avi-dveri.product_page', compact('product'));
+        return view('avi-dveri.avi-dveri.product_page', compact('product', 'metaTitle', 'metaDescription'));
     }
 
 }

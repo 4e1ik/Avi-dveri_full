@@ -94,10 +94,10 @@ class ProductController extends Controller
                 $name = save_image($file, Image::query());
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
                 $data['image'] = $path;
-                if ($data['door_image_color']) {
+                if (array_key_exists('door_image_color', $data)) {
                     $data['door_color'] = $data['door_image_color'][$i];
                 }
-                if ($data['temp_description_image']) {
+                if (array_key_exists('temp_description_image', $data)) {
                     $data['description_image'] = $data['temp_description_image'][$i];
                 }
                 $i++;
@@ -125,7 +125,6 @@ class ProductController extends Controller
     {
         if ($product->category == 'door') {
             $colors = add_doors_colors();
-//            dd($product->door->type);
             if($product->door->type == 'entrance'){
                 return view('avi-dveri.admin.doors.edit_entrance_door', compact('product', 'colors'));
             } elseif ($product->door->type == 'interior'){
@@ -142,6 +141,22 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $data = $request->all();
+
+//        dd($data);
+
+        if (array_key_exists('size_diff', $data) && array_key_exists('size_standard', $data))
+        {
+            $data['size'] = array_merge($data['size_standard'], $data['size_diff']);
+        }
+        elseif(array_key_exists('size_diff', $data))
+        {
+            $data['size'] = $data['size_diff'];
+
+        } elseif (array_key_exists('size_standard', $data))
+        {
+            $data['size'] = $data['size_standard'];
+        }
+
         $i = 0;
 
         switch ($product->category) {
@@ -183,10 +198,10 @@ class ProductController extends Controller
                 $name = save_image($file, Image::query());
                 $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
                 $data['image'] = $path;
-                if ($data['door_image_color']) {
+                if (array_key_exists('door_image_color', $data)) {
                     $data['door_color'] = $data['door_image_color'][$i];
                 }
-                if ($data['temp_description_image']) {
+                if (array_key_exists('temp_description_image', $data)) {
                     $data['description_image'] = $data['temp_description_image'][$i];
                 }
 

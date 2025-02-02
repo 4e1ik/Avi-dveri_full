@@ -41,42 +41,55 @@
                         <div id="panel-body" class="panel-body">
                             <div class="col-md-3 padding-0">
                                 <h3>Название</h3>
-                                <div class="col-md-11 padding-0">
-                                    <input class="form-control {{$errors->has('title') ? 'danger' : ''}}"
-                                           type="text"
-                                           name="title" value="{{$errors->has('title') ? old('title') : $product->title}}">
+                                <div style="margin:0" class="row">
+                                    <div class="col-md-11 padding-0">
+                                        <input class="input form-control {{$errors->has('title') ? 'danger' : ''}}"
+                                               type="text"
+                                               name="title"
+                                               value="{{$errors->has('title') ? old('title') : $product->title}}">
+                                    </div>
                                 </div>
-                                @error('title')
-                                <div class="text-danger">
-                                    {{$message}}
+                                <div style="position: absolute; margin:0;" class="row">
+                                    @error('title')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
                             <div class="col-md-3 padding-0">
                                 <h3>Цена</h3>
-                                <div class="col-md-11 padding-0">
-                                    <input class="form-control {{$errors->has('price') ? 'danger' : ''}}"
-                                           type="number" min="0"  step="0.01"
-                                           name="price" value="{{$errors->has('price') ? old('price') : $product->price}}">
+                                <div style="margin:0" class="row">
+                                    <div class="col-md-11 padding-0">
+                                        <input class="input form-control {{$errors->has('price') ? 'danger' : ''}}"
+                                               type="number" min="0"  step="0.01"
+                                               name="price" value="{{$errors->has('price') ? old('price') : $product->price}}">
+                                    </div>
                                 </div>
-                                @error('price')
-                                <div class="text-danger">
-                                    {{$message}}
+                                <div style="position: absolute; margin:0;" class="row">
+                                    @error('price')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
                             <div class="col-md-3 padding-0">
                                 <h3>Цена за комплект</h3>
-                                <div class="col-md-11 padding-0">
-                                    <input class="form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"
-                                           type="number" min="0"  step="0.01"
-                                           name="price_per_set" value="{{$errors->has('price_per_set') ? old('price_per_set') : $product->price_per_set}}">
+                                <div style="margin:0" class="row">
+                                    <div class="col-md-11 padding-0">
+                                        <input class="input form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"
+                                               type="number" min="0"  step="0.01"
+                                               name="price_per_set" value="{{$errors->has('price_per_set') ? old('price_per_set') : $product->price_per_set}}">
+                                    </div>
                                 </div>
-                                @error('price_per_set')
-                                <div class="text-danger">
-                                    {{$message}}
+                                <div style="position: absolute; margin:0;" class="row">
+                                    @error('price_per_set')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
                             <div class="col-md-3 padding-0">
                                 <h3>Валюта</h3>
@@ -97,35 +110,41 @@
                                         </select>
                                     </div>
                                 </div>
-                                @error('currency')
-                                <div class="text-danger">
-                                    {{$message}}
-                                </div>
-                                @enderror
                             </div>
                             <div class="col-md-3 padding-0">
                                 <h3>Стекло</h3>
-                                <div class="col-md-11 padding-0">
-                                    <input class="form-control {{$errors->has('glass') ? 'danger' : ''}}"
-                                           type="text"
-                                           name="glass" value="{{$errors->has('glass') ? old('glass') : $product->door->glass}}">
+                                <div style="margin:0" class="row">
+                                    <div class="col-md-11 padding-0">
+                                        <input class="input form-control {{$errors->has('glass') ? 'danger' : ''}}"
+                                               type="text"
+                                               name="glass" value="{{$errors->has('glass') ? old('glass') : $product->door->glass}}">
+                                    </div>
                                 </div>
-                                @error('glass')
-                                <div class="text-danger">
-                                    {{$message}}
+                                <div style="position: absolute; margin:0;" class="row">
+                                    @error('glass')
+                                    <div class="text-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
                             <div class="col-md-3 padding-0">
                                 <h3>Назначение</h3>
                                 <div class="col-md-12 padding-0">
                                     <div class="col-md-11 padding-0">
-                                        <select class="form-control" name="function">
-                                            <option {{ $errors->has('function') ? '' : 'selected' }} disabled>Выберите назначение двери
+                                        <select @error('function') style="color: #FF6656" class="form-control danger" @enderror class="form-control" name="function">
+                                            @error('function')
+                                            <option disabled selected>
+                                                {{$message}}
                                             </option>
-                                            <option {{ $product->door->function == 'apartment' ? 'selected' : ''}}  value="apartment" selected>
-                                                Квартира
-                                            </option>
+                                            @else
+                                                <option {{ $errors->has('function') ? '' : 'selected' }} disabled>
+                                                    Выберите назначение двери
+                                                </option>
+                                                @enderror
+                                                <option {{ $product->door->function == 'apartment' ? 'selected' : ''}}  value="apartment" selected>
+                                                    Квартира
+                                                </option>
                                         </select>
                                     </div>
                                 </div>
@@ -138,24 +157,32 @@
                             <div class="col-md-3 padding-0">
                                 <h3>Материал</h3>
                                 <div class="col-md-11 padding-0">
-                                    <select class="form-control" name="material">
-                                        <option {{ $errors->has('material') ? '' : 'selected' }} disabled>Выберите материал двери
+                                    <select @error('material') style="color: #FF6656" class="form-control danger"
+                                            @enderror class="form-control" name="material">
+                                        @error('material')
+                                        <option disabled selected>
+                                            {{$message}}
                                         </option>
-                                        <option {{ $product->door->material == 'eco-veneer' ? 'selected' : ''}}  value="eco-veneer">
-                                            Экошпон
-                                        </option>
-                                        <option {{ $product->door->material == 'polypropylene' ? 'selected' : ''}}  value="polypropylene">
-                                            Полипропилен
-                                        </option>
-                                        <option {{ $product->door->material == 'enamel' ? 'selected' : ''}}  value="enamel">
-                                            Эмаль
-                                        </option>
-                                        <option {{ $product->door->material == 'hidden' ? 'selected' : ''}}  value="hidden">
-                                            Скрытые
-                                        </option>
-                                        <option {{ $product->door->material == 'solid' ? 'selected' : ''}}  value="solid">
-                                            Массив
-                                        </option>
+                                        @else
+                                            <option {{ $errors->has('material') ? '' : 'selected' }} disabled>
+                                                Выберите материал двери
+                                            </option>
+                                            @enderror
+                                            <option {{ $product->door->material == 'eco-veneer' ? 'selected' : ''}}  value="eco-veneer">
+                                                Экошпон
+                                            </option>
+                                            <option {{ $product->door->material == 'polypropylene' ? 'selected' : ''}}  value="polypropylene">
+                                                Полипропилен
+                                            </option>
+                                            <option {{ $product->door->material == 'enamel' ? 'selected' : ''}}  value="enamel">
+                                                Эмаль
+                                            </option>
+                                            <option {{ $product->door->material == 'hidden' ? 'selected' : ''}}  value="hidden">
+                                                Скрытые
+                                            </option>
+                                            <option {{ $product->door->material == 'solid' ? 'selected' : ''}}  value="solid">
+                                                Массив
+                                            </option>
                                     </select>
                                 </div>
                             </div>
@@ -164,21 +191,27 @@
                                 <h3>Маркер</h3>
                                 <label style="display: none" class="col-sm-2 control-label text-right">Checkbox</label>
                                 <div class="col-sm-10 padding-0">
-                                    <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($product->label) && in_array('new', $product->label) ? 'checked' : '' }} value="new"> Новинка
+                                    <div class="col-md-6 padding-0">
+                                        <input type="checkbox" name="label[]"
+                                               {{ is_array($product->label) && in_array('new', $product->label) ? 'checked' : '' }} value="new">
+                                        Новинка
                                     </div>
-                                    <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($product->label) && in_array('sale', $product->label) ? 'checked' : '' }} value="sale"> Скидка
+                                    <div class="col-md-6 padding-0">
+                                        <input type="checkbox" name="label[]"
+                                               {{ is_array($product->label) && in_array('sale', $product->label) ? 'checked' : '' }} value="sale">
+                                        Скидка
                                     </div>
-                                    <div class="col-md-3 padding-0">
-                                        <input type="checkbox" name="label[]" {{ is_array($product->label) && in_array('hit', $product->label) ? 'checked' : '' }} value="hit"> Хит
+                                    <div class="col-md-6 padding-0">
+                                        <input type="checkbox" name="label[]"
+                                               {{ is_array($product->label) && in_array('hit', $product->label) ? 'checked' : '' }} value="hit">
+                                        Хит
+                                    </div>
+                                    <div class="col-md-6 padding-0">
+                                        <input type="checkbox" name="label[]"
+                                               {{ is_array($product->label) && in_array('order', $product->label) ? 'checked' : '' }} value="order">
+                                        На заказ
                                     </div>
                                 </div>
-                                @error('type')
-                                <div class="text-danger">
-                                    {{$message}}
-                                </div>
-                                @enderror
                             </div>
                             <div style="height: 7em" class="col-md-3 padding-0">
                                 <div class="form-group">
@@ -192,19 +225,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                @error('active')
-                                <div class="text-danger">
-                                    {{$message}}
-                                </div>
-                                @enderror
                             </div>
                                 @foreach($product->door->size as $size)
                                 <div id="size" class="inputSize col-md-3 padding-0">
                                     <h3>Размер</h3>
                                     <div style="display: flex; justify-content: space-between;" class="col-md-10 padding-0">
-                                        <input class="form-control {{$errors->has('size') ? 'danger' : ''}}"
+                                        <input class="form-control {{$errors->has('size_diff') ? 'danger' : ''}}"
                                                type="text"
-                                               name="size[]" value="{{$errors->has('size') ? old('size') : $size}}">
+                                               name="size_diff[]" value="{{$errors->has('size_diff') ? old('size') : $size}}">
                                         <div style="font-size: 30px; cursor: pointer;" class="col-md-2 ">
                                             <span class="addButton icons icon-plus"></span>
                                         </div>
@@ -212,13 +240,88 @@
                                             <span class="closeButton icons icon-close"></span>
                                         </div>
                                     </div>
-                                    @error('size')
+                                    @error('size_diff')
                                     <div class="text-danger">
                                         {{$message}}
                                     </div>
                                     @enderror
                                 </div>
                               @endforeach
+                            <div id="size" class="inputSize col-md-3 padding-0">
+                                <h3>Размер (фикс.)</h3>
+                                <div style="display: flex; justify-content: space-between;" class="col-md-11 padding-0">
+                                    <div class="col-md-11 padding-0">
+                                        <select class="form-control" name="size_standard[]">
+                                            <option {{ $errors->has('size_standard') ? '' : 'selected' }} disabled>
+                                                Размер (фикс.)
+                                            </option>
+                                            <option {{ old('size_standard') == '600x2000' ? 'selected' : ''}} value="600x2000">
+                                                600x2000
+                                            </option>
+                                            <option {{ old('size_standard') == '700x2000' ? 'selected' : ''}} value="700x2000">
+                                                700x2000
+                                            </option>
+                                            <option {{ old('size_standard') == '800x2000' ? 'selected' : ''}} value="800x2000">
+                                                800x2000
+                                            </option>
+                                            <option {{ old('size_standard') == '900x2000' ? 'selected' : ''}} value="900x2000">
+                                                900x2000
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div style="font-size: 30px; cursor: pointer;" class="col-md-1 ">
+                                        <span class="addButton icons icon-plus"></span>
+                                    </div>
+                                    <div style="font-size: 30px; cursor: pointer;" class="col-md-1">
+                                        <span class="closeButton icons icon-close"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="col-md-3 padding-0">
+                                    <h3>Meta Title</h3>
+                                    <div style="margin:0" class="row">
+                                        <div class="col-md-11 padding-0">
+                                            <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
+                                                   type="text"
+                                                   name="meta_title" value="{{$product->meta_title}}">
+                                        </div>
+                                    </div>
+                                    <div style="position: absolute; margin:0;" class="row">
+                                        @error('meta_title')
+                                        <div class="text-danger">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-8 padding-0">
+                                    <div class="col-md-12">
+                                        <div class="col-md-8 padding-0">
+                                            <h3>Meta Description</h3>
+                                            <div style="margin:0;" class="row">
+                                                <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
+                                                    placeholder="Введите описание товара">{{$errors->has('meta_description') ? old('meta_description') : $product->meta_description}}</textarea>
+                                            </div>
+                                            <div style="position: absolute; margin:0;" class="row">
+                                                @error('meta_description')
+                                                <div class="text-danger">
+                                                    {{$message}}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -228,13 +331,17 @@
                     <div class="panel">
                         <div class="panel-body">
                             <h3>Описание</h3>
-                            <textarea name="description" style="width: 100%;" rows="10" type="text"
-                                      placeholder="Введите описание товара">{{$errors->has('description') ? old('description') : $product->description}}</textarea>
-                            @error('description')
-                            <div class="text-danger">
-                                {{$message}}
+                            <div style="margin:0;" class="row">
+                                <textarea name="description" style="width: 100%;" rows="10" type="text"
+                                          placeholder="Введите описание товара">{{$errors->has('description') ? old('description') : $product->description}}</textarea>
                             </div>
-                            @enderror
+                            <div style="position: absolute; margin:0;" class="row">
+                                @error('description')
+                                <div class="text-danger">
+                                    {{$message}}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>

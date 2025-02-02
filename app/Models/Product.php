@@ -25,6 +25,8 @@ class Product extends Model
         'currency',
         'label',
         'active',
+        'meta_title',
+        'meta_description',
     ];
 
     public function door()
