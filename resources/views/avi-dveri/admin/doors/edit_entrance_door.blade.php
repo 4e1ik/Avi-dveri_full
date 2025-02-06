@@ -274,51 +274,51 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 padding-0">
-                <div class="col-md-12">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                                <div class="col-md-3 padding-0">
-                                    <h3>Meta Title</h3>
-                                    <div style="margin:0" class="row">
-                                        <div class="col-md-11 padding-0">
-                                            <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"
-                                                   type="text"
-                                                   name="meta_title" value="{{$product->meta_title}}">
-                                        </div>
-                                    </div>
-                                    <div style="position: absolute; margin:0;" class="row">
-                                        @error('meta_title')
-                                        <div class="text-danger">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-8 padding-0">
-                                    <div class="col-md-12">
-                                        <div class="col-md-8 padding-0">
-                                            <h3>Meta Description</h3>
-                                            <div style="margin:0;" class="row">
-                                                <textarea name="meta_description" style="width: 100%;" rows="10" type="text"
-                                                          placeholder="Введите описание товара">{{$errors->has('meta_description') ? old('meta_description') : $product->meta_description}}</textarea>
-                                            </div>
-                                            <div style="position: absolute; margin:0;" class="row">
-                                                @error('meta_description')
-                                                <div class="text-danger">
-                                                    {{$message}}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="col-md-12 padding-0">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="panel">--}}
+{{--                        <div class="panel-body">--}}
+{{--                            <div class="col-md-12">--}}
+{{--                                <div class="col-md-3 padding-0">--}}
+{{--                                    <h3>Meta Title</h3>--}}
+{{--                                    <div style="margin:0" class="row">--}}
+{{--                                        <div class="col-md-11 padding-0">--}}
+{{--                                            <input class="form-control {{$errors->has('meta_title') ? 'danger' : ''}}"--}}
+{{--                                                   type="text"--}}
+{{--                                                   name="meta_title" value="{{$product->meta_title}}">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div style="position: absolute; margin:0;" class="row">--}}
+{{--                                        @error('meta_title')--}}
+{{--                                        <div class="text-danger">--}}
+{{--                                            {{$message}}--}}
+{{--                                        </div>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-8 padding-0">--}}
+{{--                                    <div class="col-md-12">--}}
+{{--                                        <div class="col-md-8 padding-0">--}}
+{{--                                            <h3>Meta Description</h3>--}}
+{{--                                            <div style="margin:0;" class="row">--}}
+{{--                                                <textarea name="meta_description" style="width: 100%;" rows="10" type="text"--}}
+{{--                                                          placeholder="Введите описание товара">{{$errors->has('meta_description') ? old('meta_description') : $product->meta_description}}</textarea>--}}
+{{--                                            </div>--}}
+{{--                                            <div style="position: absolute; margin:0;" class="row">--}}
+{{--                                                @error('meta_description')--}}
+{{--                                                <div class="text-danger">--}}
+{{--                                                    {{$message}}--}}
+{{--                                                </div>--}}
+{{--                                                @enderror--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
