@@ -47,7 +47,7 @@ class MainController extends Controller
         }
 
         $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
-        $perPage = 9;
+        $perPage = 21;
         $products = Product::where('active', [1])
             ->where('category', 'fitting')
             ->with(['images', 'fitting'])
@@ -90,7 +90,7 @@ class MainController extends Controller
         }
 
         $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
-        $perPage = 9;
+        $perPage = 21;
         $products = Product::where('active', [1])
             ->whereHas('door', function ($query) {
                 $query->where('type', 'entrance');
@@ -135,7 +135,7 @@ class MainController extends Controller
         }
 
         $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
-        $perPage = 9;
+        $perPage = 21;
         $products = Product::where('active', [1])
             ->whereHas('door', function ($query) {
                 $query->where('type', 'interior');
