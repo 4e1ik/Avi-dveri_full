@@ -332,7 +332,7 @@
                         <div class="panel-body">
                             <h3>Описание</h3>
                             <div style="margin:0;" class="row">
-                                <textarea name="description" style="width: 100%;" rows="10" type="text"
+                                <textarea id="description" name="description" style="width: 100%;" rows="10" type="text"
                                           placeholder="Введите описание товара">{{$errors->has('description') ? old('description') : $product->description}}</textarea>
                             </div>
                             <div style="position: absolute; margin:0;" class="row">

@@ -332,7 +332,7 @@
                         <div class="panel-body">
                             <h3>Описание</h3>
                             <div style="margin:0" class="row">
-                                <textarea class="textarea form-control {{$errors->has('description') ? 'danger' : ''}}"
+                                <textarea id="description" class="textarea form-control {{$errors->has('description') ? 'danger' : ''}}"
                                           name="description" style="width: 100%;" rows="10" type="text">
                                     {{$errors->has('description') ? '' : old('description')}}
                                 </textarea>

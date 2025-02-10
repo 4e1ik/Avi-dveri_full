@@ -28,7 +28,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://cdn.tiny.cloud/1/mdjp1eslo1j3haievd435v10sarfluypkdbgvsfg9v49pt1e/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+{{--    <script src="https://cdn.tiny.cloud/1//tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>--}}
+    <script src="https://cdn.tiny.cloud/1/66nx74eenxayqxwnteavi6ds4jqmjqit1aypcupq14d9bu0n/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body id="mimin" class="dashboard">
@@ -661,11 +662,6 @@
 <script src="{{asset('/avi-dveri_assets/admin/newDesign/newDesign/js/rowTableProduct.js')}}"></script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-
-    });
-</script>
-<script type="text/javascript">
     (function(jQuery){
 
         // start: Chart =============
@@ -938,14 +934,6 @@
         // end: Maps==============
 
     })(jQuery);
-</script>
-
-<script type="text/javascript">
-    tinymce.init({
-        selector: 'input#input',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-    });
 </script>
 <!-- end: Javascript -->
 </body>
