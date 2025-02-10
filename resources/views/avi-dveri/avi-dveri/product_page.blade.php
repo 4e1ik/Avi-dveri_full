@@ -85,7 +85,6 @@
                                                     @if($image->door_color === $color['value'])
                                                         <li><a style="pointer-events: auto"
                                                                data-title="{{$color['name']}}"
-                                                               class="active noRedirect"
                                                                href="#">
                                                                     <span class="color">
                                                                         <img src="{{asset($color['image'])}}" alt="">
@@ -119,13 +118,14 @@
                                         </div>
                                     @endif
                                     @if(isset($product->door->material))
-                                    <div class="size-filter single-pro-size mb-35 clearfix">
-                                        <ul>
-                                            <li><span class="color-title text-capitalize">Материал</span></li>
-                                            <li><a class="active noRedirect" href="#">{{$product->door->material}}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                        <div class="size-filter single-pro-size mb-35 clearfix">
+                                            <ul>
+                                                <li><span class="color-title text-capitalize">Материал</span></li>
+                                                <li><a class="active noRedirect"
+                                                       href="#">{{$product->door->material}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
@@ -134,12 +134,58 @@
                             </button>
                             <!-- Size end -->
                             <!-- Single-pro-slider Small-photo start -->
+                            {{--                            <div class="single-pro-slider single-sml-photo slider-nav">--}}
+                            {{--                                @foreach($product->images as $image)--}}
+                            {{--                                    <div>--}}
+                            {{--                                        <img style="width: 73px;" src="{{ asset('storage/' . $image->image) }}"--}}
+                            {{--                                             alt="{{$image->description_image}}"/>--}}
+                            {{--                                    </div>--}}
+                            {{--                                @endforeach--}}
+                            {{--                            </div>--}}
+                            <style>
+                                .single-pro-slider .slick-active span:hover::after {
+                                    content: attr(data-title);
+                                    position: absolute;
+                                    margin: -3em 0 0 0em;
+                                    padding: 5px 5px;
+                                    background: #00000096;
+                                    font-size: 0.8em;
+                                    color: #ffffff;
+                                    border-radius: 5px;
+                                }
+
+                                /*.single-pro-slider div[data-title]::after {*/
+                                /*    content: attr(data-title); !* Берем текст из data-title *!*/
+                                /*    position: absolute;*/
+                                /*    bottom: 0; !* Размещаем текст внизу изображения *!*/
+                                /*    left: 0;*/
+                                /*    right: 0;*/
+                                /*    background: rgba(0, 0, 0, 0.7); !* Полупрозрачный фон *!*/
+                                /*    color: #fff; !* Цвет текста *!*/
+                                /*    font-size: 12px; !* Размер шрифта *!*/
+                                /*    text-align: center; !* Выравнивание текста по центру *!*/
+                                /*    padding: 5px 0; !* Внутренний отступ *!*/
+                                /*    opacity: 0; !* Текст скрыт по умолчанию *!*/
+                                /*    transition: opacity 0.3s ease; !* Плавное появление *!*/
+                                /*    pointer-events: none; !* Отключаем взаимодействие с текстом *!*/
+                                /*}*/
+
+                                /*.single-pro-slider .slick-active div[data-title]::after {*/
+                                /*    opacity: 1; !* Делаем текст видимым *!*/
+                                /*}*/
+                            </style>
                             <div class="single-pro-slider single-sml-photo slider-nav">
                                 @foreach($product->images as $image)
-                                    <div>
-                                        <img style="width: 73px;" src="{{ asset('storage/' . $image->image) }}"
-                                             alt="{{$image->description_image}}"/>
-                                    </div>
+                                    @foreach($colors as $color)
+                                        @if($image->door_color === $color['value'])
+                                            <div style="pointer-events: auto">
+                                                <span data-title="{{$color['name']}}">
+                                                    <img style="width: 73px;" src="{{ asset('storage/' . $image->image) }}" alt="{{$image->description_image}}"/>
+                                                </span>
+
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </div>
                             <!-- Single-pro-slider Small-photo end -->
