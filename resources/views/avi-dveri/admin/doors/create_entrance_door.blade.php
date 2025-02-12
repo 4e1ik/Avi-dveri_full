@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
-<script>const colors =  @json($colors);</script>
 @section('content')
+    <script>const colors =  @json($colors);</script>
     <div id="content">
         <div class="panel box-shadow-none content-header">
             <h1>Страница создания входных дверей</h1>
@@ -278,6 +278,13 @@
                             <h3>Описание</h3>
                             <textarea id="description" class="textarea form-control {{$errors->has('description') ? 'danger' : ''}}" name="description" style="width: 100%;" rows="10" type="text"
                                       placeholder="@error('description') {{$message}} @enderror">{{$errors->has('description') ? '' : old('description')}}</textarea>
+                            <script>
+                                tinymce.init({
+                                    selector: 'textarea',
+                                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -293,12 +300,4 @@
             </div>
         </form>
     </div>
-
-    <script type="text/javascript">
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        });
-    </script>
 @endsection

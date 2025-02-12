@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
-<script>const colors =  @json($colors);</script>
 @section('content')
+    <script>const colors =  @json($colors);</script>
     <div id="content">
         <div class="panel box-shadow-none content-header">
             <h1>Страница создания межкомнатных дверей</h1>
