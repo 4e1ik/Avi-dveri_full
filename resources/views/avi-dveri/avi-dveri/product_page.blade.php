@@ -138,10 +138,10 @@
                                 .single-pro-slider .slick-active span:hover::after {
                                     content: attr(data-title);
                                     position: absolute;
-                                    margin: -3em 0 0 0em;
+                                    margin: -2em 0 0 0em;
                                     padding: 5px 5px;
                                     background: #00000096;
-                                    font-size: 0.8em;
+                                    font-size: 1.25em;
                                     color: #ffffff;
                                     border-radius: 5px;
                                 }

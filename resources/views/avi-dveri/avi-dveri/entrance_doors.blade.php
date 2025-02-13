@@ -54,7 +54,7 @@
                                                     @if($product->images->isNotEmpty())
                                                         <a style="display: flex; justify-content: center;"
                                                            href="{{route('product_page', ['product' => $product])}}"><img
-                                                                    style="object-fit: contain; width: 100px;"
+                                                                    style="object-fit: contain;"
                                                                     src="{{ asset( 'storage/'. $product->images[0]->image ) }}"
                                                                     alt=""/></a>
                                                     @endif
