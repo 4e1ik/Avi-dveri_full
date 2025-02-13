@@ -30,13 +30,11 @@
                                    cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Название</th>
                                     <th>Описание</th>
                                     <th>Цена за полотно</th>
                                     <th>Цена за комплект</th>
                                     <th>Размер</th>
-                                    <th>Стекло</th>
                                     <th>Назначение</th>
                                     <th>Материал</th>
                                     <th>Ярлык</th>
@@ -50,9 +48,8 @@
                                     @foreach($products as $product)
                                         @if(!empty($product->door))
                                         <tr>
-                                            <td>{{$product->id}}</td>
                                             <td>{{$product->title}}</td>
-                                            <td>{{$product->description}}</td>
+                                            <td>{!! $product->description !!}</td>
                                             <td>{{$product->price}}</td>
                                             <td>{{$product->price_per_set}}</td>
                                             <td>
@@ -62,7 +59,6 @@
                                                     @endforeach
                                                 @endif
                                             </td>
-                                            <td>{{$product->door->glass}}</td>
                                             <td>{{$product->door->function}}</td>
                                             <td>{{$product->door->material}}</td>
                                             <td>@if(!empty($product->label))

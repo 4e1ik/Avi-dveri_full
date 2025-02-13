@@ -30,7 +30,6 @@
                                    cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Название</th>
                                     <th>Описание</th>
                                     <th>Цена за полотно</th>
@@ -45,9 +44,8 @@
                                 @if($products->isNotEmpty())
                                     @foreach($products as $product)
                                         <tr>
-                                            <td>{{$product->id}}</td>
                                             <td>{{$product->title}}</td>
-                                            <td>{{$product->description}}</td>
+                                            <td>{!! $product->description !!}</td>
                                             <td>{{$product->price}}</td>
                                             <td>{{$product->price_per_set}}</td>
                                             <td>@if(!empty($product->label))
