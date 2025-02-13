@@ -66,7 +66,7 @@
                                     </span>
                             </div>
                             <div class="product-description">
-                                <p>{{$product->description}}</p>
+                                <p>{!! $product->description !!}</p>
                             </div>
                             <select id="selector" class="custom-select mb-30" onchange="changeContent()"
                                     style="cursor: pointer">
