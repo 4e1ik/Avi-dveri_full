@@ -46,8 +46,7 @@
                                                 <div class="product-img">
                                                     @if($product->label !== null)
                                                         @foreach($product->label as $item)
-                                                            <span style="position: relative; padding: 5px;"
-                                                                  class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):($item == 'order'?('order-label'):('hit-label')))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):($item == 'order'?('На заказ'):('Хит')))}}</span>
+                                                            <span class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):($item == 'order'?('order-label'):('hit-label')))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):($item == 'order'?('На заказ'):('Хит')))}}</span>
                                                             @php $label_distance = $label_distance + 75; @endphp
                                                         @endforeach
                                                     @endif
@@ -69,7 +68,8 @@
                                                 </div>
                                                 <div class="product-details">
                                                     <ul>
-                                                        <li>{{$product->description}}</li>
+                                                        <li>Стекло: {{$product->door->glass}}</li>
+                                                        <li>Материал: {{$product->door->material}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
