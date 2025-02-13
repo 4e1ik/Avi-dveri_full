@@ -143,13 +143,13 @@
                                                     Выберите материал двери
                                                 </option>
                                                 @enderror
-                                            <option {{ $product->door->function == 'street' ? 'selected' : ''}} value="street">
+                                            <option {{ $product->door->function == 'Улица' ? 'selected' : ''}} value="Улица">
                                                 Улица
                                             </option>
-                                            <option {{ $product->door->function == 'apartment' ? 'selected' : ''}}  value="apartment">
+                                            <option {{ $product->door->function == 'Квартира' ? 'selected' : ''}}  value="Квартира">
                                                 Квартира
                                             </option>
-                                            <option {{ $product->door->function == 'thermal_break' ? 'selected' : ''}}  value="thermal_break">
+                                            <option {{ $product->door->function == 'Терморазрыв' ? 'selected' : ''}}  value="Терморазрыв">
                                                 Терморазрыв
                                             </option>
                                         </select>
@@ -170,10 +170,10 @@
                                                     Выберите материал двери
                                                 </option>
                                                 @enderror
-                                                <option {{ $product->door->material == 'metal/mdf' ? 'selected' : ''}} value="metal/mdf">
+                                                <option {{ $product->door->material == 'Металл/МДФ' ? 'selected' : ''}} value="Металл/МДФ">
                                                     Металл/МДФ
                                                 </option>
-                                                <option {{ $product->door->material == 'mdf/mdf' ? 'selected' : ''}} value="mdf/mdf">
+                                                <option {{ $product->door->material == 'МДФ/МДФ' ? 'selected' : ''}} value="МДФ/МДФ">
                                                     МДФ/МДФ
                                                 </option>
                                         </select>

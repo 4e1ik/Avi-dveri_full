@@ -126,13 +126,13 @@
                                                     Выберите сегмент фурнитуры
                                                 </option>
                                                 @enderror
-                                                <option {{ $product->fitting->function == 'economy' ? 'selected' : ''}} value="economy">
+                                                <option {{ $product->fitting->function == 'Эконом' ? 'selected' : ''}} value="Эконом">
                                                     Эконом
                                                 </option>
-                                                <option {{ $product->fitting->function == 'standard' ? 'selected' : ''}}  value="standard">
+                                                <option {{ $product->fitting->function == 'Стандарт' ? 'selected' : ''}}  value="Стандарт">
                                                     Стандарт
                                                 </option>
-                                                <option {{ $product->fitting->function == 'premium' ? 'selected' : ''}}  value="premium">
+                                                <option {{ $product->fitting->function == 'Премиум' ? 'selected' : ''}}  value="Премиум">
                                                     Премиум
                                                 </option>
                                         </select>

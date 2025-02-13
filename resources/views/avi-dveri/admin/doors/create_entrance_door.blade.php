@@ -98,13 +98,13 @@
                                                     Выберите назначение двери
                                                 </option>
                                             @enderror
-                                            <option {{ old('function') == 'street' ? 'selected' : ''}} value="street">
+                                            <option {{ old('function') == 'Улица' ? 'selected' : ''}} value="Улица">
                                                 Улица
                                             </option>
-                                            <option {{ old('function') == 'apartment' ? 'selected' : ''}}  value="apartment">
+                                            <option {{ old('function') == 'Квартира' ? 'selected' : ''}}  value="Квартира">
                                                 Квартира
                                             </option>
-                                            <option {{ old('function') == 'thermal_break' ? 'selected' : ''}}  value="thermal_break">
+                                            <option {{ old('function') == 'Терморазрыв' ? 'selected' : ''}}  value="Терморазрыв">
                                                 Терморазрыв
                                             </option>
                                         </select>
@@ -125,10 +125,10 @@
                                                     Выберите материал двери
                                                 </option>
                                                 @enderror
-                                            <option {{ old('material') == 'metal/mdf' ? 'selected' : ''}} value="metal/mdf">
+                                            <option {{ old('material') == 'Металл/МДФ' ? 'selected' : ''}} value="Металл/МДФ">
                                                 Металл/МДФ
                                             </option>
-                                            <option {{ old('material') == 'mdf/mdf' ? 'selected' : ''}} value="mdf/mdf">
+                                            <option {{ old('material') == 'МДФ/МДФ' ? 'selected' : ''}} value="МДФ/МДФ">
                                                 МДФ/МДФ
                                             </option>
                                         </select>

@@ -140,7 +140,7 @@
                                                     Выберите назначение двери
                                                 </option>
                                             @enderror
-                                                <option {{ old('function') == 'apartment' ? 'selected' : ''}}  value="apartment">
+                                                <option {{ old('function') == 'Квартира' ? 'selected' : ''}}  value="Квартира">
                                                     Квартира
                                                 </option>
                                         </select>
@@ -161,19 +161,19 @@
                                                 Выберите материал двери
                                             </option>
                                         @enderror
-                                        <option {{ old('material') == 'eco-veneer' ? 'selected' : ''}}  value="eco-veneer">
+                                        <option {{ old('material') == 'Эко-винир' ? 'selected' : ''}}  value="Эко-винир">
                                             Экошпон
                                         </option>
-                                        <option {{ old('material') == 'polypropylene' ? 'selected' : ''}}  value="polypropylene">
+                                        <option {{ old('material') == 'Полипропилен' ? 'selected' : ''}}  value="Полипропилен">
                                             Полипропилен
                                         </option>
-                                        <option {{ old('material') == 'enamel' ? 'selected' : ''}}  value="enamel">
+                                        <option {{ old('material') == 'Эмаль' ? 'selected' : ''}}  value="Эмаль">
                                             Эмаль
                                         </option>
-                                        <option {{ old('material') == 'hidden' ? 'selected' : ''}}  value="hidden">
+                                        <option {{ old('material') == 'Скрытый' ? 'selected' : ''}}  value="Скрытый">
                                             Скрытые
                                         </option>
-                                        <option {{ old('material') == 'solid' ? 'selected' : ''}}  value="solid">
+                                        <option {{ old('material') == 'Массив' ? 'selected' : ''}}  value="Массив">
                                             Массив
                                         </option>
                                     </select>
