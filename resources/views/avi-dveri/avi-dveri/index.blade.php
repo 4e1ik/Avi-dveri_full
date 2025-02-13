@@ -190,8 +190,12 @@
                                         </div>
                                         <div class="product-details">
                                             <ul>
-                                                <li>Стекло: {{$product->door->glass}}</li>
-                                                <li>Материал: {{$product->door->material}}</li>
+                                                @if(isset($product->door->glass))
+                                                    <li>Стекло: {{$product->door->glass}}</li>
+                                                @endif
+                                                @if(isset($product->door->material))
+                                                    <li>Материал: {{$product->door->material}}</li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
