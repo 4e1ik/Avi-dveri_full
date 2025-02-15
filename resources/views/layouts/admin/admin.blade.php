@@ -939,13 +939,13 @@
     })(jQuery);
 </script>
 
-{{--<script type="text/javascript">--}}
-{{--    tinymce.init({--}}
-{{--        selector: 'input#input',--}}
-{{--        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',--}}
-{{--        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',--}}
-{{--    });--}}
-{{--</script>--}}
+<script>
+    tinymce.init({
+        selector: '#description',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    });
+</script>
 <!-- end: Javascript -->
 </body>
 </html>

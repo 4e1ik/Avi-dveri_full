@@ -68,9 +68,17 @@
 /* -----------------------------------------------------
 	Sticker / Product Label
 ----------------------------------------------------- */
+.lables {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5em;
+}
+
 .pro-label {
   left: 20px;
-  position: absolute;
+  position: relative;
   top: 20px;
   z-index: 2;
   background: #c8a165 none repeat scroll 0 0;
@@ -80,6 +88,7 @@
   line-height: 25px;
   padding: 0 10px;
   text-transform: capitalize;
+  text-align: center;
 }
 .pro-label.new-label {
   background: #c8a165 none repeat scroll 0 0;

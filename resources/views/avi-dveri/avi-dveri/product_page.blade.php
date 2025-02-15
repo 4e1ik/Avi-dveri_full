@@ -16,13 +16,13 @@
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
-                                @if($product && $product instanceof App\Models\Door)
-                                    @if($product->type == 'interior')
+                                @if($product->category == 'door')
+                                    @if($product->door->type == 'interior')
                                         <li><a href="{{route('interior_doors')}}">Межкомнатные двери</a></li>
                                     @else
                                         <li><a href="{{route('entrance_doors')}}">Входные двери</a></li>
                                     @endif
-                                @elseif($product && $product instanceof App\Models\Fitting)
+                                @elseif($product->category == 'fitting')
                                     <li><a href="{{route('accessories')}}">Фурнитура</a></li>
                                 @endif
                                 <li>{{$product->title}}</li>
@@ -48,10 +48,11 @@
                                     <img style="object-fit: contain; width: 370px;"
                                          src="{{ asset('storage/' . $image->image) }}"
                                          alt="{{$image->description_image}}"/>
-                                    <a class="view-full-screen" href="{{ asset('storage/' . $image->image) }}"
+                                    <a class="view-full-screen" href="#" role="button"
                                        data-lightbox="roadtrip" data-title="{{$image->description_image}}">
                                         <i class="zmdi zmdi-zoom-in"></i>
                                     </a>
+
                                 </div>
                             @endforeach
                         </div>
@@ -83,7 +84,7 @@
                                             @foreach($product->images as $image)
                                                 @foreach($colors as $color)
                                                     @if($image->door_color === $color['value'])
-                                                        <li><a style="pointer-events: auto"
+                                                        <li><a id="color" style="pointer-events: auto; cursor: default"
                                                                data-title="{{$color['name']}}"
                                                                href="#">
                                                                     <span class="color">
@@ -91,6 +92,12 @@
                                                                     </span>
                                                             </a>
                                                         </li>
+                                                        <script>
+                                                            document.querySelector('#color').addEventListener('click', function(event) {
+                                                                event.preventDefault(); // Отменяем стандартное поведение ссылки
+                                                                // Твой код, который должен выполниться при клике
+                                                            });
+                                                        </script>
                                                     @endif
                                                 @endforeach
                                             @endforeach

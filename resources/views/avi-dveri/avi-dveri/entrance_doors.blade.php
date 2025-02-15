@@ -32,7 +32,8 @@
                     <div class="shop-content mt-xs-30">
                         <div class="product-option mb-30 clearfix">
                             <div class="showing text-end d-none d-md-block">
-                                <p class="mb-0">Показано {{ str_pad($start, 2, '0', STR_PAD_LEFT) }}-{{ str_pad($end, 2, '0', STR_PAD_LEFT) }} из {{ $totalCount }} результатов</p>
+                                <p class="mb-0">Показано {{ str_pad($start, 2, '0', STR_PAD_LEFT) }}
+                                    -{{ str_pad($end, 2, '0', STR_PAD_LEFT) }} из {{ $totalCount }} результатов</p>
                             </div>
                         </div>
                         <!-- Tab panes -->
@@ -45,10 +46,11 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     @if($product->label !== null)
-                                                        @foreach($product->label as $item)
-                                                            <span class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):($item == 'order'?('order-label'):('hit-label')))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):($item == 'order'?('На заказ'):('Хит')))}}</span>
-                                                            @php $label_distance = $label_distance + 75; @endphp
-                                                        @endforeach
+                                                        <div class="lables">
+                                                            @foreach($product->label as $item)
+                                                                <span class="pro-label {{$item == 'new'?('new-label'):($item == 'sale'?('sale-label'):($item == 'order'?('order-label'):('hit-label')))}}">{{$item == 'new'?('Новинка'):($item == 'sale'?('Скидка'):($item == 'order'?('На заказ'):('Хит')))}}</span>
+                                                            @endforeach
+                                                        </div>
                                                     @endif
                                                     @if($product->images->isNotEmpty())
                                                         <a style="display: flex; justify-content: center;"
@@ -119,11 +121,14 @@
                             </div>
                             <div class="widget-info color-filter clearfix">
                                 <ul>
-                                    <li><input type="checkbox" name="function" value="street"  class="func_checkbox"><a href="#">Улица<span
+                                    <li><input type="checkbox" name="function" value="street" class="func_checkbox"><a
+                                                href="#">Улица<span
                                                     class="count">{{$streetTotalCount}}</span></a></li>
-                                    <li><input type="checkbox" name="function" value="apartment" class="func_checkbox"><a href="#">Квартира<span
+                                    <li><input type="checkbox" name="function" value="apartment"
+                                               class="func_checkbox"><a href="#">Квартира<span
                                                     class="count">{{$apartmentTotalCount}}</span></a></li>
-                                    <li><input type="checkbox"name="function" value="thermal_break" class="func_checkbox"><a href="#">Терморазрыв<span
+                                    <li><input type="checkbox" name="function" value="thermal_break"
+                                               class="func_checkbox"><a href="#">Терморазрыв<span
                                                     class="count">{{$thermal_breakTotalCount}}</span></a></li>
                                 </ul>
                             </div>
