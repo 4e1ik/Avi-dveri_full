@@ -177,7 +177,7 @@
                                             <option {{ $product->door->material == 'Эмаль' ? 'selected' : ''}}  value="Эмаль">
                                                 Эмаль
                                             </option>
-                                            <option {{ $product->door->material == 'Скрытый' ? 'selected' : ''}}  value="Скрытый">
+                                            <option {{ $product->door->material == 'Скрытые' ? 'selected' : ''}}  value="Скрытые">
                                                 Скрытые
                                             </option>
                                             <option {{ $product->door->material == 'Массив' ? 'selected' : ''}}  value="Массив">

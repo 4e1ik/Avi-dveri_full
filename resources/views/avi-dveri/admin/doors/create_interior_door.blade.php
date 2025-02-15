@@ -161,7 +161,7 @@
                                                 Выберите материал двери
                                             </option>
                                         @enderror
-                                        <option {{ old('material') == 'Эко-винир' ? 'selected' : ''}}  value="Эко-винир">
+                                        <option {{ old('material') == 'Экошпон' ? 'selected' : ''}}  value="Экошпон">
                                             Экошпон
                                         </option>
                                         <option {{ old('material') == 'Полипропилен' ? 'selected' : ''}}  value="Полипропилен">
@@ -170,7 +170,7 @@
                                         <option {{ old('material') == 'Эмаль' ? 'selected' : ''}}  value="Эмаль">
                                             Эмаль
                                         </option>
-                                        <option {{ old('material') == 'Скрытый' ? 'selected' : ''}}  value="Скрытый">
+                                        <option {{ old('material') == 'Скрытые' ? 'selected' : ''}}  value="Скрытые">
                                             Скрытые
                                         </option>
                                         <option {{ old('material') == 'Массив' ? 'selected' : ''}}  value="Массив">

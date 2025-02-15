@@ -62,9 +62,9 @@ class MainController extends Controller
 
         $label_distance = 15;
 
-        $economyTotalCount = Fitting::where('function', 'economy')->count();
-        $standardTotalCount = Fitting::where('function', 'standard')->count();
-        $premiumTotalCount = Fitting::where('function', 'premium')->count();
+        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
+        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
+        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
         return view('avi-dveri.avi-dveri.accessories', compact(
             'products',
@@ -107,9 +107,9 @@ class MainController extends Controller
 
         $label_distance = 15;
 
-        $streetTotalCount = Door::where('function', 'street')->count();
-        $apartmentTotalCount = Door::where('function', 'apartment')->count();
-        $thermal_breakTotalCount = Door::where('function', 'thermal_break')->count();
+        $streetTotalCount = Door::where('function', 'Улица')->count();
+        $apartmentTotalCount = Door::where('function', 'Квартира')->count();
+        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->count();
 
         return view('avi-dveri.avi-dveri.entrance_doors', compact(
             'products',
@@ -152,11 +152,11 @@ class MainController extends Controller
 
         $label_distance = 15;
 
-        $eco_veneerTotalCount = Door::where('material', 'eco-veneer')->count();
-        $polypropyleneTotalCount = Door::where('material', 'polypropylene')->count();
-        $enamelTotalCount = Door::where('material', 'enamel')->count();
-        $hiddenTotalCount = Door::where('material', 'hidden')->count();
-        $solidTotalCount = Door::where('material', 'solid')->count();
+        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
+        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
+        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
+        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
+        $solidTotalCount = Door::where('material', 'Массив')->count();
 
         return view('avi-dveri.avi-dveri.interior_doors', compact(
             'products',
