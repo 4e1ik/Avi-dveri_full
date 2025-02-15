@@ -48,7 +48,7 @@
                                     <img style="object-fit: contain; width: 370px;"
                                          src="{{ asset('storage/' . $image->image) }}"
                                          alt="{{$image->description_image}}"/>
-                                    <a class="view-full-screen" href="#" role="button"
+                                    <a class="view-full-screen" href="{{ asset('storage/' . $image->image) }}"
                                        data-lightbox="roadtrip" data-title="{{$image->description_image}}">
                                         <i class="zmdi zmdi-zoom-in"></i>
                                     </a>
