@@ -21,8 +21,8 @@ class MainController extends Controller
             ->whereJsonContains('label', 'hit')
             ->inRandomOrder()
             ->get();
-        $label_distance = 15;
-        return view('avi-dveri.avi-dveri.index', compact('products', 'label_distance'));
+        
+        return view('avi-dveri.avi-dveri.index', compact('products'));
     }
 
     function catalog()
@@ -60,7 +60,7 @@ class MainController extends Controller
         $start = ($currentPage - 1) * $perPage + 1;
         $end = min($start + $perPage - 1, $totalCount);
 
-        $label_distance = 15;
+        
 
         $economyTotalCount = Fitting::where('function', 'Эконом')->count();
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
@@ -68,7 +68,7 @@ class MainController extends Controller
 
         return view('avi-dveri.avi-dveri.accessories', compact(
             'products',
-            'label_distance',
+            
             'totalCount',
             'start',
             'end',
@@ -105,15 +105,149 @@ class MainController extends Controller
         $start = ($currentPage - 1) * $perPage + 1;
         $end = min($start + $perPage - 1, $totalCount);
 
-        $label_distance = 15;
+        
 
         $streetTotalCount = Door::where('function', 'Улица')->count();
         $apartmentTotalCount = Door::where('function', 'Квартира')->count();
         $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->count();
 
-        return view('avi-dveri.avi-dveri.entrance_doors', compact(
+        return view('avi-dveri.avi-dveri.doors.entrance_doors.entrance_doors', compact(
             'products',
-            'label_distance',
+            'totalCount',
+            'start',
+            'end',
+            'streetTotalCount',
+            'apartmentTotalCount',
+            'thermal_breakTotalCount',
+        ));
+    }
+
+    function street_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'entrance')
+                    ->where('function', 'Улица');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $streetTotalCount = Door::where('function', 'Улица')->count();
+        $apartmentTotalCount = Door::where('function', 'Квартира')->count();
+        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->count();
+
+        return view('avi-dveri.avi-dveri.doors.entrance_doors.street_doors', compact(
+            'products',
+            'totalCount',
+            'start',
+            'end',
+            'streetTotalCount',
+            'apartmentTotalCount',
+            'thermal_breakTotalCount',
+        ));
+    }
+
+    function apartment_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'entrance')
+                    ->where('function', 'Квартира');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $streetTotalCount = Door::where('function', 'Улица')->count();
+        $apartmentTotalCount = Door::where('function', 'Квартира')->count();
+        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->count();
+
+        return view('avi-dveri.avi-dveri.doors.entrance_doors.apartment_doors', compact(
+            'products',
+            'totalCount',
+            'start',
+            'end',
+            'streetTotalCount',
+            'apartmentTotalCount',
+            'thermal_breakTotalCount',
+        ));
+    }
+
+    function thermal_break_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'entrance')
+                ->where('function', 'Терморазрыв');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $streetTotalCount = Door::where('function', 'Улица')->count();
+        $apartmentTotalCount = Door::where('function', 'Квартира')->count();
+        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->count();
+
+        return view('avi-dveri.avi-dveri.doors.entrance_doors.thermal_break_doors', compact(
+            'products',
             'totalCount',
             'start',
             'end',
@@ -150,7 +284,53 @@ class MainController extends Controller
         $start = ($currentPage - 1) * $perPage + 1;
         $end = min($start + $perPage - 1, $totalCount);
 
-        $label_distance = 15;
+        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
+        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
+        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
+        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
+        $solidTotalCount = Door::where('material', 'Массив')->count();
+
+        return view('avi-dveri.avi-dveri.doors.interior_doors.interior_doors', compact(
+            'products',
+            'totalCount',
+            'start',
+            'end',
+            'eco_veneerTotalCount',
+            'polypropyleneTotalCount',
+            'enamelTotalCount',
+            'hiddenTotalCount',
+            'solidTotalCount',
+        ));
+    }
+
+    function eco_veneer_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'interior')
+                ->where('material', 'Экошпон');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+        
 
         $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
         $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
@@ -158,9 +338,203 @@ class MainController extends Controller
         $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
         $solidTotalCount = Door::where('material', 'Массив')->count();
 
-        return view('avi-dveri.avi-dveri.interior_doors', compact(
+        return view('avi-dveri.avi-dveri.doors.interior_doors.eco_veneer_doors', compact(
             'products',
-            'label_distance',
+            'totalCount',
+            'start',
+            'end',
+            'eco_veneerTotalCount',
+            'polypropyleneTotalCount',
+            'enamelTotalCount',
+            'hiddenTotalCount',
+            'solidTotalCount',
+        ));
+    }
+
+    function polypropylene_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'interior')
+                    ->where('material', 'Полипропилен');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+//        dd($products);
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
+        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
+        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
+        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
+        $solidTotalCount = Door::where('material', 'Массив')->count();
+
+        return view('avi-dveri.avi-dveri.doors.interior_doors.polypropylene_doors', compact(
+            'products',
+            'totalCount',
+            'start',
+            'end',
+            'eco_veneerTotalCount',
+            'polypropyleneTotalCount',
+            'enamelTotalCount',
+            'hiddenTotalCount',
+            'solidTotalCount',
+        ));
+    }
+
+    function enamel_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'interior')
+                    ->where('material', 'Эмаль');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
+        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
+        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
+        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
+        $solidTotalCount = Door::where('material', 'Массив')->count();
+
+        return view('avi-dveri.avi-dveri.doors.interior_doors.enamel_doors', compact(
+            'products',
+            'totalCount',
+            'start',
+            'end',
+            'eco_veneerTotalCount',
+            'polypropyleneTotalCount',
+            'enamelTotalCount',
+            'hiddenTotalCount',
+            'solidTotalCount',
+        ));
+    }
+
+    function hidden_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'interior')
+                    ->where('material', 'Скрытые');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+//        dd($products);
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
+        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
+        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
+        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
+        $solidTotalCount = Door::where('material', 'Массив')->count();
+
+        return view('avi-dveri.avi-dveri.doors.interior_doors.hidden_doors', compact(
+            'products',
+            'totalCount',
+            'start',
+            'end',
+            'eco_veneerTotalCount',
+            'polypropyleneTotalCount',
+            'enamelTotalCount',
+            'hiddenTotalCount',
+            'solidTotalCount',
+        ));
+    }
+
+    function solid_doors(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('door', function ($query) {
+                $query->where('type', 'interior')
+                    ->where('material', 'Массив');
+            })
+            ->with(['images', 'door'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+//        dd($products);
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
+        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
+        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
+        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
+        $solidTotalCount = Door::where('material', 'Массив')->count();
+
+        return view('avi-dveri.avi-dveri.doors.interior_doors.solid_doors', compact(
+            'products',
             'totalCount',
             'start',
             'end',

@@ -25,6 +25,23 @@
                                 @elseif($product->category == 'fitting')
                                     <li><a href="{{route('accessories')}}">Фурнитура</a></li>
                                 @endif
+                                @if($product->door->material == 'Полипропилен')
+                                    <li><a href="{{route('polypropylene_doors')}}">Полипропилен</a></li>
+                                @elseif($product->door->material == 'Эмаль')
+                                    <li><a href="{{route('enamel_doors')}}">Эмаль</a></li>
+                                @elseif($product->door->material == 'Скрытые')
+                                    <li><a href="{{route('hidden_doors')}}">Скрытые</a></li>
+                                @elseif($product->door->material == 'Экошпон')
+                                    <li><a href="{{route('eco_veneer_dors')}}">Экошпон</a></li>
+                                @elseif($product->door->material == 'Массив')
+                                    <li><a href="{{route('solid_doors')}}">Массив</a></li>
+                                @elseif($product->door->function == 'Квартира')
+                                    <li><a href="{{route('apartment_doors')}}">Квартира</a></li>
+                                @elseif($product->door->function == 'Улица')
+                                    <li><a href="{{route('street_doors')}}">Улица</a></li>
+                                @elseif($product->door->function == 'Терморазрыв')
+                                    <li><a href="{{route('thermal_break_doors')}}">Терморазрыв</a></li>
+                                @endif
                                 <li>{{$product->title}}</li>
                             </ul>
                         </div>
@@ -93,7 +110,7 @@
                                                             </a>
                                                         </li>
                                                         <script>
-                                                            document.querySelector('#color').addEventListener('click', function(event) {
+                                                            document.querySelector('#color').addEventListener('click', function (event) {
                                                                 event.preventDefault(); // Отменяем стандартное поведение ссылки
                                                                 // Твой код, который должен выполниться при клике
                                                             });
@@ -159,7 +176,9 @@
                                         @if($image->door_color === $color['value'])
                                             <div style="pointer-events: auto">
                                                 <span data-title="{{$color['name']}}">
-                                                    <img style="width: 73px;" src="{{ asset('storage/' . $image->image) }}" alt="{{$image->description_image}}"/>
+                                                    <img style="width: 73px;"
+                                                         src="{{ asset('storage/' . $image->image) }}"
+                                                         alt="{{$image->description_image}}"/>
                                                 </span>
 
                                             </div>
@@ -187,7 +206,7 @@
 
             // Меняем текст внутри span
             if (selectedValue === "option1") {
-                spanElement.textContent = (@json($product->price) == "null"
+                spanElement.textContent = @json($product->price) == "null"
             )
                     ? (@json($product->price_per_canvas)+" " +@json($product->currency)) : (@json($product->price)+" " +@json($product->currency));
             } else if (selectedValue === "option2") {
