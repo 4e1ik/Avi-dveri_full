@@ -39,10 +39,10 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="grid-view">
-                                <div class="row">
+                                <div id="products" class="row">
                                     <!-- Single-product start -->
                                     @foreach($products as $product)
-                                        <div class="col-lg-4 col-md-6">
+                                        <div data-price="{{$product->price}}" class="product col-lg-4 col-md-6">
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     @if($product->label !== null)
