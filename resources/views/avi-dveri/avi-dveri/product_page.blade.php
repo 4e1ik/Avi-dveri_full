@@ -32,7 +32,7 @@
                                 @elseif($product->door->material == 'Скрытые')
                                     <li><a href="{{route('hidden_doors')}}">Скрытые</a></li>
                                 @elseif($product->door->material == 'Экошпон')
-                                    <li><a href="{{route('eco_veneer_dors')}}">Экошпон</a></li>
+                                    <li><a href="{{route('eco_veneer_doors')}}">Экошпон</a></li>
                                 @elseif($product->door->material == 'Массив')
                                     <li><a href="{{route('solid_doors')}}">Массив</a></li>
                                 @elseif($product->door->function == 'Квартира')
