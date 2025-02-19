@@ -6,6 +6,7 @@ function add_doors_colors()
     $directories = [
         public_path('avi-dveri_assets/admin/img/elporta'),
         public_path('avi-dveri_assets/admin/img/yrkas'),
+        public_path('avi-dveri_assets/admin/img/magna'),
     ];
     foreach ($directories as $directory) {
         // Проверяем, существует ли директория
