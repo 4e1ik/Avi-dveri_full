@@ -50,16 +50,7 @@
                     <!-- Shop-Content End -->
                 </div>
                 <div class="col-md-3 col-sm-12 col-xs-12">
-                    <!-- Widget-Search start -->
-                    {{--                    <aside class="widget widget-search mb-30">--}}
-                    {{--                        <form action="#">--}}
-                    {{--                            <input type="text" placeholder="Поиск"/>--}}
-                    {{--                            <button type="submit">--}}
-                    {{--                                <i class="zmdi zmdi-search"></i>--}}
-                    {{--                            </button>--}}
-                    {{--                        </form>--}}
-                    {{--                    </aside>--}}
-                    <!-- Widget-search end -->
+
                     <!-- Widget-Categories start -->
                     @include('includes.avi-dveri.aside_catalog')
                     <!-- Widget-categories end -->
