@@ -2,10 +2,18 @@
     <div class="widget-title">
         <h4>Цена</h4>
         <div class="price__label">
-            <input name="price_filter" value="ASC" type="radio" id="button1">
-            <label for="button1">↑</label>
-            <input name="price_filter" value="DESC" type="radio" id="button2">
-            <label for="button2">↓</label>
+            <form action="" method="post">
+                @csrf
+                <button type="submit">
+                    <input name="price_filter" value="DESC" type="radio" id="button1">
+                    <label for="button1">↑</label>
+                </button>
+                <button type="submit">
+                    <input name="price_filter" value="ASC" type="radio" id="button2">
+                    <label for="button2">↓</label>
+                </button>
+            </form>
+
         </div>
     </div>
     {{--<div class="widget-info">--}}

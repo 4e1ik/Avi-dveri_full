@@ -260,6 +260,7 @@ class MainController extends Controller
     function interior_doors(FilterRequest $request)
     {
         $data = $request->all();
+//        dd($data);
         if (array_key_exists('price', $data)){
             preg_match_all('/\d+/', $data['price'], $matches);
             $data['price'] = array_map('intval', $matches[0]);
@@ -269,6 +270,7 @@ class MainController extends Controller
         }
 
         $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+//        dd($filter);
         $perPage = 21;
         $products = Product::where('active', [1])
             ->whereHas('door', function ($query) {
@@ -302,6 +304,15 @@ class MainController extends Controller
             'solidTotalCount',
         ));
     }
+
+//    function price_filter()
+//    {
+//        $products = Product::where('active', [1])->get();
+//
+//        return response()->json([
+//            'html' => view('includes.products', compact('products'))->render()
+//        ]);
+//    }
 
     function eco_veneer_doors(FilterRequest $request)
     {

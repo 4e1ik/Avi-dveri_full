@@ -22,9 +22,7 @@ class FilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price' => 'max:50',
-            'price_filter' => 'max:50',
-            'function' => 'max:50',
+            'price_filter' => 'max:4',
         ];
     }
 }
