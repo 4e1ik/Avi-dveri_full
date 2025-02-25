@@ -100,7 +100,6 @@
                                             @if(isset($colors))
                                                 <li><span class="color-title text-capitalize">Цвет</span></li>
                                                 @foreach($product->images as $image)
-
                                                     @foreach($colors as $color)
                                                         @if($image->door_color === $color['value'])
                                                             <li><a id="color"
@@ -190,6 +189,28 @@
                                                 </div>
                                             @endif
                                         @endforeach
+                                    @endforeach
+                                </div>
+                            @else
+                                <style>
+                                    .single-pro-slider .slick-active span:hover::after {
+                                        content: attr(data-title);
+                                        position: absolute;
+                                        margin: -2em 0 0 0em;
+                                        padding: 5px 5px;
+                                        background: #00000096;
+                                        font-size: 1.25em;
+                                        color: #ffffff;
+                                        border-radius: 5px;
+                                    }
+                                </style>
+                                <div class="single-pro-slider single-sml-photo slider-nav">
+                                    @foreach($product->images as $image)
+                                                <div style="pointer-events: auto">
+                                                    <img style="width: 73px;"
+                                                         src="{{ asset('storage/' . $image->image) }}"
+                                                         alt="{{$image->description_image}}"/>
+                                                </div>
                                     @endforeach
                                 </div>
                             @endif
