@@ -2803,8 +2803,12 @@ input[type="radio"]:nth-child(3):checked + label {
     color: #c8a165;
 }
 
-.price__label{
-    margin-right: 2em;
+.price__label label span {
+    color: black; /* Цвет стрелки по умолчанию */
+}
+
+.price__label input[type="radio"]:checked + span {
+    color: red; /* Цвет стрелки при выборе */
 }
 
 .search_form input{

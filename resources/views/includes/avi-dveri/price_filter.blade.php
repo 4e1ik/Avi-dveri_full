@@ -10,7 +10,7 @@
                 </button>
                 <button type="submit">
                     <input name="price_filter" value="ASC" type="radio" id="button2">
-                    <label for="button2"><span style="color: black">↓</span></label>
+                    <label for="button2"><span>↓</span></label>
                 </button>
             </form>
         </div>

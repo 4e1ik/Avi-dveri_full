@@ -22,7 +22,6 @@
                                         <li><a href="{{route('entrance_doors')}}">Входные двери</a></li>
                                     @endif
                                     @if(isset($product->door))
-                                        {{dd($product->door->material)}}
                                         @if($product->door->material == 'Полипропилен')
                                             <li><a href="{{route('polypropylene_doors')}}">Полипропилен</a></li>
                                         @elseif($product->door->material == 'Эмаль')
