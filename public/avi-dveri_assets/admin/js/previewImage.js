@@ -28,6 +28,7 @@ function previewImage(event) {
             wrapper.style.margin = '10px';
             wrapper.style.border = '1px solid #ccc';
             wrapper.style.padding = '10px';
+            wrapper.style.width = '16em';
             wrapper.style.borderRadius = '5px';
             wrapper.classList.add('col-md-3');
 
