@@ -6,10 +6,10 @@
                     @csrf
 
 
-                        <label style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" for="button1"><input style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" name="price_filter" value="DESC" type="radio" id="button1"><button type="submit">↑</button></label>
+                        <label style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" for="button1"><input style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" name="price_filter" value="DESC" type="radio" id="button1"><button style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" type="submit">↑</button></label>
 
 
-                        <label style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" for="button2"><input style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" name="price_filter" value="ASC" type="radio" id="button2"><button type="submit">↓</button></label>
+                        <label style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" for="button2"><input style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" name="price_filter" value="ASC" type="radio" id="button2"><button style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" type="submit">↓</button></label>
 
                 </form>
             </div>
