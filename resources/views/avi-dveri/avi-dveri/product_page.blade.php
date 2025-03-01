@@ -162,23 +162,23 @@
                             <button class="button-one submit-btn-4 open_popup_application" type="submit"
                                     data-text="Оставить заявку" data-title="{{$product->title}}">Оставить заявку
                             </button>
-                            @if(!isset($colors))
-                                <!-- Size end -->
-                                <!-- Single-pro-slider Small-photo start -->
-                                <style>
-                                    .single-pro-slider .slick-active span:hover::after {
-                                        content: attr(data-title);
-                                        position: absolute;
-                                        margin: -2em 0 0 0em;
-                                        padding: 5px 5px;
-                                        background: #00000096;
-                                        font-size: 1.25em;
-                                        color: #ffffff;
-                                        border-radius: 5px;
-                                    }
-                                </style>
-                                <div class="single-pro-slider single-sml-photo slider-nav">
-                                    @foreach($product->images as $image)
+                            <!-- Size end -->
+                            <!-- Single-pro-slider Small-photo start -->
+                            <style>
+                                .single-pro-slider .slick-active span:hover::after {
+                                    content: attr(data-title);
+                                    position: absolute;
+                                    margin: -2em 0 0 0em;
+                                    padding: 5px 5px;
+                                    background: #00000096;
+                                    font-size: 1.25em;
+                                    color: #ffffff;
+                                    border-radius: 5px;
+                                }
+                            </style>
+                            <div class="single-pro-slider single-sml-photo slider-nav">
+                                @foreach($product->images as $image)
+                                    @if($image->door_color != null)
                                         @foreach($colors as $color)
                                             @if($image->door_color === $color['value'])
                                                 <div style="pointer-events: auto">
@@ -187,35 +187,18 @@
                                                          src="{{ asset('storage/' . $image->image) }}"
                                                          alt="{{$image->description_image}}"/>
                                                 </span>
-
                                                 </div>
                                             @endif
                                         @endforeach
-                                    @endforeach
-                                </div>
-                            @else
-                                <style>
-                                    .single-pro-slider .slick-active span:hover::after {
-                                        content: attr(data-title);
-                                        position: absolute;
-                                        margin: -2em 0 0 0em;
-                                        padding: 5px 5px;
-                                        background: #00000096;
-                                        font-size: 1.25em;
-                                        color: #ffffff;
-                                        border-radius: 5px;
-                                    }
-                                </style>
-                                <div class="single-pro-slider single-sml-photo slider-nav">
-                                    @foreach($product->images as $image)
+                                    @else
                                         <div style="pointer-events: auto">
                                             <img style="width: 73px;"
                                                  src="{{ asset('storage/' . $image->image) }}"
                                                  alt="{{$image->description_image}}"/>
                                         </div>
-                                    @endforeach
-                                </div>
-                            @endif
+                                    @endif
+                                @endforeach
+                            </div>
                             <!-- Single-pro-slider Small-photo end -->
                         </div>
                     </div>
