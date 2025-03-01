@@ -159,7 +159,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <button style="color: #666" class="button-one submit-btn-4 open_popup_application" type="submit"
+                            <button class="button-one submit-btn-4 open_popup_application" type="submit"
                                     data-text="Оставить заявку" data-title="{{$product->title}}">Оставить заявку
                             </button>
                             @if(isset($colors))
