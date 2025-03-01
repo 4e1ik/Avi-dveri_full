@@ -36,7 +36,7 @@
     <!-- All common css of theme -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css')}}">
     <!-- style css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.10')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v='.rand())}}">
     <!-- shortcode css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
