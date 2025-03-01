@@ -4,18 +4,13 @@
             <div class="price__label">
                 <form action="" method="post">
                     @csrf
-                    <button type="submit">
-                        <input name="price_filter" value="DESC" type="radio" id="button1">
-                        <label style="-webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;" for="button1">↑</label>
-                    </button>
-                    <button type="submit">
-                        <input name="price_filter" value="ASC" type="radio" id="button2">
-                        <label style="-webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;" for="button2">↓</label>
-                    </button>
+
+
+                        <label style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" for="button1"><input name="price_filter" value="DESC" type="radio" id="button1"><button type="submit">↑</button></label>
+
+
+                        <label style="-webkit-appearance: none; -moz-appearance: none; appearance: none;" for="button2"><input name="price_filter" value="ASC" type="radio" id="button2"><button type="submit">↓</button></label>
+
                 </form>
             </div>
     </div>
