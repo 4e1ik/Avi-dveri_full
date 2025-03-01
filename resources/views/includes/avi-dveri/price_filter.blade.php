@@ -6,11 +6,11 @@
                 @csrf
                 <button type="submit">
                     <input name="price_filter" value="DESC" type="radio" id="button1">
-                    <label for="button1">↑</label>
+                    <label for="button1"><span>↑</span></label>
                 </button>
                 <button type="submit">
                     <input name="price_filter" value="ASC" type="radio" id="button2">
-                    <label for="button2">↓</label>
+                    <label for="button2"><span>↓</span></label>
                 </button>
             </form>
         </div>
