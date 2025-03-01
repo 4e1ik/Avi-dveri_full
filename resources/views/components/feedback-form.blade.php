@@ -1,7 +1,3 @@
-<Style>
-
-</Style>
-
 <div class="send-message popup_application">
     <div class="popup__body popup__body_application">
         <form class="mail_form" id="mail_form" action="{{ route('send_mail') }}" method="post">
