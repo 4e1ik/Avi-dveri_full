@@ -123,6 +123,8 @@ return [
         'function' => 'назначение',
         'description' => 'описание',
         'material' => 'материал',
+        'textarea' => 'сообщение',
+        'phone' => 'номер телефона',
     ],
 
 ];

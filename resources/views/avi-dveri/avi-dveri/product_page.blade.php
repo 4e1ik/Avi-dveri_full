@@ -2,14 +2,8 @@
 
 @section('content')
     <!-- HEADING-BANNER START -->
-    {{--    @foreach($products as $product)--}}
     <div class="heading-banner-area overlay-bg">
         <x-feedback-form :title="$product->title"/>
-{{--        @if(isset($product->door))--}}
-{{--            @dd($product->door->material)--}}
-{{--        @else--}}
-{{--            @dd(0)--}}
-{{--        @endif--}}
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
