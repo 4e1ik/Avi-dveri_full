@@ -1,7 +1,7 @@
 <aside class="widget shop-filter mb-30">
     <div class="widget-title">
         <h4>Цена</h4>
-        <div class="price__label">
+        <div style="-webkit-appearance: none;" class="price__label">
             <form action="" method="post">
                 @csrf
                 <button type="submit">
