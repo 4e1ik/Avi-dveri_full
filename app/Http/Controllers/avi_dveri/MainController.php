@@ -107,9 +107,9 @@ class MainController extends Controller
 
         
 
-        $streetTotalCount = Door::where('function', 'Улица')->count();
-        $apartmentTotalCount = Door::where('function', 'Квартира')->count();
-        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->count();
+        $streetTotalCount = Door::where('function', 'Улица')->where('type', 'entrance')->count();
+        $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
+        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
         return view('avi-dveri.avi-dveri.doors.entrance_doors.entrance_doors', compact(
             'products',
