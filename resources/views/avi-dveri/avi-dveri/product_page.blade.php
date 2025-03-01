@@ -162,7 +162,7 @@
                             <button class="button-one submit-btn-4 open_popup_application" type="submit"
                                     data-text="Оставить заявку" data-title="{{$product->title}}">Оставить заявку
                             </button>
-                            @if(isset($colors))
+                            @if(!isset($colors))
                                 <!-- Size end -->
                                 <!-- Single-pro-slider Small-photo start -->
                                 <style>
