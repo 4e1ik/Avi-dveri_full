@@ -2807,7 +2807,7 @@ input[type="radio"]:nth-child(3):checked + label {
     margin-right: 2em;
 }
 
-.price__label span {
+.price__label label {
     color: #666;
 }
 
