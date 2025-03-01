@@ -5,6 +5,11 @@
     {{--    @foreach($products as $product)--}}
     <div class="heading-banner-area overlay-bg">
         <x-feedback-form :title="$product->title"/>
+{{--        @if(isset($product->door))--}}
+{{--            @dd($product->door->material)--}}
+{{--        @else--}}
+{{--            @dd(0)--}}
+{{--        @endif--}}
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -22,23 +27,27 @@
                                     @else
                                         <li><a href="{{route('entrance_doors')}}">Входные двери</a></li>
                                     @endif
-                                    @if($product->door->material == 'Полипропилен')
-                                        <li><a href="{{route('polypropylene_doors')}}">Полипропилен</a></li>
-                                    @elseif($product->door->material == 'Эмаль')
-                                        <li><a href="{{route('enamel_doors')}}">Эмаль</a></li>
-                                    @elseif($product->door->material == 'Скрытые')
-                                        <li><a href="{{route('hidden_doors')}}">Скрытые</a></li>
-                                    @elseif($product->door->material == 'Экошпон')
-                                        <li><a href="{{route('eco_veneer_doors')}}">Экошпон</a></li>
-                                    @elseif($product->door->material == 'Массив')
-                                        <li><a href="{{route('solid_doors')}}">Массив</a></li>
-                                    @elseif($product->door->function == 'Квартира')
-                                        <li><a href="{{route('apartment_doors')}}">Квартира</a></li>
-                                    @elseif($product->door->function == 'Улица')
-                                        <li><a href="{{route('street_doors')}}">Улица</a></li>
-                                    @elseif($product->door->function == 'Терморазрыв')
-                                        <li><a href="{{route('thermal_break_doors')}}">Терморазрыв</a></li>
+                                    @if(isset($product->door))
+                                        {{dd($product->door->material)}}
+                                        @if($product->door->material == 'Полипропилен')
+                                            <li><a href="{{route('polypropylene_doors')}}">Полипропилен</a></li>
+                                        @elseif($product->door->material == 'Эмаль')
+                                            <li><a href="{{route('enamel_doors')}}">Эмаль</a></li>
+                                        @elseif($product->door->material == 'Скрытые')
+                                            <li><a href="{{route('hidden_doors')}}">Скрытые</a></li>
+                                        @elseif($product->door->material == 'Экошпон')
+                                            <li><a href="{{route('eco_veneer_doors')}}">Экошпон</a></li>
+                                        @elseif($product->door->material == 'Массив')
+                                            <li><a href="{{route('solid_doors')}}">Массив</a></li>
+                                        @elseif($product->door->function == 'Квартира')
+                                            <li><a href="{{route('apartment_doors')}}">Квартира</a></li>
+                                        @elseif($product->door->function == 'Улица')
+                                            <li><a href="{{route('street_doors')}}">Улица</a></li>
+                                        @elseif($product->door->function == 'Терморазрыв')
+                                            <li><a href="{{route('thermal_break_doors')}}">Терморазрыв</a></li>
+                                        @endif
                                     @endif
+
                                 @elseif($product->category == 'fitting')
                                     <li><a href="{{route('accessories')}}">Фурнитура</a></li>
                                 @endif
@@ -206,11 +215,11 @@
                                 </style>
                                 <div class="single-pro-slider single-sml-photo slider-nav">
                                     @foreach($product->images as $image)
-                                                <div style="pointer-events: auto">
-                                                    <img style="width: 73px;"
-                                                         src="{{ asset('storage/' . $image->image) }}"
-                                                         alt="{{$image->description_image}}"/>
-                                                </div>
+                                        <div style="pointer-events: auto">
+                                            <img style="width: 73px;"
+                                                 src="{{ asset('storage/' . $image->image) }}"
+                                                 alt="{{$image->description_image}}"/>
+                                        </div>
                                     @endforeach
                                 </div>
                             @endif
