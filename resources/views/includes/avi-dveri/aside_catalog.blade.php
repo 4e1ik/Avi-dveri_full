@@ -6,7 +6,7 @@
         <ul>
             <li><a href="{{route('entrance_doors')}}"><span>Входные</span></a></li>
             <li><a href="{{route('interior_doors')}}"><span>Межкомнатные</span></a></li>
-            <li><a href="{{route('accessories')}}"><span>Фурнитура</span></a></li>
+            <li><a href="{{route('fittings')}}"><span>Фурнитура</span></a></li>
         </ul>
     </div>
 </aside>

@@ -35,7 +35,7 @@ class MainController extends Controller
         return view('avi-dveri.avi-dveri.payment_and_delivery');
     }
 
-    function accessories(FilterRequest $request)
+    function fittings(FilterRequest $request)
     {
         $data = $request->all();
         if (array_key_exists('price', $data)){
@@ -66,9 +66,144 @@ class MainController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
-        return view('avi-dveri.avi-dveri.accessories', compact(
+        return view('avi-dveri.avi-dveri.fittings.fittings', compact(
             'products',
             
+            'totalCount',
+            'start',
+            'end',
+            'economyTotalCount',
+            'standardTotalCount',
+            'premiumTotalCount',
+        ));
+    }
+
+    function economy_fittings(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('fitting', function ($query) {
+                $query->where('function', 'Эконом');
+            })
+            ->with(['images', 'fitting'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
+        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
+        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
+
+        return view('avi-dveri.avi-dveri.fittings.economy_fittings', compact(
+            'products',
+
+            'totalCount',
+            'start',
+            'end',
+            'economyTotalCount',
+            'standardTotalCount',
+            'premiumTotalCount',
+        ));
+    }
+
+    function standard_fittings(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('fitting', function ($query) {
+                $query->where('function', 'Стандарт');
+            })
+            ->with(['images', 'fitting'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
+        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
+        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
+
+        return view('avi-dveri.avi-dveri.fittings.standard_fittings', compact(
+            'products',
+
+            'totalCount',
+            'start',
+            'end',
+            'economyTotalCount',
+            'standardTotalCount',
+            'premiumTotalCount',
+        ));
+    }
+
+    function premium_fittings(FilterRequest $request)
+    {
+        $data = $request->all();
+        if (array_key_exists('price', $data)){
+            preg_match_all('/\d+/', $data['price'], $matches);
+            $data['price'] = array_map('intval', $matches[0]);
+            if (array_key_exists('price_filter', $data)){
+                array_push($data['price'], $data['price_filter']);
+            }
+        }
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $perPage = 21;
+        $products = Product::where('active', [1])
+            ->whereHas('fitting', function ($query) {
+                $query->where('function', 'Премиум');
+            })
+            ->with(['images', 'fitting'])
+            ->filter($filter)
+            ->latest()
+            ->paginate($perPage);
+
+        $totalCount  = $products->total();
+        $currentPage = $products->currentPage();
+        $start = ($currentPage - 1) * $perPage + 1;
+        $end = min($start + $perPage - 1, $totalCount);
+
+
+
+        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
+        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
+        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
+
+        return view('avi-dveri.avi-dveri.fittings.premium_fittings', compact(
+            'products',
+
             'totalCount',
             'start',
             'end',

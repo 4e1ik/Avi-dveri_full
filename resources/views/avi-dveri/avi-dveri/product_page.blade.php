@@ -42,7 +42,7 @@
                                     @endif
 
                                 @elseif($product->category == 'fitting')
-                                    <li><a href="{{route('accessories')}}">Фурнитура</a></li>
+                                    <li><a href="{{route('fittings')}}">Фурнитура</a></li>
                                 @endif
                                 <li>{{$product->title}}</li>
                             </ul>

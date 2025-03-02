@@ -36,7 +36,7 @@
     <!-- All common css of theme -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css')}}">
     <!-- style css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v='.rand())}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.2')}}">
     <!-- shortcode css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
@@ -54,7 +54,7 @@
         <a class="header-menu" href="{{route('home')}}">Главная</a>
         <a class="header-menu" href="{{route('catalog')}}">Каталог</a>
         <a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a>
-        <a class="header-menu" href="80293673518" style="font-size: 0.9em; margin: 1.5em 0 0 0">+375 (29) 367-35-18</a>
+        <a class="header-menu" href="tel:375293673518" style="font-size: 0.9em; margin: 1.5em 0 0 0">+375 (29) 367-35-18</a>
         @livewire('search')
 
 {{--        <form class="d-flex" id="search-form">--}}
@@ -80,8 +80,8 @@
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
                                 <li><a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a></li>
-                                <li><a class="header-menu" href="80293673518">+375 (29) 367-35-18</a></li>
-                                <li><a class="header-menu" href="80333943324">+375 (33) 394-33-24</a></li>
+                                <li><a class="header-menu" href="tel:375293673518">+375 (29) 367-35-18</a></li>
+                                <li><a class="header-menu" href="tel:375333943324">+375 (33) 394-33-24</a></li>
                                 <li>@livewire('search')</li>
                             </ul>
                         </nav>
@@ -105,9 +105,9 @@
                         <ul class="footer-contact">
                             <li><span>Адрес :</span>ул. Минская, 15<br>Минская область, г. Червень</li>
                             <li><span>Номер телефона :</span>
-                                <a href="80293673518">+375 (29) 367-35-18</a><br>
-                                <a href="80333943324">+375 (33) 394-33-24</a><br>
-                                <a href="80336846065">+375 (33) 684-60-65</a>
+                                <a href="tel:375293673518">+375 (29) 367-35-18</a><br>
+                                <a href="tel:375333943324">+375 (33) 394-33-24</a><br>
+                                <a href="tel:375336846065">+375 (33) 684-60-65</a>
                             </li>
                             <li><span>Email :</span>
                                 <a href="mailto:And-2506.1970@yandex.ru">3673518@mail.ru</a>
@@ -130,7 +130,7 @@
                     <p>ИП Исаев Андрей Владимирович, УНП 690311744, свидетельство о государствееной регистрации №0870887 от 15.12.2022 г. Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.</p>
                     <p>По вопросам покупателей о защите их прав:<br><a href="80293673518">+375 (29) 367-35-18</a><br><a href="mailto:And-2506.1970@yandex.ru">3673518@mail.ru</a></p>
                     <p>Контакты лиц, уполномоченных рассматривать обращения покупателей о нарушении их прав (Червеньский районный исполнительный комитет, отдел торговли и услуг).
-                        <br><a href="80171428229">(801714) 282-29</a>
+                        <br><a href="tel:80171428229">(801714) 282-29</a>
                     </p>
                 </div>
             </div>
