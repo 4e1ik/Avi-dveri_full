@@ -166,9 +166,8 @@
                                             </div>
                                         @endif
                                         @if($product->images->isNotEmpty())
-                                            <a style="display: flex; justify-content: center;"
-                                               href="{{route('product_page', ['product' => $product])}}"><img
-                                                        style="object-fit: contain; width: 100px;"
+                                            <a style="display: flex; justify-content: center;" @include('includes.avi-dveri.product_route')>
+                                                <img style="object-fit: contain; width: 100px;"
                                                         src="{{ asset( 'storage/'. $product->images[0]->image ) }}"
                                                         alt="{{$product->images[0]->description}}"/>
                                             </a>
@@ -176,8 +175,7 @@
                                     </div>
                                     <div class="product-info clearfix text-center">
                                         <div class="fix">
-                                            <h4 class="post-title"><a
-                                                        href="{{route('product_page', ['product' => $product])}}">{{$product->title}}</a>
+                                            <h4 class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
                                             </h4>
                                             <span class="pro-price-2">
                                             {{$product->price}} {{$product->currency}}

@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css')}}">
     <!-- modernizr css -->
     <script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/modernizr-3.11.2.min.js')}}"></script>
+    @yield('404')
 </head>
 <body>
 <!-- WRAPPER START -->
@@ -91,7 +92,9 @@
         </div>
     </div>
     <!-- Mobile-menu end -->
-    <x-feedback-form />
+    @if(!isset($is404))
+        <x-feedback-form />
+    @endif
     @yield('content')
 <!-- FOOTER START -->
 <footer>
