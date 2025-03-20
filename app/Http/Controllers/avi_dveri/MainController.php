@@ -692,12 +692,11 @@ class MainController extends Controller
         ));
     }
 
-    function show_product(Product $product)
+    function show_product($head, $direction, Product $product)
     {
         $metaTitle = $product->meta_title;
         $metaDescription = $product->meta_description;
 
-//        dd($metaDescription);
         if ($product->category == 'door'){
             $colors = add_doors_colors();
             return view('avi-dveri.avi-dveri.product_page', compact('product', 'colors', 'metaTitle', 'metaDescription'));

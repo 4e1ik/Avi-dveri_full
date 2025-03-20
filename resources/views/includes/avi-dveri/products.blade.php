@@ -12,23 +12,24 @@
                         </div>
                     @endif
                     @if($product->images->isNotEmpty())
-                        <a style="display: flex; justify-content: center;"
-                           href="{{route('product_page', ['product' => $product])}}"><img
-                                    style="object-fit: contain;"
-                                    src="{{ asset( 'storage/'. $product->images[0]->image ) }}"
-                                    alt=""/></a>
+                        <a style="display: flex; justify-content: center;" @include('includes.avi-dveri.product_route')><img
+                                style="object-fit: contain;"
+                                src="{{ asset( 'storage/'. $product->images[0]->image ) }}"
+                                alt=""/></a>
                     @endif
                 </div>
                 <div class="product-info clearfix text-center">
                     <div class="fix">
-                        <h4 class="post-title"><a
-                                    href="{{route('product_page', ['product' => $product])}}">{{$product->title}}</a>
+{{--                        <h4 class="post-title"><a href="{{route('product_page', ['product' => $product])}}">{{$product->title}}</a>--}}
+                        <h4 class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
                         </h4>
                         <span class="pro-price-2">{{$product->price}} {{$product->currency}}</span>
                     </div>
                 </div>
                 <div class="product-details">
                     <ul>
+{{--                        @dd($product->door->type)--}}
+{{--                        {{$product->door->type}}--}}
                         @if(isset($product->door->glass))
                             <li>Стекло: {{$product->door->glass}}</li>
                         @endif

@@ -26,71 +26,75 @@ Route::get('/payment-and-delivery', [MainController::class, 'payment_and_deliver
 
 Route::prefix('catalog')->group(function (){
     Route::get('/', [MainController::class, 'catalog'])->name('catalog');
+    Route::get('/{head}/{direction}/{product}', [MainController::class, 'show_product'])->name('product_page');
 
     Route::prefix('fittings')->group(function () {
         Route::get('/', [MainController::class, 'fittings'])->name('fittings');
+//        Route::get('/{type}/{product}', [MainController::class, 'show_product'])->name('product_page');
 
         Route::prefix('economy_fittings')->group(function () {
             Route::get('/', [MainController::class, 'economy_fittings'])->name('economy_fittings');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('standard_fittings')->group(function () {
             Route::get('/', [MainController::class, 'standard_fittings'])->name('standard_fittings');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('premium_fittings')->group(function () {
             Route::get('/', [MainController::class, 'premium_fittings'])->name('premium_fittings');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
     });
 
     Route::prefix('interior_doors')->group(function () {
         Route::get('/', [MainController::class, 'interior_doors'])->name('interior_doors');
+//        Route::get('/{type}/{product}', [MainController::class, 'show_product'])->name('product_page');
 
         Route::prefix('eco_veneer_doors')->group(function () {
             Route::get('/', [MainController::class, 'eco_veneer_doors'])->name('eco_veneer_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('polypropylene_doors')->group(function () {
             Route::get('/', [MainController::class, 'polypropylene_doors'])->name('polypropylene_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('enamel_doors')->group(function () {
             Route::get('/', [MainController::class, 'enamel_doors'])->name('enamel_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('hidden_doors')->group(function () {
             Route::get('/', [MainController::class, 'hidden_doors'])->name('hidden_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('solid_doors')->group(function () {
             Route::get('/', [MainController::class, 'solid_doors'])->name('solid_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
     });
 
     Route::prefix('entrance_doors')->group(function () {
         Route::get('/', [MainController::class, 'entrance_doors'])->name('entrance_doors');
+//        Route::get('/{type}/{product}', [MainController::class, 'show_product'])->name('product_page');
 
         Route::prefix('street_doors')->group(function () {
             Route::get('/', [MainController::class, 'street_doors'])->name('street_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('apartment_doors')->group(function () {
             Route::get('/', [MainController::class, 'apartment_doors'])->name('apartment_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
 
         Route::prefix('thermal_break_doors')->group(function () {
             Route::get('/', [MainController::class, 'thermal_break_doors'])->name('thermal_break_doors');
-            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
+//            Route::get('/{product}', [MainController::class, 'show_product'])->name('product_page');
         });
     });
 });
@@ -111,9 +115,6 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/entrance_doors', [AdminController::class, 'entrance_doors'])->name('admin_entrance_doors');
     Route::get('/interior_doors', [AdminController::class, 'interior_doors'])->name('admin_interior_doors');
 
-    Route::resources([
-        'products' => ProductController::class,
-    ]);
-
+    Route::resource('products', ProductController::class)->except(['create', 'index', 'show']);
     Route::get('/products/create/{type}', [ProductController::class, 'create'])->name('products.create');
 });
