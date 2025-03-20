@@ -15,7 +15,7 @@
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
                                 <li><a href="{{route('interior_doors')}}">Межкомнатные двери</a></li>
-                                <li><a href="{{route('solid_doors')}}">Скрытые</a></li>
+                                <li><a href="{{route('solid_doors')}}">Массив</a></li>
                             </ul>
                         </div>
                     </div>
