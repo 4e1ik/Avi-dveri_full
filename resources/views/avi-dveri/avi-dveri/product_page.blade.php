@@ -98,7 +98,7 @@
                             <div class="product__submit">
                                 <div>
                                     <div class="color-filter single-pro-color mb-20 clearfix">
-                                        <ul>
+                                        <ul style="display: flex; flex-wrap: wrap; row-gap: 0.5em;">
                                             @if(isset($colors))
                                                 <li><span class="color-title text-capitalize">Цвет</span></li>
                                                 @foreach($product->images as $image)
