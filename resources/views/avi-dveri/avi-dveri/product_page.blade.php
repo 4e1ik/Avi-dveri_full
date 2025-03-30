@@ -139,18 +139,18 @@
                                 .single-pro-slider .slick-active span:hover::after {
                                     content: attr(data-title);
                                     position: absolute;
-                                    margin: -2em 0 0 0em;
+                                    margin: 0 0 0 -8px;
                                     padding: 5px 5px;
                                     background: #00000096;
-                                    font-size: 1.25em;
+                                    font-size: 1.1em;
                                     color: #ffffff;
                                     border-radius: 5px;
                                 }
 
                                 .single-pro-slider .slick-active span {
                                     display: flex;
-                                    align-items: end;
-                                    justify-content: center;
+                                    /*align-items: end;*/
+                                    /*justify-content: center;*/
                                 }
                             </style>
                             <div class="single-pro-slider single-sml-photo slider-nav">
