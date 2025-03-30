@@ -81,8 +81,7 @@
                                     <p>рассрочка от Альфа-Банка до 4-х мес. 1%.</p>
                                     <h3 class="tab-title title-border mb-30">В кредит</h3>
                                     <p>кредит от Альфа-Банка до 12 мес. под 11,9%.</p>
-                                    <img src="{{asset('/avi-dveri_assets/avi-dveri/img/vaerrr.jpg')}}"
-                                         alt="Картинка карты">
+{{--                                    <img src="{{asset('/avi-dveri_assets/avi-dveri/img/vaerrr.jpg')}}" alt="Картинка карты">--}}
                                     <h3 class="tab-title title-border mb-30">Образец чека</h3>
                                     <a download="Образец чека" href="{{asset('/avi-dveri_assets/avi-dveri/img/20250314_162645.jpg')}}">Нажмите, чтобы скачать образец чека</a>
                                 </div>
