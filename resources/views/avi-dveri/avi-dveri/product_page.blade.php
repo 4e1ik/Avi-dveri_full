@@ -140,7 +140,7 @@
                                     content: attr(data-title);
                                     position: absolute;
                                     margin: 0 0 0 -8px;
-                                    padding: 5px 5px;
+                                    padding: 3px 3px;
                                     background: #00000096;
                                     font-size: 1.1em;
                                     color: #ffffff;
