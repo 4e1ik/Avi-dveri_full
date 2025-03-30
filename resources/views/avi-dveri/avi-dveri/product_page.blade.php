@@ -67,7 +67,7 @@
                             <div class="product__submit">
                                 <div>
                                     <div class="color-filter single-pro-color mb-20 clearfix">
-                                        <ul>
+                                        <ul style="display: flex; flex-wrap: wrap; row-gap: 0.5em;">
                                             @if(isset($colors))
                                                 @foreach($product->images as $image)
                                                     @if(isset($image->door_color) || isset($image->fitting_color))
