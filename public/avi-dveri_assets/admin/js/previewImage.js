@@ -6,7 +6,7 @@ function previewImage(event) {
 
     // Проверяем текущий маршрут
     const currentPath = window.location.pathname;
-    const isColorSelectionDisabled = currentPath.includes('/fitting');
+    const isFittingPage = currentPath.includes('/fitting');
 
     // Добавляем новые файлы в глобальный массив
     newFiles.forEach((file) => {
@@ -40,89 +40,90 @@ function previewImage(event) {
 
             wrapper.appendChild(img);
 
-            // Если выбор цвета не отключен
-            if (!isColorSelectionDisabled) {
-                // Создаем кастомный элемент для выбора цвета
-                const dropdown = document.createElement('div');
-                dropdown.style.position = 'relative';
-                dropdown.style.width = '200px';
-                dropdown.style.cursor = 'pointer';
+            // Создаем кастомный элемент для выбора цвета
+            const dropdown = document.createElement('div');
+            dropdown.style.position = 'relative';
+            dropdown.style.width = '200px';
+            dropdown.style.cursor = 'pointer';
 
-                const selectedOption = document.createElement('div');
-                selectedOption.style.display = 'flex';
-                selectedOption.style.alignItems = 'center';
-                selectedOption.style.justifyContent = 'space-between';
-                selectedOption.style.border = '1px solid #ccc';
-                selectedOption.style.borderRadius = '5px';
-                selectedOption.style.padding = '5px 10px';
-                selectedOption.style.backgroundColor = 'white';
-                selectedOption.textContent = 'Выберите цвет двери';
+            const selectedOption = document.createElement('div');
+            selectedOption.style.display = 'flex';
+            selectedOption.style.alignItems = 'center';
+            selectedOption.style.justifyContent = 'space-between';
+            selectedOption.style.border = '1px solid #ccc';
+            selectedOption.style.borderRadius = '5px';
+            selectedOption.style.padding = '5px 10px';
+            selectedOption.style.backgroundColor = 'white';
+            selectedOption.textContent = 'Выберите цвет';
 
-                // Создаем контейнер для вариантов
-                const optionsContainer = document.createElement('div');
-                optionsContainer.style.position = 'absolute';
-                optionsContainer.style.top = '100%';
-                optionsContainer.style.left = '0';
-                optionsContainer.style.right = '0';
-                optionsContainer.style.border = '1px solid #ccc';
-                optionsContainer.style.borderRadius = '5px';
-                optionsContainer.style.backgroundColor = 'white';
-                optionsContainer.style.display = 'none';
-                optionsContainer.style.zIndex = '1000';
+            // Создаем контейнер для вариантов
+            const optionsContainer = document.createElement('div');
+            optionsContainer.style.position = 'absolute';
+            optionsContainer.style.top = '100%';
+            optionsContainer.style.left = '0';
+            optionsContainer.style.right = '0';
+            optionsContainer.style.border = '1px solid #ccc';
+            optionsContainer.style.borderRadius = '5px';
+            optionsContainer.style.backgroundColor = 'white';
+            optionsContainer.style.display = 'none';
+            optionsContainer.style.zIndex = '1000';
 
-                // Ограничиваем видимость списка и добавляем скролл
-                optionsContainer.style.maxHeight = '180px'; // Примерно 6 строк по 30px каждая
-                optionsContainer.style.overflowY = 'auto';
+            // Ограничиваем видимость списка и добавляем скролл
+            optionsContainer.style.maxHeight = '180px'; // Примерно 6 строк по 30px каждая
+            optionsContainer.style.overflowY = 'auto';
 
-                // Создаем скрытое поле для отправки значения на сервер
-                const hiddenInput = document.createElement('input');
-                hiddenInput.type = 'hidden';
-                hiddenInput.name = `door_image_color[${index}]`;
-                hiddenInput.value = ''; // Устанавливается при выборе цвета
+            // Создаем скрытое поле для отправки значения на сервер
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            if (isFittingPage) {
+                hiddenInput.name = `fitting_image_color[${index}]`; // Для фиттингов
+            } else {
+                hiddenInput.name = `door_image_color[${index}]`; // Для других страниц
+            }
+            hiddenInput.value = ''; // Устанавливается при выборе цвета
 
-                // Если colors определена, заполняем опции
-                if (typeof colors !== 'undefined') {
-                    colors.forEach(color => {
-                        const option = document.createElement('div');
-                        option.style.display = 'flex';
-                        option.style.alignItems = 'center';
-                        option.style.padding = '5px 10px';
-                        option.style.cursor = 'pointer';
-                        option.style.transition = 'background-color 0.2s ease';
-                        option.innerHTML = `
+            // Если colors определена, заполняем опции
+            if (typeof colors !== 'undefined') {
+                colors.forEach(color => {
+                    const option = document.createElement('div');
+                    option.style.display = 'flex';
+                    option.style.alignItems = 'center';
+                    option.style.padding = '5px 10px';
+                    option.style.cursor = 'pointer';
+                    option.style.transition = 'background-color 0.2s ease';
+                    option.innerHTML = `
                             <img src="${color.image}" alt="${color.name}" style="width: 20px; height: 20px; margin-right: 10px; border-radius: 50%;">
                             <span>${color.name}</span>
                         `;
 
-                        option.addEventListener('click', () => {
-                            selectedOption.innerHTML = option.innerHTML; // Обновляем выбранное значение
-                            hiddenInput.value = color.value; // Обновляем значение скрытого поля
-                            optionsContainer.style.display = 'none'; // Закрываем список
-                        });
-
-                        option.addEventListener('mouseover', () => {
-                            option.style.backgroundColor = '#f0f0f0';
-                        });
-
-                        option.addEventListener('mouseout', () => {
-                            option.style.backgroundColor = 'white';
-                        });
-
-                        optionsContainer.appendChild(option);
+                    option.addEventListener('click', () => {
+                        selectedOption.innerHTML = option.innerHTML; // Обновляем выбранное значение
+                        hiddenInput.value = color.value; // Обновляем значение скрытого поля
+                        optionsContainer.style.display = 'none'; // Закрываем список
                     });
-                }
 
-                // Обработчик для открытия/закрытия выпадающего списка
-                selectedOption.addEventListener('click', () => {
-                    optionsContainer.style.display = optionsContainer.style.display === 'none' ? 'block' : 'none';
+                    option.addEventListener('mouseover', () => {
+                        option.style.backgroundColor = '#f0f0f0';
+                    });
+
+                    option.addEventListener('mouseout', () => {
+                        option.style.backgroundColor = 'white';
+                    });
+
+                    optionsContainer.appendChild(option);
                 });
-
-                dropdown.appendChild(selectedOption);
-                dropdown.appendChild(optionsContainer);
-
-                wrapper.appendChild(dropdown);
-                wrapper.appendChild(hiddenInput);
             }
+
+            // Обработчик для открытия/закрытия выпадающего списка
+            selectedOption.addEventListener('click', () => {
+                optionsContainer.style.display = optionsContainer.style.display === 'none' ? 'block' : 'none';
+            });
+
+            dropdown.appendChild(selectedOption);
+            dropdown.appendChild(optionsContainer);
+
+            wrapper.appendChild(dropdown);
+            wrapper.appendChild(hiddenInput);
 
             // Создаем текстовое поле для описания
             const descriptionInput = document.createElement('input');
@@ -136,6 +137,34 @@ function previewImage(event) {
             descriptionInput.style.borderRadius = '5px';
 
             wrapper.appendChild(descriptionInput);
+
+            // +++ ДОБАВЛЕНО: Поле для цены +++
+            const priceInput = document.createElement('input');
+            priceInput.type = 'number';
+            priceInput.name = `temp_price[${index}]`;
+            priceInput.placeholder = 'Цена';
+            priceInput.min = 0;
+            priceInput.step = 0.01;
+            priceInput.style.marginTop = '10px';
+            priceInput.style.width = '200px';
+            priceInput.style.padding = '5px';
+            priceInput.style.border = '1px solid #ccc';
+            priceInput.style.borderRadius = '5px';
+            wrapper.appendChild(priceInput);
+
+            // +++ ДОБАВЛЕНО: Поле для цены за комплект +++
+            const pricePerSetInput = document.createElement('input');
+            pricePerSetInput.type = 'number';
+            pricePerSetInput.name = `temp_price_per_set[${index}]`;
+            pricePerSetInput.placeholder = 'Цена за комплект';
+            pricePerSetInput.min = 0;
+            pricePerSetInput.step = 0.01;
+            pricePerSetInput.style.marginTop = '10px';
+            pricePerSetInput.style.width = '200px';
+            pricePerSetInput.style.padding = '5px';
+            pricePerSetInput.style.border = '1px solid #ccc';
+            pricePerSetInput.style.borderRadius = '5px';
+            wrapper.appendChild(pricePerSetInput);
 
             // Создаем кнопку "Удалить"
             const deleteButton = document.createElement('button');

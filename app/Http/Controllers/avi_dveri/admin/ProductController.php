@@ -39,7 +39,8 @@ class ProductController extends Controller
                 break;
 
             case 'fitting':
-                return view('avi-dveri.admin.fittings.create_fitting');
+                $colors = add_fittings_colors();
+                return view('avi-dveri.admin.fittings.create_fitting', compact('colors'));
                 break;
         }
     }
@@ -50,6 +51,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
+
+//        dd($data);
 
         if (array_key_exists('size_diff', $data) && array_key_exists('size_standard', $data))
         {
@@ -97,8 +100,17 @@ class ProductController extends Controller
                 if (array_key_exists('door_image_color', $data)) {
                     $data['door_color'] = $data['door_image_color'][$i];
                 }
+                if (array_key_exists('fitting_image_color', $data)) {
+                    $data['fitting_color'] = $data['fitting_image_color'][$i];
+                }
                 if (array_key_exists('temp_description_image', $data)) {
                     $data['description_image'] = $data['temp_description_image'][$i];
+                }
+                if (array_key_exists('temp_price', $data)) {
+                    $data['price'] = $data['temp_price'][$i];
+                }
+                if (array_key_exists('temp_price_per_set', $data)) {
+                    $data['price_per_set'] = $data['temp_price_per_set'][$i];
                 }
                 $i++;
                 $product->images()->create($data);
@@ -131,7 +143,8 @@ class ProductController extends Controller
                 return view('avi-dveri.admin.doors.edit_interior_door', compact('product', 'colors'));
             }
         } elseif ($product->category == 'fitting') {
-            return view('avi-dveri.admin.fittings.edit_fitting', compact('product'));
+            $colors = add_fittings_colors();
+            return view('avi-dveri.admin.fittings.edit_fitting', compact('product', 'colors'));
         }
     }
 
@@ -181,9 +194,24 @@ class ProductController extends Controller
                 $product->images()->where('id', $key)->update(['door_color' => $value]);
             }
         }
+        if (array_key_exists('fitting_image_color', $data)) {
+            foreach ($data['fitting_image_color'] as $key => $value) {
+                $product->images()->where('id', $key)->update(['fitting_color' => $value]);
+            }
+        }
         if (array_key_exists('temp_description_image', $data)) {
             foreach ($data['temp_description_image'] as $key => $value) {
                 $product->images()->where('id', $key)->update(['description_image' => $value]);
+            }
+        }
+        if (array_key_exists('temp_price', $data)) {
+            foreach ($data['temp_price'] as $key => $value) {
+                $product->images()->where('id', $key)->update(['price' => $value]);
+            }
+        }
+        if (array_key_exists('temp_price_per_set', $data)) {
+            foreach ($data['temp_price_per_set'] as $key => $value) {
+                $product->images()->where('id', $key)->update(['price_per_set' => $value]);
             }
         }
 
@@ -201,8 +229,17 @@ class ProductController extends Controller
                 if (array_key_exists('door_image_color', $data)) {
                     $data['door_color'] = $data['door_image_color'][$i];
                 }
+                if (array_key_exists('fitting_image_color', $data)) {
+                    $data['fitting_color'] = $data['fitting_image_color'][$i];
+                }
                 if (array_key_exists('temp_description_image', $data)) {
                     $data['description_image'] = $data['temp_description_image'][$i];
+                }
+                if (array_key_exists('temp_description_image', $data)) {
+                    $data['price'] = $data['temp_price'][$i];
+                }
+                if (array_key_exists('temp_description_image', $data)) {
+                    $data['price_per_set'] = $data['temp_price_per_set'][$i];
                 }
 
                 $i++;

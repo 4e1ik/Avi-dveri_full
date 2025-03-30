@@ -41,21 +41,22 @@
                                 </div>
                             </div>
                             <div class="col-md-3 padding-0">
-                                <h3>Цена</h3>
+                                <h3>Цена <span style="font-size: 15px">(карточка товара)</span></h3>
+
                                 <div class="col-md-11 padding-0">
                                     <input class="input form-control {{$errors->has('price') ? 'danger' : ''}}"
                                            type="number" min="0"  step="0.01"
                                            name="price" placeholder="@error('price') {{$message}} @enderror" value="{{old('price')}}">
                                 </div>
                             </div>
-                            <div class="col-md-3 padding-0">
-                                <h3>Цена (компл.)</h3>
-                                <div class="col-md-11 padding-0">
-                                    <input class="input form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"
-                                           type="number" min="0"  step="0.01"
-                                           name="price_per_set" placeholder="@error('price_per_set') {{$message}} @enderror" value="{{old('price_per_set')}}">
-                                </div>
-                            </div>
+{{--                            <div class="col-md-3 padding-0">--}}
+{{--                                <h3>Цена <span style="font-size: 15px">(комплект)</span></h3>--}}
+{{--                                <div class="col-md-11 padding-0">--}}
+{{--                                    <input class="input form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"--}}
+{{--                                           type="number" min="0"  step="0.01"--}}
+{{--                                           name="price_per_set" placeholder="@error('price_per_set') {{$message}} @enderror" value="{{old('price_per_set')}}">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="col-md-3 padding-0">
                                 <h3>Валюта</h3>
                                 <div class="col-md-12 padding-0">
@@ -170,7 +171,7 @@
                                 </div>
                             </div>
                             <div id="size" class="inputSize col-md-3 padding-0">
-                                <h3>Размер (произ.)</h3>
+                                <h3>Размер <span style="font-size: 15px">(произвольный)</span></h3>
                                 <div style="display: flex; justify-content: space-between;" class="col-md-10 padding-0">
                                     <input class="form-control {{$errors->has('size_diff') ? 'danger' : ''}}"
                                            type="text"
@@ -192,11 +193,11 @@
                                 </div>
                             </div>
                             <div id="size" class="inputSize col-md-3 padding-0">
-                                <h3>Размер (фикс.)</h3>
+                                <h3>Размер <span style="font-size: 15px">(фиксированный)</span></h3>
                                 <div style="display: flex; justify-content: space-between;" class="col-md-11 padding-0">
                                     <div class="col-md-11 padding-0">
                                         <select class="form-control" name="size_standard[]">
-                                            <option {{ $errors->has('size_standard') ? '' : 'selected' }} disabled>Размер (фикс.)
+                                            <option {{ $errors->has('size_standard') ? '' : 'selected' }} disabled>Размер (фиксированный)
                                             </option>
                                             <option {{ old('size_standard') == '860x2050' ? 'selected' : ''}} value="860x2050">
                                                 860x2050

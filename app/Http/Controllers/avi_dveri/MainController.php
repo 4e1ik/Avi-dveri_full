@@ -699,10 +699,11 @@ class MainController extends Controller
 
         if ($product->category == 'door'){
             $colors = add_doors_colors();
-            return view('avi-dveri.avi-dveri.product_page', compact('product', 'colors', 'metaTitle', 'metaDescription'));
+        } else {
+            $colors = add_fittings_colors();
         }
 
-        return view('avi-dveri.avi-dveri.product_page', compact('product', 'metaTitle', 'metaDescription'));
+        return view('avi-dveri.avi-dveri.product_page', compact('product', 'colors', 'metaTitle', 'metaDescription'));
     }
 
 }

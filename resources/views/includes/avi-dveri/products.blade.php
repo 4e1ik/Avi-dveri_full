@@ -22,7 +22,7 @@
                     <div class="fix">
                         <h4 class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
                         </h4>
-                        <span class="pro-price-2">{{$product->price}} {{$product->currency}}</span>
+                        <span class="pro-price-2">от {{$product->price}} {{$product->currency}}</span>
                     </div>
                 </div>
                 <div class="product-details">

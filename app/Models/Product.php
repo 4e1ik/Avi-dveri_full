@@ -14,6 +14,7 @@ class Product extends Model
     protected $casts = [
         'label' => 'array', // Автоматическое преобразование JSON в массив
         'size' => 'array', // Автоматическое преобразование JSON в массив
+        'additional_colors' => 'array', // Автоматическое преобразование JSON в массив
     ];
 
     protected $fillable = [
@@ -25,6 +26,7 @@ class Product extends Model
         'currency',
         'label',
         'active',
+        'additional_colors',
         'meta_title',
         'meta_description',
     ];

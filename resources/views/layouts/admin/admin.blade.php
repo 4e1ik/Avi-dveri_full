@@ -657,7 +657,6 @@
 
 <!-- custom -->
 <script src="{{asset('/avi-dveri_assets/admin/js/main.js')}}"></script>
-<script src="{{asset('/avi-dveri_assets/admin/newDesign/newDesign/js/rowTableProduct.js')}}"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){

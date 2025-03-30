@@ -15,7 +15,10 @@ class Image extends Model
         'imageable_type',
         'image',
         'door_color',
+        'fitting_color',
         'description_image',
+        'price',
+        'price_per_set',
     ];
 
     public function imageable(): MorphTo

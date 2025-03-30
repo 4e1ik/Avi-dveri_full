@@ -1,5 +1,6 @@
 @extends('layouts.admin.admin')
 @section('content')
+    <script>const colors =  @json($colors);</script>
     <div id="content">
         <div class="panel box-shadow-none content-header">
             <h1>Страница создания фурнитуры</h1>
@@ -50,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3 padding-0">
-                                <h3>Цена</h3>
+                                <h3>Цена <span style="font-size: 15px">(карточка товара)</span></h3>
                                 <div style="margin:0" class="row">
                                     <div class="col-md-11 padding-0">
                                         <input name="price" class="input form-control {{$errors->has('price') ? 'danger' : ''}}"
@@ -66,24 +67,24 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-3 padding-0">
-                                <h3>Цена за комплект</h3>
-                                <div style="margin:0" class="row">
-                                    <div class="col-md-11 padding-0">
-                                        <input class="input form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"
-                                               type="number" min="0" step="0.01"
-                                               name="price_per_set"
-                                               value="{{old('price_per_set')}}">
-                                    </div>
-                                </div>
-                                <div style="position: absolute; margin:0;" class="row">
-                                    @error('price_per_set')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                            </div>
+{{--                            <div class="col-md-3 padding-0">--}}
+{{--                                <h3>Цена <span style="font-size: 15px">(комплект)</span></h3>--}}
+{{--                                <div style="margin:0" class="row">--}}
+{{--                                    <div class="col-md-11 padding-0">--}}
+{{--                                        <input class="input form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"--}}
+{{--                                               type="number" min="0" step="0.01"--}}
+{{--                                               name="price_per_set"--}}
+{{--                                               value="{{old('price_per_set')}}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div style="position: absolute; margin:0;" class="row">--}}
+{{--                                    @error('price_per_set')--}}
+{{--                                    <div class="text-danger">--}}
+{{--                                        {{$message}}--}}
+{{--                                    </div>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="col-md-3 padding-0">
                                 <h3>Валюта</h3>
                                 <div class="col-md-12 padding-0">

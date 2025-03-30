@@ -33,7 +33,6 @@
                                     <th>Название</th>
                                     <th>Описание</th>
                                     <th>Цена за полотно</th>
-                                    <th>Цена за комплект</th>
                                     <th>Размер</th>
                                     <th>Назначение</th>
                                     <th>Материал</th>
@@ -51,7 +50,6 @@
                                             <td>{{$product->title}}</td>
                                             <td>{!! $product->description !!}</td>
                                             <td>{{$product->price}}</td>
-                                            <td>{{$product->price_per_set}}</td>
                                             <td>
                                                 @if(!empty($product->door->size))
                                                     @foreach($product->door->size as $size)

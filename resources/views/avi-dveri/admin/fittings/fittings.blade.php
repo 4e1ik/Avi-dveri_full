@@ -33,7 +33,6 @@
                                     <th>Название</th>
                                     <th>Описание</th>
                                     <th>Цена за полотно</th>
-                                    <th>Цена за комплект</th>
                                     <th>Ярлык</th>
                                     <th>Активный</th>
                                     <th>Редактировать</th>
@@ -47,7 +46,6 @@
                                             <td>{{$product->title}}</td>
                                             <td>{!! $product->description !!}</td>
                                             <td>{{$product->price}}</td>
-                                            <td>{{$product->price_per_set}}</td>
                                             <td>@if(!empty($product->label))
                                                     @foreach($product->label as $item)
                                                         {{$item}}
