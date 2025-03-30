@@ -1,65 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Общие элементы
-//     const slickTrack = document.querySelector('.slick-track');
-//     const priceContainer = document.querySelector('.pro-price');
-//     const selectElement = document.getElementById("selector");
-//     let currentOption = 'option1'; // Сохраняем текущую опцию
-//
-//     // Конфигурация наблюдателя для слайдера
-//     const config = {
-//         attributes: true,
-//         attributeFilter: ['class'],
-//         subtree: true
-//     };
-//
-//     // Основная функция обновления цены
-//     function updatePrice() {
-//         const activeSlide = slickTrack?.querySelector('.slick-slide.slick-current.slick-active');
-//         if(!activeSlide || !priceContainer) return;
-//
-//         const priceData = {
-//             option1: activeSlide.dataset.price || activeSlide.dataset.pricePerCanvas || '0',
-//             option2: activeSlide.dataset.pricePerSet || '0'
-//         };
-//
-//         const divElement = document.querySelector(".fix");
-//         if(divElement) {
-//             divElement.className = `fix ${currentOption} mb-20`;
-//         }
-//
-//         priceContainer.textContent = `${priceData[currentOption]}`;
-//     }
-//
-//     // Обработчик изменений в селекторе
-//     function handleSelectChange() {
-//         currentOption = selectElement.value;
-//         updatePrice();
-//     }
-//
-//     // Наблюдатель за слайдами
-//     if(slickTrack) {
-//         const observer = new MutationObserver(function(mutations) {
-//             mutations.forEach(() => {
-//                 if(document.querySelector('.slick-current.slick-active')) {
-//                     updatePrice();
-//                 }
-//             });
-//         });
-//
-//         const slides = slickTrack.querySelectorAll('.slick-slide');
-//         slides.forEach(slide => {
-//             observer.observe(slide, config);
-//         });
-//
-//         // Инициализация
-//         updatePrice();
-//     }
-//
-//     // Слушатели событий
-//     selectElement?.addEventListener('change', handleSelectChange);
-//     slickTrack?.addEventListener('click', updatePrice);
-// });
-
 document.addEventListener('DOMContentLoaded', function() {
     // Общие элементы
     const slickTrack = document.querySelector('.slick-track');
@@ -86,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if(!activeSlide || !priceContainer) return;
 
         const priceData = {
-            option1: activeSlide.dataset.price || activeSlide.dataset.pricePerCanvas || '0',
+            // Исправляем pricePerCanvas на pricePerSet и добавляем productPrice
+            option1: activeSlide.dataset.price || activeSlide.dataset.pricePerSet || activeSlide.dataset.productPrice || '0',
             option2: activeSlide.dataset.pricePerSet || '0'
         };
 

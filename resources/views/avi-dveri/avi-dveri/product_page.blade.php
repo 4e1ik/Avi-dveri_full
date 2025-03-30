@@ -28,7 +28,7 @@
                         <!-- Single-pro-slider Big-photo start -->
                         <div class="single-pro-slider single-big-photo view-lightbox slider-for">
                             @foreach($product->images as $image)
-                                <div data-price="{{$image->price}}" data-price-per-set="{{$image->price_per_set}}"
+                                <div data-price="{{$image->price}}" data-price-per-set="{{$image->price_per_set}}" data-product-price="{{$product->price}}"
                                      @foreach($colors as $color)
                                          @if($image->door_color == $color['value'])
                                              data-color-value="{{$color['value']}}"
@@ -56,7 +56,7 @@
                             <div class="product-description">
                                 <p>{!! $product->description !!}</p>
                             </div>
-                            @if(!$product->category == 'fitting')
+                            @if(!($product->category == 'fitting'))
                                 <select id="selector" class="custom-select mb-30" onchange="handleSelectChange()"
                                         style="cursor: pointer">
                                     <option value="option1">Полотно</option>
