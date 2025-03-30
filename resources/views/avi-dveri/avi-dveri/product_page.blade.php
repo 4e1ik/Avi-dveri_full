@@ -164,7 +164,7 @@
                                         @endforeach
                                     @else
                                         <div style="pointer-events: auto">
-                                            <span data-title="Цвет: {{$image->description_image}}">
+                                            <span data-title="{{$image->description_image}}">
                                                 <img style="width: 73px;"
                                                      src="{{ asset('storage/' . $image->image) }}"
                                                      alt="{{$image->description_image}}"/>
