@@ -35,7 +35,6 @@
                                     <th>Цена за полотно</th>
                                     <th>Размер</th>
                                     <th>Стекло</th>
-                                    <th>Назначение</th>
                                     <th>Материал</th>
                                     <th>Ярлык</th>
                                     <th>Активный</th>
@@ -59,7 +58,6 @@
                                                     @endif
                                                 </td>
                                                 <td>{{$product->door->glass}}</td>
-                                                <td>{{$product->door->function}}</td>
                                                 <td>{{$product->door->material}}</td>
                                                 <td>@if(!empty($product->label))
                                                         @foreach($product->label as $label)
