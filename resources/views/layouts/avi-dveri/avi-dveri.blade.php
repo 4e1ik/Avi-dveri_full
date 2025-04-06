@@ -220,7 +220,9 @@
             }
 
             // Успешная отправка
-            alert(data.message || 'Письмо успешно отправлено!');
+            // alert(data.message || 'Письмо успешно отправлено!');
+            const currentUrl = window.location.href;
+            window.location.href = `/thank-you?referrer=${encodeURIComponent(currentUrl)}`;
             form.reset(); // Сброс формы
             clearErrors(); // Очистка ошибок
 
