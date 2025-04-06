@@ -15,7 +15,7 @@ class MailController extends Controller
     {
         try {
             $data = $mailRequest->all();
-            Mail::to('And-2506.1970@yandex.ru')->send(new FeedbackMail($data));
+            Mail::to('3673518@mail.ru')->send(new FeedbackMail($data));
 
             // Успешный ответ
             return response()->json([
