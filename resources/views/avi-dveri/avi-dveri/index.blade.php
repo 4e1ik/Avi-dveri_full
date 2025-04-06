@@ -167,7 +167,7 @@
                                         @endif
                                         @if($product->images->isNotEmpty())
                                             <a style="display: flex; justify-content: center;" @include('includes.avi-dveri.product_route')>
-                                                <img style="object-fit: contain; width: 100px;"
+                                                <img style="object-fit: contain;"
                                                         src="{{ asset( 'storage/'. $product->images[0]->image ) }}"
                                                         alt="{{$product->images[0]->description}}"/>
                                             </a>
