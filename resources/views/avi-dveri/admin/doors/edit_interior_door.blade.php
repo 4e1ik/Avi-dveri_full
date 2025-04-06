@@ -168,7 +168,7 @@
                                                 Выберите материал двери
                                             </option>
                                             @enderror
-                                            <option {{ $product->door->material == 'Эко-винир' ? 'selected' : ''}}  value="Эко-винир">
+                                            <option {{ $product->door->material == 'Экошпон' ? 'selected' : ''}}  value="Экошпон">
                                                 Экошпон
                                             </option>
                                             <option {{ $product->door->material == 'Полипропилен' ? 'selected' : ''}}  value="Полипропилен">
