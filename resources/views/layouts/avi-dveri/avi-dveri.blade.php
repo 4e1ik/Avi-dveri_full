@@ -146,7 +146,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="copyright">
-                        <p class="mb-0">Developed by <a href="https://www.instagram.com/artemi.sevostian?igsh=djFyeWRnaTBwNGNl" target="_blank">Artemy Sevostian </a></p>
+                        <p class="mb-0">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank" rel="nofollow noopener noreferrer">Artemy Sevostian </a></p>
                     </div>
                 </div>
             </div>
