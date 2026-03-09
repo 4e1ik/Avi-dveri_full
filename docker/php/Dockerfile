@@ -20,11 +20,10 @@ WORKDIR /var/www/html
 # Куда же без composer'а.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Nodejs для сборки
-RUN curl -sL https://deb.nodesource.com/setup_19.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get install -y nodejs
+RUN apt-get update && apt-get install -y nodejs npm
+RUN npm install -g yarn
 
-RUN rm nodesource_setup.sh
+RUN #rm nodesource_setup.sh
 RUN npm install -g yarn
 
 #RUN pecl install xdebug \
