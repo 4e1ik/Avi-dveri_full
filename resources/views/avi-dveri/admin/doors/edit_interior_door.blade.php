@@ -9,6 +9,7 @@
               enctype="multipart/form-data" method="post">
             @method('PUT')
             @csrf
+            <input type="hidden" name="category" value="{{ $product->category }}">
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -218,10 +219,10 @@
                                     <div class="col-md-10 padding-0">
                                         <h3>Сделать активным?</h3>
                                         <div class="col-md-2 padding-0">
-                                            <input type="radio" name="active" value="1"> Да
+                                            <input type="radio" name="active" value="1" {{ $product->active ? 'checked' : '' }}> Да
                                         </div>
                                         <div class="col-md-2 padding-0">
-                                            <input type="radio" name="active" value="0"> Нет
+                                            <input type="radio" name="active" value="0" {{ !$product->active ? 'checked' : '' }}> Нет
                                         </div>
                                     </div>
                                 </div>
