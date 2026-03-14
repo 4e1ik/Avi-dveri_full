@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\avi_dveri\admin;
 
+use App\DTO\CreateProductDTO;
+use App\DTO\UpdateProductDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Models\Door;
-use App\Models\Fitting;
-use App\Models\Image;
 use App\Models\Product;
-use Illuminate\Support\Facades\Storage;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
+
+    public function __construct(
+        public ProductService $productService,
+    ){}
+
     /**
      * Display a listing of the resource.
      */
@@ -50,76 +54,30 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $data = $request->all();
+        $route = $this->productService->createProduct( new CreateProductDTO(
+            title:                  $request->input('title'),
+            description:            $request->input('description'),
+            price:                  $request->input('price'),
+            category:               $request->input('category'),
+            currency:               $request->input('currency'),
+            label:                  $request->input('label', []),
+            active:                 $request->input('active', true),
+            size:                   $request->input('size', []),
+            meta_title:             $request->input('meta_title'),
+            meta_description:       $request->input('meta_description'),
+            type:                   $request->input('type'),
+            function:               $request->input('function'),
+            material:               $request->input('material'),
+            glass:                  $request->input('glass'),
+            image:                  $request->file('image', []),
+            fitting_image_color:    $request->input('fitting_image_color'),
+            door_image_color:       $request->input('door_image_color'),
+            temp_description_image: $request->input('temp_description_image'),
+            temp_price:             $request->input('temp_price'),
+            temp_price_per_set:     $request->input('temp_price_per_set'),
+        ));
 
-//        dd($data);
-
-        if (array_key_exists('size_diff', $data) && array_key_exists('size_standard', $data))
-        {
-            $data['size'] = array_merge($data['size_standard'], $data['size_diff']);
-        }
-        elseif(array_key_exists('size_diff', $data))
-        {
-            $data['size'] = $data['size_diff'];
-
-        } elseif (array_key_exists('size_standard', $data))
-        {
-            $data['size'] = $data['size_standard'];
-        }
-
-        $i = 0;
-
-        $product = Product::create($data);
-
-        $data['product_id'] = $product->id;
-
-        switch ($data['category']) {
-            case 'door':
-                Door::create($data);
-
-                $routes = [
-                    'entrance' => route('admin_entrance_doors'),
-                    'interior' => route('admin_interior_doors'),
-                ];
-                break;
-
-            case 'fitting':
-                Fitting::create($data);
-
-                $routes = [
-                    'fitting' => route('admin_fittings'),
-                ];
-                break;
-        }
-
-        if ($request->hasFile('image')) {
-            foreach ($request->file('image') as $file) {
-                $name = save_image($file, Image::query());
-                $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
-                $data['image'] = $path;
-                if (array_key_exists('door_image_color', $data)) {
-                    $data['door_color'] = $data['door_image_color'][$i];
-                }
-                if (array_key_exists('fitting_image_color', $data)) {
-                    $data['fitting_color'] = $data['fitting_image_color'][$i];
-                }
-                if (array_key_exists('temp_description_image', $data)) {
-                    $data['description_image'] = $data['temp_description_image'][$i];
-                }
-                if (array_key_exists('temp_price', $data)) {
-                    $data['price'] = $data['temp_price'][$i];
-                }
-                if (array_key_exists('temp_price_per_set', $data)) {
-                    $data['price_per_set'] = $data['temp_price_per_set'][$i];
-                }
-                $i++;
-                $product->images()->create($data);
-            }
-        }
-
-        $type = $data['type'] ?? 'fitting';
-
-        return redirect($routes[$type]);
+        return redirect($route);
     }
 
     /**
@@ -135,17 +93,25 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        if ($product->category == 'door') {
+        if ($product->category === 'door') {
+            $door = $product->door;
+            if ($door === null) {
+                abort(404, 'Product door not found');
+            }
             $colors = add_doors_colors();
-            if($product->door->type == 'entrance'){
+            if ($door->type === 'entrance') {
                 return view('avi-dveri.admin.doors.edit_entrance_door', compact('product', 'colors'));
-            } elseif ($product->door->type == 'interior'){
+            }
+            if ($door->type === 'interior') {
                 return view('avi-dveri.admin.doors.edit_interior_door', compact('product', 'colors'));
             }
-        } elseif ($product->category == 'fitting') {
+            abort(404, 'Unknown door type');
+        }
+        if ($product->category === 'fitting') {
             $colors = add_fittings_colors();
             return view('avi-dveri.admin.fittings.edit_fitting', compact('product', 'colors'));
         }
+        abort(404, 'Unknown product category');
     }
 
     /**
@@ -153,109 +119,32 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $data = $request->all();
+        $route = $this->productService->updateProduct(new UpdateProductDTO(
+            title:                  $request->input('title') ?? $product->title,
+            description:           $request->input('description') ?? $product->description,
+            price:                  $request->input('price') ?? $product->price,
+            price_per_set:         $request->input('price_per_set') ?? $product->price_per_set,
+            category:              $request->input('category') ?: $product->category,
+            currency:              $request->input('currency') ?: $product->currency,
+            label:                 $request->input('label') !== null ? $request->input('label') : $product->label,
+            active:                $request->has('active') ? $request->input('active') : $product->active,
+            size:                  $request->input('size') ?? $product->size,
+            meta_title:            $request->input('meta_title') ?? $product->meta_title,
+            meta_description:      $request->input('meta_description') ?? $product->meta_description,
+            type:                  $request->input('type') ?? $product->door?->type,
+            function:              $request->input('function') ?? $product->door?->function ?? $product->fitting?->function,
+            material:              $request->input('material') ?? $product->door?->material,
+            glass:                 $request->input('glass') ?? $product->door?->glass,
+            image:                 $request->file('image', []),
+            fitting_image_color:    $request->input('fitting_image_color'),
+            door_image_color:      $request->input('door_image_color'),
+            temp_description_image: $request->input('temp_description_image'),
+            temp_price:            $request->input('temp_price'),
+            temp_price_per_set:    $request->input('temp_price_per_set'),
+            delete_images:         $request->input('delete_images'),
+        ), $product);
 
-//        dd($data);
-
-        if (array_key_exists('size_diff', $data) && array_key_exists('size_standard', $data))
-        {
-            $data['size'] = array_merge($data['size_standard'], $data['size_diff']);
-        }
-        elseif(array_key_exists('size_diff', $data))
-        {
-            $data['size'] = $data['size_diff'];
-
-        } elseif (array_key_exists('size_standard', $data))
-        {
-            $data['size'] = $data['size_standard'];
-        }
-
-        $i = 0;
-
-        switch ($product->category) {
-            case 'door':
-                $model = $product->door;
-                $routes = [
-                    'entrance' => route('admin_entrance_doors'),
-                    'interior' => route('admin_interior_doors'),
-                ];
-                break;
-
-            case 'fitting':
-                $model = $product->fitting;
-                $routes = [
-                    'fitting' => route('admin_fittings'),
-                ];
-                break;
-        }
-
-        if (array_key_exists('door_image_color', $data)) {
-            foreach ($data['door_image_color'] as $key => $value) {
-                $product->images()->where('id', $key)->update(['door_color' => $value]);
-            }
-        }
-        if (array_key_exists('fitting_image_color', $data)) {
-            foreach ($data['fitting_image_color'] as $key => $value) {
-                $product->images()->where('id', $key)->update(['fitting_color' => $value]);
-            }
-        }
-        if (array_key_exists('temp_description_image', $data)) {
-            foreach ($data['temp_description_image'] as $key => $value) {
-                $product->images()->where('id', $key)->update(['description_image' => $value]);
-            }
-        }
-        if (array_key_exists('temp_price', $data)) {
-            foreach ($data['temp_price'] as $key => $value) {
-                $product->images()->where('id', $key)->update(['price' => $value]);
-            }
-        }
-        if (array_key_exists('temp_price_per_set', $data)) {
-            foreach ($data['temp_price_per_set'] as $key => $value) {
-                $product->images()->where('id', $key)->update(['price_per_set' => $value]);
-            }
-        }
-
-        $product->fill($data)->save();
-
-        $data['product_id'] = $product->id;
-
-        $model->fill($data)->save();
-
-        if ($request->hasFile('image')) {
-            foreach ($request->file('image') as $file) {
-                $name = save_image($file, Image::query());
-                $path = Storage::putFileAs('public/images', $file, $name); // Даем путь к этому файлу
-                $data['image'] = $path;
-                if (array_key_exists('door_image_color', $data)) {
-                    $data['door_color'] = $data['door_image_color'][$i];
-                }
-                if (array_key_exists('fitting_image_color', $data)) {
-                    $data['fitting_color'] = $data['fitting_image_color'][$i];
-                }
-                if (array_key_exists('temp_description_image', $data)) {
-                    $data['description_image'] = $data['temp_description_image'][$i];
-                }
-                if (array_key_exists('temp_description_image', $data)) {
-                    $data['price'] = $data['temp_price'][$i];
-                }
-                if (array_key_exists('temp_description_image', $data)) {
-                    $data['price_per_set'] = $data['temp_price_per_set'][$i];
-                }
-
-                $i++;
-                $product->images()->create($data);
-            }
-        }
-
-        $id_delete_images = explode(',', $data['delete_images']);
-
-        foreach ($id_delete_images as $id) {
-            $product->images()->where('id', $id)->delete();
-        }
-
-        $type = $data['type'] ?? 'fitting';
-
-        return redirect($routes[$type]);
+        return redirect($route);
     }
 
     /**
@@ -263,14 +152,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $images = $product->images()->where('imageable_id', $product->id)->get();
-        if ($images->isNotEmpty()) {
-            foreach ($images as $image) {
-                Storage::delete($image->image);
-                $image->delete();
-            }
-        }
-        $product->delete();
+        $this->productService->deleteProduct(product: $product);
         return back();
     }
 }
