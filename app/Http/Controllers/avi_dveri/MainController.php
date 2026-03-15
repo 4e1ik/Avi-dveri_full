@@ -3,30 +3,40 @@
 namespace App\Http\Controllers\avi_dveri;
 
 use App\Http\Controllers\Controller;
+use App\Models\MetaTag;
 use App\Models\Product;
 
 class MainController extends Controller
 {
     function index()
     {
+        $meta = MetaTag::where('slug', 'home')->first();
         $products = Product::whereIn('active', [1])
             ->with(['door'])
             ->with(['fitting'])
             ->whereJsonContains('label', 'hit')
             ->inRandomOrder()
             ->get();
-        
-        return view('avi-dveri.avi-dveri.index', compact('products'));
+
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
+        return view('avi-dveri.avi-dveri.index', compact('products', 'metaTitle', 'metaDescription'));
     }
 
     function catalog()
     {
-        return view('avi-dveri.avi-dveri.catalog');
+        $meta = MetaTag::where('slug', 'katalog')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
+        return view('avi-dveri.avi-dveri.catalog', compact('metaTitle', 'metaDescription'));
     }
 
     function payment_and_delivery()
     {
-        return view('avi-dveri.avi-dveri.payment_and_delivery');
+        $meta = MetaTag::where('slug', 'oplata-dostavka')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
+        return view('avi-dveri.avi-dveri.payment_and_delivery', compact('metaTitle', 'metaDescription'));
     }
 
     function show_product($head, $direction, Product $product)

@@ -31,6 +31,21 @@ class SitemapController extends Controller
             'priority' => '1.0'
         ];
 
+        //Оплата и доставка
+        $urls[] = [
+            'loc' => URL::to(route('payment_and_delivery')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6'
+        ];
+
+        //Спасибо
+        $urls[] = [
+            'loc' => URL::to(route('thank-you')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.3'
+        ];
 
         //Фурнитура
         $urls[] = [
@@ -139,7 +154,7 @@ class SitemapController extends Controller
 
         // Добавление динамических страниц
         //Страницы фурнитуры
-        $fittings = Product::where('category', 'fitting')->where('active', 1)->get();
+        $fittings = Product::where('category', 'fitting')->where('active', 1)->whereNotNull('slug')->get();
         foreach ($fittings as $fitting) {
             $function = $fitting->fitting->function;
             $fittings_routes = [
@@ -149,7 +164,7 @@ class SitemapController extends Controller
             ];
 
             $urls[] = [
-                'loc' => URL::to($fittings_routes[$function] . '/' . $fitting->id),
+                'loc' => URL::to($fittings_routes[$function] . '/' . $fitting->slug),
                 'lastmod' => $fitting->updated_at->toAtomString(),
                 'changefreq' => 'weekly',
                 'priority' => '0.4'
@@ -160,7 +175,7 @@ class SitemapController extends Controller
         $interior_doors = Product::where('category', 'door')
             ->whereHas('door', function ($query) {
                 $query->where('type', 'interior');
-            })->where('active', 1)->get();
+            })->where('active', 1)->whereNotNull('slug')->get();
         foreach ($interior_doors as $interior_door) {
             $material = $interior_door->door->material;
             $interior_doors_routes = [
@@ -172,7 +187,7 @@ class SitemapController extends Controller
             ];
 
             $urls[] = [
-                'loc' => URL::to($interior_doors_routes[$material] . '/' . $interior_door->id),
+                'loc' => URL::to($interior_doors_routes[$material] . '/' . $interior_door->slug),
                 'lastmod' => $interior_door->updated_at->toAtomString(),
                 'changefreq' => 'weekly',
                 'priority' => '0.4'
@@ -183,7 +198,7 @@ class SitemapController extends Controller
         $entrance_doors = Product::where('category', 'door')
             ->whereHas('door', function ($query) {
                 $query->where('type', 'entrance');
-            })->where('active', 1)->get();
+            })->where('active', 1)->whereNotNull('slug')->get();
         foreach ($entrance_doors as $entrance_door) {
             $function = $entrance_door->door->function;
             $entrance_doors_routes = [
@@ -193,7 +208,7 @@ class SitemapController extends Controller
             ];
 
             $urls[] = [
-                'loc' => URL::to($entrance_doors_routes[$function] . '/' . $entrance_door->id),
+                'loc' => URL::to($entrance_doors_routes[$function] . '/' . $entrance_door->slug),
                 'lastmod' => $entrance_door->updated_at->toAtomString(),
                 'changefreq' => 'weekly',
                 'priority' => '0.4'

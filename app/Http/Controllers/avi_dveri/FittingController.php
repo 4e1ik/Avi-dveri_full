@@ -7,6 +7,7 @@ use App\Enums\ProductPerPageEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FilterRequest;
 use App\Models\Fitting;
+use App\Models\MetaTag;
 use App\Repositories\ProductRepository;
 use App\Services\FilterService;
 use App\Services\ProductService;
@@ -43,6 +44,9 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
+        $meta = MetaTag::where('slug', 'furnitura')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.fittings.fittings', compact(
             'products',
             'totalCount',
@@ -51,6 +55,8 @@ class FittingController extends Controller
             'economyTotalCount',
             'standardTotalCount',
             'premiumTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -77,6 +83,9 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
+        $meta = MetaTag::where('slug', 'ekonom')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.fittings.economy_fittings', compact(
             'products',
             'totalCount',
@@ -85,6 +94,8 @@ class FittingController extends Controller
             'economyTotalCount',
             'standardTotalCount',
             'premiumTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -111,6 +122,9 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
+        $meta = MetaTag::where('slug', 'standart')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.fittings.standard_fittings', compact(
             'products',
             'totalCount',
@@ -119,6 +133,8 @@ class FittingController extends Controller
             'economyTotalCount',
             'standardTotalCount',
             'premiumTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -145,6 +161,9 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
+        $meta = MetaTag::where('slug', 'premium')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.fittings.premium_fittings', compact(
             'products',
             'totalCount',
@@ -153,6 +172,8 @@ class FittingController extends Controller
             'economyTotalCount',
             'standardTotalCount',
             'premiumTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 

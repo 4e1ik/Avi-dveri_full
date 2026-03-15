@@ -7,6 +7,7 @@ use App\Enums\ProductPerPageEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FilterRequest;
 use App\Models\Door;
+use App\Models\MetaTag;
 use App\Repositories\ProductRepository;
 use App\Services\FilterService;
 use App\Services\ProductService;
@@ -42,6 +43,9 @@ class DoorController extends Controller
         $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
         $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
+        $meta = MetaTag::where('slug', 'vhodnye-dveri')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.entrance_doors.entrance_doors', compact(
             'products',
             'totalCount',
@@ -50,6 +54,8 @@ class DoorController extends Controller
             'streetTotalCount',
             'apartmentTotalCount',
             'thermal_breakTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -77,6 +83,9 @@ class DoorController extends Controller
         $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
         $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
+        $meta = MetaTag::where('slug', 'ulica')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.entrance_doors.street_doors', compact(
             'products',
             'totalCount',
@@ -85,6 +94,8 @@ class DoorController extends Controller
             'streetTotalCount',
             'apartmentTotalCount',
             'thermal_breakTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -112,6 +123,9 @@ class DoorController extends Controller
         $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
         $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
+        $meta = MetaTag::where('slug', 'kvartira')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.entrance_doors.apartment_doors', compact(
             'products',
             'totalCount',
@@ -120,6 +134,8 @@ class DoorController extends Controller
             'streetTotalCount',
             'apartmentTotalCount',
             'thermal_breakTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -147,6 +163,9 @@ class DoorController extends Controller
         $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
         $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
+        $meta = MetaTag::where('slug', 'termorazryv')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.entrance_doors.thermal_break_doors', compact(
             'products',
             'totalCount',
@@ -155,6 +174,8 @@ class DoorController extends Controller
             'streetTotalCount',
             'apartmentTotalCount',
             'thermal_breakTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -183,6 +204,9 @@ class DoorController extends Controller
         $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
         $solidTotalCount = Door::where('material', 'Массив')->count();
 
+        $meta = MetaTag::where('slug', 'mezhkomnatnye-dveri')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.interior_doors.interior_doors', compact(
             'products',
             'totalCount',
@@ -193,6 +217,8 @@ class DoorController extends Controller
             'enamelTotalCount',
             'hiddenTotalCount',
             'solidTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -222,6 +248,9 @@ class DoorController extends Controller
         $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
         $solidTotalCount = Door::where('material', 'Массив')->count();
 
+        $meta = MetaTag::where('slug', 'ekoshpon')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.interior_doors.eco_veneer_doors', compact(
             'products',
             'totalCount',
@@ -232,6 +261,8 @@ class DoorController extends Controller
             'enamelTotalCount',
             'hiddenTotalCount',
             'solidTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -261,6 +292,9 @@ class DoorController extends Controller
         $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
         $solidTotalCount = Door::where('material', 'Массив')->count();
 
+        $meta = MetaTag::where('slug', 'polipropilen')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.interior_doors.polypropylene_doors', compact(
             'products',
             'totalCount',
@@ -271,6 +305,8 @@ class DoorController extends Controller
             'enamelTotalCount',
             'hiddenTotalCount',
             'solidTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -300,6 +336,9 @@ class DoorController extends Controller
         $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
         $solidTotalCount = Door::where('material', 'Массив')->count();
 
+        $meta = MetaTag::where('slug', 'emal')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.interior_doors.enamel_doors', compact(
             'products',
             'totalCount',
@@ -310,6 +349,8 @@ class DoorController extends Controller
             'enamelTotalCount',
             'hiddenTotalCount',
             'solidTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -339,6 +380,9 @@ class DoorController extends Controller
         $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
         $solidTotalCount = Door::where('material', 'Массив')->count();
 
+        $meta = MetaTag::where('slug', 'skrytye')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.interior_doors.hidden_doors', compact(
             'products',
             'totalCount',
@@ -349,6 +393,8 @@ class DoorController extends Controller
             'enamelTotalCount',
             'hiddenTotalCount',
             'solidTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 
@@ -378,6 +424,9 @@ class DoorController extends Controller
         $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
         $solidTotalCount = Door::where('material', 'Массив')->count();
 
+        $meta = MetaTag::where('slug', 'massiv')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
         return view('avi-dveri.avi-dveri.doors.interior_doors.solid_doors', compact(
             'products',
             'totalCount',
@@ -388,6 +437,8 @@ class DoorController extends Controller
             'enamelTotalCount',
             'hiddenTotalCount',
             'solidTotalCount',
+            'metaTitle',
+            'metaDescription',
         ));
     }
 }

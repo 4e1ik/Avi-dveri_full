@@ -16,6 +16,7 @@ class ProductRepository
     ){}
 
     public function createProduct(
+        ?string $slug,
         ?string $title,
         ?string $description,
         ?float  $price,
@@ -28,6 +29,7 @@ class ProductRepository
     )
     {
         return Product::create([
+            'slug' =>                $slug,
             'title' =>              $title,
             'description' =>        $description,
             'price' =>              $price,
@@ -41,6 +43,7 @@ class ProductRepository
     }
 
     public function updateProduct(
+        ?string $slug,
         ?string $title,
         ?string $description,
         ?float  $price,
@@ -55,6 +58,7 @@ class ProductRepository
     )
     {
         return $product->update([
+            'slug' =>                $slug,
             'title' =>              $title,
             'description' =>        $description,
             'price' =>              $price,

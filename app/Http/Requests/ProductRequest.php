@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -21,8 +22,18 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        $product = $this->route('product');
+        $slugRules = [
+            'nullable',
+            'string',
+            'max:255',
+            'regex:/^[a-z0-9-]+$/',
+            $product ? Rule::unique('products', 'slug')->ignore($product->id) : 'unique:products,slug',
+        ];
+
         $rules = [
             'title' => 'required|filled|min:3|max:100',
+            'slug' => $slugRules,
             'price' => 'required|filled|max:50',
             'currency' => 'required|filled|max:20',
             'function' => 'required|filled|max:50',
@@ -45,5 +56,14 @@ class ProductRequest extends FormRequest
         }
 
         return $rules;
+    }
+
+    public function messages(): array
+    {
+        return [
+            'slug.max' => 'Slug не должен превышать :max символов.',
+            'slug.unique' => 'Такой slug уже используется. Выберите другой.',
+            'slug.regex' => 'Slug может содержать только латинские буквы в нижнем регистре, цифры и дефисы.',
+        ];
     }
 }

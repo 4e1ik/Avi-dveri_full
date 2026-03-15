@@ -18,6 +18,7 @@ class Product extends Model
     ];
 
     protected $fillable = [
+        'slug',
         'title',
         'description',
         'price',
@@ -30,6 +31,11 @@ class Product extends Model
         'meta_title',
         'meta_description',
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     public function door()
     {

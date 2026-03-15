@@ -1,33 +1,33 @@
 @php
 $entrance_doors = [
-    'Улица' => 'street_doors',
-    'Квартира' => 'apartment_doors',
-    'Терморазрыв' => 'thermal_break_doors',
-    ];
+    'Улица' => 'ulica',
+    'Квартира' => 'kvartira',
+    'Терморазрыв' => 'termorazryv',
+];
 $interior_doors_routes = [
-    'Экошпон' => 'eco_veneer_doors',
-    'Полипропилен' => 'polypropylene_doors',
-    'Эмаль' => 'enamel_doors',
-    'Скрытые' => 'hidden_doors',
-    'Массив' => 'solid_doors',
-    ];
+    'Экошпон' => 'ekoshpon',
+    'Полипропилен' => 'polipropilen',
+    'Эмаль' => 'emal',
+    'Скрытые' => 'skrytye',
+    'Массив' => 'massiv',
+];
 $fittings_routes = [
-    'Эконом' => 'economy_fittings',
-    'Стандарт' => 'standard_fittings',
-    'Премиум' => 'premium_fittings',
-    ];
+    'Эконом' => 'ekonom',
+    'Стандарт' => 'standart',
+    'Премиум' => 'premium',
+];
 @endphp
 
 href="{{route('product_page', ['head' =>
 $product->category == 'door' ?
     ($product->door->type == 'interior' ?
-        'interior_doors'
+        'mezhkomnatnye-dveri'
         :
-        'entrance_doors'
+        'vhodnye-dveri'
     )
 :
     ($product->category == 'fitting' ?
-        'fittings'
+        'furnitura'
         :
         ''
     )

@@ -7,17 +7,20 @@ namespace App\Services;
 use App\DTO\CreateProductDTO;
 use App\DTO\UpdateProductDTO;
 use App\Enums\ProductPerPageEnum;
+use App\Helpers\SlugGenerateHelper;
 use App\Models\Product;
 use App\Repositories\DoorRepository;
 use App\Repositories\FittingRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class ProductService
 {
     public function __construct(
         public ImageService $imageService,
+        public SlugGenerateHelper $slugGenerateHelper,
         public DoorRepository $doorRepository,
         public FittingRepository $fittingRepository,
         public ProductRepository $productRepository,
@@ -25,11 +28,13 @@ class ProductService
 
     public function createProduct(CreateProductDTO $dto): string
     {
+        $slug = $this->resolveSlugForCreate($dto->slug, $dto->title);
 
         $size = self::mergeSizes($dto);
         $routes = [];
 
         $product = $this->productRepository->createProduct(
+            slug:                $slug,
             title:              $dto->title,
             description:        $dto->description,
             price:              $dto->price,
@@ -178,7 +183,14 @@ class ProductService
             );
         }
 
+        $slug = $this->resolveSlugForUpdate(
+            $dto->slug,
+            $dto->title ?? $product->title,
+            $product
+        );
+
         $this->productRepository->updateProduct(
+            slug:                $slug,
             title:              $dto->title ?? $product->title,
             description:        $dto->description ?? $product->description,
             price:              $dto->price ?? $product->price,
@@ -219,19 +231,53 @@ class ProductService
         ];
     }
 
+    private function resolveSlugForCreate(?string $input, string $title): string
+    {
+        $slug = trim((string) $input);
+        if ($slug === '') {
+            $slug = $this->slugGenerateHelper->slug($title, false);
+        }
+        if ($slug === '') {
+            $slug = 'product-' . bin2hex(random_bytes(4));
+        }
+        if (Product::where('slug', $slug)->exists()) {
+            throw ValidationException::withMessages([
+                'slug' => 'Такой slug уже используется. Выберите другой.',
+            ]);
+        }
+        return $slug;
+    }
+
+    private function resolveSlugForUpdate(?string $input, string $title, Product $product): string
+    {
+        $slug = trim((string) $input);
+        if ($slug === '') {
+            $slug = $this->slugGenerateHelper->slug($title, false);
+        }
+        if ($slug === '') {
+            $slug = 'product-' . $product->id;
+        }
+        if (Product::where('slug', $slug)->where('id', '!=', $product->id)->exists()) {
+            throw ValidationException::withMessages([
+                'slug' => 'Такой slug уже используется. Выберите другой.',
+            ]);
+        }
+        return $slug;
+    }
+
     private function mergeSizes(CreateProductDTO|UpdateProductDTO $dto): array
     {
         if (property_exists($dto, 'size_diff') && property_exists($dto, 'size_standard')) {
-            $size = array_merge($dto->size_standard, $dto->size_diff);
-        } elseif (property_exists($dto, 'size_diff')) {
+            $size = array_merge($dto->size_standard ?? [], $dto->size_diff ?? []);
+        } elseif (property_exists($dto, 'size_diff') && ($dto->size_diff !== null)) {
             $size = $dto->size_diff;
-        } elseif (property_exists($dto, 'size_standard')) {
+        } elseif (property_exists($dto, 'size_standard') && ($dto->size_standard !== null)) {
             $size = $dto->size_standard;
         } else {
             $size = [];
         }
 
-        return $size;
+        return array_values(array_filter($size, fn($v) => $v !== '' && $v !== null));
     }
 
 }
