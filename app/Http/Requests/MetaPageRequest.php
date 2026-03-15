@@ -4,24 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MetaTagRequest extends FormRequest
+class MetaPageRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
+            'slug' => 'required|string|in:home,katalog,oplata-dostavka,spasibo,vhodnye-dveri,ulica,kvartira,termorazryv,mezhkomnatnye-dveri,ekoshpon,polipropilen,emal,skrytye,massiv,furnitura,ekonom,standart,premium',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
         ];

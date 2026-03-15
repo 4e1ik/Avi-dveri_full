@@ -8,6 +8,7 @@ class UpdateProductDTO
 {
     public function __construct(
         // product
+        public ?string $slug = null,
         public string  $title,
         public ?string $description = null,
         public ?float  $price = null,
@@ -17,6 +18,8 @@ class UpdateProductDTO
         public ?array  $label = [],
         public ?bool   $active = true,
         public ?array  $size = null,
+        public ?array  $size_diff = null,
+        public ?array  $size_standard = null,
         public ?string $meta_title = null,
         public ?string $meta_description = null,
 

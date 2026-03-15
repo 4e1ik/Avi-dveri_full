@@ -55,6 +55,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $route = $this->productService->createProduct( new CreateProductDTO(
+            slug:                   $request->input('slug'),
             title:                  $request->input('title'),
             description:            $request->input('description'),
             price:                  $request->input('price'),
@@ -63,6 +64,8 @@ class ProductController extends Controller
             label:                  $request->input('label', []),
             active:                 $request->input('active', true),
             size:                   $request->input('size', []),
+            size_diff:              $request->input('size_diff', []),
+            size_standard:          $request->input('size_standard', []),
             meta_title:             $request->input('meta_title'),
             meta_description:       $request->input('meta_description'),
             type:                   $request->input('type'),
@@ -120,6 +123,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $route = $this->productService->updateProduct(new UpdateProductDTO(
+            slug:                   $request->input('slug'),
             title:                  $request->input('title') ?? $product->title,
             description:           $request->input('description') ?? $product->description,
             price:                  $request->input('price') ?? $product->price,
@@ -129,6 +133,8 @@ class ProductController extends Controller
             label:                 $request->input('label') !== null ? $request->input('label') : $product->label,
             active:                $request->has('active') ? $request->input('active') : $product->active,
             size:                  $request->input('size') ?? $product->size,
+            size_diff:             $request->input('size_diff', []),
+            size_standard:         $request->input('size_standard', []),
             meta_title:            $request->input('meta_title') ?? $product->meta_title,
             meta_description:      $request->input('meta_description') ?? $product->meta_description,
             type:                  $request->input('type') ?? $product->door?->type,

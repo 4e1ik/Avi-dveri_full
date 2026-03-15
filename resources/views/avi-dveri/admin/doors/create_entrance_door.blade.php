@@ -41,6 +41,15 @@
                                 </div>
                             </div>
                             <div class="col-md-3 padding-0">
+                                <h3>Slug (ЧПУ)</h3>
+                                <div class="col-md-11 padding-0">
+                                    <input class="input form-control {{$errors->has('slug') ? 'danger' : ''}}"
+                                           type="text" name="slug" id="slug" maxlength="255"
+                                           placeholder="@error('slug') {{$message}} @enderror" value="{{old('slug')}}">
+                                    <small class="text-muted">Если пусто — сгенерируется из названия.</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 padding-0">
                                 <h3>Цена <span style="font-size: 15px">(карточка товара)</span></h3>
 
                                 <div class="col-md-11 padding-0">
@@ -225,53 +234,47 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="col-md-12 padding-0">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="panel">--}}
-{{--                        <div class="panel-body">--}}
-{{--                            <div class="col-md-12">--}}
-{{--                                <div class="col-md-3 padding-0">--}}
-{{--                                    <h3>Meta Title</h3>--}}
-{{--                                    <div style="margin:0" class="row">--}}
-{{--                                        <div class="col-md-11 padding-0">--}}
-{{--                                            <input class="input form-control {{$errors->has('meta_title') ? 'danger' : ''}}"--}}
-{{--                                                   type="text"--}}
-{{--                                                   name="meta_title" value="{{old('meta_title')}}">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div style="position: absolute; margin:0;" class="row">--}}
-{{--                                        @error('meta_title')--}}
-{{--                                        <div class="text-danger">--}}
-{{--                                            {{$message}}--}}
-{{--                                        </div>--}}
-{{--                                        @enderror--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-8 padding-0">--}}
-{{--                                    <div class="col-md-12">--}}
-{{--                                        <div class="col-md-8 padding-0">--}}
-{{--                                            <h3>Meta Description</h3>--}}
-{{--                                            <div style="margin:0" class="row">--}}
-{{--                                                <textarea class="textarea form-control {{$errors->has('meta_description') ? 'danger' : ''}}"--}}
-{{--                                                          name="meta_description" style="width: 100%;" rows="10" type="text">--}}
-{{--                                                {{$errors->has('meta_description') ? '' : old('meta_description')}}--}}
-{{--                                            </textarea>--}}
-{{--                                            </div>--}}
-{{--                                            <div style="position: absolute; margin:0;" class="row">--}}
-{{--                                                @error('meta_description')--}}
-{{--                                                <div class="text-danger">--}}
-{{--                                                    {{$message}}--}}
-{{--                                                </div>--}}
-{{--                                                @enderror--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="col-md-12 padding-0">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="col-md-6 padding-0">
+                                <h3>Meta Title</h3>
+                                <div style="margin:0" class="row">
+                                    <div class="col-md-11 padding-0">
+                                        <input class="input form-control {{ $errors->has('meta_title') ? 'danger' : '' }}"
+                                               type="text"
+                                               name="meta_title"
+                                               placeholder="@error('meta_title') {{ $message }} @enderror"
+                                               value="{{ old('meta_title') }}">
+                                    </div>
+                                </div>
+                                <div style="position: absolute; margin:0;" class="row">
+                                    @error('meta_title')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6 padding-0">
+                                <h3>Meta Description</h3>
+                                <div style="margin:0" class="row">
+                                    <div class="col-md-11 padding-0">
+                                        <textarea class="textarea form-control {{ $errors->has('meta_description') ? 'danger' : '' }}"
+                                                  name="meta_description"
+                                                  rows="4"
+                                                  placeholder="@error('meta_description') {{ $message }} @enderror">{{ old('meta_description') }}</textarea>
+                                    </div>
+                                </div>
+                                <div style="position: absolute; margin:0;" class="row">
+                                    @error('meta_description')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
                     <div class="panel">
@@ -294,4 +297,5 @@
             </div>
         </form>
     </div>
+    @include('avi-dveri.admin.partials.slug_autofill')
 @endsection

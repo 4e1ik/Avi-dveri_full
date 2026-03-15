@@ -97,6 +97,16 @@
                         Фурнитура
                     </a>
                 </li>
+                <li class="ripple">
+                    <a class="tree-toggle nav-header">
+                        Мета-теги
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                    </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_meta_pages')}}">Страницы</a></li>
+                        <li><a href="{{route('admin_meta_products')}}">Товары</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -603,6 +613,17 @@
                         <span class="icon-vector icons"></span>
                         Фурнитура
                     </a>
+                </li>
+                <li class="ripple">
+                    <a class="tree-toggle nav-header">
+                        <span class="fa fa-tags"></span>
+                        Мета-теги
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                    </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('admin_meta_pages')}}">Страницы</a></li>
+                        <li><a href="{{route('admin_meta_products')}}">Товары</a></li>
+                    </ul>
                 </li>
                 <li class="ripple">
                     <a class="tree-toggle nav-header">
