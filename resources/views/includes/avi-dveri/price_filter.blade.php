@@ -42,17 +42,14 @@
             if (newProducts && oldProducts) oldProducts.outerHTML = newProducts.outerHTML;
 
             // pagination
+            const newPag = doc.querySelector('.shop-pagination');
+            const oldPag = document.querySelector('.shop-pagination');
+
             if (newPag && oldPag) {
                 oldPag.outerHTML = newPag.outerHTML;
             } else if (newPag && !oldPag) {
                 const gridView = document.getElementById('grid-view');
                 if (gridView) gridView.insertAdjacentHTML('afterend', newPag.outerHTML);
-            }
-            if (newNav && oldNav) {
-                oldNav.outerHTML = newNav.outerHTML;
-            } else if (newNav && !oldNav) {
-                const gridView = document.getElementById('grid-view');
-                if (gridView) gridView.insertAdjacentHTML('afterend', newNav.outerHTML);
             }
 
             // Не меняем address bar (вариант 2)

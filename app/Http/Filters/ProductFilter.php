@@ -20,6 +20,6 @@ class ProductFilter extends AbstractFilter
 
     public function price_filter(Builder $builder, $value)
     {
-        $builder->with(['door', 'fitting'])->orderBy('price', $value);
+        $builder->orderBy('price', $value);
     }
 }

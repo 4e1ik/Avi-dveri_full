@@ -92,6 +92,7 @@ class ProductRepository
                     $query->where('function', $function);
                 }
             })
+            ->where('category', $productType)
             ->with(['images', $productType])
             ->filter($filter)
             ->latest()
