@@ -63,7 +63,7 @@
                     @include('includes.avi-dveri.aside_catalog')
                     <!-- Widget-categories end -->
                     <!-- Shop-Filter start -->
-                    <form action="">
+{{--                    <form action="">--}}
                         @include('includes.avi-dveri.price_filter')
 
                         <!-- Shop-Filter end -->
@@ -91,7 +91,7 @@
                         {{--                        <button style="width: 100%; height: 45px; font-size: larger; line-height: 45px;"--}}
                         {{--                                data-text="Отфильтровать" type="submit" class="button-one submit-btn-4">Отфильтровать--}}
                         {{--                        </button>--}}
-                    </form>
+{{--                    </form>--}}
                     {{--                    <a href="{{route('interior_doors')}}">Очистить фильтр</a>--}}
                     <!-- Widget-Manufacturer end -->
                 </div>

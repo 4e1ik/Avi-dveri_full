@@ -53,7 +53,7 @@
                     @include('includes.avi-dveri.aside_catalog')
                     <!-- Widget-categories end -->
                     <!-- Shop-Filter start -->
-                    <form action="">
+{{--                    <form action="">--}}
                         @include('includes.avi-dveri.price_filter')
                             <aside class="widget widget-color mb-30">
                                 <div class="widget-title">
@@ -76,7 +76,7 @@
                             {{--                                data-text="Отфильтровать" type="submit" class="button-one submit-btn-4">Отфильтровать--}}
                             {{--                        </button>--}}
                             <!-- Widget-Manufacturer end -->
-                    </form>
+{{--                    </form>--}}
                     {{--                    <a href="{{route('entrance_doors')}}">Очистить фильтр</a>--}}
                 </div>
             </div>
