@@ -31,11 +31,11 @@
                                 <thead>
                                 <tr>
                                     <th>Название</th>
-                                    <th>Описание</th>
+{{--                                    <th>Описание</th>--}}
                                     <th>Цена за полотно</th>
-                                    <th>Размер</th>
-                                    <th>Назначение</th>
-                                    <th>Материал</th>
+{{--                                    <th>Размер</th>--}}
+{{--                                    <th>Назначение</th>--}}
+{{--                                    <th>Материал</th>--}}
                                     <th>Ярлык</th>
                                     <th>Активный</th>
                                     <th>Редактировать</th>
@@ -48,17 +48,17 @@
                                         @if(!empty($product->door))
                                         <tr>
                                             <td>{{$product->title}}</td>
-                                            <td>{!! $product->description !!}</td>
+{{--                                            <td>{!! $product->description !!}</td>--}}
                                             <td>{{$product->price}}</td>
-                                            <td>
-                                                @if(!empty($product->door->size))
-                                                    @foreach($product->door->size as $size)
-                                                        {{$size}} <br>
-                                                    @endforeach
-                                                @endif
-                                            </td>
-                                            <td>{{$product->door->function}}</td>
-                                            <td>{{$product->door->material}}</td>
+{{--                                            <td>--}}
+{{--                                                @if(!empty($product->door->size))--}}
+{{--                                                    @foreach($product->door->size as $size)--}}
+{{--                                                        {{$size}} <br>--}}
+{{--                                                    @endforeach--}}
+{{--                                                @endif--}}
+{{--                                            </td>--}}
+{{--                                            <td>{{$product->door->function}}</td>--}}
+{{--                                            <td>{{$product->door->material}}</td>--}}
                                             <td>@if(!empty($product->label))
                                                     @foreach($product->label as $label)
                                                         {{$label}} <br>
