@@ -8,7 +8,6 @@ use App\Enums\ProductPerPageEnum;
 use App\Models\Product;
 use App\Services\ImageService;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 class ProductRepository
 {
@@ -100,27 +99,5 @@ class ProductRepository
             ->paginate(ProductPerPageEnum::DEFAULT->value);
 
 
-    }
-
-    public function similarProducts(string $productType, string $function, string|null $type, string|null $material, Product $product): Collection
-    {
-        return Product::whereIn('active', [1])
-            ->with(['door', 'fitting'])
-            ->where('active', true)
-            ->where('id', '!=', $product->id)
-            ->whereHas($productType, function ($query) use ($function, $type, $material) {
-                if ($type !== null) {
-                    $query->where('type', $type);
-                }
-                if ($material !== null) {
-                    $query->where('material', $material);
-                }
-                if ($function !== null) {
-                    $query->where('function', $function);
-                }
-            })
-            ->inRandomOrder()
-            ->limit(20)
-            ->get();
     }
 }

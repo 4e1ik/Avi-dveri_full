@@ -5,14 +5,9 @@ namespace App\Http\Controllers\avi_dveri;
 use App\Http\Controllers\Controller;
 use App\Models\MetaTag;
 use App\Models\Product;
-use App\Repositories\ProductRepository;
 
 class MainController extends Controller
 {
-    public function __construct(
-        public ProductRepository $productRepository,
-    ){}
-
     function index()
     {
         $meta = MetaTag::where('slug', 'home')->first();
@@ -55,15 +50,7 @@ class MainController extends Controller
             $colors = add_fittings_colors();
         }
 
-        $similarProducts = $this->productRepository->similarProducts(
-            productType:    $product->category,
-            function:       $product->{$product->category}->function,
-            type:           $product->{$product->category}->type,
-            material:       $product->{$product->category}->material,
-            product:        $product,
-        );
-
-        return view('avi-dveri.avi-dveri.product_page', compact('product', 'similarProducts', 'colors', 'metaTitle', 'metaDescription'));
+        return view('avi-dveri.avi-dveri.product_page', compact('product', 'colors', 'metaTitle', 'metaDescription'));
     }
 
 }
