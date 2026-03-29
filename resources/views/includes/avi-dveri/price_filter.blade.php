@@ -1,6 +1,6 @@
 <aside class="widget shop-filter mb-30">
     <div class="widget-title">
-        <h4>Цена</h4>
+        <span class="widget-sidebar-label">Цена</span>
         <div class="price__label">
             <button type="button" class="js-price-filter" data-order="DESC">↑</button>
             <button type="button" class="js-price-filter" data-order="ASC">↓</button>
@@ -20,6 +20,47 @@
             if (currentOrder) url.searchParams.set('price_filter', currentOrder);
             else url.searchParams.delete('price_filter');
             return url.toString();
+        }
+
+        function syncAddressBar(href) {
+            const url = new URL(href, window.location.origin);
+            url.searchParams.delete('_token');
+            url.searchParams.delete('redirect_to');
+            if (currentOrder) {
+                url.searchParams.set('price_filter', currentOrder);
+            } else {
+                url.searchParams.delete('price_filter');
+            }
+            history.replaceState(null, '', url.pathname + url.search);
+        }
+
+        /** Мета из ответа сервера (тот же источник, что и при полной перезагрузке) */
+        function syncHeadFromFetchedDocument(doc) {
+            const titleEl = doc.querySelector('title');
+            if (titleEl && titleEl.textContent.trim() !== '') {
+                document.title = titleEl.textContent.trim();
+            }
+            const metaDesc = doc.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                const content = metaDesc.getAttribute('content') ?? '';
+                let cur = document.querySelector('meta[name="description"]');
+                if (cur) {
+                    cur.setAttribute('content', content);
+                }
+            }
+            const canonical = doc.querySelector('link[rel="canonical"]');
+            let curCanon = document.querySelector('link[rel="canonical"]');
+            if (canonical && canonical.getAttribute('href')) {
+                const hrefCanon = canonical.getAttribute('href');
+                if (!curCanon) {
+                    curCanon = document.createElement('link');
+                    curCanon.setAttribute('rel', 'canonical');
+                    document.head.appendChild(curCanon);
+                }
+                curCanon.setAttribute('href', hrefCanon);
+            } else if (curCanon) {
+                curCanon.remove();
+            }
         }
 
         async function fetchAndSwap(href) {
@@ -52,8 +93,8 @@
                 if (gridView) gridView.insertAdjacentHTML('afterend', newPag.outerHTML);
             }
 
-            // Не меняем address bar (вариант 2)
-            // Если захочешь — можно добавить replaceState без _token/redirect_to.
+            syncHeadFromFetchedDocument(doc);
+            syncAddressBar(href);
         }
 
         document.addEventListener('click', function (e) {
@@ -62,7 +103,9 @@
             if (filterBtn) {
                 e.preventDefault();
                 currentOrder = filterBtn.dataset.order || '';
-                fetchAndSwap(window.location.href);
+                const sortUrl = new URL(window.location.href);
+                sortUrl.searchParams.delete('page');
+                fetchAndSwap(sortUrl.toString());
                 return;
             }
 

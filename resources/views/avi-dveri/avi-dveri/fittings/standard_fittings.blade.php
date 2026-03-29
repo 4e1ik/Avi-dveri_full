@@ -8,14 +8,14 @@
                 <div class="col-md-12">
                     <div class="heading-banner">
                         <div class="heading-banner-title">
-                            <h2>Стандарт сегмент</h2>
+                            <h1>Стандарт сегмент</h1>
                         </div>
                         <div class="breadcumbs pb-15">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
                                 <li><a href="{{route('fittings')}}">Фурнитура</a></li>
-                                <li><a href="{{route('standard_fittings')}}">Стандарт сегмент</a></li>
+                                <li>Стандарт сегмент</li>
                             </ul>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         <!-- Widget-Manufacturer start -->
                         <aside class="widget widget-color mb-30">
                             <div class="widget-title">
-                                <h4>Сегмент</h4>
+                                <span class="widget-sidebar-label">Сегмент</span>
                             </div>
                             <div class="widget-info color-filter clearfix">
                                 <ul>

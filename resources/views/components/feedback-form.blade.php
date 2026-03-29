@@ -3,7 +3,7 @@
         <form class="mail_form" id="mail_form" action="{{ route('send_mail') }}" method="post">
             @csrf
             <div class="form__text">
-                <h4 class="title-1 title-border text-uppercase mb-30">Отправить заявку</h4>
+                <p class="title-1 title-border text-uppercase mb-30">Отправить заявку</p>
                 <div class="popup__cross_application">✕</div>
             </div>
             <div class="feedback__input">

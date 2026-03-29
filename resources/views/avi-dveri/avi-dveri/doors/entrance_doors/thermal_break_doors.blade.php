@@ -8,14 +8,14 @@
                 <div class="col-md-12">
                     <div class="heading-banner">
                         <div class="heading-banner-title">
-                            <h2>Терморазрыв</h2>
+                            <h1>Терморазрыв</h1>
                         </div>
                         <div class="breadcumbs pb-15">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
                                 <li><a href="{{route('entrance_doors')}}">Входные двери</a></li>
-                                <li><a href="{{route('thermal_break_doors')}}">Терморазрыв</a></li>
+                                <li>Терморазрыв</li>
                             </ul>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         @include('includes.avi-dveri.price_filter')
                         <aside class="widget widget-color mb-30">
                             <div class="widget-title">
-                                <h4>Назначение</h4>
+                                <span class="widget-sidebar-label">Назначение</span>
                             </div>
                             <div class="widget-info color-filter clearfix">
                                 <ul>

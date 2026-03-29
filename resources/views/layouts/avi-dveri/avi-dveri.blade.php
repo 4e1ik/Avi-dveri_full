@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="ru">
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -13,6 +13,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ $metaTitle ?? 'АВИ-двери' }}</title>
     <meta name="description" content="{{ $metaDescription ?? '' }}">
+    @if(!empty($canonicalUrl))
+        <link rel="canonical" href="{{ $canonicalUrl }}">
+    @endif
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo_1.png')}}">

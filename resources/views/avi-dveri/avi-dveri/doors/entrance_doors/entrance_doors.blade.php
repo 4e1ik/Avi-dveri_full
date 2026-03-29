@@ -8,13 +8,13 @@
                 <div class="col-md-12">
                     <div class="heading-banner">
                         <div class="heading-banner-title">
-                            <h2>Входные двери</h2>
+                            <h1>Входные двери</h1>
                         </div>
                         <div class="breadcumbs pb-15">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
-                                <li><a href="{{route('entrance_doors')}}">Входные двери</a></li>
+                                <li>Входные двери</li>
                             </ul>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         @include('includes.avi-dveri.price_filter')
                             <aside class="widget widget-color mb-30">
                                 <div class="widget-title">
-                                    <h4>Назначение</h4>
+                                    <span class="widget-sidebar-label">Назначение</span>
                                 </div>
                                 <div class="widget-info color-filter clearfix">
                                     <ul>

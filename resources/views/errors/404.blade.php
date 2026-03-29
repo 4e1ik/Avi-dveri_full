@@ -9,8 +9,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="error-content text-center">
-                    <h1>404</h1>
-                    <p>Страница не найдена 😕</p>
+                    <p class="error-http-code" aria-hidden="true">404</p>
+                    <h1>Страница не найдена</h1>
+                    <p class="text-muted mb-20">Запрошенная страница недоступна или была удалена.</p>
                     <a href="{{ route('home') }}">Вернуться на главную</a>
                 </div>
             </div>

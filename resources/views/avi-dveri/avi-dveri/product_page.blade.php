@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <div class="heading-banner">
                         <div class="heading-banner-title">
-                            <h2>{{$product->title}}</h2>
+                            <h1>{{$product->title}}</h1>
                         </div>
                         @include('includes.avi-dveri.product_breadcrumbs')
                     </div>
@@ -48,7 +48,7 @@
                         <!-- Single-pro-slider Big-photo end -->
                         <div class="product-info">
                             <div class="fix">
-                                <h4 class="post-title floatleft">{{$product->title}}</h4>
+                                <div class="post-title floatleft">{{$product->title}}</div>
                             </div>
                             <div class="fix option1 mb-20">
                                 <span class="pro-price"></span><span class="pro-price"> {{$product->currency}}</span>
@@ -222,9 +222,9 @@
 
                                                         <div class="product-info clearfix text-center">
                                                             <div class="fix">
-                                                                <h4 class="post-title">
+                                                                <div class="post-title">
                                                                     <a @include('includes.avi-dveri.product_route', ['product' => $item])>{{ $item->title }}</a>
-                                                                </h4>
+                                                                </div>
                                                                 <span class="pro-price-2">{{ $item->price }} {{ $item->currency }}</span>
                                                             </div>
 

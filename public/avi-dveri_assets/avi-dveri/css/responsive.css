@@ -174,7 +174,8 @@
 .about-brief .title-1 {
   margin-bottom: 15px;
 }
-.widget-title h4 {
+.widget-title h4,
+.widget-title .widget-sidebar-label {
   padding: 0 20px;
 }
 }
@@ -645,7 +646,7 @@
 .dropdown-width {
   width: 270px;
 }
-.heading-banner-title h2 {
+.heading-banner-title h1 {
   font-size: 24px;
   line-height: 32px;
   padding: 42px 0 38px;

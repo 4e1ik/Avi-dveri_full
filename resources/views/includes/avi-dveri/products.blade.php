@@ -20,8 +20,8 @@
                 </div>
                 <div class="product-info clearfix text-center">
                     <div class="fix">
-                        <h4 class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
-                        </h4>
+                        <div class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
+                        </div>
                         <span class="pro-price-2">от {{$product->price}} {{$product->currency}}</span>
                     </div>
                 </div>

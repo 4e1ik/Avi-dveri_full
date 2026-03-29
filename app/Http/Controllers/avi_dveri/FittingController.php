@@ -11,10 +11,12 @@ use App\Models\MetaTag;
 use App\Repositories\ProductRepository;
 use App\Services\FilterService;
 use App\Services\ProductService;
+use App\Traits\MetaTagPaginateTrait;
+use Illuminate\Support\Facades\URL;
 
 class FittingController extends Controller
 {
-
+    use MetaTagPaginateTrait;
     public function __construct(
         public ProductRepository $productRepository,
         public ProductService $productService,
@@ -44,9 +46,18 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
-        $meta = MetaTag::where('slug', 'furnitura')->first();
-        $metaTitle = $meta?->meta_title;
-        $metaDescription = $meta?->meta_description;
+        $page = $products->currentPage();
+        if ($page > 1) {
+            $metaTitle = $this->metaTitle(page: $page);
+            $metaDescription = $this->metaDescription(page: $page);
+        } else {
+            $meta = MetaTag::where('slug', 'furnitura')->first();
+            $metaTitle = $meta?->meta_title;
+            $metaDescription = $meta?->meta_description;
+        }
+
+        $canonicalUrl = URL::to(route('fittings'));
+
         return view('avi-dveri.avi-dveri.fittings.fittings', compact(
             'products',
             'totalCount',
@@ -57,6 +68,7 @@ class FittingController extends Controller
             'premiumTotalCount',
             'metaTitle',
             'metaDescription',
+            'canonicalUrl',
         ));
     }
 
@@ -83,9 +95,18 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
-        $meta = MetaTag::where('slug', 'ekonom')->first();
-        $metaTitle = $meta?->meta_title;
-        $metaDescription = $meta?->meta_description;
+        $page = $products->currentPage();
+        if ($page > 1) {
+            $metaTitle = $this->metaTitle(page: $page);
+            $metaDescription = $this->metaDescription(page: $page);
+        } else {
+            $meta = MetaTag::where('slug', 'ekonom')->first();
+            $metaTitle = $meta?->meta_title;
+            $metaDescription = $meta?->meta_description;
+        }
+
+        $canonicalUrl = URL::to(route('economy_fittings'));
+
         return view('avi-dveri.avi-dveri.fittings.economy_fittings', compact(
             'products',
             'totalCount',
@@ -96,6 +117,7 @@ class FittingController extends Controller
             'premiumTotalCount',
             'metaTitle',
             'metaDescription',
+            'canonicalUrl',
         ));
     }
 
@@ -122,9 +144,18 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
-        $meta = MetaTag::where('slug', 'standart')->first();
-        $metaTitle = $meta?->meta_title;
-        $metaDescription = $meta?->meta_description;
+        $page = $products->currentPage();
+        if ($page > 1) {
+            $metaTitle = $this->metaTitle(page: $page);
+            $metaDescription = $this->metaDescription(page: $page);
+        } else {
+            $meta = MetaTag::where('slug', 'standart')->first();
+            $metaTitle = $meta?->meta_title;
+            $metaDescription = $meta?->meta_description;
+        }
+
+        $canonicalUrl = URL::to(route('standard_fittings'));
+
         return view('avi-dveri.avi-dveri.fittings.standard_fittings', compact(
             'products',
             'totalCount',
@@ -135,6 +166,7 @@ class FittingController extends Controller
             'premiumTotalCount',
             'metaTitle',
             'metaDescription',
+            'canonicalUrl',
         ));
     }
 
@@ -161,9 +193,18 @@ class FittingController extends Controller
         $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
         $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
-        $meta = MetaTag::where('slug', 'premium')->first();
-        $metaTitle = $meta?->meta_title;
-        $metaDescription = $meta?->meta_description;
+        $page = $products->currentPage();
+        if ($page > 1) {
+            $metaTitle = $this->metaTitle(page: $page);
+            $metaDescription = $this->metaDescription(page: $page);
+        } else {
+            $meta = MetaTag::where('slug', 'premium')->first();
+            $metaTitle = $meta?->meta_title;
+            $metaDescription = $meta?->meta_description;
+        }
+
+        $canonicalUrl = URL::to(route('premium_fittings'));
+
         return view('avi-dveri.avi-dveri.fittings.premium_fittings', compact(
             'products',
             'totalCount',
@@ -174,6 +215,7 @@ class FittingController extends Controller
             'premiumTotalCount',
             'metaTitle',
             'metaDescription',
+            'canonicalUrl',
         ));
     }
 

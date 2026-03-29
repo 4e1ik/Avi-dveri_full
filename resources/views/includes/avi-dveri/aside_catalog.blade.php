@@ -1,6 +1,6 @@
 <aside class="widget widget-categories  mb-30">
     <div class="widget-title">
-        <h4>Каталог</h4>
+        <span class="widget-sidebar-label">Каталог</span>
     </div>
     <div id="cat-treeview"  class="widget-info product-cat boxscrol2">
         <ul>

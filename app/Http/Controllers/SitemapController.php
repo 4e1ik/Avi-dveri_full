@@ -39,14 +39,6 @@ class SitemapController extends Controller
             'priority' => '0.6'
         ];
 
-        //Спасибо
-        $urls[] = [
-            'loc' => URL::to(route('thank-you')),
-            'lastmod' => Carbon::now()->toAtomString(),
-            'changefreq' => 'monthly',
-            'priority' => '0.3'
-        ];
-
         //Фурнитура
         $urls[] = [
             'loc' => URL::to(route('fittings')),

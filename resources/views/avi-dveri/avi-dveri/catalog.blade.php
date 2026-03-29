@@ -8,12 +8,12 @@
                 <div class="col-md-12">
                     <div class="heading-banner">
                         <div class="heading-banner-title">
-                            <h2>Каталог</h2>
+                            <h1>Каталог</h1>
                         </div>
                         <div class="breadcumbs pb-15">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
-                                <li><a href="{{route('catalog')}}">Каталог</a></li>
+                                <li>Каталог</li>
                             </ul>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                     alt="Картинка входные двери"/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <h2 class="banner-title"><a href="{{route('entrance_doors')}}">Входные</a></h2>
+                            <div class="banner-title"><a href="{{route('entrance_doors')}}">Входные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
                         <a href="{{route('entrance_doors')}}" class="button-one font-16px" data-text="Перети">Перейти</a>
@@ -46,7 +46,7 @@
                                     alt="Картинка межкомнатные двери"/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <h2 class="banner-title"><a href="{{route('interior_doors')}}">Межкомнатные</a></h2>
+                            <div class="banner-title"><a href="{{route('interior_doors')}}">Межкомнатные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
                         <a href="{{route('interior_doors')}}" class="button-one font-16px" data-text="Перейти">Перейти</a>
@@ -59,7 +59,7 @@
                                     alt="Картинка фурнитура"/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <h2 class="banner-title"><a href="{{route('fittings')}}">Фурнитура</a></h2>
+                            <div class="banner-title"><a href="{{route('fittings')}}">Фурнитура</a></div>
                             <p class="mb-0">двери</p>
                         </div>
                         <a href="{{route('fittings')}}" class="button-one font-16px" data-text="Перейти">Перейти</a>

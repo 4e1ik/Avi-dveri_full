@@ -1,3 +1,8 @@
 User-agent: *
 Disallow: /admin
-Sitemap: https://avi-dveri.by/sitemap
+Disallow: /login
+Disallow: /registration
+Disallow: /logout
+Disallow: /spasibo
+
+Sitemap: https://avi-dveri.by/sitemap.xml

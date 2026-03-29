@@ -1,6 +1,7 @@
 @extends('layouts.avi-dveri.avi-dveri')
 
 @section('content')
+    <h1 class="visually-hidden">Магазин дверей «Ави-Двери»</h1>
     <!-- SLIDER-AREA START  -->
     <section class="slider-area slider-style-2">
         <div class="bend niceties preview-2">
@@ -18,14 +19,14 @@
                     <div class="title-container s-tb-c title-compress">
                         <div class="layer-1">
                             <div class="wow fadeInUpBig" data-wow-duration="2s" data-wow-delay="0.5s">
-                                <h3 class="slider-title3 text-uppercase mb-0"></h3>
+                                <div class="slider-title3 text-uppercase mb-0"></div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="2.5s" data-wow-delay="0.5s">
-                                <h2 class="slider-title1 text-uppercase mb-0"><span class="d-md-block">Межкомнатные двери</span>
-                                </h2>
+                                <div class="slider-title1 text-uppercase mb-0"><span class="d-md-block">Межкомнатные двери</span>
+                                </div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
-                                <h2 class="slider-title2 text-uppercase">Большой выбор по доступной цене</h2>
+                                <div class="slider-title2 text-uppercase">Большой выбор по доступной цене</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3.5s" data-wow-delay="0.5s">
                                 <a href="{{route('interior_doors')}}" class="button-one style-2 text-uppercase mt-20"
@@ -42,20 +43,20 @@
                     <div class="title-container s-tb-c title-compress">
                         <div class="layer-1">
                             <div class="wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                                <h3 class="slider-title3 text-uppercase mb-0"></h3>
+                                <div class="slider-title3 text-uppercase mb-0"></div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                                <h2 class="slider-title1 text-uppercase"><span class="d-lg-block">Входные двери</span>
-                                </h2>
+                                <div class="slider-title1 text-uppercase"><span class="d-lg-block">Входные двери</span>
+                                </div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
-                                <h2 class="slider-title2 text-uppercase">- Улица</h2>
+                                <div class="slider-title2 text-uppercase">- Улица</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
-                                <h2 class="slider-title2 text-uppercase">- Квартира</h2>
+                                <div class="slider-title2 text-uppercase">- Квартира</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
-                                <h2 class="slider-title2 text-uppercase">- Дом</h2>
+                                <div class="slider-title2 text-uppercase">- Дом</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3.5s" data-wow-delay="0.5s">
                                 <a href="{{route('entrance_doors')}}" class="button-one style-2 text-uppercase mt-20"
@@ -72,20 +73,20 @@
                     <div class="title-container s-tb-c title-compress">
                         <div class="layer-1">
                             <div class="wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                                <h3 class="slider-title3 text-uppercase mb-0"></h3>
+                                <div class="slider-title3 text-uppercase mb-0"></div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                                <h2 class="slider-title1 text-uppercase mb-0"><span class="d-md-block">Фурнитура</span>
-                                </h2>
+                                <div class="slider-title1 text-uppercase mb-0"><span class="d-md-block">Фурнитура</span>
+                                </div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
-                                <h2 class="slider-title2 text-uppercase">- Эконом</h2>
+                                <div class="slider-title2 text-uppercase">- Эконом</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
-                                <h2 class="slider-title2 text-uppercase">- Стандарт</h2>
+                                <div class="slider-title2 text-uppercase">- Стандарт</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
-                                <h2 class="slider-title2 text-uppercase">- Премиум</h2>
+                                <div class="slider-title2 text-uppercase">- Премиум</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3.5s" data-wow-delay="0.5s">
                                 <a href="{{route('fittings')}}" class="button-one style-2 text-uppercase mt-20"
@@ -108,7 +109,7 @@
                                     src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/2.png')}}" alt=""/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <h2 class="banner-title"><a href="{{route('entrance_doors')}}">Входные</a></h2>
+                            <div class="banner-title"><a href="{{route('entrance_doors')}}">Входные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
                         <a href="{{route('entrance_doors')}}" class="button-one font-16px"
@@ -121,7 +122,7 @@
                                     src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/1.png')}}" alt=""/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <h2 class="banner-title"><a href="{{route('interior_doors')}}">Межкомнатные</a></h2>
+                            <div class="banner-title"><a href="{{route('interior_doors')}}">Межкомнатные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
                         <a href="{{route('interior_doors')}}" class="button-one font-16px"
@@ -134,7 +135,7 @@
                                     src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/3.png')}}" alt=""/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <h2 class="banner-title"><a href="{{route('fittings')}}">Фурнитура</a></h2>
+                            <div class="banner-title"><a href="{{route('fittings')}}">Фурнитура</a></div>
                             <p class="mb-0">двери</p>
                         </div>
                         <a href="{{route('fittings')}}" class="button-one font-16px" data-text="Перейти">Перейти</a>
@@ -175,8 +176,8 @@
                                     </div>
                                     <div class="product-info clearfix text-center">
                                         <div class="fix">
-                                            <h4 class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
-                                            </h4>
+                                            <div class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
+                                            </div>
                                             <span class="pro-price-2">
                                             {{$product->price}} {{$product->currency}}
                                         </span>
