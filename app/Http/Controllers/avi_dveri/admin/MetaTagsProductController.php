@@ -70,8 +70,8 @@ class MetaTagsProductController extends Controller
             type:                   $request->input('type'),
             function:               $request->input('function'),
             material:               $request->input('material'),
-            titleTemplate:          $request->input('titleTemplate'),
-            descriptionTemplate:    $request->input('descriptionTemplate'),
+            titleTemplate:          $request->input('titleTemplate') ?? '',
+            descriptionTemplate:    $request->input('descriptionTemplate') ?? '',
             metaTemplateProduct:    $metaTemplateProduct
         ));
 

@@ -43,6 +43,7 @@ class MetaTagsProductService
             foreach ($products as $product) {
                 $rows[] = [
                     'id' =>                 $product->id,
+                    'slug' =>               $product->slug,
                     'meta_title' =>         str_replace('{title}', $product->title, $dto->metaTemplateProduct->titleTemplate ?? ''),
                     'meta_description' =>   str_replace('{title}', $product->title, $dto->metaTemplateProduct->descriptionTemplate ?? ''),
                     'updated_at' =>         now(),
