@@ -16,6 +16,7 @@ use App\Repositories\ProductRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use function Livewire\of;
 
 class ProductService
 {
@@ -40,16 +41,30 @@ class ProductService
         $material = $dto->material;
 
         $metaTemplate = MetaTemplateProduct::where('productType', $productType)
-        ->where(function ($query) use ($function, $type, $material) {
-            if ($type !== null) {
-                $query->where('type', $type);
+        ->where(function ($query) use ($function, $type, $material, $productType) {
+            if ($productType === 'fitting')
+            {
+                if ($function !== null) {
+                    $query->where('function', $function);
+                }
+            } elseif ($productType === 'door' && $type === 'entrance')
+            {
+                if ($function !== null) {
+                    $query->where('function', $function);
+                }
+                if ($type !== null) {
+                    $query->where('type', $type);
+                }
+            } elseif ($productType === 'door' && $type === 'interior')
+            {
+                if ($type !== null) {
+                    $query->where('type', $type);
+                }
+                if ($material !== null) {
+                    $query->where('material', $material);
+                }
             }
-            if ($material !== null) {
-                $query->where('material', $material);
-            }
-            if ($function !== null) {
-                $query->where('function', $function);
-            }
+
         })
             ->first();
 
