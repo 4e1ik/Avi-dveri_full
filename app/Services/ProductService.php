@@ -8,6 +8,7 @@ use App\DTO\CreateProductDTO;
 use App\DTO\UpdateProductDTO;
 use App\Enums\ProductPerPageEnum;
 use App\Helpers\SlugGenerateHelper;
+use App\Models\MetaTemplateProduct;
 use App\Models\Product;
 use App\Repositories\DoorRepository;
 use App\Repositories\FittingRepository;
@@ -33,8 +34,35 @@ class ProductService
         $size = self::mergeSizes($dto);
         $routes = [];
 
+        $productType = $dto->category;
+        $type = $dto->type;
+        $function = $dto->function;
+        $material = $dto->material;
+
+        $metaTemplate = MetaTemplateProduct::where('productType', $productType)
+        ->where(function ($query) use ($function, $type, $material) {
+            if ($type !== null) {
+                $query->where('type', $type);
+            }
+            if ($material !== null) {
+                $query->where('material', $material);
+            }
+            if ($function !== null) {
+                $query->where('function', $function);
+            }
+        })
+            ->first();
+
+        $titleTemplate = '';
+        $descriptionTemplate = '';
+
+        if ($metaTemplate) {
+            $titleTemplate = str_replace('{title}', $dto->title, $metaTemplate->titleTemplate);
+            $descriptionTemplate = str_replace('{title}', $dto->title, $metaTemplate->descriptionTemplate);
+        }
+
         $product = $this->productRepository->createProduct(
-            slug:                $slug,
+            slug:               $slug,
             title:              $dto->title,
             description:        $dto->description,
             price:              $dto->price,
@@ -42,8 +70,8 @@ class ProductService
             currency:           $dto->currency,
             label:              $dto->label ?? null,
             active:             $dto->active,
-            meta_title:         $dto->meta_title ?? '',
-            meta_description:   $dto->meta_description ?? '',
+            meta_title:         $dto->meta_title ?? $titleTemplate,
+            meta_description:   $dto->meta_description ?? $descriptionTemplate,
         );
 
         switch ($dto->category) {
@@ -53,9 +81,9 @@ class ProductService
                     product_id: $product->id,
                     size:       $size,
                     glass:      $dto->glass,
-                    type:       $dto->type,
-                    function:   $dto->function,
-                    material:   $dto->material,
+                    type:       $type,
+                    function:   $function,
+                    material:   $material,
                 );
 
                 $routes = [
@@ -67,7 +95,7 @@ class ProductService
             case 'fitting':
                 $this->fittingRepository->createFitting(
                     product_id: $product->id,
-                    function:   $dto->function,
+                    function:   $function,
                 );
 
                 $routes = [
@@ -190,7 +218,7 @@ class ProductService
         );
 
         $this->productRepository->updateProduct(
-            slug:                $slug,
+            slug:               $slug,
             title:              $dto->title ?? $product->title,
             description:        $dto->description ?? $product->description,
             price:              $dto->price ?? $product->price,
