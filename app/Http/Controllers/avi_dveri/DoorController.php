@@ -37,6 +37,7 @@ class DoorController extends Controller
         $products = $this->productRepository->getProducts(
             filter: $filter,
             productType: 'door',
+            type: 'entrance',
         );
 
         $counterArray = $this->productService->productsCounter(products: $products);
