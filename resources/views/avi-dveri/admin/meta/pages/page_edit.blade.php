@@ -30,8 +30,10 @@
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
-                            <a href="{{ route('admin_meta_pages') }}" class="btn btn-default">Назад к страницам</a>
+                            <div class="admin-form-actions">
+                                <button type="submit" class="btn btn-outline btn-success">Сохранить</button>
+                                <a href="{{ route('admin_meta_pages') }}" class="btn btn-outline btn-default">Назад к страницам</a>
+                            </div>
                         </form>
                     </div>
                 </div>

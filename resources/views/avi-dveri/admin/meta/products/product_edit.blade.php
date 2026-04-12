@@ -34,8 +34,10 @@
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
-                            <a href="{{ route('admin_meta_products') }}" class="btn btn-default">Назад к товарам</a>
+                            <div class="admin-form-actions">
+                                <button type="submit" class="btn btn-outline btn-success">Сохранить</button>
+                                <a href="{{ route('admin_meta_products') }}" class="btn btn-outline btn-default">Назад к товарам</a>
+                            </div>
                         </form>
                     </div>
                 </div>

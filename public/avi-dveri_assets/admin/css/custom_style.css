@@ -1,7 +1,243 @@
+/* Раскладка групп кнопок (стили кнопок — из style.css темы Miminium, см. miminium-master/buttons.html) */
+#mimin .admin-table-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+#mimin .admin-table-actions form {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+#mimin .admin-table-actions .btn {
+    flex: 0 0 auto;
+}
+
+#mimin .admin-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+#mimin .admin-inline-form {
+    margin: 0;
+    display: inline-block;
+}
+
+/* Мета-теги: ссылки-кнопки */
+.admin-meta-tags .table a.btn {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none !important;
+    box-sizing: border-box;
+}
+
+.manufacturer-admin-tabs {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.manufacturer-admin-tabs > li > a {
+    padding: 10px 16px;
+}
+
+/* Админка: формы создания/редактирования товара */
+.admin-product-form .admin-product-panel {
+    margin-bottom: 20px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.admin-product-form .admin-product-panel .panel-heading {
+    padding: 12px 18px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fafafa;
+}
+
+.admin-product-form .admin-product-panel .panel-heading .panel-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.admin-product-form .admin-product-form-lead {
+    margin-top: 6px;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.admin-product-form #panel-body.panel-body {
+    padding-top: 20px;
+    padding-bottom: 16px;
+}
+
+.admin-product-form .admin-product-panel--media .panel-body {
+    padding-top: 16px;
+}
+
+.admin-product-form .admin-product-panel--media .panel-body::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.admin-product-form .admin-product-panel--actions .panel-body {
+    padding: 16px 18px;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+}
+
+.admin-product-form .admin-product-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #444;
+}
+
 .input::placeholder {
     color: #FF6656;
 }
 
 .textarea::placeholder {
     color: #FF6656;
+}
+
+/* Карточка товара: поля в ряд с переносом при нехватке места */
+.admin-product-form .admin-product-section--product-card .admin-product-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 22px;
+    align-items: flex-start;
+}
+
+.admin-product-form .admin-product-section--product-card .admin-product-card-field {
+    flex: 1 1 200px;
+    min-width: 160px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-product-form .admin-product-section--product-card .admin-product-card-field .form-control {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Секции внутри блока «Основные данные» */
+.admin-product-form .admin-product-section {
+    margin-bottom: 24px;
+    padding: 16px 18px 12px;
+    background: #f9f9f9;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+}
+
+.admin-product-form .admin-product-section:last-child {
+    margin-bottom: 0;
+}
+
+.admin-product-form .admin-product-section__title {
+    margin: 0 0 14px 0;
+    padding-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-product-form .admin-product-section__lead {
+    margin: -6px 0 14px 0;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.admin-product-form .admin-field-hint {
+    font-size: 13px;
+    font-weight: normal;
+    color: #777;
+}
+
+/* Строки размеров: поле + кнопки (Miminium / Bootstrap 3) */
+.admin-product-form .admin-product-size-field {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    max-width: 100%;
+}
+
+.admin-product-form .admin-product-size-field .admin-product-size-input {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.admin-product-form .admin-size-actions {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.admin-product-form .admin-size-actions .btn {
+    min-width: 32px;
+    padding: 5px 10px;
+    line-height: 1.2;
+}
+
+.admin-product-form .admin-btn-size-remove {
+    color: #c9302c;
+    border-color: #dca7a7;
+    background: #fff;
+}
+
+.admin-product-form .admin-btn-size-remove:hover,
+.admin-product-form .admin-btn-size-remove:focus {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
+.admin-product-form .admin-product-field-block {
+    margin-bottom: 4px;
+}
+
+/* Наличие: без вложенных col-md внутри col — иначе подписи сжимаются и переносятся по буквам */
+.admin-product-form .admin-availability-radios {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.admin-product-form .admin-availability-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.admin-product-form .admin-availability-label span {
+    white-space: nowrap;
+}
+
+/* Размеры: отступы между колонками, чтобы блоки не слипались */
+.admin-product-form .admin-product-section--sizes .row > .inputSize {
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
 }

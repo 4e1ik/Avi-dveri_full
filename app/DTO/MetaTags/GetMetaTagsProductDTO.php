@@ -1,11 +1,8 @@
 <?php
 
-namespace App\DTO;
+namespace App\DTO\MetaTags;
 
-use App\Http\Requests\ProductRequest;
-use App\Models\MetaTemplateProduct;
-
-class UpdateMetaTagsProductDTO
+class GetMetaTagsProductDTO
 {
     public function __construct(
         public string  $productType,
@@ -14,6 +11,5 @@ class UpdateMetaTagsProductDTO
         public ?string $material = null,
         public string  $titleTemplate = '',
         public string  $descriptionTemplate = '',
-        public MetaTemplateProduct $metaTemplateProduct
     ) {}
 }

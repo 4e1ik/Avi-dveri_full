@@ -38,6 +38,7 @@ class ProductRequest extends FormRequest
             'currency' => 'required|filled|max:20',
             'function' => 'required|filled|max:50',
             'label' => 'max:10',
+            'availability' => 'required|in:0,1',
             'image.*.image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
             'description' => 'nullable',
         ];

@@ -229,7 +229,7 @@
                             <div class="panel-footer bg-white border-none">
                                 <center>
                                     <input type="button" value="download as pdf"
-                                           class="btn btn-danger box-shadow-none"/>
+                                           class="btn btn-outline btn-danger box-shadow-none"/>
                                 </center>
                             </div>
                         </div>

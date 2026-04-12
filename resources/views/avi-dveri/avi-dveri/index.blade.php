@@ -189,14 +189,7 @@
                                             </button>
                                         </div>
                                         <div class="product-details">
-                                            <ul>
-                                                @if(isset($product->door->glass))
-                                                    <li>Стекло: {{$product->door->glass}}</li>
-                                                @endif
-                                                @if(isset($product->door->material))
-                                                    <li>Материал: {{$product->door->material}}</li>
-                                                @endif
-                                            </ul>
+                                            @include('includes.avi-dveri.product_card_details', ['product' => $product])
                                         </div>
                                     </div>
                                 </div>

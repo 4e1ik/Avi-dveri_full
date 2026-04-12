@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css')}}">
+    @include('includes.avi-dveri.product_availability_styles')
     <!-- modernizr css -->
     <script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/modernizr-3.11.2.min.js')}}"></script>
     @yield('404')

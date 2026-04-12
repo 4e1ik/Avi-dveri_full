@@ -107,6 +107,17 @@
                         <li><a href="{{route('admin_meta_products')}}">Товары</a></li>
                     </ul>
                 </li>
+                <li class="ripple">
+                    <a class="tree-toggle nav-header">
+                        Производители
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                    </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('manufacturers', ['type' => 'door'])}}">Двери</a></li>
+                        <li><a href="{{route('manufacturers', ['type' => 'fitting'])}}">Фурнитура</a></li>
+                        <li><a href="{{route('manufacturers', ['type' => 'general'])}}">Общие бренды</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -627,6 +638,18 @@
                 </li>
                 <li class="ripple">
                     <a class="tree-toggle nav-header">
+                        <span class="fa fa-industry"></span>
+                        Производители
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                    </a>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="{{route('manufacturers', ['type' => 'door'])}}">Двери</a></li>
+                        <li><a href="{{route('manufacturers', ['type' => 'fitting'])}}">Фурнитура</a></li>
+                        <li><a href="{{route('manufacturers', ['type' => 'general'])}}">Общие бренды</a></li>
+                    </ul>
+                </li>
+                <li class="ripple">
+                    <a class="tree-toggle nav-header">
                         <span class="fa-image fa"></span> Примеры работ
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                     </a>
@@ -646,7 +669,7 @@
         </div>
     </div>
 </div>
-<button id="mimin-mobile-menu-opener" class="animated rubberBand btn btn-circle btn-danger">
+<button id="mimin-mobile-menu-opener" class="animated rubberBand btn btn-circle btn-outline btn-danger">
     <span class="fa fa-bars"></span>
 </button>
 <!-- end: Mobile -->

@@ -27,6 +27,8 @@ class ProductRepository
         ?bool   $active,
         ?string $meta_title,
         ?string $meta_description,
+        ?int    $manufacturer_id,
+        bool    $availability = true,
     )
     {
         return Product::create([
@@ -40,6 +42,8 @@ class ProductRepository
             'active' =>             $active,
             'meta_title' =>         $meta_title,
             'meta_description' =>   $meta_description,
+            'manufacturer_id' =>    $manufacturer_id,
+            'availability' =>       $availability,
         ]);
     }
 
@@ -55,6 +59,8 @@ class ProductRepository
         ?bool   $active,
         ?string $meta_title,
         ?string $meta_description,
+        ?int    $manufacturer_id,
+        ?bool   $availability,
         Product $product
     )
     {
@@ -70,6 +76,8 @@ class ProductRepository
             'active' =>             $active ?? true,
             'meta_title' =>         $meta_title,
             'meta_description' =>   $meta_description,
+            'manufacturer_id' =>    $manufacturer_id,
+            'availability' =>       $availability ?? $product->availability,
         ]);
     }
 
@@ -94,7 +102,7 @@ class ProductRepository
                 }
             })
             ->where('category', $productType)
-            ->with(['images', $productType])
+            ->with(['images', $productType, 'manufacturer'])
             ->filter($filter)
             ->latest()
             ->paginate(ProductPerPageEnum::DEFAULT->value);
@@ -105,7 +113,7 @@ class ProductRepository
     public function similarProducts(string $productType, string $function, string|null $type, string|null $material, Product $product): Collection
     {
         return Product::whereIn('active', [1])
-            ->with(['door', 'fitting'])
+            ->with(['door', 'fitting', 'manufacturer', 'images'])
             ->where('active', true)
             ->where('id', '!=', $product->id)
             ->whereHas($productType, function ($query) use ($function, $type, $material) {

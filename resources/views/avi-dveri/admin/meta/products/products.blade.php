@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 top-20 padding-0">
+        <div class="col-md-12 top-20 padding-0 admin-meta-tags">
             <div class="col-md-12">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
@@ -37,7 +37,7 @@
                                     <td>Фурнитура</td>
                                     <td>{{ $title }}</td>
                                     <td>
-                                        <a href="{{ route('admin_meta_product_template_edit', ['productType' => 'fitting', 'type' => '', 'function' => $segment, 'material' => '']) }}" class="btn btn-primary btn-sm">Редактировать шаблон</a>
+                                        <a href="{{ route('admin_meta_product_template_edit', ['productType' => 'fitting', 'type' => '', 'function' => $segment, 'material' => '']) }}" class="btn btn-outline btn-primary btn-sm">Редактировать шаблон</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -65,7 +65,7 @@
                                     <td>Входные</td>
                                     <td>{{ $title }}</td>
                                     <td>
-                                        <a href="{{ route('admin_meta_product_template_edit', ['productType' => 'door', 'type' => 'entrance', 'function' => $segment, 'material' => '']) }}" class="btn btn-primary btn-sm">Редактировать шаблон</a>
+                                        <a href="{{ route('admin_meta_product_template_edit', ['productType' => 'door', 'type' => 'entrance', 'function' => $segment, 'material' => '']) }}" class="btn btn-outline btn-primary btn-sm">Редактировать шаблон</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -93,7 +93,7 @@
                                     <td>Межкомнатные</td>
                                     <td>{{ $title }}</td>
                                     <td>
-                                        <a href="{{ route('admin_meta_product_template_edit', ['productType' => 'door', 'type' => 'interior', 'function' => '', 'material' => $segment]) }}" class="btn btn-primary btn-sm">Редактировать шаблон</a>
+                                        <a href="{{ route('admin_meta_product_template_edit', ['productType' => 'door', 'type' => 'interior', 'function' => '', 'material' => $segment]) }}" class="btn btn-outline btn-primary btn-sm">Редактировать шаблон</a>
                                     </td>
                                 </tr>
                             @endforeach

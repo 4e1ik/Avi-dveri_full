@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 top-20 padding-0">
+        <div class="col-md-12 top-20 padding-0 admin-meta-tags">
             <div class="col-md-12">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
@@ -34,7 +34,7 @@
                                 <tr>
                                     <td>{{ $title }}</td>
                                     <td>
-                                        <a href="{{ route('admin_meta_page_template_edit', ['slug' => $slug]) }}" class="btn btn-primary btn-sm">Редактировать</a>
+                                        <a href="{{ route('admin_meta_page_template_edit', ['slug' => $slug]) }}" class="btn btn-outline btn-primary btn-sm">Редактировать</a>
                                     </td>
                                 </tr>
                             @endforeach

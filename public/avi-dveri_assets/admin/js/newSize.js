@@ -1,30 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const panelBody = document.getElementById('panel-body');
+    if (!panelBody) {
+        return;
+    }
 
-    // Загружаем существующие значения из базы данных
     const existingSizes = Array.from(panelBody.querySelectorAll('.inputSize'));
 
-    // Устанавливаем обработчики событий
     panelBody.addEventListener('click', (e) => {
-        // Обработка кнопки добавления
-        if (e.target.classList.contains('addButton')) {
-            const inputSize = e.target.closest('.inputSize');
+        const addBtn = e.target.closest('.js-size-add');
+        if (addBtn) {
+            const inputSize = addBtn.closest('.inputSize');
             const newInputSize = inputSize.cloneNode(true);
-
-            // Очищаем значения полей в клонированном элементе
             newInputSize.querySelectorAll('input').forEach((input) => {
-                input.value = ''; // Очищаем поле ввода
+                input.value = '';
             });
-
-            // Добавляем клонированный элемент
+            newInputSize.querySelectorAll('select').forEach((select) => {
+                select.selectedIndex = 0;
+            });
             panelBody.appendChild(newInputSize);
+            return;
         }
 
-        // Обработка кнопки удаления
-        if (e.target.classList.contains('closeButton')) {
-            const inputSize = e.target.closest('.inputSize');
-
-            // Удаляем элемент только если их больше одного
+        const removeBtn = e.target.closest('.js-size-remove');
+        if (removeBtn) {
+            const inputSize = removeBtn.closest('.inputSize');
             if (panelBody.querySelectorAll('.inputSize').length > 1) {
                 inputSize.remove();
             } else {
@@ -33,12 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Если в базе данных уже есть значения, обрабатываем их
     if (existingSizes.length) {
         existingSizes.forEach((sizeBlock) => {
             const input = sizeBlock.querySelector('input');
             if (input && input.value) {
-                // Убеждаемся, что значение уже установлено
                 input.setAttribute('value', input.value);
             }
         });

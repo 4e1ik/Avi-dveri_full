@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\avi_dveri\admin;
 
-use App\DTO\CreateProductDTO;
-use App\DTO\UpdateProductDTO;
+use App\DTO\Products\CreateProductDTO;
+use App\DTO\Products\UpdateProductDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Services\ProductService;
 
@@ -29,22 +30,23 @@ class ProductController extends Controller
      */
     public function create(string $type)
     {
+        $manufactures = Manufacturer::where('active', 1)->get();
         switch ($type) {
             case 'entrance_door':
                 $colors = add_doors_colors();
 
-                return view('avi-dveri.admin.doors.create_entrance_door', compact('colors'));
+                return view('avi-dveri.admin.doors.create_entrance_door', compact('colors', 'manufactures'));
                 break;
 
             case 'interior_door':
                 $colors = add_doors_colors();
 
-                return view('avi-dveri.admin.doors.create_interior_door', compact('colors'));
+                return view('avi-dveri.admin.doors.create_interior_door', compact('colors', 'manufactures'));
                 break;
 
             case 'fitting':
                 $colors = add_fittings_colors();
-                return view('avi-dveri.admin.fittings.create_fitting', compact('colors'));
+                return view('avi-dveri.admin.fittings.create_fitting', compact('colors', 'manufactures'));
                 break;
         }
     }
@@ -63,11 +65,13 @@ class ProductController extends Controller
             currency:               $request->input('currency'),
             label:                  $request->input('label', []),
             active:                 $request->input('active', true),
+            availability:           $request->input('availability', 1),
             size:                   $request->input('size', []),
             size_diff:              $request->input('size_diff', []),
             size_standard:          $request->input('size_standard', []),
             meta_title:             $request->input('meta_title'),
             meta_description:       $request->input('meta_description'),
+            manufacturer_id:        $request->input('manufacturer'),
             type:                   $request->input('type'),
             function:               $request->input('function'),
             material:               $request->input('material'),
@@ -96,6 +100,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $manufactures = Manufacturer::all();
         if ($product->category === 'door') {
             $door = $product->door;
             if ($door === null) {
@@ -103,16 +108,16 @@ class ProductController extends Controller
             }
             $colors = add_doors_colors();
             if ($door->type === 'entrance') {
-                return view('avi-dveri.admin.doors.edit_entrance_door', compact('product', 'colors'));
+                return view('avi-dveri.admin.doors.edit_entrance_door', compact('product', 'colors', 'manufactures'));
             }
             if ($door->type === 'interior') {
-                return view('avi-dveri.admin.doors.edit_interior_door', compact('product', 'colors'));
+                return view('avi-dveri.admin.doors.edit_interior_door', compact('product', 'colors', 'manufactures'));
             }
             abort(404, 'Unknown door type');
         }
         if ($product->category === 'fitting') {
             $colors = add_fittings_colors();
-            return view('avi-dveri.admin.fittings.edit_fitting', compact('product', 'colors'));
+            return view('avi-dveri.admin.fittings.edit_fitting', compact('product', 'colors', 'manufactures'));
         }
         abort(404, 'Unknown product category');
     }
@@ -122,32 +127,35 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+//        dd($request->all());
         $route = $this->productService->updateProduct(new UpdateProductDTO(
             slug:                   $request->input('slug'),
             title:                  $request->input('title') ?? $product->title,
-            description:           $request->input('description') ?? $product->description,
+            description:            $request->input('description') ?? $product->description,
             price:                  $request->input('price') ?? $product->price,
-            price_per_set:         $request->input('price_per_set') ?? $product->price_per_set,
-            category:              $request->input('category') ?: $product->category,
-            currency:              $request->input('currency') ?: $product->currency,
-            label:                 $request->input('label') !== null ? $request->input('label') : $product->label,
-            active:                $request->has('active') ? $request->input('active') : $product->active,
-            size:                  $request->input('size') ?? $product->size,
-            size_diff:             $request->input('size_diff', []),
-            size_standard:         $request->input('size_standard', []),
-            meta_title:            $request->input('meta_title') ?? $product->meta_title,
-            meta_description:      $request->input('meta_description') ?? $product->meta_description,
-            type:                  $request->input('type') ?? $product->door?->type,
-            function:              $request->input('function') ?? $product->door?->function ?? $product->fitting?->function,
-            material:              $request->input('material') ?? $product->door?->material,
-            glass:                 $request->input('glass') ?? $product->door?->glass,
-            image:                 $request->file('image', []),
+            price_per_set:          $request->input('price_per_set') ?? $product->price_per_set,
+            category:               $request->input('category') ?: $product->category,
+            currency:               $request->input('currency') ?: $product->currency,
+            label:                  $request->input('label') !== null ? $request->input('label') : $product->label,
+            active:                 $request->has('active') ? $request->input('active') : $product->active,
+            availability:           $request->has('availability') ? $request->input('availability') : $product->availability,
+            size:                   $request->input('size') ?? $product->size,
+            size_diff:              $request->input('size_diff', []),
+            size_standard:          $request->input('size_standard', []),
+            meta_title:             $request->input('meta_title') ?? $product->meta_title,
+            meta_description:       $request->input('meta_description') ?? $product->meta_description,
+            manufacturer_id:        $request->input('manufacturer'),
+            type:                   $request->input('type') ?? $product->door?->type,
+            function:               $request->input('function') ?? $product->door?->function ?? $product->fitting?->function,
+            material:               $request->input('material') ?? $product->door?->material,
+            glass:                  $request->input('glass') ?? $product->door?->glass,
+            image:                  $request->file('image', []),
             fitting_image_color:    $request->input('fitting_image_color'),
-            door_image_color:      $request->input('door_image_color'),
+            door_image_color:       $request->input('door_image_color'),
             temp_description_image: $request->input('temp_description_image'),
-            temp_price:            $request->input('temp_price'),
-            temp_price_per_set:    $request->input('temp_price_per_set'),
-            delete_images:         $request->input('delete_images'),
+            temp_price:             $request->input('temp_price'),
+            temp_price_per_set:     $request->input('temp_price_per_set'),
+            delete_images:          $request->input('delete_images'),
         ), $product);
 
         return redirect($route);

@@ -50,7 +50,7 @@
                     </label>
                     {{--                    <button >--}}
                     {{--                        Создать--}}
-                    <input type="submit" class="btn col-md-12" value="SignUp">
+                    <input type="submit" class="btn btn-outline btn-success col-md-12" value="SignUp">
                     {{--                    </button>--}}
                 </div>
                 <div class="text-center" style="padding:5px;">

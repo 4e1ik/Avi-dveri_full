@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\DTO\GetMetaTagsProductDTO;
+use App\DTO\MetaTags\GetMetaTagsProductDTO;
 use App\Models\MetaTemplateProduct;
 
 class MetaTagsProductRepository

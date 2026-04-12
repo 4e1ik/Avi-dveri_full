@@ -53,6 +53,9 @@
                             <div class="fix option1 mb-20">
                                 <span class="pro-price"></span><span class="pro-price"> {{$product->currency}}</span>
                             </div>
+                            <p class="product-availability-line mb-20">
+                                <span class="product-availability-value {{ $product->availability ? 'product-availability--in-stock' : 'product-availability--on-order' }}">{{ $product->availability ? 'В наличии' : 'Под заказ' }}</span>
+                            </p>
                             <div class="product-description">
                                 <p>{!! $product->description !!}</p>
                             </div>
@@ -109,12 +112,11 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    @if(isset($product->door->glass))
+                                    @if($product->manufacturer)
                                         <div class="size-filter single-pro-size mb-35 clearfix">
                                             <ul>
-                                                <li><span class="color-title text-capitalize">Стекло</span></li>
-                                                <li><a class="active noRedirect" href="#">{{$product->door->glass}}</a>
-                                                </li>
+                                                <li><span class="color-title text-capitalize">Производитель</span></li>
+                                                <li><a class="active noRedirect" href="#">{{ $product->manufacturer->name }}</a></li>
                                             </ul>
                                         </div>
                                     @endif
@@ -124,6 +126,15 @@
                                                 <li><span class="color-title text-capitalize">Материал</span></li>
                                                 <li><a class="active noRedirect"
                                                        href="#">{{$product->door->material}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    @if(isset($product->door->glass))
+                                        <div class="size-filter single-pro-size mb-35 clearfix">
+                                            <ul>
+                                                <li><span class="color-title text-capitalize">Стекло</span></li>
+                                                <li><a class="active noRedirect" href="#">{{$product->door->glass}}</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -238,14 +249,7 @@
                                                             </div>
 
                                                             <div class="product-details">
-                                                                <ul>
-                                                                    @if(isset($item->door->glass))
-                                                                        <li>Стекло: {{ $item->door->glass }}</li>
-                                                                    @endif
-                                                                    @if(isset($item->door->material))
-                                                                        <li>Материал: {{ $item->door->material }}</li>
-                                                                    @endif
-                                                                </ul>
+                                                                @include('includes.avi-dveri.product_card_details', ['product' => $item])
                                                             </div>
                                                         </div>
                                                     </div>

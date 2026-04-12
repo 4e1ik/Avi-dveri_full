@@ -1,8 +1,6 @@
 <?php
 
-namespace App\DTO;
-
-use App\Http\Requests\ProductRequest;
+namespace App\DTO\Products;
 
 class CreateProductDTO
 {
@@ -16,11 +14,13 @@ class CreateProductDTO
         public ?string $currency = null,
         public array   $label,
         public bool    $active,
+        public bool    $availability = true,
         public ?array  $size = null,
         public ?array  $size_diff = null,
         public ?array  $size_standard = null,
         public ?string $meta_title = null,
         public ?string $meta_description = null,
+        public ?int    $manufacturer_id = null,
 
         // door / fitting domain
         public ?string $type = null,

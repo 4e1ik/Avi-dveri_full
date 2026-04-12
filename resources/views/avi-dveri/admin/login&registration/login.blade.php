@@ -41,7 +41,7 @@
                         </div>
                         Remember me
                     </label>
-                    <input type="submit" class="btn col-md-12" value="SignIn">
+                    <input type="submit" class="btn btn-outline col-md-12" value="SignIn">
                 </div>
                 <div class="text-center" style="padding:5px;">
                     <a href="{{route('registration')}}">Signup</a>

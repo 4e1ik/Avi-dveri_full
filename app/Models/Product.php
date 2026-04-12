@@ -15,6 +15,7 @@ class Product extends Model
         'label' => 'array', // Автоматическое преобразование JSON в массив
         'size' => 'array', // Автоматическое преобразование JSON в массив
         'additional_colors' => 'array', // Автоматическое преобразование JSON в массив
+        'availability' => 'boolean',
     ];
 
     protected $fillable = [
@@ -30,6 +31,8 @@ class Product extends Model
         'additional_colors',
         'meta_title',
         'meta_description',
+        'manufacturer_id',
+        'availability',
     ];
 
     public function getRouteKeyName(): string
@@ -50,5 +53,10 @@ class Product extends Model
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
     }
 }

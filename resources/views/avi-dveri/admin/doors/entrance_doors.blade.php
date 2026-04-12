@@ -8,16 +8,9 @@
                 <div class="col-md-12">
                     <h3 class="animated fadeInLeft">Входные двери</h3>
                 </div>
-                <ul class="nav navbar-nav">
-                    <a href="{{route('products.create', ['type' => 'entrance_door'])}}">
-                        <button class="btn ripple btn-outline btn-primary">
-                            <div>
-                                <span>Добавить товар</span>
-                                <span class="ink"></span>
-                            </div>
-                        </button>
-                    </a>
-                </ul>
+                <p class="content-header-actions" style="margin: 12px 0 0;">
+                    <a href="{{ route('products.create', ['type' => 'entrance_door']) }}" class="btn btn-outline btn-success">Добавить товар</a>
+                </p>
             </div>
         </div>
         <div class="col-md-12 top-20 padding-0">
@@ -73,21 +66,14 @@
                                                 @endif
                                             </td>
                                             <td>
-{{--                                                @dd($product)--}}
-                                                <a href="{{ route('products.edit', ['product' => $product]) }}">
-                                                    <input type="button" class=" btn btn-3d btn-primary"
-                                                           value="Редактировать">
-                                                </a>
+                                                <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-outline btn-primary btn-sm">Редактировать</a>
                                             </td>
                                             <td>
                                                 <form action="{{ route('products.destroy', ['product' => $product]) }}"
-                                                      method="post">
+                                                      method="post" class="admin-inline-form">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" style="border: 0">
-                                                        <input type="button" class="btn btn-3d btn-danger"
-                                                               value="Удалить">
-                                                    </button>
+                                                    <button type="submit" class="btn btn-outline btn-danger btn-sm">Удалить</button>
                                                 </form>
                                             </td>
                                         </tr>

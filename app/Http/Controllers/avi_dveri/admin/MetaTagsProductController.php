@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\avi_dveri\admin;
 
-use App\DTO\GetMetaTagsProductDTO;
-use App\DTO\UpdateMetaTagsProductDTO;
+use App\DTO\MetaTags\GetMetaTagsProductDTO;
+use App\DTO\MetaTags\UpdateMetaTagsProductDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MetaTemplateProductRequest;
 use App\Models\MetaTemplateProduct;

@@ -3,6 +3,7 @@
 use App\Http\Controllers\avi_dveri\admin\AdminController;
 use App\Http\Controllers\avi_dveri\admin\LoginController;
 use App\Http\Controllers\avi_dveri\admin\MetaTagsPageController;
+use App\Http\Controllers\avi_dveri\admin\ManufacturerController;
 use App\Http\Controllers\avi_dveri\admin\MetaTagsProductController;
 use App\Http\Controllers\avi_dveri\admin\ProductController;
 use App\Http\Controllers\avi_dveri\admin\RegisterController;
@@ -111,6 +112,15 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
             Route::get('/edit', [MetaTagsPageController::class, 'editPageTemplate'])->name('page_template_edit');
             Route::put('/update', [MetaTagsPageController::class, 'updatePageTemplate'])->name('page_template_update');
         });
+    });
+
+    Route::prefix('manufacturers')->group(function () {
+        Route::get('/{type}', [ManufacturerController::class, 'index'])->name('manufacturers');
+        Route::get('/create/{type}', [ManufacturerController::class, 'create'])->name('create_manufacturer');
+        Route::post('/store', [ManufacturerController::class, 'store'])->name('store_manufacturer');
+        Route::get('/{manufacturer}/edit', [ManufacturerController::class, 'edit'])->name('edit_manufacturer');
+        Route::put('/{manufacturer}', [ManufacturerController::class, 'update'])->name('update_manufacturer');
+        Route::delete('/{manufacturer}', [ManufacturerController::class, 'destroy'])->name('destroy_manufacturer');
     });
 
     Route::resource('products', ProductController::class)->except(['create', 'index', 'show']);

@@ -17,7 +17,8 @@
     }
 
     function init() {
-        const titleInput = document.querySelector('input[name="title"]');
+        const sourceName = @json($slugSourceField ?? 'title');
+        const titleInput = document.querySelector('input[name="' + sourceName + '"]');
         const slugInput = document.getElementById('slug');
         if (!titleInput || !slugInput) return;
 

@@ -11,6 +11,6 @@ class ProductFilterDTO
         public ?string $doorFunction = null,
         public ?string $doorMaterial = null,
         public ?string $fittingFunction = null,
-        public int $perPage = 21,
+        public int $perPage,
     ) {}
 }

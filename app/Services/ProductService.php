@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\DTO\CreateProductDTO;
-use App\DTO\UpdateProductDTO;
+use App\DTO\Products\CreateProductDTO;
+use App\DTO\Products\UpdateProductDTO;
 use App\Enums\ProductPerPageEnum;
 use App\Helpers\SlugGenerateHelper;
 use App\Models\MetaTemplateProduct;
@@ -14,9 +14,7 @@ use App\Repositories\DoorRepository;
 use App\Repositories\FittingRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
-use function Livewire\of;
 
 class ProductService
 {
@@ -87,6 +85,8 @@ class ProductService
             active:             $dto->active,
             meta_title:         $dto->meta_title ?? $titleTemplate,
             meta_description:   $dto->meta_description ?? $descriptionTemplate,
+            manufacturer_id:    $dto->manufacturer_id,
+            availability:       $dto->availability,
         );
 
         switch ($dto->category) {
@@ -244,6 +244,8 @@ class ProductService
             active:             (bool) $dto->active ?? (bool) $product->active,
             meta_title:         $dto->meta_title ?? $product->meta_title,
             meta_description:   $dto->meta_description ?? $product->meta_description,
+            manufacturer_id:    $dto->manufacturer_id,
+            availability:       $dto->availability,
             product:            $product
         );
 
@@ -306,6 +308,15 @@ class ProductService
             ]);
         }
         return $slug;
+    }
+
+    /**
+     * @param  list<string>|array<int, string>  $label
+     * @return list<string>
+     */
+    private function sanitizeProductLabels(array $label): array
+    {
+        return array_values(array_filter($label, static fn ($v) => $v !== 'order'));
     }
 
     private function mergeSizes(CreateProductDTO|UpdateProductDTO $dto): array

@@ -3,16 +3,22 @@
     <script>const colors =  @json($colors);</script>
     <div id="content">
         <div class="panel box-shadow-none content-header">
-            <h1>Страница редактирования межкомнатных дверей</h1>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <h3 class="animated fadeInLeft">Редактирование: межкомнатные двери</h3>
+                    <p class="text-muted admin-product-form-lead">{{ $product->title }}</p>
+                </div>
+            </div>
         </div>
-        <form action="{{ route('products.update',  ['product' => $product])}}"
+        <form class="admin-product-form" action="{{ route('products.update',  ['product' => $product])}}"
               enctype="multipart/form-data" method="post">
             @method('PUT')
             @csrf
             <input type="hidden" name="category" value="{{ $product->category }}">
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
-                    <div class="panel">
+                    <div class="panel panel-default admin-product-panel admin-product-panel--media">
+                        <div class="panel-heading"><h4 class="panel-title">Изображения</h4></div>
                         <div class="panel-body">
                             <div class="col-md-3">
                                 <h3>Картинка</h3>
@@ -38,78 +44,62 @@
             </div>
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
-                    <div class="panel">
+                    <div class="panel panel-default admin-product-panel">
+                        <div class="panel-heading"><h4 class="panel-title">Основные данные</h4></div>
                         <div id="panel-body" class="panel-body">
-                            <div class="col-md-3 padding-0">
+                            <div class="admin-product-section admin-product-section--product-card clearfix">
+                                <h4 class="admin-product-section__title">Карточка товара</h4>
+                                <div class="admin-product-card-grid">
+                            <div class="admin-product-card-field">
                                 <h3>Название</h3>
-                                <div style="margin:0" class="row">
-                                    <div class="col-md-11 padding-0">
                                         <input class="input form-control {{$errors->has('title') ? 'danger' : ''}}"
                                                type="text"
                                                name="title"
                                                value="{{$errors->has('title') ? old('title') : $product->title}}">
-                                    </div>
-                                </div>
-                                <div style="position: absolute; margin:0;" class="row">
                                     @error('title')
                                     <div class="text-danger">
                                         {{$message}}
                                     </div>
                                     @enderror
-                                </div>
                             </div>
-                            <div class="col-md-3 padding-0">
+                            <div class="admin-product-card-field">
                                 <h3>Slug (ЧПУ)</h3>
-                                <div style="margin:0" class="row">
-                                    <div class="col-md-11 padding-0">
                                         <input class="input form-control {{$errors->has('slug') ? 'danger' : ''}}"
                                                type="text" name="slug" id="slug" maxlength="255"
                                                value="{{$errors->has('slug') ? old('slug') : $product->slug}}">
                                         <small class="text-muted">Если пусто — сгенерируется из названия.</small>
-                                    </div>
-                                </div>
                                 @error('slug')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-3 padding-0">
-                                <h3>Цена <span style="font-size: 15px">(карточка товара)</span></h3>
-                                <div style="margin:0" class="row">
-                                    <div class="col-md-11 padding-0">
+                            @include('avi-dveri.admin.partials.product_brand_select', [
+                                'category' => $product->category,
+                                'selectedManufacturerId' => $product->manufacturer_id
+                            ])
+                            <div class="admin-product-card-field">
+                                <h3>Цена <span class="admin-field-hint">(карточка товара)</span></h3>
                                         <input class="input form-control {{$errors->has('price') ? 'danger' : ''}}"
                                                type="number" min="0"  step="0.01"
                                                name="price" value="{{$errors->has('price') ? old('price') : $product->price}}">
-                                    </div>
-                                </div>
-                                <div style="position: absolute; margin:0;" class="row">
                                     @error('price')
                                     <div class="text-danger">
                                         {{$message}}
                                     </div>
                                     @enderror
-                                </div>
                             </div>
-{{--                            <div class="col-md-3 padding-0">--}}
-{{--                                <h3>Цена <span style="font-size: 15px">(комплект)</span></h3>--}}
-{{--                                <div style="margin:0" class="row">--}}
-{{--                                    <div class="col-md-11 padding-0">--}}
+{{--                            <div class="admin-product-card-field">--}}
+{{--                                <h3>Цена <span class="admin-field-hint">(комплект)</span></h3>--}}
 {{--                                        <input class="input form-control {{$errors->has('price_per_set') ? 'danger' : ''}}"--}}
 {{--                                               type="number" min="0"  step="0.01"--}}
 {{--                                               name="price_per_set" value="{{$errors->has('price_per_set') ? old('price_per_set') : $product->price_per_set}}">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div style="position: absolute; margin:0;" class="row">--}}
 {{--                                    @error('price_per_set')--}}
 {{--                                    <div class="text-danger">--}}
 {{--                                        {{$message}}--}}
 {{--                                    </div>--}}
 {{--                                    @enderror--}}
-{{--                                </div>--}}
 {{--                            </div>--}}
-                            <div class="col-md-3 padding-0">
+                            <div class="admin-product-card-field">
                                 <h3>Валюта</h3>
-                                <div class="col-md-12 padding-0">
-                                    <div class="col-md-11 padding-0">
                                         <select class="form-control" name="currency">
                                             <option {{ $errors->has('currency') ? '' : 'selected' }} disabled>Выберите валюту
                                             </option>
@@ -123,9 +113,12 @@
                                                 $
                                             </option>
                                         </select>
-                                    </div>
+                            </div>
                                 </div>
                             </div>
+                            <div class="admin-product-section clearfix">
+                                <h4 class="admin-product-section__title">Характеристики двери</h4>
+                                <div class="row">
                             <div class="col-md-3 padding-0">
                                 <h3>Стекло</h3>
                                 <div style="margin:0" class="row">
@@ -202,33 +195,14 @@
                                 </div>
                             </div>
                             <input type="hidden" name="type" value="interior">
-                            <div style="height: 7em" class="col-md-3 padding-0">
-                                <h3>Маркер</h3>
-                                <label style="display: none" class="col-sm-2 control-label text-right">Checkbox</label>
-                                <div class="col-sm-10 padding-0">
-                                    <div class="col-md-6 padding-0">
-                                        <input type="checkbox" name="label[]"
-                                               {{ is_array($product->label) && in_array('new', $product->label) ? 'checked' : '' }} value="new">
-                                        Новинка
-                                    </div>
-                                    <div class="col-md-6 padding-0">
-                                        <input type="checkbox" name="label[]"
-                                               {{ is_array($product->label) && in_array('sale', $product->label) ? 'checked' : '' }} value="sale">
-                                        Скидка
-                                    </div>
-                                    <div class="col-md-6 padding-0">
-                                        <input type="checkbox" name="label[]"
-                                               {{ is_array($product->label) && in_array('hit', $product->label) ? 'checked' : '' }} value="hit">
-                                        Хит
-                                    </div>
-                                    <div class="col-md-6 padding-0">
-                                        <input type="checkbox" name="label[]"
-                                               {{ is_array($product->label) && in_array('order', $product->label) ? 'checked' : '' }} value="order">
-                                        На заказ
-                                    </div>
                                 </div>
                             </div>
-                            <div style="height: 7em" class="col-md-3 padding-0">
+                            <div class="admin-product-section clearfix">
+                                <h4 class="admin-product-section__title">Статус и маркетинг</h4>
+                                <div class="row">
+                            @include('avi-dveri.admin.partials.product_label_checkboxes', ['selectedLabels' => old('label', $product->label ?? [])])
+                            @include('avi-dveri.admin.partials.product_availability_radios', ['product' => $product])
+                            <div class="col-md-3 padding-0 admin-product-field-block">
                                 <div class="form-group">
                                     <div class="col-md-10 padding-0">
                                         <h3>Сделать активным?</h3>
@@ -241,32 +215,31 @@
                                     </div>
                                 </div>
                             </div>
-                                @foreach($product->door->size as $size)
-                                <div id="size" class="inputSize col-md-3 padding-0">
-                                    <h3>Размер <span style="font-size: 15px">(произвольный)</span></h3>
-                                    <div style="display: flex; justify-content: space-between;" class="col-md-10 padding-0">
-                                        <input class="form-control {{$errors->has('size_diff') ? 'danger' : ''}}"
-                                               type="text"
-                                               name="size_diff[]" value="{{$errors->has('size_diff') ? old('size') : $size}}">
-                                        <div style="font-size: 30px; cursor: pointer;" class="col-md-2 ">
-                                            <span class="addButton icons icon-plus"></span>
-                                        </div>
-                                        <div style="font-size: 30px; cursor: pointer;" class="col-md-2">
-                                            <span class="closeButton icons icon-close"></span>
-                                        </div>
-                                    </div>
-                                    @error('size_diff')
-                                    <div class="text-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                                 </div>
-                              @endforeach
-                            <div id="size" class="inputSize col-md-3 padding-0">
-                                <h3>Размер <span style="font-size: 15px">(фиксированный)</span></h3>
-                                <div style="display: flex; justify-content: space-between;" class="col-md-11 padding-0">
-                                    <div class="col-md-11 padding-0">
-                                        <select class="form-control" name="size_standard[]">
+                            </div>
+                            <div class="admin-product-section admin-product-section--sizes clearfix">
+                                <h4 class="admin-product-section__title">Размеры</h4>
+                                <p class="admin-product-section__lead text-muted">Произвольный формат и стандартные значения из списка. Плюс — дублирует строку, корзина — удаляет (последнюю строку убрать нельзя).</p>
+                                <div class="row">
+                                @foreach($product->door->size as $size)
+                                <div class="inputSize col-md-3 padding-0">
+                                    <h3>Размер <span class="admin-field-hint">(произвольный)</span></h3>
+                                    <div class="admin-product-size-field">
+                                        <input class="form-control admin-product-size-input {{$errors->has('size_diff') ? 'danger' : ''}}"
+                                               type="text"
+                                               name="size_diff[]" value="{{$errors->has('size_diff') ? old('size') : $size}}"
+                                               placeholder="напр. 800x2000">
+                                        @include('avi-dveri.admin.partials.product_size_row_actions')
+                                    </div>
+                                </div>
+                                @endforeach
+                                @error('size_diff')
+                                    <div class="col-md-12 text-danger small" style="margin-bottom:8px;">{{ $message }}</div>
+                                @enderror
+                            <div class="inputSize col-md-3 padding-0">
+                                <h3>Размер <span class="admin-field-hint">(фиксированный)</span></h3>
+                                <div class="admin-product-size-field">
+                                        <select class="form-control admin-product-size-input" name="size_standard[]">
                                             <option {{ $errors->has('size_standard') ? '' : 'selected' }} disabled>
                                                 Размер (фиксированный)
                                             </option>
@@ -283,13 +256,9 @@
                                                 900x2000
                                             </option>
                                         </select>
-                                    </div>
-                                    <div style="font-size: 30px; cursor: pointer;" class="col-md-1 ">
-                                        <span class="addButton icons icon-plus"></span>
-                                    </div>
-                                    <div style="font-size: 30px; cursor: pointer;" class="col-md-1">
-                                        <span class="closeButton icons icon-close"></span>
-                                    </div>
+                                    @include('avi-dveri.admin.partials.product_size_row_actions')
+                                </div>
+                            </div>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +267,8 @@
             </div>
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
-                    <div class="panel">
+                    <div class="panel panel-default admin-product-panel">
+                        <div class="panel-heading"><h4 class="panel-title">SEO</h4></div>
                         <div class="panel-body">
                             <div class="col-md-6 padding-0">
                                 <h3>Meta Title</h3>
@@ -339,9 +309,10 @@
             </div>
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
-                    <div class="panel">
+                    <div class="panel panel-default admin-product-panel">
+                        <div class="panel-heading"><h4 class="panel-title">Описание</h4></div>
                         <div class="panel-body">
-                            <h3>Описание</h3>
+                            <h3>Текст</h3>
                             <div style="margin:0;" class="row">
                                 <textarea id="description" name="description" style="width: 100%;" rows="10" type="text"
                                           placeholder="Введите описание товара">{{$errors->has('description') ? old('description') : $product->description}}</textarea>
@@ -359,9 +330,9 @@
             </div>
             <div class="col-md-12 padding-0">
                 <div class="col-md-12">
-                    <div class="panel">
+                    <div class="panel panel-default admin-product-panel admin-product-panel--actions">
                         <div class="panel-body">
-                            <input type="submit" class="btn  btn-3d btn-success" value="Сохранить">
+                            <input type="submit" class="btn btn-outline btn-success" value="Сохранить">
                         </div>
                     </div>
                 </div>

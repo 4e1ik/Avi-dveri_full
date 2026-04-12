@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\DTO\UpdateMetaTagsProductDTO;
+use App\DTO\MetaTags\UpdateMetaTagsProductDTO;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 

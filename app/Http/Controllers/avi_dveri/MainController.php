@@ -17,8 +17,7 @@ class MainController extends Controller
     {
         $meta = MetaTag::where('slug', 'home')->first();
         $products = Product::whereIn('active', [1])
-            ->with(['door'])
-            ->with(['fitting'])
+            ->with(['door', 'fitting', 'manufacturer'])
             ->whereJsonContains('label', 'hit')
             ->inRandomOrder()
             ->get();
@@ -46,6 +45,8 @@ class MainController extends Controller
 
     function show_product($head, $direction, Product $product)
     {
+        $product->loadMissing('manufacturer');
+
         $metaTitle = $product->meta_title;
         $metaDescription = $product->meta_description;
 
