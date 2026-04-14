@@ -934,6 +934,43 @@ h3.widget-title-modal {
     width: 100%;
 }
 
+/* Home benefits (Hurst-style section on main page) */
+.home-benefits .section-title h2 {
+  margin-bottom: 40px;
+}
+
+.home-benefit-item {
+  padding: 10px 8px 20px;
+  height: 100%;
+}
+
+.home-benefit-icon {
+  color: #c8a165;
+  font-size: 100px;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.home-benefit-icon i {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.home-benefit-title {
+  color: #434343;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  margin: 0 0 12px;
+}
+
+.home-benefit-text {
+  color: #666;
+  font-size: 13px;
+  line-height: 20px;
+}
+
 
 
 

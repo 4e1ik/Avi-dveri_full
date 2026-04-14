@@ -1,4 +1,4 @@
-{{-- Только текст «В наличии» / «Под заказ» под ценой, без подписи «Наличие» --}}
+{{-- Страница товара: наличие под ценой; производитель (если есть); карточки в сетке --}}
 <style>
     .product-info .product-availability-line {
         margin: -4px 0 0;
@@ -20,7 +20,25 @@
         color: #e09797;
     }
 
-    .product-info .product-availability-line + .product-description {
+    .product-info .product-manufacturer-line {
+        margin: 0;
+        padding: 0;
+        font-family: "Lato", sans-serif;
+        line-height: 1.5;
+    }
+
+    .product-info .product-manufacturer-line .color-title {
+        margin-right: 0.35em;
+    }
+
+    .product-info .product-manufacturer-name {
+        font-size: 14px;
+        font-weight: 400;
+        color: #444444;
+    }
+
+    .product-info .product-availability-line + .product-description,
+    .product-info .product-manufacturer-line + .product-description {
         border-top: 1px solid #eeeeee;
         padding-top: 18px;
         margin-top: 14px;

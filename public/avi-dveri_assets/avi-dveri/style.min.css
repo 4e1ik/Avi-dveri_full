@@ -2030,7 +2030,7 @@ input.cart-plus-minus-box {
     color: #434343;
     display: block;
     font-family: Lato-SemiBold;
-    width: 55px
+    width: 100%
 }
 
 .single-pro-size ul li a, .single-pro-size ul li a:hover, .single-pro-size ul li.active a {

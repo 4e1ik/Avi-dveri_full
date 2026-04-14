@@ -146,6 +146,7 @@
     </div>
     </div>
     <!-- Categories END -->
+    @include('includes.avi-dveri.home_benefits')
     <!-- PRODUCT-AREA START -->
     <div class="product-area pt-80 pb-30 product-style-2">
         <div class="container">
