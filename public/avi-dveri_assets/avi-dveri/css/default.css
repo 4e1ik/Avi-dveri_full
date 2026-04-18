@@ -971,6 +971,49 @@ h3.widget-title-modal {
   line-height: 20px;
 }
 
+.home-benefits-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.home-benefits-marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  touch-action: none;
+  user-select: none;
+}
+
+.home-benefits-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: stretch;
+}
+
+.home-benefits-marquee__cell {
+  flex: 0 0 auto;
+  width: 240px;
+  max-width: 78vw;
+}
+
+@media (min-width: 1200px) {
+  .home-benefits-marquee__cell {
+    width: 260px;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-benefits-marquee {
+    overflow-x: auto;
+  }
+
+  .home-benefits-marquee__track {
+    touch-action: auto;
+    user-select: auto;
+  }
+}
+
 
 
 

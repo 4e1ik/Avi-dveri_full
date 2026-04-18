@@ -308,5 +308,6 @@
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/popupSubmitApplication.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/priceFilter.js')}}"></script>
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/imagePrice.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/homeBenefitsMarquee.js')}}"></script>
 </body>
 </html>

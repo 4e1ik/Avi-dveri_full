@@ -73,14 +73,15 @@
                                         необходимости осуществляется на карточку, с которой была произведена оплата.</p>
                                     <img src="{{asset('/avi-dveri_assets/avi-dveri/img/oplata_bankovskoy_kartoy_onlayn.png')}}"
                                          alt="Картинка оплаты картами">
-                                    <p class="tab-title title-border mb-30">Оплата через ЕРИП</p>
+{{--                                    <p class="tab-title title-border mb-30">Оплата через ЕРИП</p>--}}
                                     <p class="tab-title title-border mb-30">Безналичный расчет</p>
                                     <p class="tab-title title-border mb-30">В рассрочку</p>
                                     <p>от магазина до 3-х мес. без %.</p>
                                     <p>красная карта от Альфа-Банка до 12 мес.</p>
-                                    <p>рассрочка от Альфа-Банка до 4-х мес. 1%.</p>
+                                    <p>рассрочка от Альфа-Банка до 5-х мес. 1%.</p>
                                     <p class="tab-title title-border mb-30">В кредит</p>
                                     <p>кредит от Альфа-Банка до 12 мес. под 11,9%.</p>
+                                    <p>кредит от Беларусбанк «На родныя тавары» до 2-х лет под 4%</p>
 {{--                                    <img src="{{asset('/avi-dveri_assets/avi-dveri/img/vaerrr.jpg')}}" alt="Картинка карты">--}}
                                     <p class="tab-title title-border mb-30">Образец чека</p>
                                     <a download="Образец чека" href="{{asset('/avi-dveri_assets/avi-dveri/img/20250314_162645.jpg')}}">Нажмите, чтобы скачать образец чека</a>
