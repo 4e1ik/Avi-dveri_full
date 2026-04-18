@@ -161,7 +161,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="copyright">
-                        <p class="mb-0">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank" rel="nofollow noopener noreferrer">Artemy Sevostian</a></p>
+                        <p class="mb-0">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank" rel="nofollow noopener noreferrer">Artemi Sevostian</a></p>
                     </div>
                 </div>
             </div>
