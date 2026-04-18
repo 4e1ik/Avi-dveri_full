@@ -10,6 +10,7 @@
             'new' => 'Новинка',
             'sale' => 'Скидка',
             'hit' => 'Хит',
+            'native' => 'На родныя тавары'
         ] as $value => $title)
             <div class="col-md-6 padding-0">
                 <input type="checkbox" name="label[]" value="{{ $value }}"
