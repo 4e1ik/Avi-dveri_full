@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\avi_dveri\admin\ManufacturerController;
 use App\Http\Controllers\FilterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/filter', [FilterController::class, 'filter']);
+Route::post('/manufacturers', [ManufacturerController::class, 'manufacturers']);
