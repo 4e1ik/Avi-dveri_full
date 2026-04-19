@@ -1,4 +1,3 @@
-{{-- $selectedLabels: массив кодов маркеров (new, sale, hit) --}}
 @php
     $labels = is_array($selectedLabels ?? null) ? $selectedLabels : [];
 @endphp

@@ -136,7 +136,7 @@ class ProductController extends Controller
             price_per_set:          $request->input('price_per_set') ?? $product->price_per_set,
             category:               $request->input('category') ?: $product->category,
             currency:               $request->input('currency') ?: $product->currency,
-            label:                  $request->input('label') !== null ? $request->input('label') : $product->label,
+            label:                  $request->input('label', []),
             active:                 $request->has('active') ? $request->input('active') : $product->active,
             availability:           $request->has('availability') ? $request->input('availability') : $product->availability,
             size:                   $request->input('size') ?? $product->size,
