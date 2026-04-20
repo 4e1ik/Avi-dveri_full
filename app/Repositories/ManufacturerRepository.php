@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class ManufacturerRepository
 {
+    public function get(string $category)
+    {
+        return Manufacturer::where('active', 1)->whereIn('type', [$category, 'general'])->get();
+    }
     public function create(
         string $name,
         string $slug,

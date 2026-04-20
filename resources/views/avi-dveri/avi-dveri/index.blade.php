@@ -144,7 +144,6 @@
             </div>
         </div>
     </div>
-    </div>
     <!-- Categories END -->
     @include('includes.avi-dveri.home_benefits')
     <!-- PRODUCT-AREA START -->

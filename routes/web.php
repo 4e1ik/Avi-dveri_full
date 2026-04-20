@@ -27,7 +27,6 @@ Route::get('/oplata-dostavka', [MainController::class, 'payment_and_delivery'])-
 Route::prefix('katalog')->group(function (){
     Route::get('/', [MainController::class, 'catalog'])->name('catalog');
     Route::get('/{head}/{direction}/{product}', [MainController::class, 'show_product'])->name('product_page');
-
     Route::prefix('furnitura')->group(function () {
         Route::get('/', [FittingController::class, 'fittings'])->name('fittings');
 

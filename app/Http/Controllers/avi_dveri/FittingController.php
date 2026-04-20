@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FilterRequest;
 use App\Models\Fitting;
 use App\Models\MetaTag;
+use App\Repositories\ManufacturerRepository;
 use App\Repositories\ProductRepository;
 use App\Services\FilterService;
 use App\Services\ProductService;
@@ -21,19 +22,29 @@ class FittingController extends Controller
         public ProductRepository $productRepository,
         public ProductService $productService,
         public FilterService $filterService,
-    ){}
+        public ManufacturerRepository $manufacturerRepository,
+    ) {}
+
+    private const CATEGORY = 'fitting';
 
     function fittings(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price:           $request->input('price'),
-            priceFilter:     $request->input('price_filter'),
-            perPage:         ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter:     $filter,
-            productType:       'fitting',
+            productType: self::CATEGORY,
         );
 
         $counterArray = $this->productService->productsCounter(products: $products);
@@ -41,10 +52,6 @@ class FittingController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
-        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
-        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -63,26 +70,31 @@ class FittingController extends Controller
             'totalCount',
             'start',
             'end',
-            'economyTotalCount',
-            'standardTotalCount',
-            'premiumTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function economy_fittings(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price:           $request->input('price'),
-            priceFilter:     $request->input('price_filter'),
-            perPage:         ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter:      $filter,
-            productType: 'fitting',
+            productType: self::CATEGORY,
             function:    'Эконом'
         );
 
@@ -90,10 +102,6 @@ class FittingController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
-        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
-        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -112,26 +120,31 @@ class FittingController extends Controller
             'totalCount',
             'start',
             'end',
-            'economyTotalCount',
-            'standardTotalCount',
-            'premiumTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function standard_fittings(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price:           $request->input('price'),
-            priceFilter:     $request->input('price_filter'),
-            perPage:         ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter:      $filter,
-            productType: 'fitting',
+            productType: self::CATEGORY,
             function:    'Стандарт'
         );
 
@@ -139,10 +152,6 @@ class FittingController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
-        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
-        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -161,26 +170,31 @@ class FittingController extends Controller
             'totalCount',
             'start',
             'end',
-            'economyTotalCount',
-            'standardTotalCount',
-            'premiumTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function premium_fittings(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price:           $request->input('price'),
-            priceFilter:     $request->input('price_filter'),
-            perPage:         ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter:      $filter,
-            productType: 'fitting',
+            productType: self::CATEGORY,
             function:    'Премиум'
         );
 
@@ -188,10 +202,6 @@ class FittingController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $economyTotalCount = Fitting::where('function', 'Эконом')->count();
-        $standardTotalCount = Fitting::where('function', 'Стандарт')->count();
-        $premiumTotalCount = Fitting::where('function', 'Премиум')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -210,12 +220,10 @@ class FittingController extends Controller
             'totalCount',
             'start',
             'end',
-            'economyTotalCount',
-            'standardTotalCount',
-            'premiumTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 

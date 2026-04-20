@@ -50,35 +50,8 @@
                     <!-- Shop-Content End -->
                 </div>
                 <div class="col-md-3 col-sm-12 col-xs-12">
-                    <!-- Widget-Categories start -->
                     @include('includes.avi-dveri.aside_catalog')
-                    <!-- Widget-categories end -->
-                    <!-- Shop-Filter start -->
-{{--                    <form action="">--}}
-                        @include('includes.avi-dveri.price_filter')
-                        <aside class="widget widget-color mb-30">
-                            <div class="widget-title">
-                                <span class="widget-sidebar-label">Назначение</span>
-                            </div>
-                            <div class="widget-info color-filter clearfix">
-                                <ul>
-                                    <li><a href="{{route('street_doors')}}">Улица<span
-                                                    class="count">{{$streetTotalCount}}</span></a></li>
-                                    <li><a href="{{route('apartment_doors')}}">Квартира<span
-                                                    class="count">{{$apartmentTotalCount}}</span></a></li>
-                                    <li><a href="{{route('thermal_break_doors')}}">Терморазрыв<span
-                                                    class="count">{{$thermal_breakTotalCount}}</span></a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <!-- Shop-Filter end -->
-                        <!-- Widget-Manufacturer start -->
-                        {{--                        <button style="width: 100%; height: 45px; font-size: larger; line-height: 45px;"--}}
-                        {{--                                data-text="Отфильтровать" type="submit" class="button-one submit-btn-4">Отфильтровать--}}
-                        {{--                        </button>--}}
-                        <!-- Widget-Manufacturer end -->
-{{--                    </form>--}}
-                    {{--                    <a href="{{route('entrance_doors')}}">Очистить фильтр</a>--}}
+                    @include('includes.avi-dveri.aside_filter', ['category' => 'door'])
                 </div>
             </div>
         </div>

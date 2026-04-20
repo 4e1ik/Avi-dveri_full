@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\avi_dveri\admin\ManufacturerController;
+use App\Http\Controllers\avi_dveri\ManufacturerController;
 use App\Http\Controllers\FilterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;

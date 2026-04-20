@@ -22,14 +22,7 @@ class ManufacturerController extends Controller
         public ManufacturerService $manufacturerService
     ){}
 
-    public function manufacturers(Request $request)
-    {
-        try {
-            return ApiResponse::success(Manufacturer::where('type', $request->input('type'))->get());
-        } catch (\Exception $error) {
-            return ApiResponse::error($error);
-        }
-    }
+
 
     public function index(string $type): View|Factory|Application
     {

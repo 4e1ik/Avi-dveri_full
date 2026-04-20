@@ -53,35 +53,7 @@
 
                     <!-- Widget-Categories start -->
                     @include('includes.avi-dveri.aside_catalog')
-                    <!-- Widget-categories end -->
-                    <!-- Shop-Filter start -->
-{{--                    <form action="">--}}
-                        @include('includes.avi-dveri.price_filter')
-                        <!-- Shop-Filter end -->
-                        <!-- Widget-Manufacturer start -->
-                        <aside class="widget widget-color mb-30">
-                            <div class="widget-title">
-                                <span class="widget-sidebar-label">Сегмент</span>
-                            </div>
-                            <div class="widget-info color-filter clearfix">
-                                <ul>
-                                    <li><a href="{{route('economy_fittings')}}">Эконом<span
-                                                    class="count">{{$economyTotalCount}}</span></a></li>
-                                    <li><a href="{{route('standard_fittings')}}">Стандарт<span
-                                                    class="count">{{$standardTotalCount}}</span></a></li>
-                                    <li><a href="{{route('premium_fittings')}}">Премиум<span
-                                                    class="count">{{$premiumTotalCount}}</span></a></li>
-                                </ul>
-                            </div>
-                        </aside>
-
-                        {{--                        <button style="width: 100%; height: 45px; font-size: larger; line-height: 45px;"--}}
-                        {{--                                data-text="Отфильтровать" type="submit" class="button-one submit-btn-4">Отфильтровать--}}
-                        {{--                        </button>--}}
-{{--                    </form>--}}
-
-                    <!-- Widget-Manufacturer end -->
-                    {{--                    <a href="{{route('fittings')}}">Очистить фильтр</a>--}}
+                    @include('includes.avi-dveri.aside_filter', ['category' => 'fitting'])
                 </div>
             </div>
         </div>

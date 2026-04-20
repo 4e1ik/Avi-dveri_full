@@ -1,6 +1,8 @@
 <ul>
     <li>
-        <span class="{{ $product->availability ? 'product-availability--in-stock' : 'product-availability--on-order' }}">{{ $product->availability ? 'В наличии' : 'Под заказ' }}</span>
+        <span class="{{ $product->availability ? 'product-availability--in-stock' : 'product-availability--on-order' }}">
+            {{ $product->availability ? 'В наличии' : 'Под заказ' }}
+        </span>
     </li>
     @if($product->manufacturer)
         <li>Производитель: {{ $product->manufacturer->name }}</li>

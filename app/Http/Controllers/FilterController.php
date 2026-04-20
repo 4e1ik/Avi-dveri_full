@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DTO\GlobalFilterDTO;
 use App\Helpers\ApiResponse;
-use App\Models\Manufacturer;
 use App\Services\GlobalFilterService;
 use Illuminate\Http\Request;
 

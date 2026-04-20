@@ -50,42 +50,8 @@
                     <!-- Shop-Content End -->
                 </div>
                 <div class="col-md-3 col-sm-12 col-xs-12">
-
-                    <!-- Widget-Categories start -->
                     @include('includes.avi-dveri.aside_catalog')
-                    <!-- Widget-categories end -->
-                    <!-- Shop-Filter start -->
-{{--                    <form action="">--}}
-                        @include('includes.avi-dveri.price_filter')
-
-                        <!-- Shop-Filter end -->
-                        <!-- Widget-Manufacturer start -->
-                        <aside class="widget widget-color mb-30">
-                            <div class="widget-title">
-                                <span class="widget-sidebar-label">Материал</span>
-                            </div>
-                            <div class="widget-info color-filter clearfix">
-                                <ul>
-                                    <li><a href="{{route('eco_veneer_doors')}}">Экошпон<span
-                                                    class="count">{{$eco_veneerTotalCount}}</span></a></li>
-                                    <li><a href="{{route('polypropylene_doors')}}">Полипропилен<span
-                                                    class="count">{{$polypropyleneTotalCount}}</span></a></li>
-                                    <li><a href="{{route('enamel_doors')}}">Эмаль<span
-                                                    class="count">{{$enamelTotalCount}}</span></a></li>
-                                    <li><a href="{{route('hidden_doors')}}">Скрытые<span
-                                                    class="count">{{$hiddenTotalCount}}</span></a></li>
-                                    <li><a href="{{route('solid_doors')}}">Массив<span
-                                                    class="count">{{$solidTotalCount}}</span></a></li>
-                                </ul>
-                            </div>
-                        </aside>
-
-                        {{--                        <button style="width: 100%; height: 45px; font-size: larger; line-height: 45px;"--}}
-                        {{--                                data-text="Отфильтровать" type="submit" class="button-one submit-btn-4">Отфильтровать--}}
-                        {{--                        </button>--}}
-{{--                    </form>--}}
-                    {{--                    <a href="{{route('interior_doors')}}">Очистить фильтр</a>--}}
-                    <!-- Widget-Manufacturer end -->
+                    @include('includes.avi-dveri.aside_filter', ['category' => 'door'])
                 </div>
             </div>
         </div>

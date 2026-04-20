@@ -7,9 +7,12 @@ use App\Enums\ProductPerPageEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FilterRequest;
 use App\Models\Door;
+use App\Models\Manufacturer;
 use App\Models\MetaTag;
+use App\Repositories\ManufacturerRepository;
 use App\Repositories\ProductRepository;
 use App\Services\FilterService;
+use App\Services\ManufacturerService;
 use App\Services\ProductService;
 use App\Traits\MetaTagPaginateTrait;
 use Illuminate\Support\Facades\URL;
@@ -19,24 +22,34 @@ class DoorController extends Controller
     use MetaTagPaginateTrait;
 
     public function __construct(
-        public ProductRepository     $productRepository,
-        public ProductService        $productService,
-        public FilterService         $filterService,
+        public ProductRepository        $productRepository,
+        public ProductService           $productService,
+        public FilterService            $filterService,
+        public ManufacturerRepository   $manufacturerRepository,
     )
     {
     }
 
+    private const CATEGORY = 'door';
+
     function entrance_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             type: 'entrance',
         );
 
@@ -45,10 +58,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $streetTotalCount = Door::where('function', 'Улица')->where('type', 'entrance')->count();
-        $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
-        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -67,26 +76,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'streetTotalCount',
-            'apartmentTotalCount',
-            'thermal_breakTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers'
         ));
     }
 
     function street_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             function: 'Улица',
             type: 'entrance'
         );
@@ -95,10 +109,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $streetTotalCount = Door::where('function', 'Улица')->where('type', 'entrance')->count();
-        $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
-        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -117,26 +127,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'streetTotalCount',
-            'apartmentTotalCount',
-            'thermal_breakTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function apartment_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             function: 'Квартира',
             type: 'entrance',
         );
@@ -145,10 +160,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $streetTotalCount = Door::where('function', 'Улица')->where('type', 'entrance')->count();
-        $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
-        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -167,26 +178,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'streetTotalCount',
-            'apartmentTotalCount',
-            'thermal_breakTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function thermal_break_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             function: 'Терморазрыв',
             type: 'entrance',
         );
@@ -195,10 +211,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $streetTotalCount = Door::where('function', 'Улица')->where('type', 'entrance')->count();
-        $apartmentTotalCount = Door::where('function', 'Квартира')->where('type', 'entrance')->count();
-        $thermal_breakTotalCount = Door::where('function', 'Терморазрыв')->where('type', 'entrance')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -217,26 +229,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'streetTotalCount',
-            'apartmentTotalCount',
-            'thermal_breakTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function interior_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             type: 'interior',
         );
 
@@ -244,12 +261,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
-        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
-        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
-        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
-        $solidTotalCount = Door::where('material', 'Массив')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -268,28 +279,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'eco_veneerTotalCount',
-            'polypropyleneTotalCount',
-            'enamelTotalCount',
-            'hiddenTotalCount',
-            'solidTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function eco_veneer_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             material: 'Экошпон',
             type: 'interior',
         );
@@ -298,12 +312,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
-        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
-        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
-        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
-        $solidTotalCount = Door::where('material', 'Массив')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -322,28 +330,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'eco_veneerTotalCount',
-            'polypropyleneTotalCount',
-            'enamelTotalCount',
-            'hiddenTotalCount',
-            'solidTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function polypropylene_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             material: 'Полипропилен',
             type: 'interior',
         );
@@ -352,12 +363,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
-        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
-        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
-        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
-        $solidTotalCount = Door::where('material', 'Массив')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -376,28 +381,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'eco_veneerTotalCount',
-            'polypropyleneTotalCount',
-            'enamelTotalCount',
-            'hiddenTotalCount',
-            'solidTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function enamel_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             material: 'Эмаль',
             type: 'interior',
         );
@@ -406,12 +414,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
-        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
-        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
-        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
-        $solidTotalCount = Door::where('material', 'Массив')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -430,28 +432,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'eco_veneerTotalCount',
-            'polypropyleneTotalCount',
-            'enamelTotalCount',
-            'hiddenTotalCount',
-            'solidTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function hidden_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             material: 'Скрытые',
             type: 'interior',
         );
@@ -460,12 +465,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
-        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
-        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
-        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
-        $solidTotalCount = Door::where('material', 'Массив')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -484,28 +483,31 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'eco_veneerTotalCount',
-            'polypropyleneTotalCount',
-            'enamelTotalCount',
-            'hiddenTotalCount',
-            'solidTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 
     function solid_doors(FilterRequest $request)
     {
         $filter = $this->filterService->filter(new FilterDTO(
-            price: $request->input('price'),
-            priceFilter: $request->input('price_filter'),
-            perPage: ProductPerPageEnum::DEFAULT->value,
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label', []),
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
         ));
 
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
         $products = $this->productRepository->getProducts(
             filter: $filter,
-            productType: 'door',
+            productType: self::CATEGORY,
             material: 'Массив',
             type: 'interior',
         );
@@ -514,12 +516,6 @@ class DoorController extends Controller
         $totalCount = $counterArray['totalCount'];
         $start = $counterArray['start'];
         $end = $counterArray['end'];
-
-        $eco_veneerTotalCount = Door::where('material', 'Экошпон')->count();
-        $polypropyleneTotalCount = Door::where('material', 'Полипропилен')->count();
-        $enamelTotalCount = Door::where('material', 'Эмаль')->count();
-        $hiddenTotalCount = Door::where('material', 'Скрытые')->count();
-        $solidTotalCount = Door::where('material', 'Массив')->count();
 
         $page = $products->currentPage();
         if ($page > 1) {
@@ -538,14 +534,10 @@ class DoorController extends Controller
             'totalCount',
             'start',
             'end',
-            'eco_veneerTotalCount',
-            'polypropyleneTotalCount',
-            'enamelTotalCount',
-            'hiddenTotalCount',
-            'solidTotalCount',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
+            'manufacturers',
         ));
     }
 }
