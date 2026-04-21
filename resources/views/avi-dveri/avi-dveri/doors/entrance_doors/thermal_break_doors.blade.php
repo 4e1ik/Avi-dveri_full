@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-md-3 col-sm-12 col-xs-12">
                     @include('includes.avi-dveri.aside_catalog')
-                    @include('includes.avi-dveri.aside_filter', ['category' => 'door')
+                    @include('includes.avi-dveri.aside_filter', ['category' => 'door'])
                 </div>
             </div>
         </div>

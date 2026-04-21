@@ -54,7 +54,7 @@
                     <!-- Widget-search end -->
                     <!-- Widget-Categories start -->
                     @include('includes.avi-dveri.aside_catalog')
-                    @include('includes.avi-dveri.aside_filter', ['category' => 'door')
+                    @include('includes.avi-dveri.aside_filter', ['category' => 'door'])
                 </div>
             </div>
         </div>
