@@ -6,11 +6,11 @@
     <section class="slider-area slider-style-2">
         <div class="bend niceties preview-2">
             <div id="ensign-nivoslider" class="slides">
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/1.png')}}" alt=""
+                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/1.webp')}}" alt=""
                      title="#slider-direction-1"/>
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/2.png')}}" alt=""
+                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/2.webp')}}" alt=""
                      title="#slider-direction-2"/>
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/3.png')}}" alt=""
+                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/3.webp')}}" alt=""
                      title="#slider-direction-3"/>
             </div>
             <div id="slider-direction-1" class="t-cn slider-direction">
