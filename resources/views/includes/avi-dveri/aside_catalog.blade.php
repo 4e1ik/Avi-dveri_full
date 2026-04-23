@@ -186,10 +186,16 @@
         }
     }
 
-    /* Десктоп с hover: подпункты под строкой пункта, кнопка скрыта */
+    /* Десктоп: подпункты по hover/focus-within на строке; стрелка — индикатор (не клик), подсветка как у раскрытия */
     @media (min-width: 992px) and (hover: hover) {
         .aside-catalog__toggle {
-            display: none;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .aside-catalog__item:hover .aside-catalog__toggle,
+        .aside-catalog__item:focus-within .aside-catalog__toggle {
+            color: #c8a165;
         }
 
         .aside-catalog__sub {
@@ -201,6 +207,11 @@
         .aside-catalog__item:focus-within .aside-catalog__sub {
             display: block;
         }
+
+        .aside-catalog__item:hover .aside-catalog__toggle-icon,
+        .aside-catalog__item:focus-within .aside-catalog__toggle-icon {
+            transform: rotate(180deg);
+        }
     }
 </style>
 <script>
@@ -211,6 +222,17 @@
 
         function toggleMode() {
             return window.matchMedia('(max-width: 991px), (hover: none)').matches;
+        }
+
+        function setToggleDesktopTabindex() {
+            var desktop = !toggleMode();
+            root.querySelectorAll('.aside-catalog__toggle').forEach(function (btn) {
+                if (desktop) {
+                    btn.setAttribute('tabindex', '-1');
+                } else {
+                    btn.removeAttribute('tabindex');
+                }
+            });
         }
 
         function closeAll() {
@@ -251,7 +273,9 @@
             e.stopPropagation();
         });
 
+        setToggleDesktopTabindex();
         window.addEventListener('resize', function () {
+            setToggleDesktopTabindex();
             if (!toggleMode()) closeAll();
         });
     })();

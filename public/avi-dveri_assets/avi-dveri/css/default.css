@@ -415,6 +415,18 @@ button {
   left: auto;
   right: -30px;
 }
+
+/* Слайдер товаров: при hover растёт карточка — не привязывать стрелку к top:50% всего .slick-slider */
+.product-slider.arrow-left-right .slick-arrow {
+  top: 200px;
+  margin-top: 0;
+  transform: translateY(-50%);
+}
+@media (max-width: 767px) {
+  .product-slider.arrow-left-right .slick-arrow {
+    top: 138px;
+  }
+}
 /* Slick-Dots */
 .dots-bottom-right .slick-dots {
     bottom: 20px;
