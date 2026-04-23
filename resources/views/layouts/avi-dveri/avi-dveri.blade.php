@@ -17,43 +17,51 @@
         <link rel="canonical" href="{{ $canonicalUrl }}">
     @endif
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, 'js');</script>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo_1.png')}}">
     <!-- Place favicon.ico in the root directory -->
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Google Font -->
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&amp;display=swap" rel="stylesheet">
 
     <!-- all css here -->
     <!-- bootstrap v3.3.6 css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/bootstrap.min.css')}}">
-    <!-- animate css -->
+    @if(request()->routeIs('home'))
+    <!-- animate css (WOW на главной) -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/animate.min.css')}}">
-    <!-- jquery-ui.min css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/jquery-ui.min.css')}}">
+    @endif
     <!-- meanmenu css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css')}}">
+    @if(request()->routeIs('home'))
     <!-- nivo-slider css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/nivo-slider.css')}}">
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/preview.css')}}">
+    @endif
+    @if(request()->routeIs('home', 'product_page'))
     <!-- slick css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/slick.min.css')}}">
+    @endif
+    @if(request()->routeIs('product_page'))
     <!-- lightbox css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/lightbox.min.css')}}">
+    @endif
     <!-- material-design-iconic-font css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/material-design-iconic-font.css')}}">
     <!-- All common css of theme -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css')}}">
     <!-- style css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.2')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.3')}}">
     <!-- shortcode css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css')}}">
     @include('includes.avi-dveri.product_availability_styles')
-    <!-- modernizr css -->
-    <script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/modernizr-3.11.2.min.js')}}"></script>
+    @stack('styles')
     @yield('404')
 </head>
 <body>
@@ -90,7 +98,7 @@
             <div class="row">
                 <div class="col-xs-12 d-block d-md-none">
                     <div class="mobile-menu">
-                        <a class="header-logo-link" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери"></a>
+                        <a class="header-logo-link" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
                         <nav id="dropdown">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
@@ -175,7 +183,7 @@
 
 <!-- all js here -->
 <!-- jquery latest version -->
-<script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}" async></script>
 <script>
     {{--function onClick(e) {--}}
     {{--    e.preventDefault();--}}
@@ -276,38 +284,39 @@
         document.querySelectorAll('.form_error').forEach(el => el.innerHTML = '');
     }
 </script>
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/jquery-3.6.0.min.js')}}"></script>
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/jquery-migrate-3.3.2.min.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/jquery-3.6.0.min.js')}}" defer></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/jquery-migrate-3.3.2.min.js')}}" defer></script>
 <!-- bootstrap js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/bootstrap.bundle.min.js')}}" defer></script>
 <!-- jquery.meanmenu js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/jquery.meanmenu.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/jquery.meanmenu.js')}}" defer></script>
+@if(request()->routeIs('home', 'product_page'))
 <!-- slick.min js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/slick.min.js')}}"></script>
-<!-- jquery.treeview js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/jquery.treeview.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/slick.min.js')}}" defer></script>
+@endif
+@if(request()->routeIs('product_page'))
 <!-- lightbox.min js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/lightbox.min.js')}}"></script>
-<!-- jquery-ui js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/jquery-ui.min.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/lightbox.min.js')}}" defer></script>
+@endif
+@if(request()->routeIs('home'))
 <!-- jquery.nivo.slider js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/lib/js/jquery.nivo.slider.js')}}"></script>
-<script src="{{asset('/avi-dveri_assets/avi-dveri/lib/home.js')}}"></script>
-<!-- jquery.nicescroll.min js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/jquery.nicescroll.min.js')}}"></script>
-<!-- countdon.min js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/countdon.min.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/lib/js/jquery.nivo.slider.js')}}" defer></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/lib/home.js')}}" defer></script>
 <!-- wow js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/wow.min.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/wow.min.js')}}" defer></script>
+@endif
 <!-- plugins js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/plugins.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/plugins.js')}}" defer></script>
 <!-- main js -->
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/main.min.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/main.min.js')}}" defer></script>
 
-
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/popupSubmitApplication.js')}}"></script>
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/priceFilter.js')}}"></script>
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/imagePrice.js')}}"></script>
-<script src="{{asset('/avi-dveri_assets/avi-dveri/js/homeBenefitsMarquee.js')}}"></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/popupSubmitApplication.js')}}" defer></script>
+@if(request()->routeIs('product_page'))
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/imagePrice.js')}}" defer></script>
+@endif
+@if(request()->routeIs('home'))
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/homeBenefitsMarquee.js')}}" defer></script>
+@endif
+@stack('scripts')
 </body>
 </html>
