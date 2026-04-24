@@ -24,7 +24,7 @@
                     </div>
                     @enderror
                 </div>
-                <input type="text" name="name" placeholder="Имя" value="{{ old('name') }}"/>
+                <input type="text" name="name" placeholder="Имя *" value="{{ old('name') }}" required/>
             </div>
             <div class="feedback__input">
                 <div class="form_error">
@@ -44,7 +44,7 @@
                     </div>
                     @enderror
                 </div>
-                <input type="text" name="phone" placeholder="Номер телефона" value="{{ old('phone') }}"/>
+                <input type="text" name="phone" placeholder="Номер телефона *" value="{{ old('phone') }}" required/>
             </div>
             <div class="feedback__input">
                 <div class="form_error">

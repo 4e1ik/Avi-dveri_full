@@ -4,5 +4,10 @@ Disallow: /login
 Disallow: /registration
 Disallow: /logout
 Disallow: /spasibo
+Disallow: /?*
+Disallow: /*?price_filter=
+Disallow: /*?label
+Disallow: /*?function
+Disallow: /*?manufacturer_id
 
 Sitemap: https://avi-dveri.by/sitemap.xml

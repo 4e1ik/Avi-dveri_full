@@ -893,4 +893,61 @@
     position: absolute;
   }
 }
- 
+
+/* meanmenu: поиск в одной сетке с пунктами (90% + 5% padding, как у ссылок) */
+@media screen and (max-width: 767px) {
+  .mean-container .mean-nav ul li.mean-last {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+  }
+
+  .mean-container .mean-nav ul li > form.search_form {
+    float: none;
+    width: 90%;
+    max-width: 100%;
+    margin: 0;
+    padding: 1em 5%;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+  }
+
+  .mean-container .mean-nav ul li > form.search_form.d-flex {
+    width: 90%;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .mean-container .mean-nav ul li form.search_form .search_form_group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .mean-container .mean-nav ul li form.search_form .search_form_group input[type="text"] {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    display: block;
+    min-height: 2.5em;
+    line-height: 1.4;
+  }
+
+  .mean-container .mean-nav ul li form.search_form .search_example {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.5em;
+  }
+}
+
