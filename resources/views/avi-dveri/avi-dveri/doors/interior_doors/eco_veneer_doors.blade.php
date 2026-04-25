@@ -57,4 +57,5 @@
         </div>
     </div>
     <!-- PRODUCT-AREA END -->
+    @include('includes.avi-dveri.faq', ['faqKey' => 'eco_veneer_doors'])
 @endsection

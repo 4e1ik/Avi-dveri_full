@@ -57,4 +57,5 @@
         </div>
     </div>
     <!-- PRODUCT-AREA END -->
+    @include('includes.avi-dveri.faq', ['faqKey' => 'enamel_doors'])
 @endsection

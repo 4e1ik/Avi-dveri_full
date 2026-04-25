@@ -60,4 +60,5 @@
         </div>
     </div>
     <!-- PRODUCT-AREA END -->
+    @include('includes.avi-dveri.faq', ['faqKey' => 'solid_doors'])
 @endsection

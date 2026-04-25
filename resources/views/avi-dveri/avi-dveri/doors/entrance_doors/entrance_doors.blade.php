@@ -56,4 +56,5 @@
         </div>
     </div>
     <!-- PRODUCT-AREA END -->
+    @include('includes.avi-dveri.faq', ['faqKey' => 'entrance_doors'])
 @endsection
