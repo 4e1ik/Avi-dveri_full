@@ -65,13 +65,13 @@
                     background: transparent;
                     text-align: left;
                     font-weight: 700;
-                    font-size: 20px;
+                    font-size: 17px;
                     color: #333;
                 }
                 .faq-icon {
                     min-width: 18px;
                     text-align: center;
-                    font-size: 24px;
+                    font-size: 22px;
                     line-height: 1;
                     color: #666;
                 }
@@ -81,7 +81,7 @@
                 .faq-answer {
                     display: none;
                     padding: 0 20px 16px;
-                    font-size: 18px;
+                    font-size: 16px;
                     color: #666;
                     line-height: 1.6;
                 }
