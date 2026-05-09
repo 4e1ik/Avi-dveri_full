@@ -4,10 +4,9 @@ function save_image($file, $image)
 {
 
     $name = $file->getClientOriginalName();
-    $extension = $file->getClientOriginalExtension();
 
-    // Хешируем имя файла
-    $hashedName = hash('md5', $name). '.' . $extension;
+    // Хешируем имя файла; на диске всегда WebP
+    $hashedName = hash('md5', $name) . '.webp';
 
     // Проверяем наличие совпадений в базе данных
     $tmp_arr = [];
@@ -20,7 +19,7 @@ function save_image($file, $image)
     $i = 1;
     while (in_array($hashedName, $tmp_arr)) {
         $i++;
-        $hashedName = hash('md5', $name . '(' . $i . ')') . '.' . $extension;
+        $hashedName = hash('md5', $name . '(' . $i . ')') . '.webp';
     }
 
     return $hashedName;

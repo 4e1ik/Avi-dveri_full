@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Helpers\ConvertUploadedImageToWebpHelper;
 use App\Models\Image;
 use App\Models\Product;
 use App\Repositories\ImageRepository;
@@ -13,7 +14,9 @@ class ImageService
 {
     public function __construct(
         public ImageRepository $imageRepository,
-    ){}
+        public ConvertUploadedImageToWebpHelper $convertUploadedImageToWebpHelper,
+    ) {
+    }
 
     public function createImages(
         ?array $image,
@@ -36,8 +39,7 @@ class ImageService
         foreach ($image as $file) {
             $data = [];
             $name = save_image($file, Image::query());
-            $path = Storage::putFileAs('public/images', $file, $name);
-            $data['image'] = $path;
+            $data['image'] = $this->convertUploadedImageToWebpHelper->storeAsWebp($file, $name);
             if ($door_color_by_index !== [] && isset($door_color_by_index[$i])) {
                 $data['door_color'] = $door_color_by_index[$i];
             }
