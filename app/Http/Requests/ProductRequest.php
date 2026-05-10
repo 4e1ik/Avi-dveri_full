@@ -39,6 +39,7 @@ class ProductRequest extends FormRequest
             'function' => 'required|filled|max:50',
             'label' => 'max:10',
             'availability' => 'required|in:0,1',
+            'image' => 'nullable|array|max:20',
             'image.*.image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
             'description' => 'nullable',
         ];
@@ -65,6 +66,7 @@ class ProductRequest extends FormRequest
             'slug.max' => 'Slug не должен превышать :max символов.',
             'slug.unique' => 'Такой slug уже используется. Выберите другой.',
             'slug.regex' => 'Slug может содержать только латинские буквы в нижнем регистре, цифры и дефисы.',
+            'image.max' => 'За один раз можно загрузить не более :max изображений.',
         ];
     }
 }

@@ -21,6 +21,7 @@
                     <div class="panel panel-default admin-product-panel admin-product-panel--media">
                         <div class="panel-heading"><h4 class="panel-title">Изображения</h4></div>
                         <div class="panel-body">
+                            @include('avi-dveri.admin.partials.image_upload_limit_notice')
                             <div class="col-md-3">
                                 <h3>Картинка</h3>
                                 <label style="display: flex; justify-content: center; align-items: center;"

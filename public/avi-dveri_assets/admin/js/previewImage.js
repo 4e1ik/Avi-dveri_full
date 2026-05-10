@@ -1,3 +1,5 @@
+const MAX_IMAGE_FILES = 20;
+
 let uploadedFiles = []; // Глобальный массив для хранения всех добавленных файлов
 
 function previewImage(event) {
@@ -8,12 +10,20 @@ function previewImage(event) {
     const currentPath = window.location.pathname;
     const isFittingPage = currentPath.includes('/fitting');
 
-    // Добавляем новые файлы в глобальный массив
+    let skippedDueToLimit = false;
+    // Добавляем новые файлы в глобальный массив (не больше MAX_IMAGE_FILES — совпадает с лимитом PHP и валидацией на сервере)
     newFiles.forEach((file) => {
+        if (uploadedFiles.length >= MAX_IMAGE_FILES) {
+            skippedDueToLimit = true;
+            return;
+        }
         if (!uploadedFiles.find(existingFile => existingFile.name === file.name)) {
             uploadedFiles.push(file);
         }
     });
+    if (skippedDueToLimit) {
+        alert(`Можно добавить не более ${MAX_IMAGE_FILES} изображений за один раз.`);
+    }
 
     // Очищаем контейнер и отображаем все файлы из uploadedFiles
     container.innerHTML = '';
