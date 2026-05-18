@@ -87,6 +87,26 @@ class ProductRepository
         return $product->delete();
     }
 
+    public function getByLabel(?string $label): LengthAwarePaginator
+    {
+        $query = Product::query()
+            ->where('active', 1)
+            ->with(['images', 'door', 'fitting', 'manufacturer']);
+
+        if ($label === null) {
+            $labelKeys = array_keys(config('labels', []));
+            $query->where(function ($q) use ($labelKeys) {
+                foreach ($labelKeys as $key) {
+                    $q->orWhereJsonContains('label', $key);
+                }
+            });
+        } else {
+            $query->whereJsonContains('label', $label);
+        }
+
+        return $query->latest('created_at')->paginate(ProductPerPageEnum::DEFAULT->value);
+    }
+
     public function getProducts($filter, string $productType, string $function = null, string $material = null, string $type = null): LengthAwarePaginator
     {
         return Product::where('active', [1])

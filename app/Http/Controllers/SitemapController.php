@@ -39,6 +39,34 @@ class SitemapController extends Controller
             'priority' => '0.6'
         ];
 
+        $urls[] = [
+            'loc' => URL::to(route('contacts')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('about')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('warranty')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('promotions')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.7'
+        ];
+
         //Фурнитура
         $urls[] = [
             'loc' => URL::to(route('fittings')),

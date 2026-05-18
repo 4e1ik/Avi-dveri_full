@@ -11,6 +11,7 @@ use App\Http\Controllers\avi_dveri\DoorController;
 use App\Http\Controllers\avi_dveri\FittingController;
 use App\Http\Controllers\avi_dveri\MailController;
 use App\Http\Controllers\avi_dveri\MainController;
+use App\Http\Controllers\avi_dveri\PromotionsController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,11 @@ Route::get('/spasibo', function (Request $request){
     ]);
 })->name('thank-you');
 Route::get('/oplata-dostavka', [MainController::class, 'payment_and_delivery'])->name('payment_and_delivery');
+Route::get('/kontakty', [MainController::class, 'contacts'])->name('contacts');
+Route::get('/o-kompanii', [MainController::class, 'about'])->name('about');
+Route::get('/garantiya', [MainController::class, 'warranty'])->name('warranty');
+Route::get('/akcii', [PromotionsController::class, 'index'])->name('promotions');
+Route::get('/akcii/{slug}', [PromotionsController::class, 'index'])->name('promotions.tab');
 
 Route::prefix('katalog')->group(function (){
     Route::get('/', [MainController::class, 'catalog'])->name('catalog');

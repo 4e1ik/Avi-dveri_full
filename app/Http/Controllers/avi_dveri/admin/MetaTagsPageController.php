@@ -15,6 +15,10 @@ class MetaTagsPageController extends Controller
         'home' => 'Главная',
         'katalog' => 'Каталог',
         'oplata-dostavka' => 'Оплата и доставка',
+        'kontakty' => 'Контакты',
+        'o-kompanii' => 'О компании',
+        'garantiya' => 'Гарантия',
+        'akcii' => 'Акции и скидки',
 
         'vhodnye-dveri' => 'Входные двери',
         'ulica' => 'Входные двери. Улица',
