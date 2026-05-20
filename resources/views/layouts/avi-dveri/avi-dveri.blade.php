@@ -100,7 +100,7 @@
     <div class="mobile-menu-area">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12 d-block d-md-none">
+                <div class="col-xs-12 site-header-mobile-wrap">
                     <div class="mobile-menu">
                         <a class="header-logo-link" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
                         <nav id="dropdown">
@@ -163,7 +163,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="footer-text">
+                <div class="col-lg-6 col-md-12 col-sm-12 footer-text">
                     <p><br><br>Цены и информация, представленные на данном сайте, приведены в ознакомительных целях, не являются публичной офертой и могут быть изменены.</p>
                     <p>ИП Исаев Андрей Владимирович, УНП 690311744, свидетельство о государственной регистрации №0870887 от 15.12.2022 г. Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.</p>
                     <p>По вопросам покупателей о защите их прав:<br><a href="tel:375293673518">+375 (29) 367-35-18</a><br><a href="mailto:3673518@mail.ru">3673518@mail.ru</a></p>

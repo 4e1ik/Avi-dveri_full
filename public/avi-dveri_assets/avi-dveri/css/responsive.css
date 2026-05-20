@@ -951,3 +951,102 @@
   }
 }
 
+/* Шапка: много пунктов меню — мобильное меню до 1200px */
+@media (max-width: 1199px) {
+  .wrapper > .header {
+    display: none !important;
+  }
+
+  .mobile-menu-area,
+  .site-header-mobile-wrap {
+    display: block !important;
+  }
+
+  .mobile-menu-area {
+    background: #c8a165;
+    overflow: hidden;
+  }
+
+  .mobile-menu-area .container-fluid {
+    padding: 0 15px;
+    max-width: 100%;
+  }
+
+  /* До инициализации meanmenu — не показывать «сырой» список */
+  .mobile-menu-area .container-fluid:not(.mean-container) nav#dropdown > ul {
+    display: none;
+  }
+
+  .mobile-menu-area .container-fluid:not(.mean-container) .mobile-menu > .header-logo-link {
+    display: block;
+    position: relative;
+    top: auto;
+    z-index: 1;
+    padding: 10px 0;
+  }
+
+  .mobile-menu-area .container-fluid:not(.mean-container) .mobile-menu > .header-logo-link img {
+    height: 40px;
+    width: auto;
+    scale: none;
+    padding: 0;
+  }
+
+  .mean-container {
+    position: relative;
+  }
+
+  .mean-container .mean-bar {
+    background: #c8a165;
+    box-shadow: none;
+    min-height: 56px;
+    position: relative;
+  }
+
+  .mean-container .mobile-menu > .header-logo-link {
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    z-index: 1000001;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mean-container .mobile-menu > .header-logo-link img {
+    height: 40px;
+    width: auto;
+    scale: none;
+    padding: 0;
+  }
+
+  .mean-container a.meanmenu-reveal {
+    margin-top: 6px;
+  }
+
+  .mean-container a.meanmenu-reveal span {
+    background: #fff;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mobile-menu-area {
+    display: none !important;
+  }
+
+  .site-header-mobile-wrap {
+    display: none !important;
+  }
+}
+
+/* Футер: юридический текст в сетке */
+.footer-area.footer-2 .footer-text {
+  margin-top: 30px;
+}
+
+@media (min-width: 1200px) {
+  .footer-area.footer-2 .footer-text {
+    margin-top: 0;
+  }
+}
+
