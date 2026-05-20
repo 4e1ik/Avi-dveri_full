@@ -22,8 +22,8 @@
     </div>
     <div class="contact-us-area pt-80 pb-80">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 mb-30">
+            <div class="contacts-page-grid">
+                <div class="contacts-page-grid__info">
                     <div class="contact-us customer-login bg-white p-30">
                         <h3 class="title-border mb-20">Как нас найти</h3>
                         <p class="mb-10"><strong>Адрес:</strong><br>
@@ -60,24 +60,94 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 mb-30">
-                    <div class="contact-map bg-white p-10">
-                        <iframe src="https://yandex.ru/map-widget/v1/?ll=28.413987%2C53.715421&z=16&pt=28.413779%2C53.715662pm2rdm&l=map"
-                                width="100%" height="400" frameborder="0" allowfullscreen="true" title="Карта"></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-30">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <div class="contact-us customer-login bg-white p-30">
+                <div class="contacts-page-grid__side">
+                    <div class="contact-us customer-login bg-white p-30 contacts-page-grid__form">
                         <h3 class="title-border mb-30">Форма обратной связи</h3>
                         <form class="mail_form" id="mail_form" action="{{ route('send_mail') }}" method="post">
                             @csrf
                             @include('includes.avi-dveri.feedback-form-fields', ['hiddenTitle' => 'Сообщение со страницы Контакты'])
                         </form>
                     </div>
+                    <div class="contact-map bg-white p-10 contacts-page-grid__map">
+                        <iframe src="https://yandex.ru/map-widget/v1/?ll=28.413987%2C53.715421&z=16&pt=28.413779%2C53.715662pm2rdm&l=map"
+                                width="100%" height="100%" frameborder="0" allowfullscreen="true" title="Карта"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@push('styles')
+    <style>
+        .contacts-page-grid__info .contact-us,
+        .contacts-page-grid__form {
+            margin-bottom: 0;
+        }
+
+        .contacts-page-grid__form {
+            overflow: hidden;
+        }
+
+        .contacts-page-grid__form .mail_form {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            padding: 1.5em;
+        }
+
+        .contacts-page-grid__form .feedback__input input,
+        .contacts-page-grid__form .feedback__input textarea {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 992px) {
+            .contacts-page-grid {
+                display: flex;
+                align-items: stretch;
+                gap: 30px;
+            }
+            .contacts-page-grid__info,
+            .contacts-page-grid__side {
+                flex: 0 0 calc(50% - 15px);
+                max-width: calc(50% - 15px);
+                min-width: 0;
+            }
+            .contacts-page-grid__info .contact-us {
+                height: 100%;
+                box-sizing: border-box;
+            }
+            .contacts-page-grid__side {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+            .contacts-page-grid__map {
+                flex: 1 1 auto;
+                min-height: 0;
+                display: flex;
+                flex-direction: column;
+            }
+            .contacts-page-grid__map iframe {
+                flex: 1;
+                min-height: 240px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .contacts-page-grid__info,
+            .contacts-page-grid__form {
+                margin-bottom: 30px;
+            }
+            .contacts-page-grid__map {
+                min-height: 320px;
+            }
+            .contacts-page-grid__map iframe {
+                min-height: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+@endpush
