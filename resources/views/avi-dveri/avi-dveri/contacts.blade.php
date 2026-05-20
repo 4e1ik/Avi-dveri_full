@@ -1,14 +1,5 @@
 @extends('layouts.avi-dveri.avi-dveri')
 
-@php
-    $contacts = config('site_contacts');
-    $map = $contacts['map'];
-    $mapSrc = 'https://yandex.ru/map-widget/v1/?ll=' . $map['lon'] . '%2C' . $map['lat']
-        . '&z=' . $map['zoom']
-        . '&pt=' . $map['lon'] . ',' . $map['lat'] . ',pm2rdm'
-        . '&l=map';
-@endphp
-
 @section('content')
     <div class="heading-banner-area overlay-bg">
         <div class="container">
@@ -36,43 +27,43 @@
                     <div class="contact-us customer-login bg-white p-30">
                         <h3 class="title-border mb-20">Как нас найти</h3>
                         <p class="mb-10"><strong>Адрес:</strong><br>
-                            {{ $contacts['address']['line1'] }}<br>
-                            {{ $contacts['address']['line2'] }}
+                            ул. Минская, 15<br>
+                            Минская область, г. Червень
                         </p>
                         <p class="mb-10"><strong>Режим работы:</strong><br>
-                            @foreach($contacts['working_hours'] as $hours)
-                                {{ $hours }}<br>
-                            @endforeach
+                            Пн–Пт: 9:00–18:00<br>
+                            Сб: 10:00–15:00<br>
+                            Вс: выходной
                         </p>
                         <p class="mb-10"><strong>Телефоны:</strong><br>
-                            @foreach($contacts['phones'] as $phone)
-                                <a href="tel:{{ $phone['tel'] }}">{{ $phone['display'] }}</a><br>
-                            @endforeach
+                            <a href="tel:375293673518">+375 (29) 367-35-18</a><br>
+                            <a href="tel:375333943324">+375 (33) 394-33-24</a><br>
+                            <a href="tel:375336846065">+375 (33) 684-60-65</a>
                         </p>
                         <p class="mb-10"><strong>Email:</strong>
-                            <a href="mailto:{{ $contacts['email']['mailto'] }}">{{ $contacts['email']['display'] }}</a>
+                            <a href="mailto:3673518@mail.ru">3673518@mail.ru</a>
                         </p>
                         <p class="mb-20"><strong>Реквизиты:</strong><br>
-                            {{ $contacts['legal']['name'] }}<br>
-                            УНП {{ $contacts['legal']['unp'] }}<br>
-                            {{ $contacts['legal']['registration'] }}<br>
-                            {{ $contacts['legal']['trade_register'] }}
+                            ИП Исаев Андрей Владимирович<br>
+                            УНП 690311744<br>
+                            свидетельство о государственной регистрации №0870887 от 15.12.2022 г.<br>
+                            Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.
                         </p>
                         <p class="mb-10"><strong>Соцсети:</strong><br>
-                            @foreach($contacts['social'] as $social)
-                                <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer">{{ $social['name'] }}</a>@if(!$loop->last), @endif
-                            @endforeach
+                            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>,
+                            <a href="https://vk.com/" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
                         </p>
                         <p class="mb-0"><strong>Мессенджеры:</strong><br>
-                            @foreach($contacts['messengers'] as $messenger)
-                                <a href="{{ $messenger['url'] }}" target="_blank" rel="noopener noreferrer">{{ $messenger['name'] }}</a>@if(!$loop->last), @endif
-                            @endforeach
+                            <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>,
+                            <a href="viber://chat?number=375293673518">Viber</a>,
+                            <a href="https://wa.me/375293673518" target="_blank" rel="noopener noreferrer">WhatsApp</a>
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 mb-30">
                     <div class="contact-map bg-white p-10">
-                        <iframe src="{{ $mapSrc }}" width="100%" height="400" frameborder="0" allowfullscreen="true" title="Карта"></iframe>
+                        <iframe src="https://yandex.ru/map-widget/v1/?ll=28.413987%2C53.715421&z=16&pt=28.413779%2C53.715662pm2rdm&l=map"
+                                width="100%" height="400" frameborder="0" allowfullscreen="true" title="Карта"></iframe>
                     </div>
                 </div>
             </div>

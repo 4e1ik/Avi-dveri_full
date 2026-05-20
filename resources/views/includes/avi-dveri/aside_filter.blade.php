@@ -322,13 +322,13 @@
         <div class="catalog-global-filter__block">
             <h3 class="catalog-global-filter__subhead">Особые предложения</h3>
             <ul class="catalog-global-filter__list">
-                @foreach(config('labels') as $value => $title)
+                @foreach(config('labels') as $value => $label)
                     <li>
                         <label class="catalog-global-filter__item catalog-global-filter__item--checkbox">
                             <span class="catalog-global-filter__item-text">
                                 <input type="checkbox" name="label[]" value="{{ $value }}"
                                        class="catalog-global-filter__cb">
-                                <span>{{ $title }}</span>
+                                <span>{{ $label['title'] }}</span>
                             </span>
                         </label>
                     </li>

@@ -135,17 +135,16 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-footer">
-                        @php($footerContacts = config('site_contacts'))
                         <h3 class="footer-title  title-border">Контакты</h3>
                         <ul class="footer-contact">
-                            <li><span>Адрес :</span>{{ $footerContacts['address']['line1'] }}<br>{{ $footerContacts['address']['line2'] }}</li>
+                            <li><span>Адрес :</span>ул. Минская, 15<br>Минская область, г. Червень</li>
                             <li><span>Номер телефона :</span>
-                                @foreach($footerContacts['phones'] as $phone)
-                                    <a href="tel:{{ $phone['tel'] }}">{{ $phone['display'] }}</a>@if(!$loop->last)<br>@endif
-                                @endforeach
+                                <a href="tel:375293673518">+375 (29) 367-35-18</a><br>
+                                <a href="tel:375333943324">+375 (33) 394-33-24</a><br>
+                                <a href="tel:375336846065">+375 (33) 684-60-65</a>
                             </li>
                             <li><span>Email :</span>
-                                <a href="mailto:{{ $footerContacts['email']['mailto'] }}">{{ $footerContacts['email']['display'] }}</a>
+                                <a href="mailto:3673518@mail.ru">3673518@mail.ru</a>
                             </li>
                         </ul>
                     </div>
@@ -166,8 +165,8 @@
                 </div>
                 <div class="footer-text">
                     <p><br><br>Цены и информация, представленные на данном сайте, приведены в ознакомительных целях, не являются публичной офертой и могут быть изменены.</p>
-                    <p>{{ $footerContacts['legal']['name'] }}, УНП {{ $footerContacts['legal']['unp'] }}, {{ $footerContacts['legal']['registration'] }} {{ $footerContacts['legal']['trade_register'] }}</p>
-                    <p>По вопросам покупателей о защите их прав:<br><a href="tel:{{ $footerContacts['phones'][0]['tel'] }}">{{ $footerContacts['phones'][0]['display'] }}</a><br><a href="mailto:{{ $footerContacts['email']['mailto'] }}">{{ $footerContacts['email']['display'] }}</a></p>
+                    <p>ИП Исаев Андрей Владимирович, УНП 690311744, свидетельство о государственной регистрации №0870887 от 15.12.2022 г. Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.</p>
+                    <p>По вопросам покупателей о защите их прав:<br><a href="tel:375293673518">+375 (29) 367-35-18</a><br><a href="mailto:3673518@mail.ru">3673518@mail.ru</a></p>
                     <p>Контакты лиц, уполномоченных рассматривать обращения покупателей о нарушении их прав (Червеньский районный исполнительный комитет, отдел торговли и услуг).
                         <br><a href="tel:375171428229">(801714) 282-29</a>
                     </p>

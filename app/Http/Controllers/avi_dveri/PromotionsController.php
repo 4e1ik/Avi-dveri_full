@@ -17,18 +17,18 @@ class PromotionsController extends Controller
 
     public function index(?string $slug = null): View
     {
-        $tabs = config('promotions.tabs');
+        $labels = config('labels');
         $activeTab = 'all';
         $label = null;
-        $pageTitle = $tabs['all']['h1'];
+        $pageTitle = 'Акции и скидки';
 
         if ($slug !== null) {
             $matched = false;
-            foreach ($tabs as $key => $tab) {
-                if ($tab['slug'] === $slug) {
+            foreach ($labels as $key => $item) {
+                if ($item['slug'] === $slug) {
                     $activeTab = $key;
-                    $label = $tab['label'];
-                    $pageTitle = $tab['h1'];
+                    $label = $key;
+                    $pageTitle = $item['h1'];
                     $matched = true;
                     break;
                 }
