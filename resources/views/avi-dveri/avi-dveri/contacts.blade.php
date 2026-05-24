@@ -49,15 +49,15 @@
                             свидетельство о государственной регистрации №0870887 от 15.12.2022 г.<br>
                             Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.
                         </p>
-                        <p class="mb-10"><strong>Соцсети:</strong><br>
-                            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>,
-                            <a href="https://vk.com/" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
-                        </p>
-                        <p class="mb-0"><strong>Мессенджеры:</strong><br>
-                            <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>,
-                            <a href="viber://chat?number=375293673518">Viber</a>,
-                            <a href="https://wa.me/375293673518" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-                        </p>
+{{--                        <p class="mb-10"><strong>Соцсети:</strong><br>--}}
+{{--                            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>,--}}
+{{--                            <a href="https://vk.com/" target="_blank" rel="noopener noreferrer">ВКонтакте</a>--}}
+{{--                        </p>--}}
+{{--                        <p class="mb-0"><strong>Мессенджеры:</strong><br>--}}
+{{--                            <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>,--}}
+{{--                            <a href="viber://chat?number=375293673518">Viber</a>,--}}
+{{--                            <a href="https://wa.me/375293673518" target="_blank" rel="noopener noreferrer">WhatsApp</a>--}}
+{{--                        </p>--}}
                     </div>
                 </div>
                 <div class="contacts-page-grid__side">

@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/animate.min.css')}}">
     @endif
     <!-- meanmenu css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css?v=1.4')}}">
     @if(request()->routeIs('home'))
     <!-- nivo-slider css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/nivo-slider.css')}}">
@@ -59,7 +59,8 @@
     <!-- shortcode css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=1.8')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/content-typography.css?v=1.1')}}">
     @include('includes.avi-dveri.product_availability_styles')
     @stack('styles')
     @yield('404')
@@ -99,10 +100,10 @@
     <!-- Mobile-menu start -->
     <div class="mobile-menu-area">
         <div class="container-fluid">
-            <div class="row">
+            <a class="header-logo-link mobile-header__logo" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
+            <div class="row mobile-header__row">
                 <div class="col-xs-12 site-header-mobile-wrap">
                     <div class="mobile-menu">
-                        <a class="header-logo-link" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
                         <nav id="dropdown">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>

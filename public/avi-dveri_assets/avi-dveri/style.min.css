@@ -3029,8 +3029,8 @@ input[type="radio"]:nth-child(3):checked + label {
 @media screen and (max-width: 425px){
 
     .header-logo-link img{
-        scale: 2;
-        padding: 10px 1px 0 28px;
+        /*scale: 2;*/
+        /*padding: 5px 0px 0px 15px;*/
     }
 
     .search_form .search_form_group input{

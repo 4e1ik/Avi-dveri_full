@@ -62,31 +62,31 @@
                         <p>Мы уверены: правильная дверь — это важная часть любого интерьера. Мы поможем вам найти лучшее решение и сделаем всё, чтобы покупка была простой, выгодной и комфортной.</p>
                     </section>
 
-                    <section class="about-section">
-                        <h2 class="about-section__title tab-title title-border">Сертификаты</h2>
-                        <div class="row">
-                            @for($i = 0; $i < 3; $i++)
-                                <div class="col-sm-4 col-xs-12 mb-20">
-                                    <div class="about-gallery-placeholder">
-                                        <span>Фото будет добавлено</span>
-                                    </div>
-                                </div>
-                            @endfor
-                        </div>
-                    </section>
+{{--                    <section class="about-section">--}}
+{{--                        <h2 class="about-section__title tab-title title-border">Сертификаты</h2>--}}
+{{--                        <div class="row">--}}
+{{--                            @for($i = 0; $i < 3; $i++)--}}
+{{--                                <div class="col-sm-4 col-xs-12 mb-20">--}}
+{{--                                    <div class="about-gallery-placeholder">--}}
+{{--                                        <span>Фото будет добавлено</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endfor--}}
+{{--                        </div>--}}
+{{--                    </section>--}}
 
-                    <section class="about-section">
-                        <h2 class="about-section__title tab-title title-border">Фото офиса</h2>
-                        <div class="row">
-                            @for($i = 0; $i < 3; $i++)
-                                <div class="col-sm-4 col-xs-12 mb-20">
-                                    <div class="about-gallery-placeholder">
-                                        <span>Фото будет добавлено</span>
-                                    </div>
-                                </div>
-                            @endfor
-                        </div>
-                    </section>
+{{--                    <section class="about-section">--}}
+{{--                        <h2 class="about-section__title tab-title title-border">Фото офиса</h2>--}}
+{{--                        <div class="row">--}}
+{{--                            @for($i = 0; $i < 3; $i++)--}}
+{{--                                <div class="col-sm-4 col-xs-12 mb-20">--}}
+{{--                                    <div class="about-gallery-placeholder">--}}
+{{--                                        <span>Фото будет добавлено</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endfor--}}
+{{--                        </div>--}}
+{{--                    </section>--}}
                 </article>
             </div>
         </div>
@@ -95,12 +95,6 @@
 
 @push('styles')
     <style>
-        .about-content {
-            font-size: 17px;
-            line-height: 1.65;
-            color: #555;
-        }
-
         .about-content p {
             margin: 0 0 1.1em;
         }
@@ -116,8 +110,6 @@
         .about-content .about-section__title {
             margin: 0 0 0.85em;
             padding: 0;
-            font-size: 18px;
-            line-height: 1.35;
         }
 
         .about-content ul {
