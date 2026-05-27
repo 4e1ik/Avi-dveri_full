@@ -177,21 +177,7 @@
                                                 Выберите материал двери
                                             </option>
                                             @enderror
-                                            <option {{ $product->door->material == 'Экошпон' ? 'selected' : ''}}  value="Экошпон">
-                                                Экошпон
-                                            </option>
-                                            <option {{ $product->door->material == 'Полипропилен' ? 'selected' : ''}}  value="Полипропилен">
-                                                Полипропилен
-                                            </option>
-                                            <option {{ $product->door->material == 'Эмаль' ? 'selected' : ''}}  value="Эмаль">
-                                                Эмаль
-                                            </option>
-                                            <option {{ $product->door->material == 'Скрытые' ? 'selected' : ''}}  value="Скрытые">
-                                                Скрытые
-                                            </option>
-                                            <option {{ $product->door->material == 'Массив' ? 'selected' : ''}}  value="Массив">
-                                                Массив
-                                            </option>
+                                            @include('avi-dveri.admin.partials.interior_door_material_select', ['selectedMaterial' => $product->door->material])
                                     </select>
                                 </div>
                             </div>

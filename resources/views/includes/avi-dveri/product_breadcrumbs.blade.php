@@ -1,11 +1,8 @@
 @php
-    $door_materials = [
-        'Полипропилен' => 'polypropylene_doors',
-        'Эмаль' => 'enamel_doors',
-        'Скрытые' => 'hidden_doors',
-        'Экошпон' => 'eco_veneer_doors',
-        'Массив' => 'solid_doors',
-        ];
+    $door_materials = array_map(
+        static fn (array $material): string => $material['route'],
+        config('door_materials')
+    );
 
     $door_functions = [
         'Квартира' => 'apartment_doors',

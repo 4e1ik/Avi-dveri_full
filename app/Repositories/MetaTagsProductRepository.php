@@ -26,6 +26,7 @@ class MetaTagsProductRepository
                 'Эмаль' => 'Входные двери - Эмаль', //material
                 'Скрытые' => 'Входные двери - Скрытые', //material
                 'Массив' => 'Входные двери - Массив', //material
+                'Эксимер' => 'Межкомнатные двери - Эксимер', //material
             ]
         ],
         'fitting' => [ //productType

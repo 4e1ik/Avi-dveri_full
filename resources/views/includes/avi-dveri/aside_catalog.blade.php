@@ -29,11 +29,9 @@
                     </button>
                 </div>
                 <ul class="aside-catalog__sub" id="aside-catalog-sub-interior">
-                    <li><a href="{{ route('eco_veneer_doors') }}">Экошпон</a></li>
-                    <li><a href="{{ route('polypropylene_doors') }}">Полипропилен</a></li>
-                    <li><a href="{{ route('enamel_doors') }}">Эмаль</a></li>
-                    <li><a href="{{ route('hidden_doors') }}">Скрытые</a></li>
-                    <li><a href="{{ route('solid_doors') }}">Массив</a></li>
+                    @foreach(config('door_materials') as $material)
+                        <li><a href="{{ route($material['route']) }}">{{ $material['title'] }}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li class="aside-catalog__item" data-aside-catalog-item>
