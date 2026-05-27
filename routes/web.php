@@ -75,6 +75,10 @@ Route::prefix('katalog')->group(function (){
         Route::prefix('eksimer')->group(function () {
             Route::get('/', [DoorController::class, 'eximer_doors'])->name('eximer_doors');
         });
+
+        Route::prefix('flex-emal')->group(function () {
+            Route::get('/', [DoorController::class, 'flex_enamel_doors'])->name('flex_enamel_doors');
+        });
     });
 
     Route::prefix('vhodnye-dveri')->group(function () {

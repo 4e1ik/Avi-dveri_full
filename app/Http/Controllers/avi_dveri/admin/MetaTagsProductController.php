@@ -39,6 +39,7 @@ class MetaTagsProductController extends Controller
         'Скрытые' => 'Скрытые',
         'Массив' => 'Массив',
         'Эксимер' => 'Эксимер',
+        'Флекс эмаль' => 'Флекс эмаль',
     ];
 
     public function products(Request $request): View|RedirectResponse

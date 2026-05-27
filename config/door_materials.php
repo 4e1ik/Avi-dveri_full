@@ -37,4 +37,10 @@ return [
         'h1' => 'Эксимер',
         'route' => 'eximer_doors',
     ],
+    'Флекс эмаль' => [
+        'title' => 'Флекс эмаль',
+        'slug' => 'flex-emal',
+        'h1' => 'Флекс эмаль',
+        'route' => 'flex_enamel_doors',
+    ],
 ];

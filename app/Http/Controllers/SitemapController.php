@@ -147,6 +147,13 @@ class SitemapController extends Controller
             'changefreq' => 'daily',
             'priority' => '0.6'
         ];
+
+        $urls[] = [
+            'loc' => URL::to(route('flex_enamel_doors')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.6'
+        ];
         //Конец межкомнатных дверей
 
         //Начало входных дверей
