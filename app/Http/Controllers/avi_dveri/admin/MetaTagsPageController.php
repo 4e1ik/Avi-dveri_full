@@ -33,6 +33,7 @@ class MetaTagsPageController extends Controller
         'massiv' => 'Межкомнатные двери. Массив',
         'eksimer' => 'Межкомнатные двери. Эксимер',
         'flex-emal' => 'Межкомнатные двери. Флекс эмаль',
+        'massiv-mdf' => 'Межкомнатные двери. Массив + МДФ',
 
         'furnitura' => 'Фурнитура',
         'ekonom' => 'Фурнитура. Эконом',

@@ -43,4 +43,10 @@ return [
         'h1' => 'Флекс эмаль',
         'route' => 'flex_enamel_doors',
     ],
+    'Массив + МДФ' => [
+        'title' => 'Массив + МДФ',
+        'slug' => 'massiv-mdf',
+        'h1' => 'Массив + МДФ',
+        'route' => 'solid_mdf_doors',
+    ],
 ];

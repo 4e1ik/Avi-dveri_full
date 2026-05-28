@@ -79,6 +79,10 @@ Route::prefix('katalog')->group(function (){
         Route::prefix('flex-emal')->group(function () {
             Route::get('/', [DoorController::class, 'flex_enamel_doors'])->name('flex_enamel_doors');
         });
+
+        Route::prefix('massiv-mdf')->group(function () {
+            Route::get('/', [DoorController::class, 'solid_mdf_doors'])->name('solid_mdf_doors');
+        });
     });
 
     Route::prefix('vhodnye-dveri')->group(function () {
