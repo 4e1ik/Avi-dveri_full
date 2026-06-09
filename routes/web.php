@@ -83,6 +83,10 @@ Route::prefix('katalog')->group(function (){
         Route::prefix('massiv-mdf')->group(function () {
             Route::get('/', [DoorController::class, 'solid_mdf_doors'])->name('solid_mdf_doors');
         });
+
+        Route::prefix('mdf')->group(function () {
+            Route::get('/', [DoorController::class, 'mdf_doors'])->name('mdf_doors');
+        });
     });
 
     Route::prefix('vhodnye-dveri')->group(function () {

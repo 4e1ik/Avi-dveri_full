@@ -49,4 +49,10 @@ return [
         'h1' => 'Массив + МДФ',
         'route' => 'solid_mdf_doors',
     ],
+    'МДФ' => [
+        'title' => 'МДФ',
+        'slug' => 'mdf',
+        'h1' => 'МДФ',
+        'route' => 'mdf_doors',
+    ],
 ];

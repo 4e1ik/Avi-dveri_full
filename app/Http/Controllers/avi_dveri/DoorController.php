@@ -693,4 +693,55 @@ class DoorController extends Controller
             'manufacturers',
         ));
     }
+
+    function mdf_doors(FilterRequest $request)
+    {
+        $filter = $this->filterService->filter(new FilterDTO(
+            price:              $request->input('price'),
+            priceFilter:        $request->input('price_filter'),
+            category:           $request->input('category', self::CATEGORY),
+            label:              $request->input('label') ?? null,
+            manufacturer_id:    $request->input('manufacturer_id') ?? null,
+            type:               $request->input('type') ?? null,
+            function:           $request->input('function') ?? null,
+            material:           $request->input('material') ?? null,
+            perPage:            ProductPerPageEnum::DEFAULT->value,
+        ));
+
+        $manufacturers = $this->manufacturerRepository->get(category: self::CATEGORY);
+        $products = $this->productRepository->getProducts(
+            filter: $filter,
+            productType: self::CATEGORY,
+            material: 'МДФ',
+            type: 'interior',
+        );
+
+        $counterArray = $this->productService->productsCounter(products: $products);
+        $totalCount = $counterArray['totalCount'];
+        $start = $counterArray['start'];
+        $end = $counterArray['end'];
+
+        $page = $products->currentPage();
+        if ($page > 1) {
+            $metaTitle = $this->metaTitle(page: $page);
+            $metaDescription = $this->metaDescription(page: $page);
+        } else {
+            $meta = MetaTag::where('slug', 'mdf')->first();
+            $metaTitle = $meta?->meta_title;
+            $metaDescription = $meta?->meta_description;
+        }
+
+        $canonicalUrl = URL::to(route('mdf_doors'));
+
+        return view('avi-dveri.avi-dveri.doors.interior_doors.mdf_doors', compact(
+            'products',
+            'totalCount',
+            'start',
+            'end',
+            'metaTitle',
+            'metaDescription',
+            'canonicalUrl',
+            'manufacturers',
+        ));
+    }
 }
