@@ -55,4 +55,10 @@ return [
         'h1' => 'МДФ',
         'route' => 'mdf_doors',
     ],
+    'МДФ+ХДФ' => [
+        'title' => 'МДФ+ХДФ',
+        'slug' => 'mdf-hdf',
+        'h1' => 'МДФ+ХДФ',
+        'route' => 'mdf_hdf_doors',
+    ],
 ];

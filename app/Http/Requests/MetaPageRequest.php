@@ -14,7 +14,7 @@ class MetaPageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'slug' => 'required|string|in:home,katalog,oplata-dostavka,spasibo,vhodnye-dveri,ulica,kvartira,termorazryv,mezhkomnatnye-dveri,ekoshpon,polipropilen,emal,skrytye,massiv,eksimer,flex-emal,massiv-mdf,mdf,furnitura,ekonom,standart,premium',
+            'slug' => 'required|string|in:home,katalog,oplata-dostavka,spasibo,vhodnye-dveri,ulica,kvartira,termorazryv,mezhkomnatnye-dveri,ekoshpon,polipropilen,emal,skrytye,massiv,eksimer,flex-emal,massiv-mdf,mdf,mdf-hdf,furnitura,ekonom,standart,premium',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
         ];

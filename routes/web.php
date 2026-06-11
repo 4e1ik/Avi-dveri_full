@@ -87,6 +87,10 @@ Route::prefix('katalog')->group(function (){
         Route::prefix('mdf')->group(function () {
             Route::get('/', [DoorController::class, 'mdf_doors'])->name('mdf_doors');
         });
+
+        Route::prefix('mdf-hdf')->group(function () {
+            Route::get('/', [DoorController::class, 'mdf_hdf_doors'])->name('mdf_hdf_doors');
+        });
     });
 
     Route::prefix('vhodnye-dveri')->group(function () {
