@@ -179,12 +179,7 @@
                                                     Выберите материал двери
                                                 </option>
                                                 @enderror
-                                                <option {{ $product->door->material == 'Металл/МДФ' ? 'selected' : ''}} value="Металл/МДФ">
-                                                    Металл/МДФ
-                                                </option>
-                                                <option {{ $product->door->material == 'МДФ/МДФ' ? 'selected' : ''}} value="МДФ/МДФ">
-                                                    МДФ/МДФ
-                                                </option>
+                                                @include('avi-dveri.admin.partials.entrance_door_material_select', ['selectedMaterial' => $product->door->material])
                                         </select>
                                     </div>
                                 </div>
