@@ -103,7 +103,7 @@ class ConvertAviDveriStaticImagesToWebpCommand extends Command
         }
 
         if (! $dry && $updateRefs && $replacements !== []) {
-            $this->updateViewReferences($replacements);
+            $this->updateReferences($replacements);
         }
 
         if ($dry && $updateRefs) {
@@ -118,27 +118,93 @@ class ConvertAviDveriStaticImagesToWebpCommand extends Command
     /**
      * @param  array<string, string>  $replacements
      */
-    private function updateViewReferences(array $replacements): void
+    private function updateReferences(array $replacements): void
     {
         if ($replacements === []) {
             return;
         }
 
-        $viewFiles = $this->filesystem->allFiles(resource_path('views'));
-        $n = 0;
-        foreach ($viewFiles as $viewFile) {
-            $path = $viewFile->getPathname();
-            if (! str_ends_with($path, '.php')) {
-                continue;
+        $search = array_keys($replacements);
+        $replace = array_values($replacements);
+
+        foreach ($this->expandReplacementsForCss($replacements) as $from => $to) {
+            $search[] = $from;
+            $replace[] = $to;
+        }
+
+        $viewCount = $this->replaceInFiles(
+            $this->filesystem->allFiles(resource_path('views')),
+            static fn (string $path): bool => str_ends_with($path, '.php'),
+            $search,
+            $replace,
+        );
+
+        $cssBase = public_path('avi-dveri_assets');
+        $cssCount = is_dir($cssBase)
+            ? $this->replaceInFiles(
+                $this->filesystem->allFiles($cssBase),
+                static fn (string $path): bool => str_ends_with($path, '.css'),
+                $search,
+                $replace,
+            )
+            : 0;
+
+        $this->info("Обновлено файлов шаблонов: {$viewCount}, CSS: {$cssCount}.");
+    }
+
+    /**
+     * @param  array<string, string>  $replacements
+     * @return array<string, string>
+     */
+    private function expandReplacementsForCss(array $replacements): array
+    {
+        $expanded = [];
+
+        foreach ($replacements as $oldWeb => $newWeb) {
+            $relative = Str::after($oldWeb, '/avi-dveri_assets/avi-dveri/');
+            if ($relative !== $oldWeb) {
+                $expanded[$relative] = Str::after($newWeb, '/avi-dveri_assets/avi-dveri/');
             }
-            $contents = $this->filesystem->get($path);
-            $new = str_replace(array_keys($replacements), array_values($replacements), $contents);
-            if ($new !== $contents) {
-                $this->filesystem->put($path, $new);
-                $n++;
+
+            if (str_contains($oldWeb, '/avi-dveri_assets/avi-dveri/lib/img/')) {
+                $basename = basename($oldWeb);
+                $expanded['../img/' . $basename] = '../img/' . basename($newWeb);
+            }
+
+            if (str_contains($oldWeb, '/avi-dveri_assets/avi-dveri/img/lightbox/')) {
+                $basename = basename($oldWeb);
+                $expanded['../img/lightbox/' . $basename] = '../img/lightbox/' . basename($newWeb);
             }
         }
-        $this->info("Обновлено файлов шаблонов: {$n}.");
+
+        return $expanded;
+    }
+
+    /**
+     * @param  iterable<\SplFileInfo>  $files
+     * @param  callable(string): bool  $filter
+     * @param  array<int, string>  $search
+     * @param  array<int, string>  $replace
+     */
+    private function replaceInFiles(iterable $files, callable $filter, array $search, array $replace): int
+    {
+        $count = 0;
+
+        foreach ($files as $file) {
+            $path = $file->getPathname();
+            if (! $filter($path)) {
+                continue;
+            }
+
+            $contents = $this->filesystem->get($path);
+            $new = str_replace($search, $replace, $contents);
+            if ($new !== $contents) {
+                $this->filesystem->put($path, $new);
+                $count++;
+            }
+        }
+
+        return $count;
     }
 
     private function toPublicUrl(string $absolutePath): string

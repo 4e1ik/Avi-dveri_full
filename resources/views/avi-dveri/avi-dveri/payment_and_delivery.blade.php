@@ -56,7 +56,7 @@
                                 <div class="pro-tab-info pro-reviews">
                                     <div class="customer-review mb-60">
                                         <p class="tab-title title-border mb-30">Условия оплаты</p>
-                                        <img src="{{asset('/avi-dveri_assets/avi-dveri/img/KSA.jpg')}}"
+                                        <img src="{{asset('/avi-dveri_assets/avi-dveri/img/KSA.webp')}}"
                                              alt="Картинка оплата">
                                         <p class="tab-title title-border mb-30">Условия оплаты</p>
                                         <p>⦾ Оплата производится только в белорусских рублях.</p>
@@ -71,7 +71,7 @@
                                     <p>Принимаем к оплате платежные карты Белкарт, Visa, MasterCard (оплата через
                                         терминал). При оплате банковской картой возврат денежных средств в случае такой
                                         необходимости осуществляется на карточку, с которой была произведена оплата.</p>
-                                    <img src="{{asset('/avi-dveri_assets/avi-dveri/img/oplata_bankovskoy_kartoy_onlayn.png')}}"
+                                    <img src="{{asset('/avi-dveri_assets/avi-dveri/img/oplata_bankovskoy_kartoy_onlayn.webp')}}"
                                          alt="Картинка оплаты картами">
 {{--                                    <p class="tab-title title-border mb-30">Оплата через ЕРИП</p>--}}
                                     <p class="tab-title title-border mb-30">Безналичный расчет</p>
@@ -84,7 +84,7 @@
                                     <p>кредит от Беларусбанк «На родныя тавары» до 2-х лет под 4%</p>
 {{--                                    <img src="{{asset('/avi-dveri_assets/avi-dveri/img/vaerrr.jpg')}}" alt="Картинка карты">--}}
                                     <p class="tab-title title-border mb-30">Образец чека</p>
-                                    <a download="Образец чека" href="{{asset('/avi-dveri_assets/avi-dveri/img/20250314_162645.jpg')}}">Нажмите, чтобы скачать образец чека</a>
+                                    <a download="Образец чека" href="{{asset('/avi-dveri_assets/avi-dveri/img/20250314_162645.webp')}}">Нажмите, чтобы скачать образец чека</a>
                                 </div>
                             </div>
                         </div>

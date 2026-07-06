@@ -29,7 +29,7 @@
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
                         <a class="banner-thumb" href="{{route('entrance_doors')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/2.png')}}"
+                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/2.webp')}}"
                                     alt="Картинка входные двери"/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
@@ -42,7 +42,7 @@
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
                         <a class="banner-thumb" href="{{route('interior_doors')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/1.png')}}"
+                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/1.webp')}}"
                                     alt="Картинка межкомнатные двери"/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
@@ -55,7 +55,7 @@
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
                         <a class="banner-thumb" href="{{route('fittings')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/3.png')}}"
+                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/3.webp')}}"
                                     alt="Картинка фурнитура"/></a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
