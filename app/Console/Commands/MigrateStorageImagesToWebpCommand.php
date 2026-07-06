@@ -15,7 +15,8 @@ use Intervention\Image\ImageManager;
 class MigrateStorageImagesToWebpCommand extends Command
 {
     protected $signature = 'images:migrate-storage-to-webp
-                            {--quality=85 : WebP quality 0-100}';
+                            {--quality=85 : WebP quality 0-100}
+                            {--dry-run : Только показать, без записи}';
 
     protected $description = 'Перекодировать существующие изображения в storage (public/images) в WebP и обновить поле image';
 
@@ -28,6 +29,7 @@ class MigrateStorageImagesToWebpCommand extends Command
     public function handle(): int
     {
         $quality = max(0, min(100, (int) $this->option('quality')));
+        $dryRun = (bool) $this->option('dry-run');
 
         $images = Image::query()
             ->whereNotNull('image')
@@ -61,6 +63,12 @@ class MigrateStorageImagesToWebpCommand extends Command
 
                 if ($newPath === $path) {
                     $skipped++;
+                    continue;
+                }
+
+                if ($dryRun) {
+                    $this->line("[dry-run] id={$row->id}: {$path} => {$newPath}");
+                    $converted++;
                     continue;
                 }
 
