@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, 'js');</script>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo_1.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo_1.webp')}}">
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,7 +74,7 @@
 <div class="wrapper bg-dark-white">
     <header class="header">
         <a class="header-brand" href="{{route('home')}}">
-            <img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo.png')}}" alt="Ави-двери">
+            <img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo.webp')}}" alt="Ави-двери">
         </a>
         <a class="header-menu" href="{{route('home')}}">Главная</a>
         <a class="header-menu" href="{{route('catalog')}}">Каталог</a>
@@ -90,7 +90,7 @@
 {{--            <input id="search-input" class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">--}}
 
 {{--            <a class="search-img" href="#" onclick="performSearch(event)">--}}
-{{--                <img type="submit" src="{{ asset('/avi-dveri_assets/avi-dveri/img/search.png') }}" alt="" width="30" height="30">--}}
+{{--                <img type="submit" src="{{ asset('/avi-dveri_assets/avi-dveri/img/search.webp') }}" alt="" width="30" height="30">--}}
 {{--            </a>--}}
 {{--        </form>--}}
         <div id="search-results" style="margin-top: 20px;">
@@ -100,7 +100,7 @@
     <!-- Mobile-menu start -->
     <div class="mobile-menu-area">
         <div class="container-fluid">
-            <a class="header-logo-link mobile-header__logo" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
+            <a class="header-logo-link mobile-header__logo" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.webp')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
             <div class="row mobile-header__row">
                 <div class="col-xs-12 site-header-mobile-wrap">
                     <div class="mobile-menu">
