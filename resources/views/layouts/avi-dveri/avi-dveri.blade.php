@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/animate.min.css')}}">
     @endif
     <!-- meanmenu css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css?v=1.4')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css?v=1.5')}}">
     @if(request()->routeIs('home'))
     <!-- nivo-slider css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/nivo-slider.css')}}">
