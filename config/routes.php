@@ -28,14 +28,10 @@ return $routes = [
     'katalog' => [
         'doors' => [
             'interior' => 'mezhkomnatnye-dveri',
-            'material' => [
-                'Экошпон' => 'ekoshpon',
-                'Полипропилен' => 'polipropilen',
-                'Эмаль' => 'emal',
-                'Скрытые' => 'skrytye',
-                'Массив' => 'massiv'
-
-            ],
+            'material' => array_map(
+                static fn (array $material): string => $material['slug'],
+                config('door_materials')
+            ),
             'vhodnye-dveri' => 'entrance',
             'vhodnye-dveri-function' => [
                 'Улица' => 'ulica',

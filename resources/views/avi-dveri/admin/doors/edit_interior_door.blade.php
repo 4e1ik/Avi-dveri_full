@@ -20,6 +20,7 @@
                     <div class="panel panel-default admin-product-panel admin-product-panel--media">
                         <div class="panel-heading"><h4 class="panel-title">Изображения</h4></div>
                         <div class="panel-body">
+                            @include('avi-dveri.admin.partials.image_upload_limit_notice')
                             <div class="col-md-3">
                                 <h3>Картинка</h3>
                                 <label style="display: flex; justify-content: center; align-items: center;"
@@ -176,21 +177,7 @@
                                                 Выберите материал двери
                                             </option>
                                             @enderror
-                                            <option {{ $product->door->material == 'Экошпон' ? 'selected' : ''}}  value="Экошпон">
-                                                Экошпон
-                                            </option>
-                                            <option {{ $product->door->material == 'Полипропилен' ? 'selected' : ''}}  value="Полипропилен">
-                                                Полипропилен
-                                            </option>
-                                            <option {{ $product->door->material == 'Эмаль' ? 'selected' : ''}}  value="Эмаль">
-                                                Эмаль
-                                            </option>
-                                            <option {{ $product->door->material == 'Скрытые' ? 'selected' : ''}}  value="Скрытые">
-                                                Скрытые
-                                            </option>
-                                            <option {{ $product->door->material == 'Массив' ? 'selected' : ''}}  value="Массив">
-                                                Массив
-                                            </option>
+                                            @include('avi-dveri.admin.partials.interior_door_material_select', ['selectedMaterial' => $product->door->material])
                                     </select>
                                 </div>
                             </div>

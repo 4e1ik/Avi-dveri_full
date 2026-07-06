@@ -1,5 +1,20 @@
 @php
     $faqItems = config("catalog_faq.$faqKey", []);
+
+    $faqSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => array_map(static function (array $item): array {
+            return [
+                '@type' => 'Question',
+                'name' => $item['question'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => $item['answer'],
+                ],
+            ];
+        }, $faqItems),
+    ];
 @endphp
 
 @if(!empty($faqItems))
@@ -39,6 +54,8 @@
             </div>
         </div>
     </div>
+
+    <script type="application/ld+json">{!! json_encode($faqSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
 
     @once
         @push('styles')
@@ -82,8 +99,8 @@
                     display: none;
                     padding: 0 20px 16px;
                     font-size: 16px;
-                    color: #666;
                     line-height: 1.6;
+                    color: #666;
                 }
                 .faq-answer p {
                     margin: 0;

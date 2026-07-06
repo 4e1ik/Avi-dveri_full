@@ -951,3 +951,229 @@
   }
 }
 
+/* Шапка: много пунктов меню — мобильное меню до 1200px */
+@media (max-width: 1199px) {
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  .wrapper {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  .wrapper > .header {
+    display: none !important;
+  }
+
+  .mobile-menu-area,
+  .site-header-mobile-wrap {
+    display: block !important;
+  }
+
+  .mobile-menu-area {
+    background: #c8a165;
+    overflow: visible;
+    position: relative;
+    z-index: 200000;
+    isolation: isolate;
+  }
+
+  .mobile-menu-area .container-fluid {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* До инициализации meanmenu — не показывать «сырой» список */
+  .mobile-menu-area .container-fluid:not(.mean-container) nav#dropdown > ul {
+    display: none;
+  }
+
+  .mobile-menu-area .container-fluid:not(.mean-container) .mobile-header__logo {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .mobile-menu-area .container-fluid:not(.mean-container) .mobile-header__logo img {
+    height: 32px;
+    width: auto;
+  }
+
+  .mobile-menu-area .container-fluid:not(.mean-container) .mobile-header__row {
+    height: 0;
+    margin: 0 !important;
+    overflow: hidden;
+  }
+
+  .mean-container {
+    position: relative;
+    z-index: 1;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+  }
+
+  .mean-container .mean-push {
+    display: none !important;
+    margin: 0 !important;
+    height: 0 !important;
+  }
+
+  .mean-container > .mobile-header__row {
+    height: 0;
+    min-height: 0;
+    margin: 0 !important;
+    padding: 0;
+    overflow: visible;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .mean-container > .mobile-header__logo {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    z-index: 110;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    margin: 0;
+    padding: 0;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .mean-container > .mobile-header__logo img {
+    height: 45px;
+    width: auto;
+    display: block;
+  }
+
+  .mean-container .mean-bar {
+    background: #c8a165;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 56px;
+    height: 56px;
+    padding: 0 15px 0 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    overflow: visible;
+  }
+
+  .mean-container .mean-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    float: none;
+    margin: 0;
+    padding: 0;
+    z-index: 199999;
+    width: 100%;
+    max-width: 100%;
+    background: #f8f8f8;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    max-height: calc(100vh - 56px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Полноэкранное перекрытие только при открытом меню (без 100vw — иначе зазор справа) */
+  .mean-container:has(.meanmenu-reveal.meanclose) .mean-nav {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mean-container .mean-nav ul,
+  .mean-container .mean-nav ul li,
+  .mean-container .mean-nav ul li a {
+    background-color: #f8f8f8 !important;
+  }
+
+  .mean-container .mean-nav ul li:first-child {
+    border-top: 0;
+  }
+
+  .mean-container a.meanmenu-reveal {
+    float: none;
+    position: relative;
+    top: 0 !important;
+    right: auto;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 48px;
+    min-width: 48px;
+    height: 56px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+    line-height: 1 !important;
+    z-index: 120;
+    color: #fff !important;
+    background: transparent !important;
+    text-indent: -9999em;
+    align-self: center;
+  }
+
+  .mean-container a.meanmenu-reveal.meanclose {
+    text-indent: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1 !important;
+    color: #fff !important;
+  }
+
+  .mean-container a.meanmenu-reveal span {
+    display: block;
+    width: 26px;
+    height: 4px;
+    margin-top: 5px;
+    background: #fff !important;
+    border-radius: 1px;
+  }
+
+  .mean-container a.meanmenu-reveal span:first-child {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mobile-menu-area {
+    display: none !important;
+  }
+
+  .site-header-mobile-wrap {
+    display: none !important;
+  }
+}
+
+/* Футер: юридический текст в сетке */
+.footer-area.footer-2 .footer-text {
+  margin-top: 30px;
+}
+
+@media (min-width: 1200px) {
+  .footer-area.footer-2 .footer-text {
+    margin-top: 0;
+  }
+}
+

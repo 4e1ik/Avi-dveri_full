@@ -12,6 +12,7 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-body">
+                        @include('avi-dveri.admin.partials.form_alerts')
                         <form action="{{ route('admin_meta_product_template_update', ['metaTemplateProduct' => $metaTemplateProduct]) }}" method="post">
                             @csrf
                             @method('PUT')

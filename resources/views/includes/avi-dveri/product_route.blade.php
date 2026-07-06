@@ -4,13 +4,10 @@ $entrance_doors = [
     'Квартира' => 'kvartira',
     'Терморазрыв' => 'termorazryv',
 ];
-$interior_doors_routes = [
-    'Экошпон' => 'ekoshpon',
-    'Полипропилен' => 'polipropilen',
-    'Эмаль' => 'emal',
-    'Скрытые' => 'skrytye',
-    'Массив' => 'massiv',
-];
+$interior_doors_routes = array_map(
+    static fn (array $material): string => $material['slug'],
+    config('door_materials')
+);
 $fittings_routes = [
     'Эконом' => 'ekonom',
     'Стандарт' => 'standart',

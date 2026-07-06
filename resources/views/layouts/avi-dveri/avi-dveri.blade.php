@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/animate.min.css')}}">
     @endif
     <!-- meanmenu css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css?v=1.4')}}">
     @if(request()->routeIs('home'))
     <!-- nivo-slider css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/nivo-slider.css')}}">
@@ -59,7 +59,8 @@
     <!-- shortcode css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=1.8')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/content-typography.css?v=1.1')}}">
     @include('includes.avi-dveri.product_availability_styles')
     @stack('styles')
     @yield('404')
@@ -77,7 +78,11 @@
         </a>
         <a class="header-menu" href="{{route('home')}}">Главная</a>
         <a class="header-menu" href="{{route('catalog')}}">Каталог</a>
+        <a class="header-menu" href="{{route('about')}}">О компании</a>
+        <a class="header-menu" href="{{route('warranty')}}">Гарантия</a>
+        <a class="header-menu" href="{{route('promotions')}}">Акции</a>
         <a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a>
+        <a class="header-menu" href="{{route('contacts')}}">Контакты</a>
         <a class="header-menu" href="tel:375293673518" style="font-size: 0.9em; margin: 1.5em 0 0 0">+375 (29) 367-35-18</a>
         @livewire('search')
 
@@ -95,16 +100,20 @@
     <!-- Mobile-menu start -->
     <div class="mobile-menu-area">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 d-block d-md-none">
+            <a class="header-logo-link mobile-header__logo" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
+            <div class="row mobile-header__row">
+                <div class="col-xs-12 site-header-mobile-wrap">
                     <div class="mobile-menu">
-                        <a class="header-logo-link" href="{{route('home')}}"><img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo2.png')}}" alt="Ави-двери" loading="lazy" decoding="async"></a>
                         <nav id="dropdown">
                             <ul>
                                 <li><a href="{{route('home')}}">Главная</a></li>
                                 <li><a href="{{route('catalog')}}">Каталог</a></li>
-                                <li><a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a></li>
-                                <li><a class="header-menu" href="tel:375293673518">+375 (29) 367-35-18</a></li>
+                                <li><a href="{{route('about')}}">О компании</a></li>
+                                <li><a href="{{route('warranty')}}">Гарантия</a></li>
+                                <li><a href="{{route('promotions')}}">Акции</a></li>
+                                <li><a href="{{route('payment_and_delivery')}}">Оплата и доставка</a></li>
+                                <li><a href="{{route('contacts')}}">Контакты</a></li>
+                                <li><a href="tel:375293673518">+375 (29) 367-35-18</a></li>
                                 <li><a class="header-menu" href="tel:375333943324">+375 (33) 394-33-24</a></li>
                                 <li>@livewire('search')</li>
                             </ul>
@@ -115,7 +124,7 @@
         </div>
     </div>
     <!-- Mobile-menu end -->
-    @if(!isset($is404))
+    @if(!isset($is404) && !request()->routeIs('contacts'))
         <x-feedback-form />
     @endif
     @yield('content')
@@ -136,7 +145,7 @@
                                 <a href="tel:375336846065">+375 (33) 684-60-65</a>
                             </li>
                             <li><span>Email :</span>
-                                <a href="mailto:And-2506.1970@yandex.ru">3673518@mail.ru</a>
+                                <a href="mailto:3673518@mail.ru">3673518@mail.ru</a>
                             </li>
                         </ul>
                     </div>
@@ -147,14 +156,18 @@
                         <ul class="footer-menu">
                             <li><a href="{{route('home')}}"><i class="zmdi zmdi-dot-circle"></i>Главная</a></li>
                             <li><a href="{{route('catalog')}}"><i class="zmdi zmdi-dot-circle"></i>Каталог</a></li>
+                            <li><a href="{{route('about')}}"><i class="zmdi zmdi-dot-circle"></i>О компании</a></li>
+                            <li><a href="{{route('warranty')}}"><i class="zmdi zmdi-dot-circle"></i>Гарантия</a></li>
+                            <li><a href="{{route('promotions')}}"><i class="zmdi zmdi-dot-circle"></i>Акции</a></li>
                             <li><a href="{{route('payment_and_delivery')}}"><i class="zmdi zmdi-dot-circle"></i>Оплата и доставка</a></li>
+                            <li><a href="{{route('contacts')}}"><i class="zmdi zmdi-dot-circle"></i>Контакты</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="footer-text">
+                <div class="col-lg-6 col-md-12 col-sm-12 footer-text">
                     <p><br><br>Цены и информация, представленные на данном сайте, приведены в ознакомительных целях, не являются публичной офертой и могут быть изменены.</p>
-                    <p>ИП Исаев Андрей Владимирович, УНП 690311744, свидетельство о государствееной регистрации №0870887 от 15.12.2022 г. Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.</p>
-                    <p>По вопросам покупателей о защите их прав:<br><a href="tel:375293673518">+375 (29) 367-35-18</a><br><a href="mailto:And-2506.1970@yandex.ru">3673518@mail.ru</a></p>
+                    <p>ИП Исаев Андрей Владимирович, УНП 690311744, свидетельство о государственной регистрации №0870887 от 15.12.2022 г. Регистрация в Торговом реестре Республики Беларусь №690311744 от 15.11.2004 г.</p>
+                    <p>По вопросам покупателей о защите их прав:<br><a href="tel:375293673518">+375 (29) 367-35-18</a><br><a href="mailto:3673518@mail.ru">3673518@mail.ru</a></p>
                     <p>Контакты лиц, уполномоченных рассматривать обращения покупателей о нарушении их прав (Червеньский районный исполнительный комитет, отдел торговли и услуг).
                         <br><a href="tel:375171428229">(801714) 282-29</a>
                     </p>
@@ -197,6 +210,10 @@
 
     async function onClick(e) {
         e.preventDefault();
+        const form = e.target.closest('form.mail_form');
+        if (!form) {
+            return;
+        }
         try {
             // Получаем токен reCAPTCHA
             const token = await new Promise((resolve, reject) => {
@@ -212,11 +229,11 @@
                 });
             });
 
-            // Устанавливаем токен в скрытое поле формы
-            document.getElementById('g-recaptcha-response').value = token;
+            const recaptchaField = form.querySelector('[name="g-recaptcha-response"]');
+            if (recaptchaField) {
+                recaptchaField.value = token;
+            }
 
-            // Отправляем форму через Fetch API
-            const form = document.getElementById('mail_form');
             const formData = new FormData(form);
 
             const response = await fetch('/send_mail', {
@@ -233,8 +250,7 @@
 
             if (!response.ok) {
                 if (response.status === 422 && data.errors) {
-                    // Ошибки валидации
-                    showErrors(data.errors);
+                    showErrors(data.errors, form);
                 } else {
                     // Другие ошибки
                     throw new Error(data.message || 'Произошла ошибка при отправке');
@@ -245,9 +261,9 @@
             // Успешная отправка
             // alert(data.message || 'Письмо успешно отправлено!');
             const currentUrl = window.location.href;
-            window.location.href = `/thank_you?referrer=${encodeURIComponent(currentUrl)}`;
+            window.location.href = `/spasibo?referrer=${encodeURIComponent(currentUrl)}`;
             form.reset(); // Сброс формы
-            clearErrors(); // Очистка ошибок
+            clearErrors(form);
 
         } catch (error) {
             // Обработка ошибок
@@ -257,14 +273,12 @@
     }
 
     // Функция для отображения ошибок
-    function showErrors(errors) {
-        // Очищаем предыдущие ошибки
-        clearErrors();
+    function showErrors(errors, form) {
+        clearErrors(form);
 
-        // Показываем новые ошибки
         Object.entries(errors).forEach(([field, messages]) => {
-            // Ищем input или textarea по имени
-            const inputOrTextarea = document.querySelector(`input[name="${field}"], textarea[name="${field}"]`);
+            const root = form || document;
+            const inputOrTextarea = root.querySelector(`input[name="${field}"], textarea[name="${field}"]`);
 
             if (inputOrTextarea) {
                 // Находим контейнер для ошибок
@@ -280,8 +294,9 @@
     }
 
     // Функция для очистки ошибок
-    function clearErrors() {
-        document.querySelectorAll('.form_error').forEach(el => el.innerHTML = '');
+    function clearErrors(form) {
+        const root = form || document;
+        root.querySelectorAll('.form_error').forEach(el => el.innerHTML = '');
     }
 </script>
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/vendor/jquery-3.6.0.min.js')}}" defer></script>

@@ -281,17 +281,33 @@
                         @endforeach
                     </ul>
                 </div>
-            @elseif(($type ?? null) === 'interior')
                 <div class="catalog-global-filter__block">
                     <h3 class="catalog-global-filter__subhead">Материал</h3>
                     <ul class="catalog-global-filter__list">
-                        @foreach(config('door_materials') as $value => $title)
+                        @foreach(config('entrance_door_materials') as $value => $material)
                             <li>
                                 <label class="catalog-global-filter__item catalog-global-filter__item--checkbox">
                                     <span class="catalog-global-filter__item-text">
                                         <input type="checkbox" name="material[]" value="{{ $value }}"
                                                class="catalog-global-filter__cb">
-                                        <span>{{ $value }}</span>
+                                        <span>{{ $material['title'] }}</span>
+                                    </span>
+                                </label>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @elseif(($type ?? null) === 'interior')
+                <div class="catalog-global-filter__block">
+                    <h3 class="catalog-global-filter__subhead">Материал</h3>
+                    <ul class="catalog-global-filter__list">
+                        @foreach(config('door_materials') as $value => $material)
+                            <li>
+                                <label class="catalog-global-filter__item catalog-global-filter__item--checkbox">
+                                    <span class="catalog-global-filter__item-text">
+                                        <input type="checkbox" name="material[]" value="{{ $value }}"
+                                               class="catalog-global-filter__cb">
+                                        <span>{{ $material['title'] }}</span>
                                     </span>
                                 </label>
                             </li>
@@ -322,13 +338,13 @@
         <div class="catalog-global-filter__block">
             <h3 class="catalog-global-filter__subhead">Особые предложения</h3>
             <ul class="catalog-global-filter__list">
-                @foreach(config('labels') as $value => $title)
+                @foreach(config('labels') as $value => $label)
                     <li>
                         <label class="catalog-global-filter__item catalog-global-filter__item--checkbox">
                             <span class="catalog-global-filter__item-text">
                                 <input type="checkbox" name="label[]" value="{{ $value }}"
                                        class="catalog-global-filter__cb">
-                                <span>{{ $title }}</span>
+                                <span>{{ $label['title'] }}</span>
                             </span>
                         </label>
                     </li>

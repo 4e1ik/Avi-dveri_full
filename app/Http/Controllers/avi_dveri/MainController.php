@@ -43,6 +43,30 @@ class MainController extends Controller
         return view('avi-dveri.avi-dveri.payment_and_delivery', compact('metaTitle', 'metaDescription'));
     }
 
+    function contacts()
+    {
+        $meta = MetaTag::where('slug', 'kontakty')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
+        return view('avi-dveri.avi-dveri.contacts', compact('metaTitle', 'metaDescription'));
+    }
+
+    function about()
+    {
+        $meta = MetaTag::where('slug', 'o-kompanii')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
+        return view('avi-dveri.avi-dveri.about', compact('metaTitle', 'metaDescription'));
+    }
+
+    function warranty()
+    {
+        $meta = MetaTag::where('slug', 'garantiya')->first();
+        $metaTitle = $meta?->meta_title;
+        $metaDescription = $meta?->meta_description;
+        return view('avi-dveri.avi-dveri.warranty', compact('metaTitle', 'metaDescription'));
+    }
+
     function show_product($head, $direction, Product $product)
     {
         $product->loadMissing('manufacturer');

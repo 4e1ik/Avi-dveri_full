@@ -39,6 +39,34 @@ class SitemapController extends Controller
             'priority' => '0.6'
         ];
 
+        $urls[] = [
+            'loc' => URL::to(route('contacts')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('about')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('warranty')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('promotions')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.7'
+        ];
+
         //Фурнитура
         $urls[] = [
             'loc' => URL::to(route('fittings')),
@@ -112,6 +140,41 @@ class SitemapController extends Controller
             'changefreq' => 'daily',
             'priority' => '0.6'
         ];
+
+        $urls[] = [
+            'loc' => URL::to(route('eximer_doors')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('flex_enamel_doors')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('solid_mdf_doors')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('mdf_doors')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.6'
+        ];
+
+        $urls[] = [
+            'loc' => URL::to(route('mdf_hdf_doors')),
+            'lastmod' => Carbon::now()->toAtomString(),
+            'changefreq' => 'daily',
+            'priority' => '0.6'
+        ];
         //Конец межкомнатных дверей
 
         //Начало входных дверей
@@ -170,13 +233,10 @@ class SitemapController extends Controller
             })->where('active', 1)->whereNotNull('slug')->get();
         foreach ($interior_doors as $interior_door) {
             $material = $interior_door->door->material;
-            $interior_doors_routes = [
-                'Экошпон' => route('eco_veneer_doors'),
-                'Полипропилен' => route('polypropylene_doors'),
-                'Эмаль' => route('enamel_doors'),
-                'Скрытые' => route('hidden_doors'),
-                'Массив' => route('solid_doors'),
-            ];
+            $interior_doors_routes = array_map(
+                static fn (array $material): string => route($material['route']),
+                config('door_materials')
+            );
 
             $urls[] = [
                 'loc' => URL::to($interior_doors_routes[$material] . '/' . $interior_door->slug),

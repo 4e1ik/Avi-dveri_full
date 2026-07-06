@@ -20,6 +20,7 @@
                     <div class="panel panel-default admin-product-panel admin-product-panel--media">
                         <div class="panel-heading"><h4 class="panel-title">Изображения</h4></div>
                         <div class="panel-body">
+                            @include('avi-dveri.admin.partials.image_upload_limit_notice')
                             <div class="col-md-3">
                                 <h3>Картинка</h3>
                                 <label style="display: flex; justify-content: center; align-items: center;"
@@ -178,12 +179,7 @@
                                                     Выберите материал двери
                                                 </option>
                                                 @enderror
-                                                <option {{ $product->door->material == 'Металл/МДФ' ? 'selected' : ''}} value="Металл/МДФ">
-                                                    Металл/МДФ
-                                                </option>
-                                                <option {{ $product->door->material == 'МДФ/МДФ' ? 'selected' : ''}} value="МДФ/МДФ">
-                                                    МДФ/МДФ
-                                                </option>
+                                                @include('avi-dveri.admin.partials.entrance_door_material_select', ['selectedMaterial' => $product->door->material])
                                         </select>
                                     </div>
                                 </div>
