@@ -9,9 +9,13 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Canonical host: HTTPS + без www (301)
-    RewriteCond %{HTTP_HOST} ^www\.avi-dveri\.by$ [NC,OR]
+    # Canonical host: без www (301)
+    RewriteCond %{HTTP_HOST} ^www\.avi-dveri\.by$ [NC]
+    RewriteRule ^ https://avi-dveri.by%{REQUEST_URI} [R=301,L]
+
+    # HTTPS (X-Forwarded-Proto для shared-хостинга за прокси)
     RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteRule ^ https://avi-dveri.by%{REQUEST_URI} [R=301,L]
 
     # Redirect Trailing Slashes If Not A Folder...
