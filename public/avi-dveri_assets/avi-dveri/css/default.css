@@ -56,6 +56,138 @@
 .bg-dark-white {
   background: #f6f6f6;
 }
+
+/* Header */
+.wrapper > .header {
+  background: #fff;
+  box-sizing: border-box;
+  display: block;
+  overflow: visible;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-inner {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: none;
+  min-height: 4.5em;
+  padding: 12px clamp(16px, 2.5vw, 40px);
+  width: 100%;
+}
+
+.header-brand {
+  flex: 0 0 auto;
+}
+
+.header-brand img {
+  display: block;
+  height: clamp(2.75rem, 4vw, 4rem);
+  width: auto;
+}
+
+.wrapper > .header .header-brand img {
+  height: clamp(2.75rem, 4vw, 4rem);
+  width: auto;
+}
+
+.header-nav {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  gap: clamp(0.25rem, 1.2vw, 1.25rem);
+  justify-content: space-evenly;
+  min-width: 0;
+  padding: 0 clamp(0.5rem, 2vw, 2rem);
+}
+
+.header-search {
+  flex: 0 0 auto;
+  margin-left: 0;
+}
+
+.header-tools {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  min-width: 0;
+}
+
+.wrapper > .header .header-menu {
+  flex: 0 1 auto;
+  font-size: clamp(0.8rem, 1vw, 1.05rem);
+  line-height: 1.2;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.wrapper > .header .header-phone {
+  flex: 0 1 auto;
+  font-size: clamp(0.75rem, 0.95vw, 1rem);
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.search_form .search_form_group {
+  position: relative;
+}
+
+.search_form .search_example {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  left: 0 !important;
+  margin-top: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  position: absolute;
+  right: auto !important;
+  top: 100% !important;
+  width: 100% !important;
+  z-index: 1001;
+}
+
+.wrapper > .header .search_form,
+.wrapper > .header .d-flex.search_form {
+  flex: 0 0 clamp(10rem, 14vw, 15rem);
+  height: auto;
+  margin: 0;
+  min-width: 9rem;
+  width: clamp(10rem, 14vw, 15rem);
+}
+
+.wrapper > .header .search_form input {
+  box-sizing: border-box;
+  height: 2.5em;
+  margin: 0;
+  width: 100%;
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .header-nav {
+    gap: clamp(0.2rem, 0.8vw, 0.75rem);
+    padding: 0 clamp(0.25rem, 1vw, 1rem);
+  }
+
+  .wrapper > .header .header-menu,
+  .wrapper > .header .header-phone {
+    font-size: clamp(0.72rem, 0.85vw, 0.92rem);
+  }
+}
+
 /* -----------------------------------------------------
 	Nested CSS
 ----------------------------------------------------- */
@@ -70,18 +202,21 @@
 ----------------------------------------------------- */
 .lables {
   position: absolute;
+  top: 15px;
+  left: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0.5em;
   width: max-content;
+  z-index: 4;
 }
 
 .pro-label {
-  left: 20px;
   position: relative;
-  top: 20px;
+  top: 0;
+  left: 0;
   z-index: 2;
   background: #c8a165 none repeat scroll 0 0;
   border-radius: 5px;
@@ -101,18 +236,79 @@
 
 /* «Родныя»: растягивается только этот бейдж (не вся колонка меток) */
 .single-product .product-img {
+  height: 223px;
+  min-height: 223px;
   overflow: visible;
+  position: relative;
 }
-.single-product .product-img > a {
+.single-product .product-img > a,
+.product-card-images-slide a {
+  align-items: center;
   display: flex;
+  height: 223px;
   justify-content: center;
   overflow: hidden;
 }
+.single-product .product-img img,
+.product-card-images-slide img {
+  height: 223px;
+  object-fit: contain;
+  width: 100%;
+}
+.product-card-images-slider,
+.product-card-images-slider .slick-list,
+.product-card-images-slider .slick-track,
+.product-card-images-slider .slick-slide,
+.product-card-images-slide {
+  height: 223px;
+}
+
+/* Product card image slider */
+.product-card-images-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.product-card-images-slider:not(.slick-initialized) .product-card-images-slide:not(:first-child) {
+  display: none;
+}
+.single-product:hover .product-card-images-slider > .slick-prev.slick-arrow,
+.single-product:hover .product-card-images-slider > .slick-next.slick-arrow {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+.product-card-images-slider > .slick-prev.slick-arrow {
+  left: 8px;
+  right: auto;
+}
+.product-card-images-slider > .slick-next.slick-arrow {
+  left: auto;
+  right: 8px;
+}
+
+/* Карточки каталога: название всегда на 2 строки */
+.product-style-2:not(.single-pro-area) .product-info .post-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 18px;
+  min-height: 36px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .wrapper .product-style-2:not(.single-pro-area) .product-info .post-title {
+    line-height: 1.25;
+    min-height: calc(2 * 1.25em);
+  }
+}
 
 .pro-label-native {
+  order: -1;
   position: relative;
-  left: 20px;
-  top: 20px;
+  top: 0;
+  left: 0;
   z-index: 4;
   display: inline-flex;
   flex: 0 0 auto;
@@ -121,8 +317,8 @@
 }
 
 .product-style-2 .pro-label-native {
-  left: 15px;
-  top: 15px;
+  left: 0;
+  top: 0;
 }
 
 .pro-label-native__track {
@@ -184,8 +380,8 @@
   left: 30px;
 }
 .product-style-2 .pro-label {
-  left: 15px;
-  top: 15px;
+  left: 0;
+  top: 0;
 }
 
 /* -----------------------------------------------------
@@ -392,39 +588,52 @@ button {
 /* -----------------------------------------------------
 	Slick slider Next - Prev
 ----------------------------------------------------- */
-/* Slick-Arrow */
-.arrow-left-right .slick-arrow {
+/* Slick-Arrow (только прямые дочерние — не стрелки фото внутри карточек) */
+.arrow-left-right > .slick-arrow,
+.product-card-images-slider > .slick-arrow {
   background: #fff none repeat scroll 0 0;
   border: 2px solid #eeeeee;
   color: #a6a6a6;
   font-weight: 700;
-  left: -30px;
   line-height: 20px;
-  margin-top: -43px;
   position: absolute;
-  top: 50%;
   width: 35px;
   z-index: 999;
   transition: all 0.5s ease 0s;
 }
-.arrow-left-right .slick-arrow:hover {
+.arrow-left-right > .slick-arrow {
+  left: -30px;
+  margin-top: -43px;
+  top: 50%;
+}
+.product-card-images-slider > .slick-arrow {
+  margin-top: 0;
+  opacity: 0;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  visibility: hidden;
+  z-index: 3;
+}
+.arrow-left-right > .slick-arrow:hover,
+.product-card-images-slider > .slick-arrow:hover {
   background: #C8A165 none repeat scroll 0 0;
   border: 2px solid #C8A165;
   color: #fff;
 }
-.arrow-left-right .slick-next.slick-arrow {
+.arrow-left-right > .slick-next.slick-arrow {
   left: auto;
   right: -30px;
 }
 
 /* Слайдер товаров: при hover растёт карточка — не привязывать стрелку к top:50% всего .slick-slider */
-.product-slider.arrow-left-right .slick-arrow {
+.product-slider.arrow-left-right > .slick-arrow {
   top: 200px;
   margin-top: 0;
   transform: translateY(-50%);
 }
 @media (max-width: 767px) {
-  .product-slider.arrow-left-right .slick-arrow {
+  .product-slider.arrow-left-right > .slick-arrow {
     top: 138px;
   }
 }

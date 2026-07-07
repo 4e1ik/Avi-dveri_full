@@ -46,10 +46,10 @@
     .banner-left .slider-banner {
         margin-top: 30px;
     }
-    .arrow-left-right .slick-arrow {
+    .arrow-left-right > .slick-arrow {
         left: 0;
     }
-    .arrow-left-right .slick-next.slick-arrow {
+    .arrow-left-right > .slick-next.slick-arrow {
         right: 0;
         left: auto;
     }
@@ -111,10 +111,10 @@
   margin-left: 0;
   margin-right: 0;
 }
-.arrow-left-right .slick-arrow {
+.arrow-left-right > .slick-arrow {
   left: 15px;
 }
-.arrow-left-right .slick-next.slick-arrow {
+.arrow-left-right > .slick-next.slick-arrow {
   right: 15px;
 }
 /* blog */
@@ -252,10 +252,10 @@
   line-height: 25px;
 }
 /* product Arrow */
-.arrow-left-right .slick-arrow {
+.arrow-left-right > .slick-arrow {
   left: 15px;
 }
-.arrow-left-right .slick-next.slick-arrow {
+.arrow-left-right > .slick-next.slick-arrow {
   right: 10px;
 }
 .cus-row-30 {
@@ -487,10 +487,10 @@
   right: auto;
 }
 /* product */
-.arrow-left-right .slick-arrow {
+.arrow-left-right > .slick-arrow {
   left: 15px;
 }
-.arrow-left-right .slick-next.slick-arrow {
+.arrow-left-right > .slick-next.slick-arrow {
   right: 15px;
 } 
 .section-title h2 {
@@ -894,8 +894,8 @@
   }
 }
 
-/* meanmenu: поиск в одной сетке с пунктами (90% + 5% padding, как у ссылок) */
-@media screen and (max-width: 767px) {
+/* meanmenu: поиск в потоке списка (меню до 1200px) */
+@media screen and (max-width: 1199px) {
   .mean-container .mean-nav ul li.mean-last {
     display: flex;
     flex-wrap: wrap;
@@ -928,6 +928,7 @@
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
+    position: relative;
   }
 
   .mean-container .mean-nav ul li form.search_form .search_form_group input[type="text"] {
@@ -941,17 +942,17 @@
   }
 
   .mean-container .mean-nav ul li form.search_form .search_example {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    width: 100%;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
     max-width: 100%;
     margin-top: 0.5em;
   }
 }
 
-/* Шапка: много пунктов меню — мобильное меню до 1200px */
+/* Шапка: мобильное меню до 1200px */
 @media (max-width: 1199px) {
   html,
   body {
@@ -962,6 +963,7 @@
   .wrapper {
     overflow-x: hidden;
     max-width: 100%;
+    width: 100%;
   }
 
   .wrapper > .header {
@@ -971,19 +973,32 @@
   .mobile-menu-area,
   .site-header-mobile-wrap {
     display: block !important;
+    width: 100%;
   }
 
   .mobile-menu-area {
     background: #c8a165;
+    left: 0;
     overflow: visible;
     position: relative;
+    right: 0;
+    width: 100%;
     z-index: 200000;
     isolation: isolate;
   }
 
   .mobile-menu-area .container-fluid {
+    margin: 0;
+    max-width: none;
     padding: 0;
-    max-width: 100%;
+    width: 100%;
+  }
+
+  .mobile-menu-area .mobile-menu,
+  .mobile-menu-area .site-header-mobile-wrap,
+  .mobile-menu-area nav#dropdown,
+  .mobile-menu-area nav#dropdown > ul {
+    width: 100%;
   }
 
   /* До инициализации meanmenu — не показывать «сырой» список */
@@ -1010,6 +1025,7 @@
 
   .mean-container {
     position: relative;
+    width: 100%;
     z-index: 1;
     height: 56px;
     min-height: 56px;
@@ -1089,7 +1105,7 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Полноэкранное перекрытие только при открытом меню (без 100vw — иначе зазор справа) */
+  /* Полноэкранное перекрытие только при открытом меню */
   .mean-container:has(.meanmenu-reveal.meanclose) .mean-nav {
     position: fixed;
     top: 56px;
@@ -1097,6 +1113,15 @@
     right: 0;
     width: 100%;
     max-width: 100%;
+  }
+
+  .mean-container:has(.meanmenu-reveal.meanclose) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 200000;
   }
 
   .mean-container .mean-nav ul,
@@ -1164,6 +1189,21 @@
   .site-header-mobile-wrap {
     display: none !important;
   }
+
+  .wrapper > .header {
+    display: block;
+    justify-content: initial;
+    width: 100%;
+  }
+
+  .wrapper > .header .header-menu {
+    margin: 0;
+  }
+
+  .wrapper > .header .header-brand img {
+    height: clamp(2.75rem, 4vw, 4rem);
+    width: auto;
+  }
 }
 
 /* Футер: юридический текст в сетке */
@@ -1175,5 +1215,13 @@
   .footer-area.footer-2 .footer-text {
     margin-top: 0;
   }
+}
+
+/* Product card images: стрелки только при hover на карточку */
+.single-product:hover .product-card-images-slider > .slick-prev.slick-arrow,
+.single-product:hover .product-card-images-slider > .slick-next.slick-arrow {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
 }
 

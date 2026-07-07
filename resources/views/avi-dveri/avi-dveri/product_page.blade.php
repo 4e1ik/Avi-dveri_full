@@ -211,30 +211,8 @@
                                     <div class="col-12">
                                         <div class="single-product">
                                             <div class="product-img">
-                                                @if($item->label !== null)
-                                                    <div class="lables">
-                                                        @foreach($item->label as $label)
-                                                            @if ($label === 'native')
-                                                                <span class="pro-label-native" aria-label="На родныя тавары">
-                                                                    <span class="pro-label-native__track">
-                                                                        <span class="pro-label-native__pill">4%</span>
-                                                                        <span class="pro-label-native__expand">На родныя тавары</span>
-                                                                    </span>
-                                                                </span>
-                                                            @else
-                                                                <span class="pro-label {{$label == 'new' ? 'new-label' : ($label == 'sale' ? 'sale-label' : ($label == 'order' ? 'order-label' : 'hit-label'))}}">{{$label == 'new' ? 'Новинка' : ($label == 'sale' ? 'Скидка' : ($label == 'order' ? 'На заказ' : 'Хит'))}}</span>
-                                                            @endif
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-
-                                                @if($item->images->isNotEmpty())
-                                                    <a style="display: flex; justify-content: center;" @include('includes.avi-dveri.product_route', ['product' => $item])>
-                                                        <img style="object-fit: contain;"
-                                                             src="{{ asset('storage/' . $item->images[0]->image) }}"
-                                                             alt="{{ $item->images[0]->description_image ?? $item->title }}"/>
-                                                    </a>
-                                                @endif
+                                                @include('includes.avi-dveri.product_card_labels', ['product' => $item])
+                                                @include('includes.avi-dveri.product_card_images', ['product' => $item])
                                             </div>
 
                                             <div class="product-info clearfix text-center">

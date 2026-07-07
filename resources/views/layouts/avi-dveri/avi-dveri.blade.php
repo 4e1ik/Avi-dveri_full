@@ -42,10 +42,8 @@
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/nivo-slider.css')}}">
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/preview.css')}}">
     @endif
-    @if(request()->routeIs('home', 'product_page'))
     <!-- slick css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/slick.min.css')}}">
-    @endif
     @if(request()->routeIs('product_page'))
     <!-- lightbox css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/lightbox.min.css')}}">
@@ -53,13 +51,13 @@
     <!-- material-design-iconic-font css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/material-design-iconic-font.css')}}">
     <!-- All common css of theme -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css?v=2.1')}}">
     <!-- style css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.4')}}">
     <!-- shortcode css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=1.8')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=2.3')}}">
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/content-typography.css?v=1.1')}}">
     @include('includes.avi-dveri.product_availability_styles')
     @stack('styles')
@@ -73,28 +71,23 @@
 <!-- WRAPPER START -->
 <div class="wrapper bg-dark-white">
     <header class="header">
-        <a class="header-brand" href="{{route('home')}}">
-            <img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo.webp')}}" alt="Ави-двери">
-        </a>
-        <a class="header-menu" href="{{route('home')}}">Главная</a>
-        <a class="header-menu" href="{{route('catalog')}}">Каталог</a>
-        <a class="header-menu" href="{{route('about')}}">О компании</a>
-        <a class="header-menu" href="{{route('warranty')}}">Гарантия</a>
-        <a class="header-menu" href="{{route('promotions')}}">Акции</a>
-        <a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a>
-        <a class="header-menu" href="{{route('contacts')}}">Контакты</a>
-        <a class="header-menu" href="tel:375293673518" style="font-size: 0.9em; margin: 1.5em 0 0 0">+375 (29) 367-35-18</a>
-        @livewire('search')
-
-{{--        <form class="d-flex" id="search-form">--}}
-{{--            <input id="search-input" class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">--}}
-
-{{--            <a class="search-img" href="#" onclick="performSearch(event)">--}}
-{{--                <img type="submit" src="{{ asset('/avi-dveri_assets/avi-dveri/img/search.webp') }}" alt="" width="30" height="30">--}}
-{{--            </a>--}}
-{{--        </form>--}}
-        <div id="search-results" style="margin-top: 20px;">
-            <!-- Здесь будут отображаться результаты -->
+        <div class="header-inner">
+            <a class="header-brand" href="{{route('home')}}">
+                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/logo/logo.webp')}}" alt="Ави-двери">
+            </a>
+            <nav class="header-nav" aria-label="Основное меню">
+                <a class="header-menu" href="{{route('home')}}">Главная</a>
+                <a class="header-menu" href="{{route('catalog')}}">Каталог</a>
+                <a class="header-menu" href="{{route('about')}}">О компании</a>
+                <a class="header-menu" href="{{route('warranty')}}">Гарантия</a>
+                <a class="header-menu" href="{{route('promotions')}}">Акции</a>
+                <a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a>
+                <a class="header-menu" href="{{route('contacts')}}">Контакты</a>
+                <a class="header-phone" href="tel:375293673518">+375 (29) 367-35-18</a>
+            </nav>
+            <div class="header-search">
+                @livewire('search')
+            </div>
         </div>
     </header>
     <!-- Mobile-menu start -->
@@ -305,10 +298,8 @@
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/bootstrap.bundle.min.js')}}" defer></script>
 <!-- jquery.meanmenu js -->
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/jquery.meanmenu.js')}}" defer></script>
-@if(request()->routeIs('home', 'product_page'))
 <!-- slick.min js -->
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/slick.min.js')}}" defer></script>
-@endif
 @if(request()->routeIs('product_page'))
 <!-- lightbox.min js -->
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/lightbox.min.js')}}" defer></script>
@@ -322,6 +313,7 @@
 @endif
 <!-- plugins js -->
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/plugins.js')}}" defer></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/productCardImagesSlider.js?v=1.2')}}" defer></script>
 <!-- main js -->
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/main.min.js')}}" defer></script>
 

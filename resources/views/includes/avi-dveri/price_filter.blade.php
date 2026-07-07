@@ -95,6 +95,10 @@
 
             syncHeadFromFetchedDocument(doc);
             syncAddressBar(href);
+
+            if (typeof window.initProductCardImagesSliders === 'function') {
+                window.initProductCardImagesSliders(document.getElementById('products'));
+            }
         }
 
         document.addEventListener('click', function (e) {
