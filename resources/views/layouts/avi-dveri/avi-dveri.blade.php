@@ -30,35 +30,35 @@
 
     <!-- all css here -->
     <!-- bootstrap v3.3.6 css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/bootstrap.min.css?v=1.6')}}">
     @if(request()->routeIs('home'))
     <!-- animate css (WOW на главной) -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/animate.min.css?v=1.6')}}">
     @endif
     <!-- meanmenu css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css?v=1.5')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/meanmenu.min.css?v=1.6')}}">
     @if(request()->routeIs('home'))
     <!-- nivo-slider css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/nivo-slider.css')}}">
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/preview.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/nivo-slider.css?v=1.6')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/lib/css/preview.css?v=1.6')}}">
     @endif
     <!-- slick css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/slick.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/slick.min.css?v=1.6')}}">
     @if(request()->routeIs('product_page'))
     <!-- lightbox css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/lightbox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/lightbox.min.css?v=1.6')}}">
     @endif
     <!-- material-design-iconic-font css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/material-design-iconic-font.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/material-design-iconic-font.css?v=1.6')}}">
     <!-- All common css of theme -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css?v=2.2')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css?v=1.6')}}">
     <!-- style css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.4')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.6')}}">
     <!-- shortcode css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css?v=1.6')}}">
     <!-- responsive css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=3.0')}}">
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/content-typography.css?v=1.1')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=1.6')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/content-typography.css??v=1.6')}}">
     @include('includes.avi-dveri.product_availability_styles')
     @stack('styles')
     @yield('404')
