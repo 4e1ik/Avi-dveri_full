@@ -178,13 +178,16 @@
 
 @media (min-width: 1200px) and (max-width: 1399px) {
   .header-nav {
-    gap: clamp(0.2rem, 0.8vw, 0.75rem);
-    padding: 0 clamp(0.25rem, 1vw, 1rem);
+    gap: clamp(0.35rem, 1vw, 1rem);
+    padding: 0 clamp(0.35rem, 1.2vw, 1.25rem);
   }
 
-  .wrapper > .header .header-menu,
+  .wrapper > .header .header-menu {
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  }
+
   .wrapper > .header .header-phone {
-    font-size: clamp(0.72rem, 0.85vw, 0.92rem);
+    font-size: clamp(0.85rem, 1vw, 1rem);
   }
 }
 

@@ -51,13 +51,13 @@
     <!-- material-design-iconic-font css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/material-design-iconic-font.css')}}">
     <!-- All common css of theme -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css?v=2.1')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/default.css?v=2.2')}}">
     <!-- style css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/style.min.css?v=1.4')}}">
     <!-- shortcode css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/shortcode.css')}}">
     <!-- responsive css -->
-    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=2.3')}}">
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=3.0')}}">
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/content-typography.css?v=1.1')}}">
     @include('includes.avi-dveri.product_availability_styles')
     @stack('styles')
@@ -108,7 +108,7 @@
                                 <li><a href="{{route('contacts')}}">Контакты</a></li>
                                 <li><a href="tel:375293673518">+375 (29) 367-35-18</a></li>
                                 <li><a class="header-menu" href="tel:375333943324">+375 (33) 394-33-24</a></li>
-                                <li>@livewire('search')</li>
+                                <li><a href="#" class="mobile-search-open">Поиск</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -117,6 +117,19 @@
         </div>
     </div>
     <!-- Mobile-menu end -->
+    <div class="mobile-search-modal" id="mobileSearchModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobileSearchModalTitle">
+        <div class="popup__body popup__body_mobile_search">
+            <div class="mobile-search-modal__panel">
+                <div class="mobile-search-modal__header form__text">
+                    <p id="mobileSearchModalTitle" class="title-1 title-border text-uppercase mb-0">Поиск</p>
+                    <div class="popup__cross_application" data-mobile-search-close role="button" tabindex="0" aria-label="Закрыть">✕</div>
+                </div>
+                <div class="mobile-search-modal__body">
+                    @livewire('search', key('mobile-menu-search'))
+                </div>
+            </div>
+        </div>
+    </div>
     @if(!isset($is404) && !request()->routeIs('contacts'))
         <x-feedback-form />
     @endif
@@ -316,6 +329,7 @@
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/productCardImagesSlider.js?v=1.2')}}" defer></script>
 <!-- main js -->
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/main.min.js')}}" defer></script>
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/mobileSearchModal.js?v=1.2')}}" defer></script>
 
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/popupSubmitApplication.js')}}" defer></script>
 @if(request()->routeIs('product_page'))
