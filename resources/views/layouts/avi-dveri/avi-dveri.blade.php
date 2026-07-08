@@ -83,8 +83,11 @@
                 <a class="header-menu" href="{{route('promotions')}}">Акции</a>
                 <a class="header-menu" href="{{route('payment_and_delivery')}}">Оплата и доставка</a>
                 <a class="header-menu" href="{{route('contacts')}}">Контакты</a>
-                <a class="header-phone" href="tel:375293673518">+375 (29) 367-35-18</a>
             </nav>
+            <div class="header-tools">
+                <a class="header-phone" href="tel:375293673518">+375 (29) 367-35-18</a>
+                <button type="button" class="button-one submit-btn-4 open_popup_callback" data-text="Заказать звонок">Заказать звонок</button>
+            </div>
             <div class="header-search">
                 @livewire('search')
             </div>
@@ -108,6 +111,7 @@
                                 <li><a href="{{route('contacts')}}">Контакты</a></li>
                                 <li><a href="tel:375293673518">+375 (29) 367-35-18</a></li>
                                 <li><a class="header-menu" href="tel:375333943324">+375 (33) 394-33-24</a></li>
+                                <li><a href="#" class="open_popup_callback">Заказать звонок</a></li>
                                 <li><a href="#" class="mobile-search-open">Поиск</a></li>
                             </ul>
                         </nav>
@@ -122,7 +126,7 @@
             <div class="mobile-search-modal__panel">
                 <div class="mobile-search-modal__header form__text">
                     <p id="mobileSearchModalTitle" class="title-1 title-border text-uppercase mb-0">Поиск</p>
-                    <div class="popup__cross_application" data-mobile-search-close role="button" tabindex="0" aria-label="Закрыть">✕</div>
+                    <div class="popup__cross_mobile_search" data-mobile-search-close role="button" tabindex="0" aria-label="Закрыть">✕</div>
                 </div>
                 <div class="mobile-search-modal__body">
                     @livewire('search', key('mobile-menu-search'))
@@ -130,6 +134,9 @@
             </div>
         </div>
     </div>
+    @if(!isset($is404))
+        <x-callback-form />
+    @endif
     @if(!isset($is404) && !request()->routeIs('contacts'))
         <x-feedback-form />
     @endif
@@ -144,7 +151,7 @@
                     <div class="single-footer">
                         <h3 class="footer-title  title-border">Контакты</h3>
                         <ul class="footer-contact">
-                            <li><span>Адрес :</span>ул. Минская, 15<br>Минская область, г. Червень</li>
+                            <li><span>Адрес :</span>223232, Республика Беларусь, Минская область, г. Червень, ул. Минская, д. 15</li>
                             <li><span>Номер телефона :</span>
                                 <a href="tel:375293673518">+375 (29) 367-35-18</a><br>
                                 <a href="tel:375333943324">+375 (33) 394-33-24</a><br>
@@ -186,8 +193,9 @@
     <div class="copyright-area copyright-2">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="copyright">
+                        <p>© 2004-2026 АВИ-двери — магазин дверей и дверной фурнитуры.</p>
                         <p class="mb-0">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank" rel="nofollow noopener noreferrer">Artemi Sevostian</a></p>
                     </div>
                 </div>

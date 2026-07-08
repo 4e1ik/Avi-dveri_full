@@ -4,7 +4,7 @@
             @csrf
             <div class="form__text">
                 <p class="title-1 title-border text-uppercase mb-30">Отправить заявку</p>
-                <div class="popup__cross_application">✕</div>
+                <div class="popup__cross_feedback" role="button" tabindex="0" aria-label="Закрыть">✕</div>
             </div>
             @include('includes.avi-dveri.feedback-form-fields', ['hiddenTitle' => $title ?? ''])
         </form>

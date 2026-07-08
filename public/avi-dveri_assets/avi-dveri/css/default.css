@@ -60,11 +60,13 @@
 /* Header */
 .wrapper > .header {
   background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   display: block;
   overflow: visible;
   padding: 0;
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 1000;
 }
@@ -119,6 +121,39 @@
   flex: 0 0 auto;
   gap: clamp(0.5rem, 1vw, 1rem);
   min-width: 0;
+}
+
+.popup_callback {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.popup__body_callback {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.popup__cross_feedback,
+.popup__cross_callback {
+  cursor: pointer;
+  font-size: large;
+  transition: 0.2s;
+}
+
+.popup__cross_feedback:hover,
+.popup__cross_callback:hover {
+  transform: scale(1.2);
 }
 
 .wrapper > .header .header-menu {
@@ -188,6 +223,13 @@
 
   .wrapper > .header .header-phone {
     font-size: clamp(0.85rem, 1vw, 1rem);
+  }
+
+  .wrapper > .header .search_form,
+  .wrapper > .header .d-flex.search_form {
+    flex: 0 0 clamp(8.5rem, 12vw, 12rem);
+    min-width: 8rem;
+    width: clamp(8.5rem, 12vw, 12rem);
   }
 }
 
@@ -1323,7 +1365,19 @@ h3.widget-title-modal {
   }
 }
 
+.copyright-area .copyright {
+  line-height: 1.4;
+  text-align: center;
+}
 
+.copyright-area .copyright p {
+  line-height: 1.4;
+  margin: 0 0 6px;
+}
+
+.copyright-area .copyright p:last-child {
+  margin-bottom: 0;
+}
 
 
 

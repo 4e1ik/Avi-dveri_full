@@ -27,8 +27,7 @@
                     <div class="contact-us customer-login bg-white p-30">
                         <h3 class="title-border mb-20">Как нас найти</h3>
                         <p class="mb-10"><strong>Адрес:</strong><br>
-                            ул. Минская, 15<br>
-                            Минская область, г. Червень
+                            223232, Республика Беларусь, Минская область, г. Червень, ул. Минская, д. 15
                         </p>
                         <p class="mb-10"><strong>Режим работы:</strong><br>
                             Пн–Пт: 9:00–18:00<br>
@@ -61,7 +60,7 @@
                     </div>
                 </div>
                 <div class="contacts-page-grid__side">
-                    <div class="contact-us customer-login bg-white p-30 contacts-page-grid__form">
+                    <div class="contact-us customer-login bg-white p-30 contacts-page-grid__form" id="contacts-feedback-form">
                         <h3 class="title-border mb-30">Форма обратной связи</h3>
                         <form class="mail_form" id="mail_form" action="{{ route('send_mail') }}" method="post">
                             @csrf

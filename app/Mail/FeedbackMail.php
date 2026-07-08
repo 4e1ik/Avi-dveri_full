@@ -25,7 +25,11 @@ class FeedbackMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Новое сообщение с сайта')
+        $subject = ($this->data['form_type'] ?? null) === 'callback'
+            ? 'Заявка на звонок'
+            : 'Новое сообщение с сайта';
+
+        return $this->subject($subject)
             ->view('mail.feedback')
             ->with($this->data);
     }

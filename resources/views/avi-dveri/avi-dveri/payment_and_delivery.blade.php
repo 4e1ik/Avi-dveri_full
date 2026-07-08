@@ -42,7 +42,7 @@
                                 <div class="pro-tab-info pro-description">
                                     <div style="display: flex; gap: 1em; flex-wrap: wrap;" class="pickup-text">
                                         <p class="tab-title title-border mb-30">Самовывоз:</p>
-                                        <p style="margin-top: auto">Минская обл., г. Червень, ул. Минская, 15</p>
+                                        <p style="margin-top: auto">223232, Республика Беларусь, Минская область, г. Червень, ул. Минская, д. 15</p>
                                     </div>
                                     <p class="tab-title title-border mb-30">Условия доставки входных и межкомнатных дверей</p>
                                     <p>доставка дверей в пределах МКАД – 30 руб;</p>

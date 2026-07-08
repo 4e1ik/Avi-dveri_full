@@ -14,7 +14,14 @@ class MailController extends Controller
     public function send(MailRequest $mailRequest)
     {
         try {
-            $data = $mailRequest->all();
+            $data = $mailRequest->validated();
+
+            if (($data['form_type'] ?? null) === 'callback') {
+                $data['title'] = 'Заказать звонок';
+                $data['textarea'] = "Заявка на звонок {$data['name']}, {$data['phone']}";
+                $data['email'] = '—';
+            }
+
             Mail::to('3673518@mail.ru')->send(new FeedbackMail($data));
 
             // Успешный ответ

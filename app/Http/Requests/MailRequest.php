@@ -22,22 +22,33 @@ class MailRequest extends FormRequest
      */
     public function rules(): array
     {
+        $recaptchaRule = ['required', function (string $attribute, mixed $value, \Closure $fail) {
+            $g_response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret' => config('services.recaptcha.secret_key'),
+                'response' => $value,
+                'remoteip' => \request()->ip(),
+            ]);
+            if (!$g_response->json('success')) {
+                $fail('The {$attribute} is invalid');
+            }
+        }];
+
+        if ($this->input('form_type') === 'callback') {
+            return [
+                'form_type' => 'required|in:callback',
+                'name' => 'required|min:3|max:30',
+                'phone' => 'required|max:15',
+                'g-recaptcha-response' => $recaptchaRule,
+            ];
+        }
+
         return [
             'title' => 'max:256',
             'name' => 'required|min:3|max:30',
             'email' => 'required|email|max:50',
             'phone' => 'required|max:15',
             'textarea' => 'max:100',
-            'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, \Closure $fail){
-                $g_response = Http::asForm()->post("https://www.google.com/recaptcha/api/siteverify",[
-                    'secret' => config('services.recaptcha.secret_key'),
-                    'response' => $value,
-                    'remoteip' => \request()->ip(),
-                ]);
-                if (!$g_response->json('success')){
-                    $fail('The {$attribute} is invalid');
-                }
-            }],
+            'g-recaptcha-response' => $recaptchaRule,
         ];
     }
 

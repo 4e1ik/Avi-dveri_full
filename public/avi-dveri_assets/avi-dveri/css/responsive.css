@@ -1066,7 +1066,8 @@
     background: #c8a165;
     left: 0;
     overflow: visible;
-    position: relative;
+    position: sticky;
+    top: 0;
     right: 0;
     width: 100%;
     z-index: 200000;
