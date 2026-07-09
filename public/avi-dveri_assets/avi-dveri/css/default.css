@@ -134,7 +134,11 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 300001;
+}
+
+.popup_application {
+  z-index: 300001;
 }
 
 .popup__body_callback {
@@ -1377,6 +1381,10 @@ h3.widget-title-modal {
 
 .copyright-area .copyright p:last-child {
   margin-bottom: 0;
+}
+
+.copyright-area .copyright-developer {
+  text-align: left;
 }
 
 
