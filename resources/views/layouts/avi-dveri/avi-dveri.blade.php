@@ -196,7 +196,7 @@
                 <div class="col-md-12">
                     <div class="copyright">
                         <p>© 2004-2026 АВИ-двери — магазин дверей и дверной фурнитуры.</p>
-                        <p class="mb-0 copyright-developer">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank" rel="nofollow noopener noreferrer">Artemi Sevostian</a></p>
+                        <p class="mb-0">Developed by <a href="https://t.me/ArtemiSevostian" target="_blank" rel="nofollow noopener noreferrer">Artemi Sevostian</a></p>
                     </div>
                 </div>
             </div>
