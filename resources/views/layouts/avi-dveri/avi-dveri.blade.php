@@ -59,6 +59,10 @@
     <!-- responsive css -->
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/responsive.css?v=1.6')}}">
     <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/content-typography.css??v=1.6')}}">
+    
+    <!-- modal.main.css -->
+    <link rel="stylesheet" href="{{asset('/avi-dveri_assets/avi-dveri/css/modal.main.css?v=1.6')}}">
+    
     @include('includes.avi-dveri.product_availability_styles')
     @stack('styles')
     @yield('404')
@@ -208,6 +212,26 @@
 </div>
 <!-- WRAPPER END -->
 
+<!-- ============================================ -->
+<!-- ВСПЛЫВАЮЩЕЕ ОКНО ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ -->
+<!-- ============================================ -->
+<!-- Оверлей -->
+<div class="cookie-overlay" id="cookieOverlay"></div>
+<!-- Само окно -->
+<div class="cookie-popup" id="cookiePopup" role="dialog" aria-modal="true" aria-labelledby="cookiePopupTitle">
+    <div class="popup__body cookie-popup__body">
+        <div class="cookie-popup__content">
+            <p>
+                Мы используем файлы cookie и другие технологии, чтобы улучшить ваш опыт работы с сайтом.
+                Продолжая использовать наш сайт, вы соглашаетесь на <a href="/privacy-policy" target="_blank">обработку персональных данных</a>.
+            </p>
+            <button class="btn btn-default btn-hover-dark" id="cookieRejectBtn">Отказаться</button>
+            <button class="btn btn-default btn-hover-brand" id="cookieAcceptBtn">Согласен</button>
+        </div>
+    </div>
+</div>
+<!-- ============================================ -->
+
 <!-- all js here -->
 <!-- jquery latest version -->
 <script src="https://www.google.com/recaptcha/api.js?render={{config('services.recaptcha.site_key')}}" async></script>
@@ -346,6 +370,10 @@
 @if(request()->routeIs('home'))
 <script src="{{asset('/avi-dveri_assets/avi-dveri/js/homeBenefitsMarquee.js')}}" defer></script>
 @endif
+
+<!-- modal.js -->
+<script src="{{asset('/avi-dveri_assets/avi-dveri/js/modal.js?v=1.6')}}" defer></script>
+
 @stack('scripts')
 </body>
 </html>
