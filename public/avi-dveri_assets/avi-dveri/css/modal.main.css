@@ -1,4 +1,3 @@
-/* Стили для всплывающего окна обработки данных (прижато к низу) */
 .cookie-overlay {
     display: none;
     position: fixed;

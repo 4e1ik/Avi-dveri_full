@@ -223,7 +223,7 @@
         <div class="cookie-popup__content">
             <p>
                 Мы используем файлы cookie и другие технологии, чтобы улучшить ваш опыт работы с сайтом.
-                Продолжая использовать наш сайт, вы соглашаетесь на <a href="/privacy-policy" target="_blank">обработку персональных данных</a>.
+                Продолжая использовать наш сайт, вы соглашаетесь на <span>обработку персональных данных</span>.
             </p>
             <button class="btn btn-default btn-hover-dark" id="cookieRejectBtn">Отказаться</button>
             <button class="btn btn-default btn-hover-brand" id="cookieAcceptBtn">Согласен</button>
