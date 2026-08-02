@@ -3,13 +3,13 @@
 @section('content')
     <!-- HEADING-BANNER START -->
     <div class="heading-banner-area overlay-bg">
-        <x-feedback-form :title="$product->title"/>
+        <x-feedback-form :title="$product->title" />
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-banner">
                         <div class="heading-banner-title">
-                            <h1>{{$product->title}}</h1>
+                            <h1>{{ $product->title }}</h1>
                         </div>
                         @include('includes.avi-dveri.product_breadcrumbs')
                     </div>
@@ -27,18 +27,18 @@
                     <div class="single-product clearfix">
                         <!-- Single-pro-slider Big-photo start -->
                         <div class="single-pro-slider single-big-photo view-lightbox slider-for">
-                            @foreach($product->images as $image)
-                                <div data-price="{{$image->price}}" data-price-per-set="{{$image->price_per_set}}" data-product-price="{{$product->price}}"
-                                     @foreach($colors as $color)
-                                         @if($image->door_color == $color['value'])
-                                             data-color-value="{{$color['value']}}"
-                                        @endif
-                                        @endforeach>
+                            @foreach ($product->images as $image)
+                                <div data-price="{{ $image->price }}" data-price-per-set="{{ $image->price_per_set }}"
+                                    data-product-price="{{ $product->price }}"
+                                    @foreach ($colors as $color)
+                                         @if ($image->door_color == $color['value'])
+                                             data-color-value="{{ $color['value'] }}"
+                                        @endif @endforeach>
                                     <img style="object-fit: contain; width: 370px;"
-                                         src="{{ asset('storage/' . $image->image) }}"
-                                         alt="{{$image->description_image}}"/>
+                                        src="{{ asset('storage/' . $image->image) }}"
+                                        alt="{{ $image->description_image }}" />
                                     <a class="view-full-screen" href="{{ asset('storage/' . $image->image) }}"
-                                       data-lightbox="roadtrip" data-title="{{$image->description_image}}">
+                                        data-lightbox="roadtrip" data-title="{{ $image->description_image }}">
                                         <i class="zmdi zmdi-zoom-in"></i>
                                     </a>
 
@@ -47,21 +47,64 @@
                         </div>
                         <!-- Single-pro-slider Big-photo end -->
                         <div class="product-info">
-                            <div class="fix">
-                                <div class="post-title floatleft">{{$product->title}}</div>
+                            <div class="fix mb-10">
+                                <div class="post-title floatleft">{{ $product->title }}</div>
                             </div>
-                            <div class="fix option1 mb-20">
-                                <span class="pro-price"></span><span class="pro-price"> {{$product->currency}}</span>
+                            <!-- Категория товара -->
+                            <div class="product-category">
+                                <a href="#" class="category-link">Межкомнатные двери</a>
+                            </div>
+                            <div class="fix option1 mb-15">
+                                <span class="pro-price"></span><span class="pro-price"> {{ $product->currency }}</span>
                             </div>
                             <p class="product-availability-line mb-20">
-                                <span class="product-availability-value {{ $product->availability ? 'product-availability--in-stock' : 'product-availability--on-order' }}">{{ $product->availability ? 'В наличии' : 'Под заказ' }}</span>
+                                <span
+                                    class="product-availability-value {{ $product->availability ? 'product-availability--in-stock' : 'product-availability--on-order' }}">{{ $product->availability ? 'В наличии' : 'Под заказ' }}</span>
                             </p>
-                            <div class="product-description">
-                                <p>{!! $product->description !!}</p>
+                            @if ($product->manufacturer)
+                                <div class="size-filter single-pro-size mb-35 clearfix">
+                                    <ul>
+                                        <li><span class="color-title text-capitalize">Производитель</span></li>
+                                        <li><a class="active noRedirect"
+                                                href="#">{{ $product->manufacturer->name }}</a></li>
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (isset($product->door->material))
+                                <div class="size-filter single-pro-size mb-35 clearfix">
+                                    <ul>
+                                        <li><span class="color-title text-capitalize">Материал</span></li>
+                                        <li><a class="active noRedirect" href="#">{{ $product->door->material }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (isset($product->door->glass))
+                                <div class="size-filter single-pro-size mb-35 clearfix">
+                                    <ul>
+                                        <li><span class="color-title text-capitalize">Стекло</span></li>
+                                        <li><a class="active noRedirect" href="#">{{ $product->door->glass }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="size-filter single-pro-size mb-35 clearfix">
+                                <ul>
+                                    <li><span class="color-title text-capitalize">Шумоизоляция</span></li>
+                                    <li><a class="active noRedirect" href="#">Да</a>
+                                    </li>
+                                </ul>
                             </div>
-                            @if(!($product->category == 'fitting'))
+                            <div class="size-filter single-pro-size mb-35 clearfix">
+                                <ul>
+                                    <li><span class="color-title text-capitalize">Зеркало</span></li>
+                                    <li><a class="active noRedirect" href="#">Да</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            @if (!($product->category == 'fitting'))
                                 <select id="selector" class="custom-select mb-30" onchange="handleSelectChange()"
-                                        style="cursor: pointer">
+                                    style="cursor: pointer">
                                     <option value="option1">Полотно</option>
                                     <option value="option2">Комплект</option>
                                 </select>
@@ -70,79 +113,72 @@
                             <div class="product__submit">
                                 <div>
                                     <div class="color-filter single-pro-color mb-20 clearfix">
-                                        <ul style="display: flex; flex-wrap: wrap; row-gap: 0.5em;">
-                                            @if(isset($colors))
-                                                @foreach($product->images as $image)
-                                                    @if(isset($image->door_color) || isset($image->fitting_color))
-                                                        <li><span class="color-title text-capitalize">Цвет</span></li>
-                                                        @break
-                                                    @endif
-                                                @endforeach
-                                                @foreach($product->images as $image)
-                                                    @foreach($colors as $color)
-                                                        @if($image->door_color === $color['value'])
-                                                            <li><a id="color"
-                                                                   style="pointer-events: auto; cursor: default"
-                                                                   data-title="{{$color['name']}}"
-                                                                   data-color-value="{{$color['value']}}"
-                                                                   href="#">
-                                                                    <span class="color">
-                                                                        <img style="cursor: pointer"
-                                                                             src="{{asset($color['image'])}}" alt="">
-                                                                    </span>
-                                                                </a>
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
-                                                @endforeach
-                                            @endif
-                                        </ul>
-                                    </div>
-                                    <!-- color end -->
-                                    <!-- Size start -->
-                                    @if(isset($product->door->size))
-                                        <div class="size-filter single-pro-size mb-35 clearfix">
-                                            <ul>
-                                                <li><span class="color-title text-capitalize">Размер</span></li>
-                                                <div class="active__size">
-                                                    @foreach($product->door->size as $item)
-                                                        <li><a class="noRedirect" href="#">{{$item}}</a></li>
-                                                    @endforeach
+                                        @if (isset($colors))
+                                            @php
+                                                $hasColors = false;
+                                                foreach ($product->images as $image) {
+                                                    if (isset($image->door_color) || isset($image->fitting_color)) {
+                                                        $hasColors = true;
+                                                        break;
+                                                    }
+                                                }
+                                            @endphp
+
+                                            @if ($hasColors)
+                                                <!-- Заголовок "Цвет" сверху -->
+                                                <div class="color-title-wrapper">
+                                                    <span class="color-title text-capitalize">Цвет</span>
                                                 </div>
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    @if($product->manufacturer)
-                                        <div class="size-filter single-pro-size mb-35 clearfix">
-                                            <ul>
-                                                <li><span class="color-title text-capitalize">Производитель</span></li>
-                                                <li><a class="active noRedirect" href="#">{{ $product->manufacturer->name }}</a></li>
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    @if(isset($product->door->material))
-                                        <div class="size-filter single-pro-size mb-35 clearfix">
-                                            <ul>
-                                                <li><span class="color-title text-capitalize">Материал</span></li>
-                                                <li><a class="active noRedirect"
-                                                       href="#">{{$product->door->material}}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    @if(isset($product->door->glass))
-                                        <div class="size-filter single-pro-size mb-35 clearfix">
-                                            <ul>
-                                                <li><span class="color-title text-capitalize">Стекло</span></li>
-                                                <li><a class="active noRedirect" href="#">{{$product->door->glass}}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    @endif
+
+                                                <!-- Цвета в линию под заголовком -->
+                                                <ul class="color-list">
+                                                    @foreach ($product->images as $image)
+                                                        @foreach ($colors as $color)
+                                                            @if ($image->door_color === $color['value'])
+                                                                <li>
+                                                                    <a id="color"
+                                                                        style="pointer-events: auto; cursor: default"
+                                                                        data-title="{{ $color['name'] }}"
+                                                                        data-color-value="{{ $color['value'] }}"
+                                                                        href="#">
+                                                                        <span class="color">
+                                                                            <img style="cursor: pointer"
+                                                                                src="{{ asset($color['image']) }}"
+                                                                                alt="">
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+                                                        @endforeach
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
+                            <!-- color end -->
+                            <!-- Size start -->
+                            @if (isset($product->door->size))
+                                <div class="size-filter single-pro-size mb-35 clearfix">
+                                    <!-- Заголовок "Размер" сверху -->
+                                    <div class="size-title-wrapper">
+                                        <span class="color-title text-capitalize">Размер</span>
+                                    </div>
+
+                                    <!-- Размеры в линию под заголовком -->
+                                    <ul class="active__size">
+                                        @foreach ($product->door->size as $item)
+                                            <li><a class="noRedirect" href="#">{{ $item }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="product-description">
+                                <p>{!! $product->description !!}</p>
+                            </div>
                             <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                    data-text="Оставить заявку" data-title="{{$product->title}}">Оставить заявку
+                                data-text="Оставить заявку" data-title="{{ $product->title }}">Оставить заявку
                             </button>
                             <!-- Size end -->
                             <!-- Single-pro-slider Small-photo start -->
@@ -165,26 +201,24 @@
                                 }
                             </style>
                             <div class="single-pro-slider single-sml-photo slider-nav">
-                                @foreach($product->images as $image)
-                                    @if($image->door_color != null)
-                                        @foreach($colors as $color)
-                                            @if($image->door_color === $color['value'])
-                                                <div style="pointer-events: auto"
-                                                     data-color-value="{{$color['value']}}">
-                                                <span data-title="{{$color['name']}}">
-                                                    <img style="width: 73px;"
-                                                         src="{{ asset('storage/' . $image->image) }}"
-                                                         alt="{{$image->description_image}}"/>
-                                                </span>
+                                @foreach ($product->images as $image)
+                                    @if ($image->door_color != null)
+                                        @foreach ($colors as $color)
+                                            @if ($image->door_color === $color['value'])
+                                                <div style="pointer-events: auto" data-color-value="{{ $color['value'] }}">
+                                                    <span data-title="{{ $color['name'] }}">
+                                                        <img style="width: 73px;"
+                                                            src="{{ asset('storage/' . $image->image) }}"
+                                                            alt="{{ $image->description_image }}" />
+                                                    </span>
                                                 </div>
                                             @endif
                                         @endforeach
                                     @else
                                         <div style="pointer-events: auto">
-                                            <span data-title="{{$image->description_image}}">
-                                                <img style="width: 73px;"
-                                                     src="{{ asset('storage/' . $image->image) }}"
-                                                     alt="{{$image->description_image}}"/>
+                                            <span data-title="{{ $image->description_image }}">
+                                                <img style="width: 73px;" src="{{ asset('storage/' . $image->image) }}"
+                                                    alt="{{ $image->description_image }}" />
                                             </span>
                                         </div>
                                     @endif
@@ -197,7 +231,7 @@
                 <!-- Single-product end -->
             </div>
         </div>
-        @if(isset($similarProducts) && $similarProducts->isNotEmpty())
+        @if (isset($similarProducts) && $similarProducts->isNotEmpty())
             <div class="product-area pt-20 pb-30 product-style-2">
                 <div class="container">
                     <div class="row">
@@ -207,38 +241,46 @@
                             </div>
 
                             <div class="product-slider style-2 arrow-left-right">
-                                @foreach($similarProducts as $item)
+                                @foreach ($similarProducts as $item)
                                     <div class="col-12">
                                         <div class="single-product">
                                             <div class="product-img">
-                                                @include('includes.avi-dveri.product_card_labels', ['product' => $item])
-                                                @include('includes.avi-dveri.product_card_images', ['product' => $item])
+                                                @include('includes.avi-dveri.product_card_labels', [
+                                                    'product' => $item,
+                                                ])
+                                                @include('includes.avi-dveri.product_card_images', [
+                                                    'product' => $item,
+                                                ])
                                             </div>
 
                                             <div class="product-info clearfix text-center">
                                                 <div class="fix">
                                                     <div class="post-title">
-                                                        <a @include('includes.avi-dveri.product_route', ['product' => $item])>{{ $item->title }}</a>
+                                                        <a @include('includes.avi-dveri.product_route', [
+                                                            'product' => $item,
+                                                        ])>{{ $item->title }}</a>
                                                     </div>
-                                                    <span class="pro-price-2">{{ $item->price }} {{ $item->currency }}</span>
+                                                    <span class="pro-price-2">{{ $item->price }}
+                                                        {{ $item->currency }}</span>
                                                 </div>
 
                                                 <div class="product-action clearfix">
                                                     <button class="button-one submit-btn-4 open_popup_application"
-                                                            type="submit"
-                                                            data-text="Оставить заявку"
-                                                            data-title="{{ $item->title }}">
+                                                        type="submit" data-text="Оставить заявку"
+                                                        data-title="{{ $item->title }}">
                                                         Оставить заявку
                                                     </button>
                                                 </div>
 
                                                 <div class="product-details">
-                                                    @include('includes.avi-dveri.product_card_details', ['product' => $item])
+                                                    @include('includes.avi-dveri.product_card_details', [
+                                                        'product' => $item,
+                                                    ])
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <x-feedback-form :title="$item->title"/>
+                                        <x-feedback-form :title="$item->title" />
                                     </div>
                                 @endforeach
                             </div>
@@ -255,12 +297,12 @@
         // Добавляем обработчик клика на каждую ссылку
         links.forEach(link => {
             link.style.cursor = 'default';
-            link.addEventListener('click', function (event) {
+            link.addEventListener('click', function(event) {
                 event.preventDefault(); // Останавливаем стандартное поведение
                 console.log(`Клик по ссылке: ${this.textContent}`);
             });
         });
     </script>
-    {{--    @endforeach--}}
+    {{--    @endforeach --}}
     <!-- PRODUCT-AREA END -->
 @endsection

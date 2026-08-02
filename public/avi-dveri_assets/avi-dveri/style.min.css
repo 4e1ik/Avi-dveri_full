@@ -2023,7 +2023,9 @@ input.cart-plus-minus-box {
     position: absolute;
     margin: -1.55em 0 0 -3.5em;
     font-size: 1.25em;
-
+    background-color: rgba(255, 255, 255, 0.689);
+    padding: 2px;
+    border-radius: 4px;
 }
 
 .color-title {
