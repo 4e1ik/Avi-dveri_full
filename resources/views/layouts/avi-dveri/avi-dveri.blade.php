@@ -226,9 +226,9 @@
             <div class="footer-area footer-2">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 contacts">
                             <div class="single-footer">
-                                <h3 class="footer-title  title-border">Контакты</h3>
+                                <h3 class="footer-title title-border">Контакты</h3>
                                 <ul class="footer-contact">
                                     <li><span>Адрес :</span>223232, Республика Беларусь, Минская область, г. Червень,
                                         ул. Минская, д. 15</li>
@@ -243,14 +243,14 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-6">
+
+                        <div class="col-lg-2 col-sm-6 menu">
                             <div class="single-footer">
-                                <h3 class="footer-title  title-border">Меню</h3>
+                                <h3 class="footer-title title-border">Меню</h3>
                                 <ul class="footer-menu">
                                     <li><a href="{{ route('home') }}"><i class="zmdi zmdi-dot-circle"></i>Главная</a>
                                     </li>
-                                    <li><a href="{{ route('catalog') }}"><i
-                                                class="zmdi zmdi-dot-circle"></i>Каталог</a></li>
+                                    <!-- УДАЛЯЕМ КАТАЛОГ ИЗ МЕНЮ -->
                                     <li><a href="{{ route('about') }}"><i class="zmdi zmdi-dot-circle"></i>О
                                             компании</a></li>
                                     <li><a href="{{ route('warranty') }}"><i
@@ -264,8 +264,22 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 footer-text">
-                            <p><br><br>Цены и информация, представленные на данном сайте, приведены в ознакомительных
+
+                        <!-- НОВАЯ КОЛОНКА - КАТАЛОГ -->
+                        <div class="col-lg-2 col-sm-6 catalog">
+                            <div class="single-footer">
+                                <h3 class="footer-title title-border">Каталог</h3>
+                                <ul class="footer-menu">
+                                    <li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Входные</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Межкомнатные</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Фурнитура</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12 col-sm-12 footer-text">
+                            <h3 class="footer-title title-border">Информация</h3>
+                            <p>Цены и информация, представленные на данном сайте, приведены в ознакомительных
                                 целях, не являются публичной офертой и могут быть изменены.</p>
                             <p>ИП Исаев Андрей Владимирович, УНП 690311744, свидетельство о государственной регистрации
                                 №0870887 от 15.12.2022 г. Регистрация в Торговом реестре Республики Беларусь №690311744
@@ -281,6 +295,7 @@
                 </div>
             </div>
             <!-- Footer-area end -->
+
             <!-- Copyright-area start -->
             <div class="copyright-area copyright-2">
                 <div class="container">

@@ -475,76 +475,181 @@
   border-radius: 0;
 }
 
-.button-one {
-  background: #efefef none repeat scroll 0 0;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  overflow: hidden;
-  padding: 0 15px;
-  position: relative;
+/* =======================================
+   УНИВЕРСАЛЬНЫЙ СТИЛЬ ДЛЯ ВСЕХ КНОПОК
+======================================== */
+
+/* Базовый стиль для всех кнопок - перебиваем старые стили */
+.btn-primary,
+.button-one,
+.submit-btn-4,
+.open_popup_application,
+.open_popup_callback,
+button[type="submit"],
+input[type="submit"],
+.woocommerce-Button,
+.wp-block-button__link,
+a.button,
+button.button {
+    position: relative !important;
+    display: inline-block !important;
+    font-family: 'Lato', sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    color: #ffffff !important;
+    background: #c8a165 !important;
+    border: 2px solid #c8a165 !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.4s ease !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    padding: 0 30px !important;
+    height: 45px !important;
+    line-height: 45px !important;
+    font-size: 14px !important;
 }
 
-.button-one::before {
-  background: #c8a165 none repeat scroll 0 0;
-  bottom: 0;
-  color: #fff;
-  content: attr(data-text);
-  left: -100%;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 100%;
-  visibility: hidden;
-  z-index: 11;
+/* Убираем все старые ::before и ::after */
+.btn-primary::before,
+.button-one::before,
+.submit-btn-4::before,
+.open_popup_application::before,
+.open_popup_callback::before,
+button[type="submit"]::before,
+input[type="submit"]::before,
+a.button::before,
+button.button::before,
+.btn-primary::after,
+.button-one::after,
+.submit-btn-4::after,
+.open_popup_application::after,
+.open_popup_callback::after,
+button[type="submit"]::after,
+input[type="submit"]::after,
+a.button::after,
+button.button::after {
+    display: none !important;
+    content: none !important;
 }
 
-.button-one::after {
-  border: 2px solid #d3d3d3;
-  bottom: 0;
-  content: "";
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-
+/* HOVER - всё становится белым */
+.btn-primary:hover,
 .button-one:hover,
-.button-one:focus,
-.button-one:active {
-  color: #fff;
+.submit-btn-4:hover,
+.open_popup_application:hover,
+.open_popup_callback:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+a.button:hover,
+button.button:hover {
+    background: #ffffff !important;
+    color: #c8a165 !important;
+    border-color: #c8a165 !important;
+    box-shadow: 0 4px 20px rgba(200, 161, 101, 0.3) !important;
+    transform: translateY(-2px) !important;
 }
 
-.button-one:hover::before,
-.button-one:focus::before,
-.button-one:active::before {
-  left: 0;
-  visibility: visible;
+/* =======================================
+   РАЗМЕРЫ КНОПОК
+======================================== */
+
+/* Маленькая */
+.btn-sm {
+    padding: 0 20px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 12px !important;
 }
 
-.submit-button.btn-bg-2 {
-  background: #C8A165 none repeat scroll 0 0;
+/* Большая */
+.btn-lg {
+    padding: 0 40px !important;
+    height: 55px !important;
+    line-height: 55px !important;
+    font-size: 16px !important;
 }
 
-.submit-button.btn-bg-2::before {
-  background: #5b3a29 none repeat scroll 0 0;
+/* Кнопка "ЗАКАЗАТЬ ЗВОНОК" В ХЕДЕРЕ */
+.header-tools .submit-btn-4 {
+    height: 40px !important;
+    line-height: 40px !important;
+    font-size: 13px !important;
+    padding: 0 25px !important;
 }
 
-.form-message {
-  margin-top: 15px;
-  margin-bottom: 0;
+/* КНОПКИ В КАРТОЧКЕ ТОВАРА */
+.single-pro-area .submit-btn-4 {
+    height: 48px !important;
+    line-height: 48px !important;
+    font-size: 15px !important;
+    padding: 0 35px !important;
+    width: 100% !important;
+    max-width: 280px !important;
 }
 
-.form-message.success {
-  color: green;
+/* КНОПКИ В ПОХОЖИХ ТОВАРАХ */
+.product-action .submit-btn-4 {
+    height: 38px !important;
+    line-height: 38px !important;
+    font-size: 12px !important;
+    padding: 0 20px !important;
+    width: 100% !important;
 }
 
-.form-message.error {
-  color: red;
+/* КНОПКИ В МОБИЛЬНОМ МЕНЮ */
+.mobile-menu .open_popup_callback {
+    height: 38px !important;
+    line-height: 38px !important;
+    font-size: 13px !important;
+    padding: 0 25px !important;
+    width: 100% !important;
+    text-align: center !important;
 }
 
-/* Slider */
+/* КНОПКИ В ФОРМАХ */
+form button[type="submit"],
+form input[type="submit"] {
+    height: 45px !important;
+    line-height: 45px !important;
+    font-size: 14px !important;
+    padding: 0 35px !important;
+}
+
+/* =======================================
+   АДАПТИВ ДЛЯ КНОПОК
+======================================== */
+
+@media (max-width: 767px) {
+    .btn-primary,
+    .button-one,
+    .submit-btn-4,
+    .open_popup_application,
+    .open_popup_callback,
+    button[type="submit"],
+    input[type="submit"],
+    a.button,
+    button.button {
+        height: 40px !important;
+        line-height: 40px !important;
+        font-size: 13px !important;
+        padding: 0 25px !important;
+    }
+
+    .single-pro-area .submit-btn-4 {
+        max-width: 100% !important;
+    }
+}
+
+/* =======================================
+   КНОПКИ ДЛЯ СЛАЙДЕРА
+======================================== */
+
 .button-one.style-2 {
   height: 45px;
   line-height: 45px;
@@ -564,10 +669,6 @@
 
 .button-2 {
   font-weight: 700;
-}
-
-.submit-btn-4::after {
-  border: medium none;
 }
 
 /* -----------------------------------------------------
@@ -2308,7 +2409,9 @@ h3.widget-title-modal {
   cursor: default;
 }
 
-/*КНОПКА "Оставить заявку"*/
+/* =======================================
+   КНОПКА "Оставить заявку" В КАРТОЧКЕ ТОВАРА
+======================================== */
 
 .single-pro-area .submit-btn-4 {
   font-family: 'Lato', sans-serif;
@@ -2365,7 +2468,9 @@ h3.widget-title-modal {
   border-color: #c8a165;
 }
 
-/* Адаптив */
+/* =======================================
+   АДАПТИВ ДЛЯ КАРТОЧКИ
+======================================== */
 
 @media (max-width: 991px) {
   .single-pro-area .single-pro-slider.single-big-photo {
@@ -2397,8 +2502,9 @@ h3.widget-title-modal {
   }
 }
 
-
-/* Каталог с подкатегориями */
+/* =======================================
+   КАТАЛОГ С ПОДКАТЕГОРИЯМИ
+======================================== */
 
 .header-nav .dropdown-catalog {
   position: relative;
@@ -2583,3 +2689,14 @@ h3.widget-title-modal {
     min-width: 160px;
   }
 }
+
+/* =======================================
+   СКРЫВАЕМ НА МОБИЛЬНЫХ
+======================================== */
+
+@media (max-width: 991px) {
+  .header-nav .dropdown-catalog {
+    display: none !important;
+  }
+}
+

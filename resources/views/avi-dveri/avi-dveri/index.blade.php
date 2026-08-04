@@ -6,12 +6,12 @@
     <section class="slider-area slider-style-2">
         <div class="bend niceties preview-2">
             <div id="ensign-nivoslider" class="slides">
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/1.webp')}}" alt=""
-                     title="#slider-direction-1"/>
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/2.webp')}}" alt=""
-                     title="#slider-direction-2"/>
-                <img src="{{asset('/avi-dveri_assets/avi-dveri/img/slider/3.webp')}}" alt=""
-                     title="#slider-direction-3"/>
+                <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/slider/1.webp') }}" alt=""
+                    title="#slider-direction-1" />
+                <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/slider/2.webp') }}" alt=""
+                    title="#slider-direction-2" />
+                <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/slider/3.webp') }}" alt=""
+                    title="#slider-direction-3" />
             </div>
             <div id="slider-direction-1" class="t-cn slider-direction">
                 <div class="slider-progress"></div>
@@ -22,15 +22,16 @@
                                 <div class="slider-title3 text-uppercase mb-0"></div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="2.5s" data-wow-delay="0.5s">
-                                <div class="slider-title1 text-uppercase mb-0"><span class="d-md-block">Межкомнатные двери</span>
+                                <div class="slider-title1 text-uppercase mb-0"><span class="d-md-block">Межкомнатные
+                                        двери</span>
                                 </div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3s" data-wow-delay="0.5s">
                                 <div class="slider-title2 text-uppercase">Большой выбор по доступной цене</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3.5s" data-wow-delay="0.5s">
-                                <a href="{{route('interior_doors')}}" class="button-one style-2 text-uppercase mt-20"
-                                   data-text="Каталог">Каталог</a>
+                                <a href="{{ route('interior_doors') }}" class="button-one style-2 text-uppercase mt-20"
+                                    data-text="Каталог">Каталог</a>
                             </div>
                         </div>
                     </div>
@@ -59,8 +60,8 @@
                                 <div class="slider-title2 text-uppercase">- Дом</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3.5s" data-wow-delay="0.5s">
-                                <a href="{{route('entrance_doors')}}" class="button-one style-2 text-uppercase mt-20"
-                                   data-text="Каталог">Каталог</a>
+                                <a href="{{ route('entrance_doors') }}" class="button-one style-2 text-uppercase mt-20"
+                                    data-text="Каталог">Каталог</a>
                             </div>
                         </div>
                     </div>
@@ -89,8 +90,8 @@
                                 <div class="slider-title2 text-uppercase">- Премиум</div>
                             </div>
                             <div class="wow fadeInUpBig" data-wow-duration="3.5s" data-wow-delay="0.5s">
-                                <a href="{{route('fittings')}}" class="button-one style-2 text-uppercase mt-20"
-                                   data-text="Каталог">Каталог</a>
+                                <a href="{{ route('fittings') }}" class="button-one style-2 text-uppercase mt-20"
+                                    data-text="Каталог">Каталог</a>
                             </div>
                         </div>
                     </div>
@@ -105,40 +106,50 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
-                        <a class="banner-thumb" href="{{route('entrance_doors')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/2.webp')}}" alt=""/></a>
+                        <a class="banner-thumb" href="{{ route('entrance_doors') }}">
+                            <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/banner/2.webp') }}" alt="" />
+                        </a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <div class="banner-title"><a href="{{route('entrance_doors')}}">Входные</a></div>
+                            <div class="banner-title"><a href="{{ route('entrance_doors') }}">Входные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
-                        <a href="{{route('entrance_doors')}}" class="button-one font-16px"
-                           data-text="Перейти">Перейти</a>
+                        <div class="banner-button">
+                            <a href="{{ route('entrance_doors') }}" class="button-one font-16px"
+                                data-text="Перейти">Перейти</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
-                        <a class="banner-thumb" href="{{route('interior_doors')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/1.webp')}}" alt=""/></a>
+                        <a class="banner-thumb" href="{{ route('interior_doors') }}">
+                            <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/banner/1.webp') }}" alt="" />
+                        </a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <div class="banner-title"><a href="{{route('interior_doors')}}">Межкомнатные</a></div>
+                            <div class="banner-title"><a href="{{ route('interior_doors') }}">Межкомнатные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
-                        <a href="{{route('interior_doors')}}" class="button-one font-16px"
-                           data-text="Перейти">Перейти</a>
+                        <div class="banner-button">
+                            <a href="{{ route('interior_doors') }}" class="button-one font-16px"
+                                data-text="Перейти">Перейти</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
-                        <a class="banner-thumb" href="{{route('fittings')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/3.webp')}}" alt=""/></a>
+                        <a class="banner-thumb" href="{{ route('fittings') }}">
+                            <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/banner/3.webp') }}" alt="" />
+                        </a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <div class="banner-title"><a href="{{route('fittings')}}">Фурнитура</a></div>
+                            <div class="banner-title"><a href="{{ route('fittings') }}">Фурнитура</a></div>
                             <p class="mb-0">двери</p>
                         </div>
-                        <a href="{{route('fittings')}}" class="button-one font-16px" data-text="Перейти">Перейти</a>
+                        <div class="banner-button">
+                            <a href="{{ route('fittings') }}" class="button-one font-16px"
+                                data-text="Перейти">Перейти</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,33 +166,40 @@
                         <h2 class="title-border">Хит продаж</h2>
                     </div>
                     <div class="product-slider style-2 arrow-left-right">
-                        @foreach($products as $product)
+                        @foreach ($products as $product)
                             <div class="col-12">
                                 <div class="single-product">
                                     <div class="product-img">
-                                        @include('includes.avi-dveri.product_card_labels', ['product' => $product])
-                                        @include('includes.avi-dveri.product_card_images', ['product' => $product])
+                                        @include('includes.avi-dveri.product_card_labels', [
+                                            'product' => $product,
+                                        ])
+                                        @include('includes.avi-dveri.product_card_images', [
+                                            'product' => $product,
+                                        ])
                                     </div>
                                     <div class="product-info clearfix text-center">
                                         <div class="fix">
-                                            <div class="post-title"><a @include('includes.avi-dveri.product_route')>{{$product->title}}</a>
+                                            <div class="post-title"><a
+                                                    @include('includes.avi-dveri.product_route')>{{ $product->title }}</a>
                                             </div>
                                             <span class="pro-price-2">
-                                            {{$product->price}} {{$product->currency}}
-                                        </span>
+                                                {{ $product->price }} {{ $product->currency }}
+                                            </span>
                                         </div>
                                         <div class="product-action clearfix">
                                             <button class="button-one submit-btn-4 open_popup_application" type="submit"
-                                                    data-text="Оставить заявку" data-title="{{$product->title}}">
+                                                data-text="Оставить заявку" data-title="{{ $product->title }}">
                                                 Оставить заявку
                                             </button>
                                         </div>
                                         <div class="product-details">
-                                            @include('includes.avi-dveri.product_card_details', ['product' => $product])
+                                            @include('includes.avi-dveri.product_card_details', [
+                                                'product' => $product,
+                                            ])
                                         </div>
                                     </div>
                                 </div>
-                                <x-feedback-form :title="$product->title"/>
+                                <x-feedback-form :title="$product->title" />
                             </div>
                         @endforeach
                     </div>

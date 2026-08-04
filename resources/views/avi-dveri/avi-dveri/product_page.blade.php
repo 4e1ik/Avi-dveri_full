@@ -231,6 +231,233 @@
                 <!-- Single-product end -->
             </div>
         </div>
+        <!-- ===== ТАБЫ: ОТЗЫВЫ И ОПЛАТА/ДОСТАВКА ===== -->
+        <div class="product-tabs-area pt-40 pb-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Навигация табов -->
+                        <ul class="product-tabs-nav">
+                            <li class="product-tabs-nav__item active">
+                                <a href="#tab-reviews" data-tab="reviews" class="product-tabs-nav__link">Отзывы</a>
+                            </li>
+                            <li class="product-tabs-nav__item">
+                                <a href="#tab-delivery" data-tab="delivery" class="product-tabs-nav__link">Оплата и
+                                    доставка</a>
+                            </li>
+                        </ul>
+
+                        <!-- Контент табов -->
+                        <div class="product-tabs-content">
+                            <!-- ТАБ 1: ОТЗЫВЫ -->
+                            <div id="tab-reviews" class="product-tabs-content__panel active">
+                                <div class="reviews-wrapper">
+                                    <!-- Список отзывов -->
+                                    <div class="reviews-list">
+                                        <h3 class="reviews-list__title">Отзывы покупателей</h3>
+
+                                        @php
+                                            // Временные данные для демонстрации
+                                            $reviews = [
+                                                [
+                                                    'name' => 'Александр',
+                                                    'rating' => 5,
+                                                    'comment' =>
+                                                        'Отличная дверь! Качество на высоте. Установили быстро и аккуратно. Рекомендую!',
+                                                    'date' => '15.07.2024',
+                                                ],
+                                                [
+                                                    'name' => 'Елена',
+                                                    'rating' => 4,
+                                                    'comment' =>
+                                                        'Дверь хорошая, но доставка задержалась на день. В остальном всё отлично.',
+                                                    'date' => '10.07.2024',
+                                                ],
+                                                [
+                                                    'name' => 'Сергей',
+                                                    'rating' => 5,
+                                                    'comment' =>
+                                                        'Отличная дверь, полностью соответствует описанию. Спасибо!',
+                                                    'date' => '05.07.2024',
+                                                ],
+                                            ];
+                                        @endphp
+
+                                        @if (count($reviews) > 0)
+                                            @foreach ($reviews as $review)
+                                                <div class="review-item">
+                                                    <div class="review-item__header">
+                                                        <span class="review-item__name">{{ $review['name'] }}</span>
+                                                        <div class="review-item__rating">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                <span
+                                                                    class="review-item__star {{ $i <= $review['rating'] ? 'active' : '' }}">★</span>
+                                                            @endfor
+                                                        </div>
+                                                        <span class="review-item__date">{{ $review['date'] }}</span>
+                                                    </div>
+                                                    <div class="review-item__comment">
+                                                        {{ $review['comment'] }}
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <p class="reviews-list__empty">Пока нет отзывов. Будьте первым!</p>
+                                        @endif
+                                    </div>
+
+                                    <!-- Форма добавления отзыва -->
+                                    <div class="review-form-wrapper">
+                                        <h3 class="review-form__title">Оставить отзыв</h3>
+                                        <form class="review-form" id="reviewForm" action="{{ route('send_mail') }}"
+                                            method="post">
+                                            @csrf
+                                            <input type="hidden" name="form_type" value="review">
+                                            <input type="hidden" name="product_title" value="{{ $product->title }}">
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                            <div class="review-form__group">
+                                                <label class="review-form__label">Ваше имя <span
+                                                        class="review-form__required">*</span></label>
+                                                <input type="text" name="name" class="review-form__input"
+                                                    placeholder="Иван Иванов" required>
+                                            </div>
+
+                                            <div class="review-form__group">
+                                                <label class="review-form__label">Оценка <span
+                                                        class="review-form__required">*</span></label>
+                                                <div class="review-form__rating" id="ratingSelector">
+                                                    <span class="review-form__star" data-value="1">★</span>
+                                                    <span class="review-form__star" data-value="2">★</span>
+                                                    <span class="review-form__star" data-value="3">★</span>
+                                                    <span class="review-form__star" data-value="4">★</span>
+                                                    <span class="review-form__star" data-value="5">★</span>
+                                                </div>
+                                                <input type="hidden" name="rating" id="ratingValue" value="5">
+                                            </div>
+
+                                            <div class="review-form__group">
+                                                <label class="review-form__label">Текст отзыва <span
+                                                        class="review-form__required">*</span></label>
+                                                <textarea name="comment" class="review-form__textarea" placeholder="Поделитесь своим мнением о товаре..."
+                                                    rows="4" required></textarea>
+                                            </div>
+
+                                            <!-- Согласие на обработку данных -->
+                                            <div class="review-form__group review-form__group--checkbox">
+                                                <label class="review-form__checkbox-label">
+                                                    <input type="checkbox" name="agreement" class="review-form__checkbox"
+                                                        value="1" required>
+                                                    <span class="review-form__checkbox-text">
+                                                        Я соглашаюсь на обработку <span>персональных данных</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+
+                                            <button type="submit" class="button-one submit-btn-4 review-form__submit"
+                                                data-text="Отправить отзыв">
+                                                Отправить отзыв
+                                            </button>
+
+                                            <div class="feedback__input">
+                                                <input type="hidden" name="g-recaptcha-response"
+                                                    class="g-recaptcha-response-field">
+                                                <div style="position: absolute; margin:0; color: red;"
+                                                    class="form_error g-recaptcha-error">
+                                                    @error('g-recaptcha-response')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ТАБ 2: ОПЛАТА И ДОСТАВКА -->
+                            <div id="tab-delivery" class="product-tabs-content__panel">
+                                <div class="delivery-info">
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">Самовывоз</h3>
+                                        <p>223232, Республика Беларусь, Минская область, г. Червень, ул. Минская, д. 15</p>
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">Условия доставки входных и межкомнатных дверей
+                                        </h3>
+                                        <ul class="delivery-info__list">
+                                            <li>доставка дверей в пределах МКАД – 30 руб;</li>
+                                            <li>доставка до 30 км от МКАД – 30 руб. + 1 руб/км;</li>
+                                            <li>доставка до 30 км от МКАД на сумму от 1200 руб. - бесплатно;</li>
+                                        </ul>
+                                        <p><strong>Доставка осуществляется до подъезда (калитки). Замер и установка дверей
+                                                оговариваются с консультантом.</strong></p>
+                                        <p><strong>При доставке проверяется комплектность заказа, целостность товара,
+                                                подписывается акт передачи товара.</strong></p>
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">Условия оплаты</h3>
+                                        <p><strong>Оплата производится только в белорусских рублях.</strong></p>
+                                        <p>Аванс в размере 30-50% от стоимости заказа.</p>
+                                        <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/KSA.webp') }}" alt="Оплата"
+                                            class="delivery-info__image">
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">Наличный расчет</h3>
+                                        <p>Вы оплачиваете вышеуказанный аванс наличными. После проверки комплектности и
+                                            качества товаров оплачиваете остаток. При оплате вы получаете кассовый чек,
+                                            который является основанием для замены и возврата товара.</p>
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">Банковскими картами</h3>
+                                        <p>Принимаем к оплате платежные карты Белкарт, Visa, MasterCard (оплата через
+                                            терминал). При оплате банковской картой возврат денежных средств в случае такой
+                                            необходимости осуществляется на карточку, с которой была произведена оплата.</p>
+                                        <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/oplata_bankovskoy_kartoy_onlayn.webp') }}"
+                                            alt="Оплата картами" class="delivery-info__image">
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">Безналичный расчет</h3>
+                                        <p>Доступен для юридических лиц и индивидуальных предпринимателей.</p>
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">В рассрочку</h3>
+                                        <ul class="delivery-info__list">
+                                            <li>от магазина до 3-х мес. без %;</li>
+                                            <li>красная карта от Альфа-Банка до 12 мес.;</li>
+                                            <li>рассрочка от Альфа-Банка до 5-х мес. 1%.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">В кредит</h3>
+                                        <ul class="delivery-info__list">
+                                            <li>кредит от Альфа-Банка до 12 мес. под 11,9%;</li>
+                                            <li>кредит от Беларусбанк «На родныя тавары» до 2-х лет под 4%.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="delivery-info__section">
+                                        <h3 class="delivery-info__title">Образец чека</h3>
+                                        <a download="Образец чека"
+                                            href="{{ asset('/avi-dveri_assets/avi-dveri/img/20250314_162645.webp') }}"
+                                            class="delivery-info__download">
+                                            Нажмите, чтобы скачать образец чека
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== КОНЕЦ ТАБОВ ===== -->
         @if (isset($similarProducts) && $similarProducts->isNotEmpty())
             <div class="product-area pt-20 pb-30 product-style-2">
                 <div class="container">
@@ -305,4 +532,5 @@
     </script>
     {{--    @endforeach --}}
     <!-- PRODUCT-AREA END -->
+    <script src="{{ asset('/avi-dveri_assets/avi-dveri/js/product-tabs.js') }}" defer></script>
 @endsection

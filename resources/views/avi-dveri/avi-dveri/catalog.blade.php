@@ -12,7 +12,7 @@
                         </div>
                         <div class="breadcumbs pb-15">
                             <ul>
-                                <li><a href="{{route('home')}}">Главная</a></li>
+                                <li><a href="{{ route('home') }}">Главная</a></li>
                                 <li>Каталог</li>
                             </ul>
                         </div>
@@ -28,41 +28,52 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
-                        <a class="banner-thumb" href="{{route('entrance_doors')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/2.webp')}}"
-                                    alt="Картинка входные двери"/></a>
+                        <a class="banner-thumb" href="{{ route('entrance_doors') }}">
+                            <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/banner/2.webp') }}"
+                                alt="Картинка входные двери" />
+                        </a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <div class="banner-title"><a href="{{route('entrance_doors')}}">Входные</a></div>
+                            <div class="banner-title"><a href="{{ route('entrance_doors') }}">Входные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
-                        <a href="{{route('entrance_doors')}}" class="button-one font-16px" data-text="Перети">Перейти</a>
+                        <div class="banner-button">
+                            <a href="{{ route('entrance_doors') }}" class="button-one font-16px"
+                                data-text="Перейти">Перейти</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
-                        <a class="banner-thumb" href="{{route('interior_doors')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/1.webp')}}"
-                                    alt="Картинка межкомнатные двери"/></a>
+                        <a class="banner-thumb" href="{{ route('interior_doors') }}">
+                            <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/banner/1.webp') }}"
+                                alt="Картинка межкомнатные двери" />
+                        </a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <div class="banner-title"><a href="{{route('interior_doors')}}">Межкомнатные</a></div>
+                            <div class="banner-title"><a href="{{ route('interior_doors') }}">Межкомнатные</a></div>
                             <p class="mb-0">двери</p>
                         </div>
-                        <a href="{{route('interior_doors')}}" class="button-one font-16px" data-text="Перейти">Перейти</a>
+                        <div class="banner-button">
+                            <a href="{{ route('interior_doors') }}" class="button-one font-16px"
+                                data-text="Перейти">Перейти</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="single-banner banner-1 banner-4">
-                        <a class="banner-thumb" href="{{route('fittings')}}"><img
-                                    src="{{asset('/avi-dveri_assets/avi-dveri/img/banner/3.webp')}}"
-                                    alt="Картинка фурнитура"/></a>
+                        <a class="banner-thumb" href="{{ route('fittings') }}">
+                            <img src="{{ asset('/avi-dveri_assets/avi-dveri/img/banner/3.webp') }}"
+                                alt="Картинка фурнитура" />
+                        </a>
                         <div class="background__banner"></div>
                         <div class="banner-brief">
-                            <div class="banner-title"><a href="{{route('fittings')}}">Фурнитура</a></div>
+                            <div class="banner-title"><a href="{{ route('fittings') }}">Фурнитура</a></div>
                             <p class="mb-0">двери</p>
                         </div>
-                        <a href="{{route('fittings')}}" class="button-one font-16px" data-text="Перейти">Перейти</a>
+                        <div class="banner-button">
+                            <a href="{{ route('fittings') }}" class="button-one font-16px" data-text="Перейти">Перейти</a>
+                        </div>
                     </div>
                 </div>
             </div>

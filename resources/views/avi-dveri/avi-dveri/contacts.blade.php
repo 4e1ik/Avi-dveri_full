@@ -97,7 +97,7 @@
 
         .contacts-page-grid__form .feedback__input input,
         .contacts-page-grid__form .feedback__input textarea {
-            width: 100%;
+            /* width: 100%; */
             max-width: 100%;
             box-sizing: border-box;
         }
