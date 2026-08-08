@@ -225,7 +225,7 @@
         </div>
     </section>
 
-    <!-- ===== СЕКЦИЯ "ПРИМЕРЫ РАБОТ" ===== -->
+    {{-- ===== СЕКЦИЯ "ПРИМЕРЫ РАБОТ" (заготовка — ждём фото) =====
     <section class="about-page__section">
         <div class="container">
             <div class="section-title text-center">
@@ -261,8 +261,9 @@
             </div>
         </div>
     </section>
+    ===== /ПРИМЕРЫ РАБОТ ===== --}}
 @endsection
 
-@push('scripts')
+{{-- @push('scripts')
     <script src="{{ asset('/avi-dveri_assets/avi-dveri/js/about-page.js') }}" defer></script>
-@endpush
+@endpush --}}

@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            <!-- ===== СЕРТИФИКАТЫ ===== -->
+            {{-- ===== СЕРТИФИКАТЫ (заготовка — ждём фото) =====
             <div class="about-page__section">
                 <h2 class="about-page__section-title">Сертификаты</h2>
                 <div class="about-page__gallery about-page__gallery--certificates" id="certificatesGallery">
@@ -125,8 +125,9 @@
                     <button class="about-page__gallery-btn about-page__gallery-btn--next" id="certNext">›</button>
                 </div>
             </div>
+            ===== /СЕРТИФИКАТЫ ===== --}}
 
-            <!-- ===== ПРИМЕРЫ РАБОТ ===== -->
+            {{-- ===== ПРИМЕРЫ РАБОТ (заготовка — ждём фото) =====
             <div class="about-page__section">
                 <h2 class="about-page__section-title">Примеры работ</h2>
                 <div class="about-page__gallery about-page__gallery--works" id="worksGallery">
@@ -158,10 +159,11 @@
                     <button class="about-page__gallery-btn about-page__gallery-btn--next" id="workNext">›</button>
                 </div>
             </div>
+            ===== /ПРИМЕРЫ РАБОТ ===== --}}
         </div>
     </div>
 @endsection
 
-@push('scripts')
+{{-- @push('scripts')
     <script src="{{ asset('/avi-dveri_assets/avi-dveri/js/about-page.js') }}" defer></script>
-@endpush
+@endpush --}}
