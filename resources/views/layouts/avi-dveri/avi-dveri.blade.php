@@ -105,43 +105,43 @@
                         <div class="dropdown-menu-catalog">
                             <!-- Входные -->
                             <div class="dropdown-category">
-                                <a href="#" class="category-link">Входные</a>
+                                <a href="{{ route('entrance_doors') }}" class="category-link">Входные</a>
                                 <div class="dropdown-subcategories">
                                     <ul class="subcategory-list">
-                                        <li><a href="#">Улица</a></li>
-                                        <li><a href="#">Квартира</a></li>
-                                        <li><a href="#">Терморазрыв</a></li>
+                                        <li><a href="{{ route('street_doors') }}">Улица</a></li>
+                                        <li><a href="{{ route('apartment_doors') }}">Квартира</a></li>
+                                        <li><a href="{{ route('thermal_break_doors') }}">Терморазрыв</a></li>
                                     </ul>
                                 </div>
                             </div>
 
                             <!-- Межкомнатные -->
                             <div class="dropdown-category">
-                                <a href="#" class="category-link">Межкомнатные</a>
+                                <a href="{{ route('interior_doors') }}" class="category-link">Межкомнатные</a>
                                 <div class="dropdown-subcategories dropdown-subcategories--large">
                                     <ul class="subcategory-list subcategory-list--scroll">
-                                        <li><a href="#">Экошпон</a></li>
-                                        <li><a href="#">Полипропилен</a></li>
-                                        <li><a href="#">Эмаль</a></li>
-                                        <li><a href="#">Скрытые</a></li>
-                                        <li><a href="#">Массив</a></li>
-                                        <li><a href="#">Эксимер</a></li>
-                                        <li><a href="#">Флекс эмаль</a></li>
-                                        <li><a href="#">Массив + МДФ</a></li>
-                                        <li><a href="#">МДФ</a></li>
-                                        <li><a href="#">МДФ+ХДФ</a></li>
+                                        <li><a href="{{ route('eco_veneer_doors') }}">Экошпон</a></li>
+                                        <li><a href="{{ route('polypropylene_doors') }}">Полипропилен</a></li>
+                                        <li><a href="{{ route('enamel_doors') }}">Эмаль</a></li>
+                                        <li><a href="{{ route('hidden_doors') }}">Скрытые</a></li>
+                                        <li><a href="{{ route('solid_doors') }}">Массив</a></li>
+                                        <li><a href="{{ route('eximer_doors') }}">Эксимер</a></li>
+                                        <li><a href="{{ route('flex_enamel_doors') }}">Флекс эмаль</a></li>
+                                        <li><a href="{{ route('solid_mdf_doors') }}">Массив + МДФ</a></li>
+                                        <li><a href="{{ route('mdf_doors') }}">МДФ</a></li>
+                                        <li><a href="{{ route('mdf_hdf_doors') }}">МДФ+ХДФ</a></li>
                                     </ul>
                                 </div>
                             </div>
 
                             <!-- Фурнитура -->
                             <div class="dropdown-category">
-                                <a href="#" class="category-link">Фурнитура</a>
+                                <a href="{{ route('fittings') }}" class="category-link">Фурнитура</a>
                                 <div class="dropdown-subcategories">
                                     <ul class="subcategory-list">
-                                        <li><a href="#">Эконом сегмент</a></li>
-                                        <li><a href="#">Стандарт сегмент</a></li>
-                                        <li><a href="#">Премиум сегмент</a></li>
+                                        <li><a href="{{ route('economy_fittings') }}">Эконом сегмент</a></li>
+                                        <li><a href="{{ route('standard_fittings') }}">Стандарт сегмент</a></li>
+                                        <li><a href="{{ route('premium_fittings') }}">Премиум сегмент</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -270,9 +270,9 @@
                             <div class="single-footer">
                                 <h3 class="footer-title title-border">Каталог</h3>
                                 <ul class="footer-menu">
-                                    <li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Входные</a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Межкомнатные</a></li>
-                                    <li><a href="#"><i class="zmdi zmdi-dot-circle"></i>Фурнитура</a></li>
+                                    <li><a href="{{ route('entrance_doors') }}"><i class="zmdi zmdi-dot-circle"></i>Входные</a></li>
+                                    <li><a href="{{ route('interior_doors') }}"><i class="zmdi zmdi-dot-circle"></i>Межкомнатные</a></li>
+                                    <li><a href="{{ route('fittings') }}"><i class="zmdi zmdi-dot-circle"></i>Фурнитура</a></li>
                                 </ul>
                             </div>
                         </div>

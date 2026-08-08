@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/filter', [FilterController::class, 'filter']);
+Route::post('/filter/v2', [FilterController::class, 'filterV2']);
 Route::post('/manufacturers', [ManufacturerController::class, 'manufacturers']);

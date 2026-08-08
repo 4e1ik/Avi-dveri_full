@@ -14,7 +14,9 @@ class DoorRepository
         ?string  $glass,
         ?string  $type,
         ?string  $function,
-        ?string  $material
+        ?string  $material,
+        bool     $sound_insulation = true,
+        bool     $mirror = false,
     )
     {
         return Door::create([
@@ -24,6 +26,8 @@ class DoorRepository
             'type' =>       $type,
             'function' =>   $function,
             'material' =>   $material,
+            'sound_insulation' => $sound_insulation,
+            'mirror' => $mirror,
         ]);
     }
 
@@ -34,7 +38,9 @@ class DoorRepository
         ?string  $glass,
         ?string  $type,
         ?string  $function,
-        ?string  $material
+        ?string  $material,
+        bool     $sound_insulation = true,
+        bool     $mirror = false,
     )
     {
         return $door->update([
@@ -44,6 +50,8 @@ class DoorRepository
             'type' =>       $type,
             'function' =>   $function,
             'material' =>   $material,
+            'sound_insulation' => $sound_insulation,
+            'mirror' => $mirror,
         ]);
     }
 }

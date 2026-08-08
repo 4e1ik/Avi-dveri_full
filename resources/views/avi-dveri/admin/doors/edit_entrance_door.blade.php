@@ -192,6 +192,7 @@
                                 <div class="row">
                             @include('avi-dveri.admin.partials.product_label_checkboxes', ['selectedLabels' => old('label', $product->label ?? [])])
                             @include('avi-dveri.admin.partials.product_availability_radios', ['product' => $product])
+                            @include('avi-dveri.admin.partials.door_attrs_checkboxes', ['type' => 'entrance', 'product' => $product])
                             <div class="col-md-3 padding-0 admin-product-field-block">
                                 <div class="form-group">
                                     <div class="col-md-10 padding-0">

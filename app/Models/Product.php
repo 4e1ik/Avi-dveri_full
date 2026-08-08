@@ -16,6 +16,7 @@ class Product extends Model
         'size' => 'array', // Автоматическое преобразование JSON в массив
         'additional_colors' => 'array', // Автоматическое преобразование JSON в массив
         'availability' => 'boolean',
+        'rating_avg' => 'float',
     ];
 
     protected $fillable = [
@@ -33,6 +34,7 @@ class Product extends Model
         'meta_description',
         'manufacturer_id',
         'availability',
+        'rating_avg',
     ];
 
     public function getRouteKeyName(): string
@@ -58,5 +60,10 @@ class Product extends Model
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class);
+    }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 }

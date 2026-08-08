@@ -69,7 +69,7 @@ class MainController extends Controller
 
     function show_product($head, $direction, Product $product)
     {
-        $product->loadMissing('manufacturer');
+        $product->loadMissing(['manufacturer', 'reviews' => fn ($q) => $q->visible()->latest()]);
 
         $metaTitle = $product->meta_title;
         $metaDescription = $product->meta_description;

@@ -8,6 +8,7 @@ use App\Http\Controllers\avi_dveri\admin\MetaTagsProductController;
 use App\Http\Controllers\avi_dveri\admin\ProductController;
 use App\Http\Controllers\avi_dveri\admin\RegisterController;
 use App\Http\Controllers\avi_dveri\admin\ReviewController;
+use App\Http\Controllers\avi_dveri\ReviewController as PublicReviewController;
 use App\Http\Controllers\avi_dveri\DoorController;
 use App\Http\Controllers\avi_dveri\FittingController;
 use App\Http\Controllers\avi_dveri\MailController;
@@ -112,6 +113,7 @@ Route::prefix('katalog')->group(function (){
 });
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
+Route::post('/reviews', [PublicReviewController::class, 'store'])->name('reviews.store');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -150,6 +152,8 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     });
 
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
+    Route::patch('/reviews/{review}/hide', [ReviewController::class, 'hide'])->name('reviews.hide');
+    Route::patch('/reviews/{review}/restore', [ReviewController::class, 'restore'])->name('reviews.restore');
 
     Route::resource('products', ProductController::class)->except(['create', 'index', 'show']);
     Route::get('/products/create/{type}', [ProductController::class, 'create'])->name('products.create');

@@ -13,7 +13,7 @@
                 <div class="panel">
                     <div class="panel-heading">
                         <h3>Список отзывов</h3>
-                        <p>При клике на название товара, можно перейти на страницу товара на сайте.</p>
+                        <p>При клике на название товара можно перейти на страницу товара на сайте.</p>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered">
@@ -23,95 +23,71 @@
                                 <th style="width: 20%;">Название товара</th>
                                 <th style="width: 100px;">Оценка</th>
                                 <th>Текст отзыва</th>
-                                <th style="width: 100px;">Действия</th>
+                                <th style="width: 120px;">Действия</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @forelse ($reviews as $index => $review)
+                                @php
+                                    $product = $review->reviewable;
+                                @endphp
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>
-                                        <a href="#" target="_blank">
-                                            iPhone 15 Pro Max
-                                        </a>
+                                        @if ($product)
+                                            @php
+                                                $productUrl = \App\Helpers\ProductUrlHelper::url($product);
+                                            @endphp
+                                            @if ($productUrl)
+                                                <a href="{{ $productUrl }}" target="_blank">{{ $product->title }}</a>
+                                            @else
+                                                {{ $product->title }}
+                                            @endif
+                                            <div style="font-size: 12px; color: #888;">
+                                                ID: {{ $product->id }}
+                                                @if ($review->fake)
+                                                    · fake
+                                                @endif
+                                                @if ($review->is_hidden)
+                                                    · скрыт
+                                                @endif
+                                            </div>
+                                        @else
+                                            —
+                                        @endif
                                     </td>
                                     <td>
                                         <span style="color: #f5b342; font-size: 18px;">
-                                            ★★★★★
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                {{ $i <= $review->rating ? '★' : '☆' }}
+                                            @endfor
                                         </span>
                                     </td>
-                                    <td>Отличный телефон! Очень доволен покупкой. Батарея держит 2 дня.</td>
                                     <td>
-                                        <button type="button" class="btn btn-outline btn-danger btn-sm" onclick="confirm('Вы уверены?')">Скрыть</button>
+                                        <strong>{{ $review->name }}</strong><br>
+                                        {{ $review->comment }}
+                                    </td>
+                                    <td>
+                                        @if ($review->is_hidden)
+                                            <form method="post" action="{{ route('reviews.restore', $review) }}">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-outline btn-success btn-sm">Вернуть</button>
+                                            </form>
+                                        @else
+                                            <form method="post" action="{{ route('reviews.hide', $review) }}">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-outline btn-danger btn-sm">Скрыть</button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
+                            @empty
                                 <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <a href="#" target="_blank">
-                                            Samsung Galaxy S24 Ultra
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span style="color: #f5b342; font-size: 18px;">
-                                            ★★★★☆
-                                        </span>
-                                    </td>
-                                    <td>Хороший телефон, но дорогой. Камера супер!</td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline btn-danger btn-sm" onclick="confirm('Вы уверены?')">Скрыть</button>
-                                    </td>
+                                    <td colspan="5">Отзывов пока нет.</td>
                                 </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        <a href="#" target="_blank">
-                                            MacBook Pro 16"
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span style="color: #f5b342; font-size: 18px;">
-                                            ★★★★★
-                                        </span>
-                                    </td>
-                                    <td>Отличный ноутбук для работы. Экран шикарный, производительность на высоте. Рекомендую всем разработчикам.</td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline btn-danger btn-sm" onclick="confirm('Вы уверены?')">Скрыть</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>
-                                        <a href="#" target="_blank">
-                                            Sony WH-1000XM5
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span style="color: #f5b342; font-size: 18px;">
-                                            ★★★☆☆
-                                        </span>
-                                    </td>
-                                    <td>Неплохие наушники, но шумоподавление могло бы быть лучше.</td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline btn-danger btn-sm" onclick="confirm('Вы уверены?')">Скрыть</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>
-                                        <a href="#" target="_blank">
-                                            iPad Air
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span style="color: #f5b342; font-size: 18px;">
-                                            ★★☆☆☆
-                                        </span>
-                                    </td>
-                                    <td>Разочарован. За такую цену ожидал большего.</td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline btn-danger btn-sm" onclick="confirm('Вы уверены?')">Скрыть</button>
-                                    </td>
-                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>

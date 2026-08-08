@@ -2,24 +2,38 @@
 
 namespace App\Http\Controllers\avi_dveri\admin;
 
-use App\DTO\Manufacturer\CreateManufacturerDTO;
-use App\DTO\Manufacturer\DestroyManufacturerDTO;
-use App\DTO\Manufacturer\UpdateManufacturerDTO;
-use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateManufacturerRequest;
-use App\Http\Requests\UpdateManufacturerRequest;
-use App\Models\Manufacturer;
-use App\Services\ManufacturerService;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
+use App\Models\Review;
+use App\Services\ReviewService;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class ReviewController extends Controller
 {
-    public function index()
+    public function __construct(
+        public ReviewService $reviewService,
+    ) {}
+
+    public function index(): View
     {
-        return view('avi-dveri.admin.reviews.reviews');
+        $reviews = Review::with(['reviewable.door', 'reviewable.fitting'])
+            ->latest()
+            ->get();
+
+        return view('avi-dveri.admin.reviews.reviews', compact('reviews'));
+    }
+
+    public function hide(Review $review): RedirectResponse
+    {
+        $this->reviewService->hide($review);
+
+        return back();
+    }
+
+    public function restore(Review $review): RedirectResponse
+    {
+        $this->reviewService->restore($review);
+
+        return back();
     }
 }

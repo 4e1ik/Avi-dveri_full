@@ -51,9 +51,7 @@
                                 <div class="post-title floatleft">{{ $product->title }}</div>
                             </div>
                             <!-- Категория товара -->
-                            <div class="product-category">
-                                <a href="#" class="category-link">Межкомнатные двери</a>
-                            </div>
+                            @include('includes.avi-dveri.product_category')
                             <div class="fix option1 mb-15">
                                 <span class="pro-price"></span><span class="pro-price"> {{ $product->currency }}</span>
                             </div>
@@ -88,20 +86,26 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="size-filter single-pro-size mb-35 clearfix">
-                                <ul>
-                                    <li><span class="color-title text-capitalize">Шумоизоляция</span></li>
-                                    <li><a class="active noRedirect" href="#">Да</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="size-filter single-pro-size mb-35 clearfix">
-                                <ul>
-                                    <li><span class="color-title text-capitalize">Зеркало</span></li>
-                                    <li><a class="active noRedirect" href="#">Да</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            @if (isset($product->door) && $product->door->type === 'entrance')
+                                <div class="size-filter single-pro-size mb-35 clearfix">
+                                    <ul>
+                                        <li><span class="color-title text-capitalize">Шумоизоляция</span></li>
+                                        <li><a class="active noRedirect"
+                                                href="#">{{ $product->door->sound_insulation ? 'Да' : 'Нет' }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (isset($product->door))
+                                <div class="size-filter single-pro-size mb-35 clearfix">
+                                    <ul>
+                                        <li><span class="color-title text-capitalize">Зеркало</span></li>
+                                        <li><a class="active noRedirect"
+                                                href="#">{{ $product->door->mirror ? 'Да' : 'Нет' }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
                             @if (!($product->category == 'fitting'))
                                 <select id="selector" class="custom-select mb-30" onchange="handleSelectChange()"
                                     style="cursor: pointer">
@@ -257,47 +261,24 @@
                                         <h3 class="reviews-list__title">Отзывы покупателей</h3>
 
                                         @php
-                                            // Временные данные для демонстрации
-                                            $reviews = [
-                                                [
-                                                    'name' => 'Александр',
-                                                    'rating' => 5,
-                                                    'comment' =>
-                                                        'Отличная дверь! Качество на высоте. Установили быстро и аккуратно. Рекомендую!',
-                                                    'date' => '15.07.2024',
-                                                ],
-                                                [
-                                                    'name' => 'Елена',
-                                                    'rating' => 4,
-                                                    'comment' =>
-                                                        'Дверь хорошая, но доставка задержалась на день. В остальном всё отлично.',
-                                                    'date' => '10.07.2024',
-                                                ],
-                                                [
-                                                    'name' => 'Сергей',
-                                                    'rating' => 5,
-                                                    'comment' =>
-                                                        'Отличная дверь, полностью соответствует описанию. Спасибо!',
-                                                    'date' => '05.07.2024',
-                                                ],
-                                            ];
+                                            $reviews = $product->reviews ?? collect();
                                         @endphp
 
-                                        @if (count($reviews) > 0)
+                                        @if ($reviews->count() > 0)
                                             @foreach ($reviews as $review)
                                                 <div class="review-item">
                                                     <div class="review-item__header">
-                                                        <span class="review-item__name">{{ $review['name'] }}</span>
+                                                        <span class="review-item__name">{{ $review->name }}</span>
                                                         <div class="review-item__rating">
                                                             @for ($i = 1; $i <= 5; $i++)
                                                                 <span
-                                                                    class="review-item__star {{ $i <= $review['rating'] ? 'active' : '' }}">★</span>
+                                                                    class="review-item__star {{ $i <= $review->rating ? 'active' : '' }}">★</span>
                                                             @endfor
                                                         </div>
-                                                        <span class="review-item__date">{{ $review['date'] }}</span>
+                                                        <span class="review-item__date">{{ $review->created_at?->format('d.m.Y') }}</span>
                                                     </div>
                                                     <div class="review-item__comment">
-                                                        {{ $review['comment'] }}
+                                                        {{ $review->comment }}
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -309,11 +290,9 @@
                                     <!-- Форма добавления отзыва -->
                                     <div class="review-form-wrapper">
                                         <h3 class="review-form__title">Оставить отзыв</h3>
-                                        <form class="review-form" id="reviewForm" action="{{ route('send_mail') }}"
+                                        <form class="review-form" id="reviewForm" action="{{ route('reviews.store') }}"
                                             method="post">
                                             @csrf
-                                            <input type="hidden" name="form_type" value="review">
-                                            <input type="hidden" name="product_title" value="{{ $product->title }}">
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                                             <div class="review-form__group">

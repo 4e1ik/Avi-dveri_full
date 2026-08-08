@@ -51,6 +51,8 @@ class ProductRequest extends FormRequest
                     'type' => 'required|filled|max:50',
                     'glass' => 'max:50',
                     'material' => 'required|filled|max:50',
+                    'sound_insulation' => 'nullable|boolean',
+                    'mirror' => 'nullable|boolean',
                     'size_diff' => 'max:20',
                     'size_standard' => 'max:20',
                 ]

@@ -180,6 +180,7 @@
                                 <div class="row">
                             @include('avi-dveri.admin.partials.product_label_checkboxes', ['selectedLabels' => old('label', [])])
                             @include('avi-dveri.admin.partials.product_availability_radios')
+                            @include('avi-dveri.admin.partials.door_attrs_checkboxes', ['type' => 'interior'])
                             <div class="col-md-3 padding-0 admin-product-field-block">
                                 <div class="form-group">
                                     <div class="col-md-8 padding-0">

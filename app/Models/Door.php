@@ -14,6 +14,8 @@ class Door extends Model
 
     protected $casts = [
         'size' => 'array', // Автоматическое преобразование JSON в массив
+        'sound_insulation' => 'boolean',
+        'mirror' => 'boolean',
     ];
 
     protected $fillable = [
@@ -23,5 +25,7 @@ class Door extends Model
         'type',
         'function',
         'material',
+        'sound_insulation',
+        'mirror',
     ];
 }

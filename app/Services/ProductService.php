@@ -99,6 +99,8 @@ class ProductService
                     type:       $type,
                     function:   $function,
                     material:   $material,
+                    sound_insulation: $dto->sound_insulation ?? true,
+                    mirror:     $dto->mirror ?? false,
                 );
 
                 $routes = [
@@ -155,6 +157,8 @@ class ProductService
                     type:       $dto->type,
                     function:   $dto->function,
                     material:   $dto->material,
+                    sound_insulation: $dto->sound_insulation ?? $product->door->sound_insulation ?? true,
+                    mirror:     $dto->mirror ?? $product->door->mirror ?? false,
                 );
                 $routes = [
                     'entrance' => route('admin_entrance_doors'),

@@ -28,6 +28,8 @@ class UpdateProductDTO
         public ?string $function = null,
         public ?string $material = null,
         public ?string $glass = null,
+        public ?bool   $sound_insulation = null,
+        public ?bool   $mirror = null,
 
         // image
         public ?array $image = [],

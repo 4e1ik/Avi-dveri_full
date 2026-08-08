@@ -76,6 +76,12 @@ class ProductController extends Controller
             function:               $request->input('function'),
             material:               $request->input('material'),
             glass:                  $request->input('glass'),
+            sound_insulation:       $request->has('sound_insulation')
+                ? $request->boolean('sound_insulation')
+                : true,
+            mirror:                 $request->has('mirror')
+                ? $request->boolean('mirror')
+                : false,
             image:                  $request->file('image', []),
             fitting_image_color:    $request->input('fitting_image_color'),
             door_image_color:       $request->input('door_image_color'),
@@ -149,6 +155,12 @@ class ProductController extends Controller
             function:               $request->input('function') ?? $product->door?->function ?? $product->fitting?->function,
             material:               $request->input('material') ?? $product->door?->material,
             glass:                  $request->input('glass') ?? $product->door?->glass,
+            sound_insulation:       $request->has('sound_insulation')
+                ? $request->boolean('sound_insulation')
+                : ($product->door?->sound_insulation ?? true),
+            mirror:                 $request->has('mirror')
+                ? $request->boolean('mirror')
+                : ($product->door?->mirror ?? false),
             image:                  $request->file('image', []),
             fitting_image_color:    $request->input('fitting_image_color'),
             door_image_color:       $request->input('door_image_color'),
