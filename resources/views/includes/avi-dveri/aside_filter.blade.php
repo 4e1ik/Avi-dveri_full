@@ -2,7 +2,7 @@
     <div class="widget-title">
         <span class="widget-sidebar-label">Фильтр</span>
     </div>
-    <form class="widget-info color-filter clearfix catalog-global-filter__form" action="#" method="get"
+    <form class="widget-info color-filter clearfix catalog-global-filter__form" id="filter-form" action="#" method="get"
           data-filter-api="{{ url('/api/filter') }}"
           data-filter-category="{{ $category === 'fitting' ? 'fitting' : 'door' }}"
           @if($category === 'door' && isset($type) && $type !== '') data-filter-door-type="{{ $type }}" @endif>

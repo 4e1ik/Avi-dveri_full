@@ -23,6 +23,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $metaTitle ?? 'АВИ-двери' }}</title>
     <meta name="description" content="{{ $metaDescription ?? '' }}">
     @if (!empty($canonicalUrl))
@@ -480,6 +481,7 @@
 
     <!-- modal.js -->
     <script src="{{ asset('/avi-dveri_assets/avi-dveri/js/modal.js?v=1.6') }}" defer></script>
+    <script src="{{asset('/avi-dveri_assets/avi-dveri/js/catalog-filter.js')}}"></script>
 
     @stack('scripts')
 </body>
