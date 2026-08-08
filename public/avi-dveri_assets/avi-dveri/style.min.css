@@ -3283,6 +3283,7 @@ input[type="radio"]:nth-child(3):checked+label {
     font-weight: 600;
     color: #333;
     font-size: 15px;
+    word-break: break-all;
 }
 
 .review-item__rating {
