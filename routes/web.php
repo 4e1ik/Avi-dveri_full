@@ -8,7 +8,9 @@ use App\Http\Controllers\avi_dveri\admin\MetaTagsProductController;
 use App\Http\Controllers\avi_dveri\admin\ProductController;
 use App\Http\Controllers\avi_dveri\admin\RegisterController;
 use App\Http\Controllers\avi_dveri\admin\ReviewController;
+use App\Http\Controllers\avi_dveri\admin\TagController as AdminTagController;
 use App\Http\Controllers\avi_dveri\ReviewController as PublicReviewController;
+use App\Http\Controllers\avi_dveri\TagPageController;
 use App\Http\Controllers\avi_dveri\DoorController;
 use App\Http\Controllers\avi_dveri\FittingController;
 use App\Http\Controllers\avi_dveri\MailController;
@@ -110,6 +112,8 @@ Route::prefix('katalog')->group(function (){
             Route::get('/', [DoorController::class, 'thermal_break_doors'])->name('thermal_break_doors');
         });
     });
+
+    Route::get('/{tag}', [TagPageController::class, 'show'])->name('tags.show');
 });
 
 Route::post('/send_mail', [MailController::class, 'send'])->name('send_mail');
@@ -154,6 +158,14 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
     Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
     Route::patch('/reviews/{review}/hide', [ReviewController::class, 'hide'])->name('reviews.hide');
     Route::patch('/reviews/{review}/restore', [ReviewController::class, 'restore'])->name('reviews.restore');
+
+    Route::get('/tags', [AdminTagController::class, 'index'])->name('admin_tags');
+    Route::get('/tags/create', [AdminTagController::class, 'create'])->name('admin_tags.create');
+    Route::post('/tags', [AdminTagController::class, 'store'])->name('admin_tags.store');
+    Route::get('/tags/{tag}/edit', [AdminTagController::class, 'edit'])->name('admin_tags.edit');
+    Route::put('/tags/{tag}', [AdminTagController::class, 'update'])->name('admin_tags.update');
+    Route::patch('/tags/{tag}/toggle-visibility', [AdminTagController::class, 'toggleVisibility'])->name('admin_tags.toggle_visibility');
+    Route::delete('/tags/{tag}', [AdminTagController::class, 'destroy'])->name('admin_tags.destroy');
 
     Route::resource('products', ProductController::class)->except(['create', 'index', 'show']);
     Route::get('/products/create/{type}', [ProductController::class, 'create'])->name('products.create');

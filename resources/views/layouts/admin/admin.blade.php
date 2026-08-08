@@ -123,6 +123,11 @@
                         Отзывы
                     </a>
                 </li>
+                <li class="ripple">
+                    <a href="{{route('admin_tags')}}" class="tree-toggle nav-header">
+                        Теги
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

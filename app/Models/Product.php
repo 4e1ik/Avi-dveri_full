@@ -66,4 +66,9 @@ class Product extends Model
     {
         return $this->morphMany(Review::class, 'reviewable');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

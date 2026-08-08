@@ -37,37 +37,8 @@
                             </div>
                         </div>
 
-                        <!-- ПЛИТКА начало -->
-                        <div class="tags-wrapper">
-                            <div class="container">
-                                <div class="tags" id="tagsContainer">
-                                    <a href="#" class="tags__item tags__item--all active">Все</a>
-
-                                    <!-- Видимые теги -->
-                                    <a href="#" class="tags__item">Металюр</a>
-                                    <a href="#" class="tags__item">Магнабел</a>
-                                    <a href="#" class="tags__item">Гарда</a>
-                                    <a href="#" class="tags__item">Elporta</a>
-                                    <a href="#" class="tags__item">Staller</a>
-                                    <a href="#" class="tags__item">Luxor</a>
-                                    <a href="#" class="tags__item">Промет</a>
-                                    <a href="#" class="tags__item">Юркас</a>
-                                    <a href="#" class="tags__item">Юни</a>
-                                    <a href="#" class="tags__item">Динмар</a>
-
-                                    <!-- Кнопка "..." (видимая часть) -->
-                                    <button class="tags__item tags__item--more" id="tagsMore">...</button>
-
-                                    <!-- Скрытые теги (изначально скрыты) -->
-                                    <div class="tags__hidden" id="tagsHidden" style="display: contents;">
-                                        <a href="#" class="tags__item tags__item--hidden">Emalex</a>
-                                        <a href="#" class="tags__item tags__item--hidden">Baguette</a>
-                                        <a href="#" class="tags__item tags__item--hidden">Elporta входные</a>
-                                        <a href="#" class="tags__item tags__item--hidden">Elporta межкомнатные</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- ПЛИТКА тегов -->
+                        @include('includes.avi-dveri.catalog_tags')
 
                         <!-- Tab panes -->
                         <div class="tab-content mt-xs-30">

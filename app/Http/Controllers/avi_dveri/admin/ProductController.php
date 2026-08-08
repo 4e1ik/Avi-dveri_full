@@ -82,6 +82,7 @@ class ProductController extends Controller
             mirror:                 $request->has('mirror')
                 ? $request->boolean('mirror')
                 : false,
+            tags:                   $request->input('tags', []),
             image:                  $request->file('image', []),
             fitting_image_color:    $request->input('fitting_image_color'),
             door_image_color:       $request->input('door_image_color'),
@@ -161,6 +162,7 @@ class ProductController extends Controller
             mirror:                 $request->has('mirror')
                 ? $request->boolean('mirror')
                 : ($product->door?->mirror ?? false),
+            tags:                   $request->input('tags', []),
             image:                  $request->file('image', []),
             fitting_image_color:    $request->input('fitting_image_color'),
             door_image_color:       $request->input('door_image_color'),

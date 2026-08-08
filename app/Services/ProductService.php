@@ -135,6 +135,8 @@ class ProductService
             );
         }
 
+        $product->tags()->sync($dto->tags ?? []);
+
         $type = $dto->type ?? 'fitting';
         if (!isset($routes[$type])) {
             $type = array_key_first($routes);
@@ -252,6 +254,8 @@ class ProductService
             availability:       $dto->availability,
             product:            $product
         );
+
+        $product->tags()->sync($dto->tags ?? []);
 
         $type = $dto->type ?? 'fitting';
         if (!isset($routes[$type])) {

@@ -37,6 +37,7 @@
                                     -{{ str_pad($end, 2, '0', STR_PAD_LEFT) }} из {{ $totalCount }} результатов</p>
                             </div>
                         </div>
+                        @include('includes.avi-dveri.catalog_tags')
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="grid-view">
@@ -59,3 +60,7 @@
     <!-- PRODUCT-AREA END -->
     @include('includes.avi-dveri.faq', ['faqKey' => 'hidden_doors'])
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('/avi-dveri_assets/avi-dveri/js/tags.js') }}" defer></script>
+@endpush

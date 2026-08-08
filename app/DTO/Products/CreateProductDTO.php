@@ -29,6 +29,7 @@ class CreateProductDTO
         public ?string $glass = null,
         public ?bool   $sound_insulation = null,
         public ?bool   $mirror = null,
+        public array   $tags = [],
 
         // image
         public ?array $image = [],

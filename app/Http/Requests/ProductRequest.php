@@ -39,6 +39,8 @@ class ProductRequest extends FormRequest
             'function' => 'required|filled|max:50',
             'label' => 'max:10',
             'availability' => 'required|in:0,1',
+            'tags' => 'nullable|array',
+            'tags.*' => 'integer|exists:tags,id',
             'image' => 'nullable|array|max:20',
             'image.*.image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
             'description' => 'nullable',
