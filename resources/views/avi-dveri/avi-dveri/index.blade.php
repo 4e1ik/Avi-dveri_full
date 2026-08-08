@@ -207,4 +207,62 @@
             </div>
         </div>
     </div>
+    <!-- PRODUCT-AREA END -->
+
+    <!-- ===== СЕКЦИЯ "О НАС" ===== -->
+    <section class="about__section">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h2 class="title-border">О компании</h2>
+                </div>
+                <p class="about-page__text">Компания АВИ-двери основана в 2004 году и за годы работы зарекомендовала себя
+                    как надежный поставщик качественных дверей и фурнитуры. Мы предлагаем широкий ассортимент межкомнатных и
+                    входных дверей, а также фурнитуры различных ценовых сегментов.</p>
+                <p class="about-page__text">Наши преимущества — это индивидуальный подход к каждому клиенту,
+                    профессиональные консультации, помощь в выборе и возможность установки «под ключ».</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ "ПРИМЕРЫ РАБОТ" ===== -->
+    <section class="about-page__section">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title-border">Примеры работ</h2>
+            </div>
+            <div class="about-page__gallery about-page__gallery--works" id="worksHomeGallery">
+                <div class="about-page__gallery-track" id="worksHomeTrack">
+                    @php
+                        $worksHome = [
+                            ['src' => '/avi-dveri_assets/avi-dveri/img/works/1.webp', 'alt' => 'Пример работы 1'],
+                            ['src' => '/avi-dveri_assets/avi-dveri/img/works/2.webp', 'alt' => 'Пример работы 2'],
+                            ['src' => '/avi-dveri_assets/avi-dveri/img/works/3.webp', 'alt' => 'Пример работы 3'],
+                            ['src' => '/avi-dveri_assets/avi-dveri/img/works/4.webp', 'alt' => 'Пример работы 4'],
+                            ['src' => '/avi-dveri_assets/avi-dveri/img/works/5.webp', 'alt' => 'Пример работы 5'],
+                            ['src' => '/avi-dveri_assets/avi-dveri/img/works/6.webp', 'alt' => 'Пример работы 6'],
+                        ];
+                    @endphp
+                    @foreach ($worksHome as $work)
+                        <div class="about-page__gallery-item">
+                            <div class="about-page__gallery-card">
+                                <div class="about-page__gallery-image">
+                                    <span class="about-page__gallery-placeholder">{{ $work['alt'] }}</span>
+                                    <div class="about-page__gallery-overlay">
+                                        <span class="about-page__gallery-label">Посмотреть</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <button class="about-page__gallery-btn about-page__gallery-btn--prev" id="workHomePrev">‹</button>
+                <button class="about-page__gallery-btn about-page__gallery-btn--next" id="workHomeNext">›</button>
+            </div>
+        </div>
+    </section>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('/avi-dveri_assets/avi-dveri/js/about-page.js') }}" defer></script>
+@endpush

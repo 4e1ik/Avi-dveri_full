@@ -118,6 +118,11 @@
                         <li><a href="{{route('manufacturers', ['type' => 'general'])}}">Общие бренды</a></li>
                     </ul>
                 </li>
+                <li class="ripple">
+                    <a href="{{route('reviews')}}" class="tree-toggle nav-header">
+                        Отзывы
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

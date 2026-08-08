@@ -7,6 +7,7 @@ use App\Http\Controllers\avi_dveri\admin\ManufacturerController;
 use App\Http\Controllers\avi_dveri\admin\MetaTagsProductController;
 use App\Http\Controllers\avi_dveri\admin\ProductController;
 use App\Http\Controllers\avi_dveri\admin\RegisterController;
+use App\Http\Controllers\avi_dveri\admin\ReviewController;
 use App\Http\Controllers\avi_dveri\DoorController;
 use App\Http\Controllers\avi_dveri\FittingController;
 use App\Http\Controllers\avi_dveri\MailController;
@@ -147,6 +148,8 @@ Route::middleware('auth')->where([])->prefix('admin')->group(function () {
         Route::put('/{manufacturer}', [ManufacturerController::class, 'update'])->name('update_manufacturer');
         Route::delete('/{manufacturer}', [ManufacturerController::class, 'destroy'])->name('destroy_manufacturer');
     });
+
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews');
 
     Route::resource('products', ProductController::class)->except(['create', 'index', 'show']);
     Route::get('/products/create/{type}', [ProductController::class, 'create'])->name('products.create');
