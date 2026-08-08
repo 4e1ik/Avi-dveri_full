@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 titleInput.value = productTitle;
             }
 
-            // Сбрасываем чекбокс при открытии
             const checkbox = popup.querySelector('#agreementCheckbox');
             const submitBtn = popup.querySelector('#submitButton');
 
@@ -71,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
         crossSelector: '.popup__cross_callback',
         bodySelector: '.popup__body_callback',
         onOpen: function (popup, button) {
-            // Сбрасываем чекбокс при открытии
             const checkbox = popup.querySelector('#agreementCheckbox');
             const submitBtn = popup.querySelector('#submitButton');
 
@@ -105,38 +103,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Вешаем слушатели на все чекбоксы согласия (для обеих форм)
     document.querySelectorAll('#agreementCheckbox').forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             updateButtonState(this);
         });
-        // Проверяем состояние при загрузке
         updateButtonState(checkbox);
     });
 
-    // ===== ФУНКЦИЯ ДЛЯ ОТПРАВКИ ФОРМЫ =====
-    window.onClick = function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const button = event.currentTarget;
-        const popup = button.closest('.popup_application, .popup_callback');
-        if (!popup) return;
-
-        const checkbox = popup.querySelector('#agreementCheckbox');
-
-        // Проверяем чекбокс
-        if (!checkbox || !checkbox.checked) {
-            // Показываем сообщение об ошибке
-            alert('Пожалуйста, дайте согласие на обработку персональных данных');
-            if (checkbox) checkbox.focus();
-            return;
-        }
-
-        // Если чекбокс отмечен - отправляем форму
-        const form = popup.querySelector('form');
-        if (form) {
-            form.submit();
-        }
-    };
+    // Отправка формы — через onClick в layout (reCAPTCHA + fetch).
+    // Здесь window.onClick НЕ переопределяем.
 });
