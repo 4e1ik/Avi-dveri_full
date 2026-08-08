@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
+use App\Models\Review;
 use App\Services\ReviewService;
 use Illuminate\Database\Seeder;
 
@@ -30,15 +31,21 @@ class ReviewSeeder extends Seeder
     {
         $reviewService = app(ReviewService::class);
 
+        // Перезаписать все фейковые; реальные (fake=false) не трогаем
+        Review::query()->where('fake', true)->delete();
+
         Product::query()->orderBy('id')->chunkById(50, function ($products) use ($reviewService) {
             foreach ($products as $product) {
-                $count = random_int(3, 6);
+                $count = min(random_int(3, 6), count($this->comments));
+                $comments = $this->comments;
+                shuffle($comments);
+                $uniqueComments = array_slice($comments, 0, $count);
 
-                for ($i = 0; $i < $count; $i++) {
+                foreach ($uniqueComments as $comment) {
                     $product->reviews()->create([
                         'name' => $this->names[array_rand($this->names)],
                         'rating' => random_int(4, 5),
-                        'comment' => $this->comments[array_rand($this->comments)],
+                        'comment' => $comment,
                         'is_hidden' => false,
                         'fake' => true,
                     ]);
