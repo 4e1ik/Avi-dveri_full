@@ -32,8 +32,10 @@
                     <div class="shop-content mt-xs-30">
                         <div class="product-option mb-30 clearfix">
                             <div class="showing text-end d-none d-md-block">
-                                <p class="mb-0">Показано {{ str_pad($start, 2, '0', STR_PAD_LEFT) }}
-                                    -{{ str_pad($end, 2, '0', STR_PAD_LEFT) }} из {{ $totalCount }} результатов</p>
+                                <p class="mb-0" id="product-count">
+                                    Показано {{ str_pad($start, 2, '0', STR_PAD_LEFT) }}
+                                    -{{ str_pad($end, 2, '0', STR_PAD_LEFT) }} из {{ $totalCount }} результатов
+                                </p>
                             </div>
                         </div>
                         @include('includes.avi-dveri.catalog_tags')
@@ -44,7 +46,9 @@
                             </div>
                         </div>
                         <!-- Pagination start -->
-                        {{$products->withQueryString()->links()}}
+                        <div id="pagination-container">
+                            {{ $products->withQueryString()->links() }}
+                        </div>
                         <!-- Pagination end -->
                     </div>
                     <!-- Shop-Content End -->

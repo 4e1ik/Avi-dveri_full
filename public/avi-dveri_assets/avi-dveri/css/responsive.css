@@ -1443,6 +1443,11 @@
   .mean-container .mean-nav ul li,
   .mean-container .mean-nav ul li a {
     background-color: #f8f8f8 !important;
+    color: #666666 !important;
+    font-weight: 500 !important;
+    letter-spacing: 0px !important;
+    border: none !important;
+    text-align: left !important;
   }
 
   .mean-container .mean-nav ul li:first-child {
@@ -1646,4 +1651,151 @@
     line-height: 30px !important;
     font-size: 11px !important;
   }
+}
+
+/* =======================================
+   УБИРАЕМ HOVER В МОБИЛЬНОЙ ВЕРСИИ
+======================================== */
+
+/* Отключаем hover на сенсорных устройствах */
+@media (hover: none), (max-width: 1199px) {
+    .mobile-menu .open_popup_callback:hover,
+    .mean-nav .open_popup_callback:hover,
+    .mean-container .mean-nav .open_popup_callback:hover {
+        background: transparent !important;
+        color: #666666 !important;
+        padding-left: 20px !important;
+        transform: none !important;
+    }
+    
+    .mobile-menu .open_popup_callback:hover i,
+    .mean-nav .open_popup_callback:hover i,
+    .mean-container .mean-nav .open_popup_callback:hover i,
+    .mobile-menu .open_popup_callback:hover::before,
+    .mean-nav .open_popup_callback:hover::before {
+        color: #999999 !important;
+    }
+}
+
+/* =======================================
+   УБИРАЕМ ВСЕ СОСТОЯНИЯ В МОБИЛЬНОМ МЕНЮ (hover, active, focus)
+======================================== */
+
+@media (max-width: 1199px) {
+    /* Сбрасываем все состояния для кнопки в мобильном меню */
+    .mobile-menu .open_popup_callback,
+    .mobile-menu .open_popup_callback:hover,
+    .mobile-menu .open_popup_callback:active,
+    .mobile-menu .open_popup_callback:focus,
+    .mobile-menu .open_popup_callback:focus-visible,
+    .mean-nav .open_popup_callback,
+    .mean-nav .open_popup_callback:hover,
+    .mean-nav .open_popup_callback:active,
+    .mean-nav .open_popup_callback:focus,
+    .mean-nav .open_popup_callback:focus-visible,
+    .mean-container .mean-nav .open_popup_callback,
+    .mean-container .mean-nav .open_popup_callback:hover,
+    .mean-container .mean-nav .open_popup_callback:active,
+    .mean-container .mean-nav .open_popup_callback:focus,
+    .mean-container .mean-nav .open_popup_callback:focus-visible {
+        background: transparent !important;
+        color: #666666 !important;
+        padding-left: 20px !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+    }
+    
+    .mobile-menu .open_popup_callback i,
+    .mean-nav .open_popup_callback i,
+    .mean-container .mean-nav .open_popup_callback i,
+    .mobile-menu .open_popup_callback:hover i,
+    .mean-nav .open_popup_callback:hover i,
+    .mean-container .mean-nav .open_popup_callback:hover i,
+    .mobile-menu .open_popup_callback:active i,
+    .mean-nav .open_popup_callback:active i,
+    .mean-container .mean-nav .open_popup_callback:active i,
+    .mobile-menu .open_popup_callback:focus i,
+    .mean-nav .open_popup_callback:focus i,
+    .mean-container .mean-nav .open_popup_callback:focus i {
+        color: #999999 !important;
+    }
+}
+
+/* =======================================
+   ВЫРАВНИВАНИЕ КНОПКИ В МОБИЛЬНОМ МЕНЮ (MEANMENU)
+======================================== */
+
+/* Для всех экранов меньше 1200px */
+@media (max-width: 1199px) {
+    /* Перебиваем стили meanmenu для кнопки */
+    .mean-container .mean-nav ul li a.open_popup_callback {
+        display: block !important;
+        float: none !important;
+        width: 90% !important;
+        padding: 1em 5% !important;
+        margin: 0 !important;
+        height: auto !important;
+        line-height: 1.4 !important;
+        font-family: 'Lato', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        color: #666666 !important;
+        background: #f8f8f8 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        cursor: pointer !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0px !important;
+        text-align: left !important;
+        box-shadow: none !important;
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        transition: none !important;
+        overflow: visible !important;
+        z-index: auto !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+        min-height: auto !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+    
+    /* Убираем все псевдо-элементы */
+    .mean-container .mean-nav ul li a.open_popup_callback::before,
+    .mean-container .mean-nav ul li a.open_popup_callback::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Отключаем все состояния (hover, active, focus) */
+    .mean-container .mean-nav ul li a.open_popup_callback:hover,
+    .mean-container .mean-nav ul li a.open_popup_callback:active,
+    .mean-container .mean-nav ul li a.open_popup_callback:focus {
+        background: #f8f8f8 !important;
+        color: #666666 !important;
+        padding: 1em 5% !important;
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+        outline: none !important;
+    }
+    
+    /* Для иконки телефона (если будет добавлена) */
+    .mean-container .mean-nav ul li a.open_popup_callback i {
+        display: none !important;
+    }
+}
+
+/* Для маленьких экранов */
+@media (max-width: 480px) {
+    .mean-container .mean-nav ul li a.open_popup_callback {
+        padding: 0.8em 5% !important;
+        font-size: 13px !important;
+    }
 }

@@ -55,9 +55,7 @@
                 padding-top: 6px;
             }
             .catalog-global-filter .catalog-global-filter__block {
-                margin: 0 0 18px;
                 padding: 0 0 16px;
-                border-bottom: 1px solid #f0f0f0;
             }
             .catalog-global-filter .catalog-global-filter__block:last-child {
                 margin-bottom: 0;
@@ -384,9 +382,9 @@
         @endisset
 
         <div class="catalog-global-filter__actions">
-            <button type="submit" class="catalog-global-filter__btn catalog-global-filter__btn--apply">
+            {{-- <button type="submit" class="catalog-global-filter__btn catalog-global-filter__btn--apply">
                 Применить фильтр
-            </button>
+            </button> --}}
             <button type="button" class="catalog-global-filter__btn catalog-global-filter__btn--reset js-catalog-filter-reset">
                 Сбросить фильтр
             </button>
