@@ -370,7 +370,7 @@
 }
 
 /* Карточки каталога: название всегда на 2 строки */
-.product-style-2:not(.single-pro-area) .product-info .post-title {
+.product-style-2:not(.single-pro-area) .product-info .title1 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -380,7 +380,7 @@
 }
 
 @media (min-width: 768px) {
-  .wrapper .product-style-2:not(.single-pro-area) .product-info .post-title {
+  .wrapper .product-style-2:not(.single-pro-area) .product-info .title1 {
     line-height: 1.25;
     min-height: calc(2 * 1.25em);
   }
@@ -2173,7 +2173,7 @@ h3.widget-title-modal {
 /* КАРТОЧКА ТОВАРА */
 
 /* Заголовок карточки - жирность 600 */
-.single-pro-area .product-info .post-title {
+.single-pro-area .product-info .title1 {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   font-size: 24px;
@@ -2479,7 +2479,7 @@ h3.widget-title-modal {
 }
 
 @media (max-width: 767px) {
-  .single-pro-area .product-info .post-title {
+  .single-pro-area .product-info .title1 {
     font-size: 20px;
   }
 

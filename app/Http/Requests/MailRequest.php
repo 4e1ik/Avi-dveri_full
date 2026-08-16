@@ -37,7 +37,7 @@ class MailRequest extends FormRequest
             return [
                 'form_type' => 'required|in:callback',
                 'name' => 'required|min:3|max:30',
-                'phone' => 'required|max:15',
+                'phone' => 'required|string|regex:/^\+?375\s?[0-9]{2}\s?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/',
                 'g-recaptcha-response' => $recaptchaRule,
             ];
         }
@@ -46,7 +46,7 @@ class MailRequest extends FormRequest
             'title' => 'max:256',
             'name' => 'required|min:3|max:30',
             'email' => 'required|email|max:50',
-            'phone' => 'required|max:15',
+            'phone' => 'required|string|regex:/^\+?375\s?[0-9]{2}\s?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/',
             'textarea' => 'max:100',
             'g-recaptcha-response' => $recaptchaRule,
         ];

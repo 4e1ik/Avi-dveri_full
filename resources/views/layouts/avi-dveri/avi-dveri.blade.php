@@ -413,7 +413,7 @@
             } catch (error) {
                 // Обработка ошибок
                 console.error('Ошибка:', error);
-                alert(error.message || 'Произошла ошибка при отправке письма');
+                // alert(error.message || 'Произошла ошибка при отправке письма');
             }
         }
 

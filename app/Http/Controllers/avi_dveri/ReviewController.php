@@ -4,7 +4,7 @@ namespace App\Http\Controllers\avi_dveri;
 
 use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\ReviewRequest;
 use App\Models\Product;
 use App\Services\ReviewService;
 use Exception;
@@ -15,7 +15,7 @@ class ReviewController extends Controller
         public ReviewService $reviewService,
     ) {}
 
-    public function store(StoreReviewRequest $request)
+    public function store(ReviewRequest $request)
     {
         try {
             $product = Product::findOrFail($request->integer('product_id'));

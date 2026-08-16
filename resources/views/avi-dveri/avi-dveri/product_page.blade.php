@@ -48,7 +48,7 @@
                         <!-- Single-pro-slider Big-photo end -->
                         <div class="product-info">
                             <div class="fix mb-10">
-                                <div class="post-title floatleft">{{ $product->title }}</div>
+                                <div class="post-title floatleft title1">{{ $product->title }}</div>
                             </div>
                             <!-- Категория товара -->
                             @include('includes.avi-dveri.product_category')
@@ -275,7 +275,8 @@
                                                                     class="review-item__star {{ $i <= $review->rating ? 'active' : '' }}">★</span>
                                                             @endfor
                                                         </div>
-                                                        <span class="review-item__date">{{ $review->created_at?->format('d.m.Y') }}</span>
+                                                        <span
+                                                            class="review-item__date">{{ $review->created_at?->format('d.m.Y') }}</span>
                                                     </div>
                                                     <div class="review-item__comment">
                                                         {{ $review->comment }}
@@ -290,21 +291,42 @@
                                     <!-- Форма добавления отзыва -->
                                     <div class="review-form-wrapper">
                                         <h3 class="review-form__title">Оставить отзыв</h3>
+
+                                        @if (session('success'))
+                                            <div class="alert alert-success"
+                                                style="padding: 15px; margin-bottom: 20px; background: #d4edda; color: #155724; border-radius: 5px;">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+
                                         <form class="review-form" id="reviewForm" action="{{ route('reviews.store') }}"
                                             method="post">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="form_type" value="review">
 
+                                            <!-- ===== ИМЯ ===== -->
                                             <div class="review-form__group">
                                                 <label class="review-form__label">Ваше имя <span
                                                         class="review-form__required">*</span></label>
+                                                <div class="form_error">
+                                                    @error('name')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                                 <input type="text" name="name" class="review-form__input"
-                                                    placeholder="Иван Иванов" required>
+                                                    placeholder="Иван Иванов" value="{{ old('name') }}" required>
                                             </div>
 
+                                            <!-- ===== ОЦЕНКА ===== -->
                                             <div class="review-form__group">
                                                 <label class="review-form__label">Оценка <span
                                                         class="review-form__required">*</span></label>
+                                                <div class="form_error">
+                                                    @error('rating')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                                 <div class="review-form__rating" id="ratingSelector">
                                                     <span class="review-form__star" data-value="1">★</span>
                                                     <span class="review-form__star" data-value="2">★</span>
@@ -312,42 +334,55 @@
                                                     <span class="review-form__star" data-value="4">★</span>
                                                     <span class="review-form__star" data-value="5">★</span>
                                                 </div>
-                                                <input type="hidden" name="rating" id="ratingValue" value="5">
+                                                <input type="hidden" name="rating" id="ratingValue"
+                                                    value="{{ old('rating', 5) }}">
                                             </div>
 
+                                            <!-- ===== ТЕКСТ ОТЗЫВА ===== -->
                                             <div class="review-form__group">
                                                 <label class="review-form__label">Текст отзыва <span
                                                         class="review-form__required">*</span></label>
+                                                <div class="form_error">
+                                                    @error('comment')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                                 <textarea name="comment" class="review-form__textarea" placeholder="Поделитесь своим мнением о товаре..."
-                                                    rows="4" required></textarea>
+                                                    rows="4" required>{{ old('comment') }}</textarea>
                                             </div>
 
-                                            <!-- Согласие на обработку данных -->
+                                            <!-- ===== СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ ===== -->
                                             <div class="review-form__group review-form__group--checkbox">
                                                 <label class="review-form__checkbox-label">
                                                     <input type="checkbox" name="agreement" class="review-form__checkbox"
-                                                        value="1" required>
+                                                        value="1" {{ old('agreement') ? 'checked' : '' }} required>
                                                     <span class="review-form__checkbox-text">
                                                         Я соглашаюсь на обработку <span>персональных данных</span>
                                                     </span>
                                                 </label>
+                                                <div class="form_error">
+                                                    @error('agreement')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <!-- ===== ReCAPTCHA ===== -->
+                                            <div class="review-form__group" style="position: relative;">
+                                                <input type="hidden" name="g-recaptcha-response"
+                                                    class="g-recaptcha-response-field">
+                                                <div class="form_error g-recaptcha-error"
+                                                    style="position: absolute; margin:0; color: red;">
+                                                    @error('g-recaptcha-response')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                             </div>
 
                                             <button type="submit" class="button-one submit-btn-4 review-form__submit"
                                                 data-text="Отправить отзыв">
                                                 Отправить отзыв
                                             </button>
-
-                                            <div class="feedback__input">
-                                                <input type="hidden" name="g-recaptcha-response"
-                                                    class="g-recaptcha-response-field">
-                                                <div style="position: absolute; margin:0; color: red;"
-                                                    class="form_error g-recaptcha-error">
-                                                    @error('g-recaptcha-response')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
